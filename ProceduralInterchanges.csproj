@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
 		<Configurations>Debug;Release</Configurations>
@@ -70,4 +70,10 @@
 		<None Include="$(ModTargetsFile)" Link="Properties\Mod.targets" />
 	</ItemGroup>
 
+	<!-- Automatically compile the Gameface UI module and deploy beside the C# assembly -->
+	<Target Name="BuildUI" AfterTargets="DeployWIP">
+		<Exec Command="npm --prefix ui run build" />
+	</Target>
+
 </Project>
+

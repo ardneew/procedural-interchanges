@@ -1,4 +1,4 @@
-﻿using Colossal;
+using Colossal;
 using Colossal.IO.AssetDatabase;
 using Game.Modding;
 using Game.Settings;
@@ -120,7 +120,10 @@ namespace ProceduralInterchanges
 
         public override void SetDefaults()
         {
-            throw new System.NotImplementedException();
+            Toggle = false;
+            IntSlider = 0;
+            IntDropdown = 0;
+            EnumDropdown = SomeEnum.Value1;
         }
 
         public enum SomeEnum
@@ -224,3 +227,4 @@ namespace ProceduralInterchanges
         }
     }
 }
+

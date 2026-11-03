@@ -144,12 +144,20 @@ export const FineTuningInspector: React.FC<FineTuningInspectorProps> = ({ state 
         </div>
       </div>
 
-      {/* Selected Segment Override (when clicked on 2D plan) */}
+      {/* Selected Segment Override */}
       {selectedCourse && (
-        <div className={styles.section} style={{ border: "1rem solid #00e5ff" }}>
+        <div
+          className={styles.section}
+          style={{
+            background: "rgba(56, 189, 248, 0.05)",
+            border: "1rem solid rgba(56, 189, 248, 0.35)",
+            borderRadius: "6rem",
+            padding: "8rem 10rem",
+          }}
+        >
           <div className={styles.sectionTitle}>
-            <span>Selected Segment: {selectedCourse.roleName}</span>
-            <span style={{ fontSize: "10rem", color: "#38bdf8" }}>{selectedCourse.id}</span>
+            <span style={{ color: "#38bdf8" }}>Selected: {selectedCourse.roleName}</span>
+            <span style={{ fontSize: "10rem", color: "#94a3b8" }}>{selectedCourse.id}</span>
           </div>
 
           <div className={styles.controlRow}>
@@ -161,7 +169,7 @@ export const FineTuningInspector: React.FC<FineTuningInspectorProps> = ({ state 
                 onChange={(val) =>
                   setCourseOverride(
                     selectedCourse.id,
-                    parseInt(val, 10),
+                    Number(val),
                     selectedCourse.prefabName || "",
                     0
                   )
@@ -170,7 +178,7 @@ export const FineTuningInspector: React.FC<FineTuningInspectorProps> = ({ state 
             </div>
           </div>
 
-          {availablePrefabs && availablePrefabs.length > 0 && (
+          {availablePrefabs.length > 0 && (
             <div className={styles.controlRow}>
               <span className={styles.label}>Road Prefab</span>
               <div style={{ flex: 1 }}>
@@ -193,86 +201,82 @@ export const FineTuningInspector: React.FC<FineTuningInspectorProps> = ({ state 
       )}
 
       {/* Per-Leg Overrides */}
-      {legs && legs.length > 0 && (
+      {legs.length > 0 && (
         <div className={styles.section}>
           <div className={styles.sectionTitle}>
             <span>Connected Highway Legs</span>
-            <span style={{ fontSize: "10rem", color: "#64748b" }}>{legs.length} Portals</span>
+            <span style={{ fontSize: "10rem", color: "#94a3b8" }}>{legs.length} Portals</span>
           </div>
 
-          {legs.map((leg) => {
-            const legLaneOptions = [
-              { value: 0, label: `Auto Lanes (${leg.inboundLanes}L)` },
-              ...laneOptions,
-            ];
-            const legPrefabOptions = [
-              { value: "", label: "Auto Prefab" },
-              ...availablePrefabs.map((p) => ({ value: p, label: p })),
-            ];
+          {legs.map((leg) => (
+            <div
+              key={`leg-card-${leg.index}`}
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                gap: "4rem",
+                padding: "8rem",
+                background: "rgba(255,255,255,0.03)",
+                border: "1rem solid rgba(255,255,255,0.06)",
+                borderRadius: "6rem",
+                marginBottom: "4rem",
+              }}
+            >
+              <div style={{ display: "flex", justifyContent: "space-between", fontSize: "11rem" }}>
+                <span style={{ fontWeight: 600, color: "#38bdf8" }}>
+                  Leg #{leg.index + 1} ({leg.azimuthDeg.toFixed(0)}°)
+                </span>
+                <span style={{ color: "#94a3b8" }}>
+                  {leg.isDual ? "Dual Carriageway" : "Single Highway"} ({leg.inboundLanes}L)
+                </span>
+              </div>
 
-            return (
-              <div
-                key={`leg-card-${leg.index}`}
-                style={{
-                  display: "flex",
-                  flexDirection: "column",
-                  gap: "4rem",
-                  padding: "6rem",
-                  background: "rgba(0,0,0,0.25)",
-                  borderRadius: "4rem",
-                  marginBottom: "6rem",
-                }}
-              >
-                <div style={{ display: "flex", justifyContent: "space-between", fontSize: "11rem" }}>
-                  <span style={{ fontWeight: 600, color: "#38bdf8" }}>
-                    Leg #{leg.index + 1} ({leg.azimuthDeg.toFixed(0)}°)
-                  </span>
-                  <span style={{ color: "#94a3b8" }}>
-                    {leg.isDual ? "Dual Carriageway" : "Single Highway"} ({leg.inboundLanes}L)
-                  </span>
+              <div style={{ display: "flex", gap: "8rem" }}>
+                <div style={{ flex: 1 }}>
+                  <CustomDropdown
+                    value={leg.overrideLanes || 0}
+                    options={[
+                      { value: 0, label: `Auto Lanes (${leg.inboundLanes}L)` },
+                      ...laneOptions,
+                    ]}
+                    onChange={(val) =>
+                      setLegOverride(
+                        leg.index,
+                        Number(val),
+                        leg.overridePrefab || "",
+                        leg.upgrades || 0
+                      )
+                    }
+                  />
                 </div>
 
-                <div style={{ display: "flex", gap: "8rem" }}>
+                {availablePrefabs.length > 0 && (
                   <div style={{ flex: 1 }}>
                     <CustomDropdown
-                      value={leg.overrideLanes || 0}
-                      options={legLaneOptions}
+                      value={leg.overridePrefab || ""}
+                      options={[
+                        { value: "", label: "Auto Prefab" },
+                        ...availablePrefabs.map((p) => ({ value: p, label: p })),
+                      ]}
                       onChange={(val) =>
                         setLegOverride(
                           leg.index,
-                          parseInt(val, 10),
-                          leg.overridePrefab || "",
+                          leg.overrideLanes || 0,
+                          String(val),
                           leg.upgrades || 0
                         )
                       }
                     />
                   </div>
-
-                  {availablePrefabs && availablePrefabs.length > 0 && (
-                    <div style={{ flex: 1 }}>
-                      <CustomDropdown
-                        value={leg.overridePrefab || ""}
-                        options={legPrefabOptions}
-                        onChange={(val) =>
-                          setLegOverride(
-                            leg.index,
-                            leg.overrideLanes || 0,
-                            String(val),
-                            leg.upgrades || 0
-                          )
-                        }
-                      />
-                    </div>
-                  )}
-                </div>
+                )}
               </div>
-            );
-          })}
+            </div>
+          ))}
         </div>
       )}
 
       {/* Road Types & Global Prefabs */}
-      {availablePrefabs && availablePrefabs.length > 0 && (
+      {availablePrefabs.length > 0 && (
         <div className={styles.section}>
           <div className={styles.sectionTitle}>
             <span>Road Types & Prefabs</span>
@@ -319,7 +323,7 @@ export const FineTuningInspector: React.FC<FineTuningInspectorProps> = ({ state 
             <input
               type="checkbox"
               defaultChecked={true}
-              onChange={(e) => setGlobalUpgrade(1 << 2, e.target.checked)} // StreetLighting
+              onChange={(e) => setGlobalUpgrade(1 << 2, e.target.checked)}
             />
             <span>Street Lighting</span>
           </label>
@@ -328,7 +332,7 @@ export const FineTuningInspector: React.FC<FineTuningInspectorProps> = ({ state 
             <input
               type="checkbox"
               defaultChecked={false}
-              onChange={(e) => setGlobalUpgrade(1 << 3, e.target.checked)} // WideMedian
+              onChange={(e) => setGlobalUpgrade(1 << 3, e.target.checked)}
             />
             <span>Wide Median</span>
           </label>
@@ -337,7 +341,7 @@ export const FineTuningInspector: React.FC<FineTuningInspectorProps> = ({ state 
             <input
               type="checkbox"
               defaultChecked={false}
-              onChange={(e) => setGlobalUpgrade(1 << 0, e.target.checked)} // SoundBarrierLeft
+              onChange={(e) => setGlobalUpgrade(1 << 0, e.target.checked)}
             />
             <span>Sound Barrier (Left)</span>
           </label>
@@ -346,7 +350,7 @@ export const FineTuningInspector: React.FC<FineTuningInspectorProps> = ({ state 
             <input
               type="checkbox"
               defaultChecked={false}
-              onChange={(e) => setGlobalUpgrade(1 << 1, e.target.checked)} // SoundBarrierRight
+              onChange={(e) => setGlobalUpgrade(1 << 1, e.target.checked)}
             />
             <span>Sound Barrier (Right)</span>
           </label>
@@ -355,7 +359,7 @@ export const FineTuningInspector: React.FC<FineTuningInspectorProps> = ({ state 
             <input
               type="checkbox"
               defaultChecked={false}
-              onChange={(e) => setGlobalUpgrade(1 << 4, e.target.checked)} // RetainingWallLeft
+              onChange={(e) => setGlobalUpgrade(1 << 4, e.target.checked)}
             />
             <span>Retaining Wall (Left)</span>
           </label>
@@ -364,7 +368,7 @@ export const FineTuningInspector: React.FC<FineTuningInspectorProps> = ({ state 
             <input
               type="checkbox"
               defaultChecked={false}
-              onChange={(e) => setGlobalUpgrade(1 << 5, e.target.checked)} // RetainingWallRight
+              onChange={(e) => setGlobalUpgrade(1 << 5, e.target.checked)}
             />
             <span>Retaining Wall (Right)</span>
           </label>
@@ -373,7 +377,7 @@ export const FineTuningInspector: React.FC<FineTuningInspectorProps> = ({ state 
             <input
               type="checkbox"
               defaultChecked={false}
-              onChange={(e) => setGlobalUpgrade(1 << 6, e.target.checked)} // RemoveTrafficLights
+              onChange={(e) => setGlobalUpgrade(1 << 6, e.target.checked)}
             />
             <span>Remove Traffic Lights</span>
           </label>

@@ -31,18 +31,18 @@ export const ArchetypeSelector: React.FC<ArchetypeSelectorProps> = ({
           >
             {/* Minimal SVG icon representing junction geometry */}
             <svg className={styles.cardIcon} viewBox="0 0 40 40">
-              <circle cx="20" cy="20" r="17" fill="none" stroke="rgba(255,255,255,0.1)" strokeWidth="1" />
+              <circle cx="20" cy="20" r="17" fill="none" stroke="rgba(255,255,255,0.08)" strokeWidth="1" />
               {arch.minLegs === 3 ? (
                 // 3-way icon
-                <g stroke={isSelected ? "#00e5ff" : "#94a3b8"} strokeWidth="2" strokeLinecap="round">
-                  <line x1="5" y1="28" x2="35" y2="28" />
-                  <line x1="20" y1="5" x2="20" y2="28" />
-                  {arch.id === 10 && <circle cx="27" cy="18" r="5" fill="none" stroke="#2ecc71" strokeWidth="1.5" />}
+                <g stroke={isSelected ? "#38bdf8" : "#94a3b8"} strokeWidth="2" strokeLinecap="round">
+                  <line x1="6" y1="28" x2="34" y2="28" />
+                  <line x1="20" y1="6" x2="20" y2="28" />
+                  {arch.id === 10 && <circle cx="27" cy="18" r="5" fill="none" stroke={isSelected ? "#7dd3fc" : "#cbd5e1"} strokeWidth="1.5" />}
                 </g>
               ) : arch.id === 30 ? (
                 // Roundabout icon
-                <g stroke={isSelected ? "#00e5ff" : "#94a3b8"} strokeWidth="2" strokeLinecap="round">
-                  <circle cx="20" cy="20" r="8" fill="none" stroke="#00e5ff" strokeWidth="2" />
+                <g stroke={isSelected ? "#38bdf8" : "#94a3b8"} strokeWidth="2" strokeLinecap="round">
+                  <circle cx="20" cy="20" r="8" fill="none" stroke={isSelected ? "#38bdf8" : "#94a3b8"} strokeWidth="2" />
                   <line x1="4" y1="20" x2="12" y2="20" />
                   <line x1="28" y1="20" x2="36" y2="20" />
                   <line x1="20" y1="4" x2="20" y2="12" />
@@ -50,13 +50,13 @@ export const ArchetypeSelector: React.FC<ArchetypeSelectorProps> = ({
                 </g>
               ) : (
                 // 4-way cross icon with flyover/loop
-                <g stroke={isSelected ? "#00e5ff" : "#94a3b8"} strokeWidth="2" strokeLinecap="round">
+                <g stroke={isSelected ? "#38bdf8" : "#94a3b8"} strokeWidth="2" strokeLinecap="round">
                   <line x1="4" y1="20" x2="36" y2="20" />
-                  <line x1="20" y1="4" x2="20" y2="36" stroke={isSelected ? "#2ecc71" : "#cbd5e1"} strokeWidth="2.5" />
+                  <line x1="20" y1="4" x2="20" y2="36" stroke={isSelected ? "#f8fafc" : "#cbd5e1"} strokeWidth="2.5" />
                   {arch.id === 22 && (
                     <>
-                      <circle cx="13" cy="13" r="4" fill="none" stroke="#f1c40f" strokeWidth="1" />
-                      <circle cx="27" cy="13" r="4" fill="none" stroke="#f1c40f" strokeWidth="1" />
+                      <circle cx="13" cy="13" r="4" fill="none" stroke={isSelected ? "#38bdf8" : "#94a3b8"} strokeWidth="1" />
+                      <circle cx="27" cy="13" r="4" fill="none" stroke={isSelected ? "#38bdf8" : "#94a3b8"} strokeWidth="1" />
                     </>
                   )}
                 </g>

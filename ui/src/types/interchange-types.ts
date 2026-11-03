@@ -87,6 +87,8 @@ export interface InterchangeUIState {
   liveGhostEnabled: boolean;
   overlayEnabled: boolean;
   canUndo: boolean;
+  requiredLegs: number;
+  angleWarning: string;
   availableArchetypes: ArchetypeInfo[];
   legs: LegInfo[];
   courses2D: Course2D[];

@@ -1,0 +1,251 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-240.0 -240.0 480.0 480.0" style="background:#121417; width:100%; height:100%;">
+  <defs>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="2" result="blur"/><feComposite in="SourceGraphic" in2="blur" operator="over"/></filter>
+    <marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="4" markerHeight="4" orient="auto-start-reverse"><path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#e2e8f0"/></marker>
+  </defs>
+  <circle cx="0" cy="0" r="200.0" fill="none" stroke="#1e293b" stroke-width="2" stroke-dasharray="6 6"/>
+  <line x1="-300" y1="0" x2="300" y2="0" stroke="#1e293b" stroke-width="1"/>
+  <line x1="0" y1="-300" x2="0" y2="300" stroke="#1e293b" stroke-width="1"/>
+  <path id="diamond_leg_0_app" d="M -89.6 179.2 C -83.4 168.5, -79.8 159.7, -75.5 150.4" fill="none" stroke="#64748b" stroke-width="7.3" stroke-linecap="round" stroke-linejoin="round">
+    <title>diamond_leg_0_app (Lanes: 3, Elev: 0.0m)</title>
+  </path>
+  <path d="M -89.6 179.2 C -83.4 168.5, -79.8 159.7, -75.5 150.4" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="diamond_ramp_0_in_sub_1" d="M -62.6 124.6 C -59.6 118.7, -56.3 112.9, -52.8 107.3" fill="none" stroke="#64748b" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>diamond_ramp_0_in_sub_1 (Lanes: 0, Elev: 0.0m)</title>
+  </path>
+  <path d="M -62.6 124.6 C -59.6 118.7, -56.3 112.9, -52.8 107.3" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="diamond_ramp_0_out_sub_2" d="M -72.3 106.6 C -74.0 110.8, -76.1 115.0, -78.5 119.0" fill="none" stroke="#64748b" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>diamond_ramp_0_out_sub_2 (Lanes: 0, Elev: 0.0m)</title>
+  </path>
+  <path d="M -72.3 106.6 C -74.0 110.8, -76.1 115.0, -78.5 119.0" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="diamond_ramp_0_in_sub_2" d="M -52.8 107.3 C -42.8 91.3, -31.0 76.9, -17.6 64.4" fill="none" stroke="#64748b" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>diamond_ramp_0_in_sub_2 (Lanes: 0, Elev: 0.0m)</title>
+  </path>
+  <path d="M -52.8 107.3 C -42.8 91.3, -31.0 76.9, -17.6 64.4" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="diamond_ramp_0_in_sub_3" d="M -17.6 64.4 C 20.5 28.5, 70.8 7.4, 124.0 7.4" fill="none" stroke="#64748b" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>diamond_ramp_0_in_sub_3 (Lanes: 0, Elev: 0.0m)</title>
+  </path>
+  <path d="M -17.6 64.4 C 20.5 28.5, 70.8 7.4, 124.0 7.4" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="diamond_ramp_2_out" d="M 124.0 -7.4 C 89.7 -7.4, 67.5 -36.5, 66.0 -70.4" fill="none" stroke="#64748b" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>diamond_ramp_2_out (Lanes: 0, Elev: 0.0m)</title>
+  </path>
+  <path d="M 124.0 -7.4 C 89.7 -7.4, 67.5 -36.5, 66.0 -70.4" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="diamond_ramp_2_out_sub_1" d="M 66.0 -70.4 C 65.4 -82.2, 67.4 -94.7, 72.3 -106.6" fill="none" stroke="#64748b" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>diamond_ramp_2_out_sub_1 (Lanes: 0, Elev: 0.0m)</title>
+  </path>
+  <path d="M 66.0 -70.4 C 65.4 -82.2, 67.4 -94.7, 72.3 -106.6" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="diamond_ramp_2_out_sub_2" d="M 72.3 -106.6 C 74.0 -110.8, 76.1 -115.0, 78.5 -119.0" fill="none" stroke="#64748b" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>diamond_ramp_2_out_sub_2 (Lanes: 0, Elev: 0.0m)</title>
+  </path>
+  <path d="M 72.3 -106.6 C 74.0 -110.8, 76.1 -115.0, 78.5 -119.0" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="diamond_ramp_2_in_sub_1" d="M 62.6 -124.6 C 59.6 -118.7, 56.3 -112.9, 52.8 -107.3" fill="none" stroke="#64748b" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>diamond_ramp_2_in_sub_1 (Lanes: 0, Elev: 0.0m)</title>
+  </path>
+  <path d="M 62.6 -124.6 C 59.6 -118.7, 56.3 -112.9, 52.8 -107.3" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="diamond_leg_3_dep" d="M -124.0 -7.4 C -152.9 -7.4, -171.1 -12.0, -200.0 -12.0" fill="none" stroke="#64748b" stroke-width="7.3" stroke-linecap="round" stroke-linejoin="round">
+    <title>diamond_leg_3_dep (Lanes: 3, Elev: 0.0m)</title>
+  </path>
+  <path d="M -124.0 -7.4 C -152.9 -7.4, -171.1 -12.0, -200.0 -12.0" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="diamond_cross_3_1_bridge" d="M -124.0 7.4 C -29.8 7.4, 29.8 7.4, 124.0 7.4" fill="none" stroke="#64748b" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>diamond_cross_3_1_bridge (Lanes: 0, Elev: 0.0m)</title>
+  </path>
+  <path d="M -124.0 7.4 C -29.8 7.4, 29.8 7.4, 124.0 7.4" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="diamond_leg_2_dep_sub_2" d="M 92.5 -140.6 C 98.4 -149.0, 104.2 -156.5, 110.4 -167.2" fill="none" stroke="#64748b" stroke-width="7.3" stroke-linecap="round" stroke-linejoin="round">
+    <title>diamond_leg_2_dep_sub_2 (Lanes: 3, Elev: 0.0m)</title>
+  </path>
+  <path d="M 92.5 -140.6 C 98.4 -149.0, 104.2 -156.5, 110.4 -167.2" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="diamond_leg_3_app" d="M -200.0 12.0 C -171.1 12.0, -152.9 7.4, -124.0 7.4" fill="none" stroke="#64748b" stroke-width="7.3" stroke-linecap="round" stroke-linejoin="round">
+    <title>diamond_leg_3_app (Lanes: 3, Elev: 0.0m)</title>
+  </path>
+  <path d="M -200.0 12.0 C -171.1 12.0, -152.9 7.4, -124.0 7.4" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="diamond_ramp_2_in_sub_2" d="M 52.8 -107.3 C 42.8 -91.3, 31.0 -76.9, 17.6 -64.4" fill="none" stroke="#64748b" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>diamond_ramp_2_in_sub_2 (Lanes: 0, Elev: 0.0m)</title>
+  </path>
+  <path d="M 52.8 -107.3 C 42.8 -91.3, 31.0 -76.9, 17.6 -64.4" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="diamond_ramp_2_in_sub_3" d="M 17.6 -64.4 C -20.5 -28.5, -70.8 -7.4, -124.0 -7.4" fill="none" stroke="#64748b" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>diamond_ramp_2_in_sub_3 (Lanes: 0, Elev: 0.0m)</title>
+  </path>
+  <path d="M 17.6 -64.4 C -20.5 -28.5, -70.8 -7.4, -124.0 -7.4" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="diamond_leg_2_app_sub_1" d="M 75.5 -150.4 C 73.9 -147.1, 72.3 -143.8, 70.4 -140.3" fill="none" stroke="#64748b" stroke-width="7.3" stroke-linecap="round" stroke-linejoin="round">
+    <title>diamond_leg_2_app_sub_1 (Lanes: 3, Elev: 0.0m)</title>
+  </path>
+  <path d="M 75.5 -150.4 C 73.9 -147.1, 72.3 -143.8, 70.4 -140.3" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="diamond_leg_2_app" d="M 89.6 -179.2 C 83.4 -168.5, 79.8 -159.7, 75.5 -150.4" fill="none" stroke="#64748b" stroke-width="7.3" stroke-linecap="round" stroke-linejoin="round">
+    <title>diamond_leg_2_app (Lanes: 3, Elev: 0.0m)</title>
+  </path>
+  <path d="M 89.6 -179.2 C 83.4 -168.5, 79.8 -159.7, 75.5 -150.4" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="diamond_leg_1_dep" d="M 124.0 7.4 C 152.9 7.4, 171.1 12.0, 200.0 12.0" fill="none" stroke="#64748b" stroke-width="7.3" stroke-linecap="round" stroke-linejoin="round">
+    <title>diamond_leg_1_dep (Lanes: 3, Elev: 0.0m)</title>
+  </path>
+  <path d="M 124.0 7.4 C 152.9 7.4, 171.1 12.0, 200.0 12.0" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="diamond_leg_1_app" d="M 200.0 -12.0 C 171.1 -12.0, 152.9 -7.4, 124.0 -7.4" fill="none" stroke="#64748b" stroke-width="7.3" stroke-linecap="round" stroke-linejoin="round">
+    <title>diamond_leg_1_app (Lanes: 3, Elev: 0.0m)</title>
+  </path>
+  <path d="M 200.0 -12.0 C 171.1 -12.0, 152.9 -7.4, 124.0 -7.4" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="diamond_leg_0_dep_sub_2" d="M -92.5 140.6 C -98.4 149.0, -104.2 156.5, -110.4 167.2" fill="none" stroke="#64748b" stroke-width="7.3" stroke-linecap="round" stroke-linejoin="round">
+    <title>diamond_leg_0_dep_sub_2 (Lanes: 3, Elev: 0.0m)</title>
+  </path>
+  <path d="M -92.5 140.6 C -98.4 149.0, -104.2 156.5, -110.4 167.2" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="diamond_leg_0_dep_sub_1" d="M -86.3 131.1 C -88.4 134.5, -90.5 137.6, -92.5 140.6" fill="none" stroke="#64748b" stroke-width="7.3" stroke-linecap="round" stroke-linejoin="round">
+    <title>diamond_leg_0_dep_sub_1 (Lanes: 3, Elev: 0.0m)</title>
+  </path>
+  <path d="M -86.3 131.1 C -88.4 134.5, -90.5 137.6, -92.5 140.6" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="diamond_ramp_0_out" d="M -124.0 7.4 C -89.7 7.4, -67.5 36.5, -66.0 70.4" fill="none" stroke="#64748b" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>diamond_ramp_0_out (Lanes: 0, Elev: 0.0m)</title>
+  </path>
+  <path d="M -124.0 7.4 C -89.7 7.4, -67.5 36.5, -66.0 70.4" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="diamond_ramp_0_out_sub_1" d="M -66.0 70.4 C -65.4 82.2, -67.4 94.7, -72.3 106.6" fill="none" stroke="#64748b" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>diamond_ramp_0_out_sub_1 (Lanes: 0, Elev: 0.0m)</title>
+  </path>
+  <path d="M -66.0 70.4 C -65.4 82.2, -67.4 94.7, -72.3 106.6" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="diamond_leg_0_app_sub_1" d="M -75.5 150.4 C -73.9 147.1, -72.3 143.8, -70.4 140.3" fill="none" stroke="#64748b" stroke-width="7.3" stroke-linecap="round" stroke-linejoin="round">
+    <title>diamond_leg_0_app_sub_1 (Lanes: 3, Elev: 0.0m)</title>
+  </path>
+  <path d="M -75.5 150.4 C -73.9 147.1, -72.3 143.8, -70.4 140.3" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="diamond_leg_2_dep_sub_1" d="M 86.3 -131.1 C 88.4 -134.5, 90.5 -137.6, 92.5 -140.6" fill="none" stroke="#64748b" stroke-width="7.3" stroke-linecap="round" stroke-linejoin="round">
+    <title>diamond_leg_2_dep_sub_1 (Lanes: 3, Elev: 0.0m)</title>
+  </path>
+  <path d="M 86.3 -131.1 C 88.4 -134.5, 90.5 -137.6, 92.5 -140.6" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="diamond_cross_1_3_bridge" d="M 124.0 -7.4 C 29.8 -7.4, -29.8 -7.4, -124.0 -7.4" fill="none" stroke="#64748b" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>diamond_cross_1_3_bridge (Lanes: 0, Elev: 0.0m)</title>
+  </path>
+  <path d="M 124.0 -7.4 C 29.8 -7.4, -29.8 -7.4, -124.0 -7.4" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M 67.2 -134.4 C 65.7 -131.1, 64.2 -127.8, 62.6 -124.6" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
+  <path id="diamond_ramp_2_in" d="M 67.2 -134.4 C 65.7 -131.1, 64.2 -127.8, 62.6 -124.6" fill="none" stroke="#10b981" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>diamond_ramp_2_in (Lanes: 0, Elev: 6.1m)</title>
+  </path>
+  <path d="M 67.2 -134.4 C 65.7 -131.1, 64.2 -127.8, 62.6 -124.6" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M 78.5 -119.0 C 79.8 -121.2, 81.3 -123.3, 82.8 -125.4" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
+  <path id="diamond_ramp_2_out_sub_3" d="M 78.5 -119.0 C 79.8 -121.2, 81.3 -123.3, 82.8 -125.4" fill="none" stroke="#10b981" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>diamond_ramp_2_out_sub_3 (Lanes: 0, Elev: 6.6m)</title>
+  </path>
+  <path d="M 78.5 -119.0 C 79.8 -121.2, 81.3 -123.3, 82.8 -125.4" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M -67.2 134.4 C -65.7 131.1, -64.2 127.8, -62.6 124.6" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
+  <path id="diamond_ramp_0_in" d="M -67.2 134.4 C -65.7 131.1, -64.2 127.8, -62.6 124.6" fill="none" stroke="#10b981" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>diamond_ramp_0_in (Lanes: 0, Elev: 6.1m)</title>
+  </path>
+  <path d="M -67.2 134.4 C -65.7 131.1, -64.2 127.8, -62.6 124.6" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M -78.5 119.0 C -79.8 121.2, -81.3 123.3, -82.8 125.4" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
+  <path id="diamond_ramp_0_out_sub_3" d="M -78.5 119.0 C -79.8 121.2, -81.3 123.3, -82.8 125.4" fill="none" stroke="#10b981" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>diamond_ramp_0_out_sub_3 (Lanes: 0, Elev: 6.6m)</title>
+  </path>
+  <path d="M -78.5 119.0 C -79.8 121.2, -81.3 123.3, -82.8 125.4" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M -70.4 140.3 C -69.4 138.4, -68.4 136.4, -67.2 134.4" fill="none" stroke="#000000" stroke-width="11.4" opacity="0.6"/>
+  <path id="diamond_leg_0_app_sub_2" d="M -70.4 140.3 C -69.4 138.4, -68.4 136.4, -67.2 134.4" fill="none" stroke="#10b981" stroke-width="7.3" stroke-linecap="round" stroke-linejoin="round">
+    <title>diamond_leg_0_app_sub_2 (Lanes: 3, Elev: 6.8m)</title>
+  </path>
+  <path d="M -70.4 140.3 C -69.4 138.4, -68.4 136.4, -67.2 134.4" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M -82.8 125.4 C -84.0 127.4, -85.1 129.3, -86.3 131.1" fill="none" stroke="#000000" stroke-width="11.4" opacity="0.6"/>
+  <path id="diamond_leg_0_dep" d="M -82.8 125.4 C -84.0 127.4, -85.1 129.3, -86.3 131.1" fill="none" stroke="#10b981" stroke-width="7.3" stroke-linecap="round" stroke-linejoin="round">
+    <title>diamond_leg_0_dep (Lanes: 3, Elev: 6.8m)</title>
+  </path>
+  <path d="M -82.8 125.4 C -84.0 127.4, -85.1 129.3, -86.3 131.1" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M 70.4 -140.3 C 69.4 -138.4, 68.4 -136.4, 67.2 -134.4" fill="none" stroke="#000000" stroke-width="11.4" opacity="0.6"/>
+  <path id="diamond_leg_2_app_sub_2" d="M 70.4 -140.3 C 69.4 -138.4, 68.4 -136.4, 67.2 -134.4" fill="none" stroke="#10b981" stroke-width="7.3" stroke-linecap="round" stroke-linejoin="round">
+    <title>diamond_leg_2_app_sub_2 (Lanes: 3, Elev: 6.8m)</title>
+  </path>
+  <path d="M 70.4 -140.3 C 69.4 -138.4, 68.4 -136.4, 67.2 -134.4" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M 82.8 -125.4 C 84.0 -127.4, 85.1 -129.3, 86.3 -131.1" fill="none" stroke="#000000" stroke-width="11.4" opacity="0.6"/>
+  <path id="diamond_leg_2_dep" d="M 82.8 -125.4 C 84.0 -127.4, 85.1 -129.3, 86.3 -131.1" fill="none" stroke="#10b981" stroke-width="7.3" stroke-linecap="round" stroke-linejoin="round">
+    <title>diamond_leg_2_dep (Lanes: 3, Elev: 6.8m)</title>
+  </path>
+  <path d="M 82.8 -125.4 C 84.0 -127.4, 85.1 -129.3, 86.3 -131.1" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M 58.3 -82.9 C 66.1 -96.4, 74.2 -110.5, 82.8 -125.4" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
+  <path id="diamond_main_0_2_core_span_7" d="M 58.3 -82.9 C 66.1 -96.4, 74.2 -110.5, 82.8 -125.4" fill="none" stroke="#10b981" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>diamond_main_0_2_core_span_7 (Lanes: 0, Elev: 8.3m)</title>
+  </path>
+  <path d="M 58.3 -82.9 C 66.1 -96.4, 74.2 -110.5, 82.8 -125.4" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M 49.3 -67.4 C 52.3 -72.5, 55.2 -77.7, 58.3 -82.9" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
+  <path id="diamond_main_0_2_core_span_6" d="M 49.3 -67.4 C 52.3 -72.5, 55.2 -77.7, 58.3 -82.9" fill="none" stroke="#10b981" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>diamond_main_0_2_core_span_6 (Lanes: 0, Elev: 9.7m)</title>
+  </path>
+  <path d="M 49.3 -67.4 C 52.3 -72.5, 55.2 -77.7, 58.3 -82.9" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M 43.8 -57.9 C 45.6 -61.0, 47.5 -64.2, 49.3 -67.4" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
+  <path id="diamond_main_0_2_core_span_5" d="M 43.8 -57.9 C 45.6 -61.0, 47.5 -64.2, 49.3 -67.4" fill="none" stroke="#f59e0b" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>diamond_main_0_2_core_span_5 (Lanes: 0, Elev: 10.6m)</title>
+  </path>
+  <path d="M 43.8 -57.9 C 45.6 -61.0, 47.5 -64.2, 49.3 -67.4" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M 37.4 -46.9 C 39.5 -50.5, 41.7 -54.2, 43.8 -57.9" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
+  <path id="diamond_main_0_2_core_span_4" d="M 37.4 -46.9 C 39.5 -50.5, 41.7 -54.2, 43.8 -57.9" fill="none" stroke="#f59e0b" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>diamond_main_0_2_core_span_4 (Lanes: 0, Elev: 11.4m)</title>
+  </path>
+  <path d="M 37.4 -46.9 C 39.5 -50.5, 41.7 -54.2, 43.8 -57.9" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M 30.1 -34.1 C 32.5 -38.3, 35.0 -42.6, 37.4 -46.9" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
+  <path id="diamond_main_0_2_core_span_3" d="M 30.1 -34.1 C 32.5 -38.3, 35.0 -42.6, 37.4 -46.9" fill="none" stroke="#f59e0b" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>diamond_main_0_2_core_span_3 (Lanes: 0, Elev: 12.4m)</title>
+  </path>
+  <path d="M 30.1 -34.1 C 32.5 -38.3, 35.0 -42.6, 37.4 -46.9" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M 67.2 -134.4 C 47.5 -100.3, 30.4 -70.6, 14.0 -42.2" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
+  <path id="diamond_main_2_0_core" d="M 67.2 -134.4 C 47.5 -100.3, 30.4 -70.6, 14.0 -42.2" fill="none" stroke="#10b981" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>diamond_main_2_0_core (Lanes: 0, Elev: 9.6m)</title>
+  </path>
+  <path d="M 67.2 -134.4 C 47.5 -100.3, 30.4 -70.6, 14.0 -42.2" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M -58.3 82.9 C -66.1 96.4, -74.2 110.5, -82.8 125.4" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
+  <path id="diamond_main_2_0_core_span_7" d="M -58.3 82.9 C -66.1 96.4, -74.2 110.5, -82.8 125.4" fill="none" stroke="#f59e0b" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>diamond_main_2_0_core_span_7 (Lanes: 0, Elev: 12.1m)</title>
+  </path>
+  <path d="M -58.3 82.9 C -66.1 96.4, -74.2 110.5, -82.8 125.4" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M 14.0 -42.2 C 9.3 -34.1, 4.7 -26.2, 0.1 -18.2" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
+  <path id="diamond_main_2_0_core_span_1" d="M 14.0 -42.2 C 9.3 -34.1, 4.7 -26.2, 0.1 -18.2" fill="none" stroke="#f59e0b" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>diamond_main_2_0_core_span_1 (Lanes: 0, Elev: 14.0m)</title>
+  </path>
+  <path d="M 14.0 -42.2 C 9.3 -34.1, 4.7 -26.2, 0.1 -18.2" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M -49.3 67.4 C -52.3 72.5, -55.2 77.7, -58.3 82.9" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
+  <path id="diamond_main_2_0_core_span_6" d="M -49.3 67.4 C -52.3 72.5, -55.2 77.7, -58.3 82.9" fill="none" stroke="#f59e0b" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>diamond_main_2_0_core_span_6 (Lanes: 0, Elev: 15.8m)</title>
+  </path>
+  <path d="M -49.3 67.4 C -52.3 72.5, -55.2 77.7, -58.3 82.9" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M -0.1 18.2 C 9.9 0.8, 19.8 -16.4, 30.1 -34.1" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
+  <path id="diamond_main_0_2_core_span_2" d="M -0.1 18.2 C 9.9 0.8, 19.8 -16.4, 30.1 -34.1" fill="none" stroke="#f59e0b" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>diamond_main_0_2_core_span_2 (Lanes: 0, Elev: 15.1m)</title>
+  </path>
+  <path d="M -0.1 18.2 C 9.9 0.8, 19.8 -16.4, 30.1 -34.1" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M -43.8 57.9 C -45.6 61.0, -47.5 64.2, -49.3 67.4" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
+  <path id="diamond_main_2_0_core_span_5" d="M -43.8 57.9 C -45.6 61.0, -47.5 64.2, -49.3 67.4" fill="none" stroke="#f59e0b" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>diamond_main_2_0_core_span_5 (Lanes: 0, Elev: 16.7m)</title>
+  </path>
+  <path d="M -43.8 57.9 C -45.6 61.0, -47.5 64.2, -49.3 67.4" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M -37.4 46.9 C -39.5 50.5, -41.7 54.2, -43.8 57.9" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
+  <path id="diamond_main_2_0_core_span_4" d="M -37.4 46.9 C -39.5 50.5, -41.7 54.2, -43.8 57.9" fill="none" stroke="#f59e0b" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>diamond_main_2_0_core_span_4 (Lanes: 0, Elev: 17.2m)</title>
+  </path>
+  <path d="M -37.4 46.9 C -39.5 50.5, -41.7 54.2, -43.8 57.9" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M -14.0 42.2 C -9.3 34.1, -4.7 26.2, -0.1 18.2" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
+  <path id="diamond_main_0_2_core_span_1" d="M -14.0 42.2 C -9.3 34.1, -4.7 26.2, -0.1 18.2" fill="none" stroke="#f59e0b" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>diamond_main_0_2_core_span_1 (Lanes: 0, Elev: 17.3m)</title>
+  </path>
+  <path d="M -14.0 42.2 C -9.3 34.1, -4.7 26.2, -0.1 18.2" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M -67.2 134.4 C -47.5 100.3, -30.4 70.6, -14.0 42.2" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
+  <path id="diamond_main_0_2_core" d="M -67.2 134.4 C -47.5 100.3, -30.4 70.6, -14.0 42.2" fill="none" stroke="#f59e0b" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>diamond_main_0_2_core (Lanes: 0, Elev: 15.6m)</title>
+  </path>
+  <path d="M -67.2 134.4 C -47.5 100.3, -30.4 70.6, -14.0 42.2" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M 0.1 -18.2 C -9.9 -0.8, -19.8 16.4, -30.1 34.1" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
+  <path id="diamond_main_2_0_core_span_2" d="M 0.1 -18.2 C -9.9 -0.8, -19.8 16.4, -30.1 34.1" fill="none" stroke="#f59e0b" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>diamond_main_2_0_core_span_2 (Lanes: 0, Elev: 16.7m)</title>
+  </path>
+  <path d="M 0.1 -18.2 C -9.9 -0.8, -19.8 16.4, -30.1 34.1" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M -30.1 34.1 C -32.5 38.3, -35.0 42.6, -37.4 46.9" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
+  <path id="diamond_main_2_0_core_span_3" d="M -30.1 34.1 C -32.5 38.3, -35.0 42.6, -37.4 46.9" fill="none" stroke="#f59e0b" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>diamond_main_2_0_core_span_3 (Lanes: 0, Elev: 17.5m)</title>
+  </path>
+  <path d="M -30.1 34.1 C -32.5 38.3, -35.0 42.6, -37.4 46.9" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <circle cx="70.2" cy="-103.6" r="3.5" fill="#475569" stroke="#cbd5e1" stroke-width="1.5"><title>Pillar at 8.3m</title></circle>
+  <circle cx="39.4" cy="-86.2" r="3.5" fill="#475569" stroke="#cbd5e1" stroke-width="1.5"><title>Pillar at 9.6m</title></circle>
+  <circle cx="-70.2" cy="103.6" r="3.5" fill="#475569" stroke="#cbd5e1" stroke-width="1.5"><title>Pillar at 12.1m</title></circle>
+  <circle cx="14.9" cy="-7.8" r="3.5" fill="#475569" stroke="#cbd5e1" stroke-width="1.5"><title>Pillar at 15.1m</title></circle>
+  <circle cx="-39.4" cy="86.2" r="3.5" fill="#475569" stroke="#cbd5e1" stroke-width="1.5"><title>Pillar at 15.6m</title></circle>
+  <circle cx="-14.9" cy="7.8" r="3.5" fill="#475569" stroke="#cbd5e1" stroke-width="1.5"><title>Pillar at 16.7m</title></circle>
+  <g transform="translate(-39.4, 86.2)">
+    <circle r="5" fill="#ef4444" stroke="#ffffff" stroke-width="1.5"/>
+    <title>[Error] PillarEncroachment: Pillar support on 'diamond_main_0_2_core' encroaches into carriageway 'diamond_ramp_0_in_sub_2'.</title>
+  </g>
+  <g transform="translate(39.4, -86.2)">
+    <circle r="5" fill="#ef4444" stroke="#ffffff" stroke-width="1.5"/>
+    <title>[Error] PillarEncroachment: Pillar support on 'diamond_main_2_0_core' encroaches into carriageway 'diamond_ramp_2_in_sub_2'.</title>
+  </g>
+  <text x="-100.0" y="173.2" fill="#94a3b8" font-family="sans-serif" font-size="11" font-weight="bold" text-anchor="middle" dominant-baseline="central">Leg 0</text>
+  <text x="200.0" y="-0.0" fill="#94a3b8" font-family="sans-serif" font-size="11" font-weight="bold" text-anchor="middle" dominant-baseline="central">Leg 1</text>
+  <text x="100.0" y="-173.2" fill="#94a3b8" font-family="sans-serif" font-size="11" font-weight="bold" text-anchor="middle" dominant-baseline="central">Leg 2</text>
+  <text x="-200.0" y="0.0" fill="#94a3b8" font-family="sans-serif" font-size="11" font-weight="bold" text-anchor="middle" dominant-baseline="central">Leg 3</text>
+</svg>

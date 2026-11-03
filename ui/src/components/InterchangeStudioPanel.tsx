@@ -45,6 +45,14 @@ export const InterchangeStudioPanel: React.FC = () => {
         <div className={styles.headerControls}>
           <button
             className={styles.iconBtn}
+            onClick={() => setGlobalParam("lefthandtraffic", state.leftHandTraffic ? 0 : 1)}
+            title={state.leftHandTraffic ? "Switch to Right-Hand Traffic (RHT)" : "Switch to Left-Hand Traffic (LHT)"}
+            style={{ fontSize: "11rem", fontWeight: 700, color: state.leftHandTraffic ? "#f59e0b" : "#00e5ff" }}
+          >
+            {state.leftHandTraffic ? "LHT" : "RHT"}
+          </button>
+          <button
+            className={styles.iconBtn}
             onClick={() => setGhostEnabled(!state.liveGhostEnabled)}
             title={state.liveGhostEnabled ? "Disable 3D Ghost Preview" : "Enable 3D Ghost Preview"}
             style={{ color: state.liveGhostEnabled ? "#00e5ff" : "#64748b" }}
@@ -65,82 +73,55 @@ export const InterchangeStudioPanel: React.FC = () => {
         </div>
       </div>
 
-      {/* 4-Step Progress Bar */}
+      {/* 2-Step Progress Bar */}
       <div className={styles.stepBar}>
         <div
-          className={`${styles.stepItem} ${stage === 1 ? styles.active : stage > 1 ? styles.completed : ""}`}
-          onClick={() => setStage(1)}
-        >
-          1. Center
-        </div>
-        <div
-          className={`${styles.stepItem} ${stage === 2 ? styles.active : stage > 2 ? styles.completed : ""}`}
+          className={`${styles.stepItem} ${stage <= 2 ? styles.active : styles.completed}`}
           onClick={() => setStage(2)}
         >
-          2. Highways ({legs.length})
+          1. Highway Ends ({legs.length}/{state.requiredLegs || 3})
         </div>
         <div
           className={`${styles.stepItem} ${stage === 3 ? styles.active : ""}`}
           onClick={() => {
-            if (legs.length >= 3) setStage(3);
+            if (legs.length >= (state.requiredLegs || 3)) setStage(3);
           }}
         >
-          3. Design & Tune
+          2. Configure & Build
         </div>
       </div>
 
       {/* Main Content Area */}
       <div className={styles.contentScroll}>
-        {stage === 1 && (
-          <div className={styles.section}>
-            <div className={styles.sectionTitle}>
-              <span>Set Center Point</span>
-            </div>
-            <p style={{ fontSize: "11rem", color: "#94a3b8", lineHeight: 1.5, margin: 0 }}>
-              Click anywhere on the ground or existing highway to establish the center of the intersection.
-              Nearby dual-carriageway and two-way highways will be automatically detected.
-            </p>
+        {state.angleWarning && (
+          <div
+            style={{
+              background: "rgba(245, 158, 11, 0.15)",
+              border: "1rem solid #f59e0b",
+              color: "#f59e0b",
+              padding: "8rem 12rem",
+              borderRadius: "6rem",
+              fontSize: "11rem",
+              lineHeight: 1.4,
+              display: "flex",
+              alignItems: "center",
+              gap: "6rem",
+            }}
+          >
+            <span style={{ fontSize: "14rem" }}>⚠️</span>
+            <span>{state.angleWarning}</span>
           </div>
         )}
 
-        {stage === 2 && (
+        {stage <= 2 && (
           <div className={styles.section}>
             <div className={styles.sectionTitle}>
-              <span>Connected Highway Legs</span>
-              <button
-                className={styles.undoBtn}
-                style={{ padding: "4rem 8rem", fontSize: "10rem" }}
-                onClick={autoDetectHighways}
-              >
-                Auto-Detect Nearby
-              </button>
+              <span>Select Highway Ends</span>
             </div>
 
             <p style={{ fontSize: "11rem", color: "#94a3b8", lineHeight: 1.5, margin: 0 }}>
-              Click highway edges to add or remove connected legs. Separated direction highways are automatically paired.
-              Hold <b>Shift</b> while clicking to select a single one-way carriageway without twin pairing.
+              Hover and click each highway end in the world ({legs.length} / {state.requiredLegs || 3} selected) to procedurally generate and connect the interchange.
             </p>
-
-            <div className={styles.controlRow} style={{ marginTop: "10rem", marginBottom: "4rem" }}>
-              <span className={styles.label}>Footprint Size</span>
-              <input
-                type="range"
-                min="120"
-                max="500"
-                step="10"
-                value={state.footprintRadius}
-                onChange={(e) => setGlobalParam("radius", parseFloat(e.target.value))}
-              />
-              <span className={styles.value}>{state.footprintRadius}m</span>
-              <button
-                className={styles.undoBtn}
-                style={{ padding: "4rem 8rem", fontSize: "10rem", marginLeft: "6rem" }}
-                onClick={autoFitFootprint}
-                title="Automatically find minimal footprint radius that eliminates clearance and grade violations"
-              >
-                Auto-Fit
-              </button>
-            </div>
 
             <div style={{ display: "flex", flexDirection: "column", gap: "6rem", marginTop: "8rem" }}>
               {legs.map((leg) => (
@@ -170,13 +151,13 @@ export const InterchangeStudioPanel: React.FC = () => {
               ))}
             </div>
 
-            {legs.length >= 3 && (
+            {legs.length >= (state.requiredLegs || 3) && (
               <button
                 className={styles.buildBtn}
                 style={{ marginTop: "10rem" }}
                 onClick={() => setStage(3)}
               >
-                Proceed to Design ({legs.length} Legs) →
+                Proceed to Configure & Build ({legs.length} Legs) →
               </button>
             )}
           </div>
@@ -184,6 +165,17 @@ export const InterchangeStudioPanel: React.FC = () => {
 
         {stage === 3 && (
           <>
+            <div className={styles.controlRow} style={{ marginBottom: "6rem" }}>
+              <span className={styles.label}>Traffic Handedness</span>
+              <button
+                className={styles.undoBtn}
+                style={{ padding: "4rem 8rem", fontSize: "11rem", color: state.leftHandTraffic ? "#f59e0b" : "#00e5ff" }}
+                onClick={() => setGlobalParam("lefthandtraffic", state.leftHandTraffic ? 0 : 1)}
+              >
+                {state.leftHandTraffic ? "Left-Hand Traffic (LHT)" : "Right-Hand Traffic (RHT)"}
+              </button>
+            </div>
+
             <div className={styles.controlRow} style={{ marginBottom: "10rem" }}>
               <span className={styles.label}>Footprint Size</span>
               <input
@@ -304,7 +296,7 @@ export const InterchangeStudioPanel: React.FC = () => {
           <button
             className={styles.buildBtn}
             onClick={buildInterchange}
-            disabled={legs.length < 3}
+            disabled={legs.length < (state.requiredLegs || 3)}
           >
             Build Interchange
           </button>

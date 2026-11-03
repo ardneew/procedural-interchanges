@@ -21,6 +21,8 @@ export const defaultState: InterchangeUIState = {
   liveGhostEnabled: true,
   overlayEnabled: true,
   canUndo: false,
+  requiredLegs: 3,
+  angleWarning: "",
   availableArchetypes: [],
   legs: [],
   courses2D: [],

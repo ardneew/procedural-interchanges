@@ -682,6 +682,460 @@ namespace ProceduralInterchanges.Core.Integration
                 prevVal = val;
             }
         }
+        private static int CountActiveConnectedEdges(EntityManager em, Entity node)
+        {
+            if (node == Entity.Null || !em.Exists(node) || !em.HasBuffer<ConnectedEdge>(node)) return 0;
+            var buf = em.GetBuffer<ConnectedEdge>(node);
+            int count = 0;
+            for (int i = 0; i < buf.Length; i++)
+            {
+                Entity e = buf[i].m_Edge;
+                if (e != Entity.Null && em.Exists(e) && !em.HasComponent<Deleted>(e))
+                {
+                    count++;
+                }
+            }
+            return count;
+        }
+
+        public static HighwayLeg PickHighwayEndpointAtClick(
+            EntityManager em,
+            SearchSystem netSearchSystem,
+            PrefabSystem prefabSystem,
+            Entity clickedEdge,
+            float3 clickWorldPos,
+            bool leftHandTraffic,
+            bool autoPairTwin)
+        {
+            if (clickedEdge == Entity.Null || !em.Exists(clickedEdge) || !em.HasComponent<Edge>(clickedEdge) || !em.HasComponent<Curve>(clickedEdge))
+            {
+                return null;
+            }
+
+            var edge = em.GetComponentData<Edge>(clickedEdge);
+            var curve = em.GetComponentData<Curve>(clickedEdge).m_Bezier;
+            var prefabRef = em.GetComponentData<PrefabRef>(clickedEdge);
+
+            // Find closest t on curve to clickWorldPos.xz
+            float bestT = 0f;
+            float bestDistSq = float.MaxValue;
+            for (int i = 0; i <= 64; i++)
+            {
+                float t = i / 64f;
+                float3 p = CubicBezier3D.Position(curve, t);
+                float dSq = math.distancesq(p.xz, clickWorldPos.xz);
+                if (dSq < bestDistSq)
+                {
+                    bestDistSq = dSq;
+                    bestT = t;
+                }
+            }
+
+            // Ternary refinement
+            float tMin = math.max(0f, bestT - 0.04f);
+            float tMax = math.min(1f, bestT + 0.04f);
+            for (int iter = 0; iter < 6; iter++)
+            {
+                float t1 = math.lerp(tMin, tMax, 0.33333334f);
+                float t2 = math.lerp(tMin, tMax, 0.6666667f);
+                float d1 = math.distancesq(CubicBezier3D.Position(curve, t1).xz, clickWorldPos.xz);
+                float d2 = math.distancesq(CubicBezier3D.Position(curve, t2).xz, clickWorldPos.xz);
+                if (d1 < d2) tMax = t2;
+                else tMin = t1;
+            }
+            float tClick = (tMin + tMax) * 0.5f;
+            float curveLen = CubicBezier3D.Length(curve);
+            float dStart = tClick * curveLen;
+            float dEnd = (1f - tClick) * curveLen;
+
+            float cutT;
+            bool attachToNode;
+            Entity attachNode;
+            float3 portalPos;
+
+            if (CountActiveConnectedEdges(em, edge.m_Start) == 1 && dStart <= 28f)
+            {
+                cutT = 0f;
+                attachToNode = true;
+                attachNode = edge.m_Start;
+                portalPos = em.GetComponentData<Node>(edge.m_Start).m_Position;
+            }
+            else if (CountActiveConnectedEdges(em, edge.m_End) == 1 && dEnd <= 28f)
+            {
+                cutT = 1f;
+                attachToNode = true;
+                attachNode = edge.m_End;
+                portalPos = em.GetComponentData<Node>(edge.m_End).m_Position;
+            }
+            else
+            {
+                cutT = math.clamp(tClick, 0.05f, 0.95f);
+                attachToNode = false;
+                attachNode = Entity.Null;
+                portalPos = CubicBezier3D.Position(curve, cutT);
+            }
+
+            // Road metadata
+            int laneCount = 2;
+            bool isOneWay = true;
+            float width = 16f;
+            float speedLimit = 27.7f;
+            string prefabName = "Highway";
+
+            if (prefabSystem != null && prefabSystem.TryGetPrefab<PrefabBase>(prefabRef.m_Prefab, out var pb))
+            {
+                prefabName = pb.name;
+            }
+            if (em.HasComponent<RoadData>(prefabRef.m_Prefab))
+            {
+                speedLimit = em.GetComponentData<RoadData>(prefabRef.m_Prefab).m_SpeedLimit;
+            }
+            if (em.HasComponent<NetGeometryData>(prefabRef.m_Prefab))
+            {
+                width = em.GetComponentData<NetGeometryData>(prefabRef.m_Prefab).m_DefaultWidth;
+            }
+
+            bool inspected = false;
+            if (em.HasComponent<Composition>(clickedEdge))
+            {
+                Entity compEdge = em.GetComponentData<Composition>(clickedEdge).m_Edge;
+                if (compEdge != Entity.Null && em.Exists(compEdge) && em.HasBuffer<NetCompositionLane>(compEdge))
+                {
+                    var lanes = em.GetBuffer<NetCompositionLane>(compEdge);
+                    int fLanes = 0, bLanes = 0;
+                    for (int l = 0; l < lanes.Length; l++)
+                    {
+                        var lane = lanes[l];
+                        if ((lane.m_Flags & (LaneFlags.Master | LaneFlags.Road)) == LaneFlags.Road && (lane.m_Flags & LaneFlags.Slave) == 0)
+                        {
+                            if ((lane.m_Flags & LaneFlags.Invert) == 0) fLanes++;
+                            else bLanes++;
+                        }
+                    }
+                    if (fLanes > 0 || bLanes > 0)
+                    {
+                        laneCount = math.max(1, fLanes);
+                        isOneWay = (bLanes == 0);
+                        inspected = true;
+                    }
+                }
+            }
+            if (!inspected)
+            {
+                HighwayPrefabCatalogSystem.InspectRoadPrefabLanes(em, prefabRef.m_Prefab, prefabName, out int fLanes, out int bLanes, out isOneWay);
+                laneCount = math.max(1, fLanes);
+            }
+
+            float3 tangent = math.normalize(CubicBezier3D.Tangent(curve, cutT));
+
+            var endpoint = new CarriagewayEndpoint
+            {
+                SourceEdge = clickedEdge,
+                SourcePrefab = prefabRef.m_Prefab,
+                PrefabName = prefabName,
+                OriginalCurve = curve,
+                CutCurveT = cutT,
+                PortalPosition = portalPos,
+                FlowDirection = tangent,
+                InwardTangent = tangent,
+                Direction = CarriagewayDirection.Inbound,
+                IsInboundToCenter = true,
+                IsOneWay = isOneWay,
+                LaneCount = laneCount,
+                Width = width,
+                SpeedLimitMs = speedLimit,
+                AttachToNode = attachToNode,
+                AttachNodeEntity = attachNode
+            };
+
+            CarriagewayEndpoint twinEndpoint = null;
+            if (autoPairTwin && isOneWay && netSearchSystem != null)
+            {
+                Bounds3 searchBounds = new Bounds3(portalPos - new float3(48f, 20f, 48f), portalPos + new float3(48f, 20f, 48f));
+                var candidateList = new NativeList<Entity>(Allocator.Temp);
+                var it = new NetSearchTreeIterator(candidateList, searchBounds);
+                netSearchSystem.GetNetSearchTree(false, out var tree).Iterate(ref it);
+
+                Entity bestTwinEdge = Entity.Null;
+                float bestScore = float.MaxValue;
+                Bezier4x3 bestTwinCurve = default;
+                Edge bestTwinEdgeComp = default;
+
+                for (int i = 0; i < candidateList.Length; i++)
+                {
+                    Entity cand = candidateList[i];
+                    if (cand == clickedEdge || !em.HasComponent<Edge>(cand) || !em.HasComponent<Curve>(cand)) continue;
+
+                    var candEdge = em.GetComponentData<Edge>(cand);
+                    var candCurve = em.GetComponentData<Curve>(cand).m_Bezier;
+                    float3 candTan = math.normalize(candCurve.d - candCurve.a);
+
+                    float dot = math.dot(tangent.xz, candTan.xz);
+                    if (dot > -0.70f) continue;
+
+                    float candMinDistSq = float.MaxValue;
+                    for (int s = 0; s <= 32; s++)
+                    {
+                        float st = s / 32f;
+                        float dSq = math.distancesq(CubicBezier3D.Position(candCurve, st).xz, portalPos.xz);
+                        if (dSq < candMinDistSq)
+                        {
+                            candMinDistSq = dSq;
+                        }
+                    }
+
+                    float latSep = math.sqrt(candMinDistSq);
+                    if (latSep <= 42f)
+                    {
+                        float score = latSep + 10f * (1f + dot);
+                        if (score < bestScore)
+                        {
+                            bestScore = score;
+                            bestTwinEdge = cand;
+                            bestTwinCurve = candCurve;
+                            bestTwinEdgeComp = candEdge;
+                        }
+                    }
+                }
+                candidateList.Dispose();
+
+                if (bestTwinEdge != Entity.Null)
+                {
+                    float twinCurveLen = CubicBezier3D.Length(bestTwinCurve);
+                    float candBestT = 0.5f;
+                    float candMinDistSq = float.MaxValue;
+                    for (int s = 0; s <= 64; s++)
+                    {
+                        float st = s / 64f;
+                        float dSq = math.distancesq(CubicBezier3D.Position(bestTwinCurve, st).xz, portalPos.xz);
+                        if (dSq < candMinDistSq) { candMinDistSq = dSq; candBestT = st; }
+                    }
+
+                    float twinCutT;
+                    bool twinAttachToNode;
+                    Entity twinAttachNode;
+                    float3 twinPortalPos;
+
+                    if (CountActiveConnectedEdges(em, bestTwinEdgeComp.m_Start) == 1 && candBestT * twinCurveLen <= 28f)
+                    {
+                        twinCutT = 0f;
+                        twinAttachToNode = true;
+                        twinAttachNode = bestTwinEdgeComp.m_Start;
+                        twinPortalPos = em.GetComponentData<Node>(bestTwinEdgeComp.m_Start).m_Position;
+                    }
+                    else if (CountActiveConnectedEdges(em, bestTwinEdgeComp.m_End) == 1 && (1f - candBestT) * twinCurveLen <= 28f)
+                    {
+                        twinCutT = 1f;
+                        twinAttachToNode = true;
+                        twinAttachNode = bestTwinEdgeComp.m_End;
+                        twinPortalPos = em.GetComponentData<Node>(bestTwinEdgeComp.m_End).m_Position;
+                    }
+                    else
+                    {
+                        twinCutT = math.clamp(candBestT, 0.05f, 0.95f);
+                        twinAttachToNode = false;
+                        twinAttachNode = Entity.Null;
+                        twinPortalPos = CubicBezier3D.Position(bestTwinCurve, twinCutT);
+                    }
+
+                    var twinPrefabRef = em.GetComponentData<PrefabRef>(bestTwinEdge);
+                    string twinPrefabName = prefabName;
+                    if (prefabSystem != null && prefabSystem.TryGetPrefab<PrefabBase>(twinPrefabRef.m_Prefab, out var tpb))
+                    {
+                        twinPrefabName = tpb.name;
+                    }
+
+                    float3 twinTan = math.normalize(CubicBezier3D.Tangent(bestTwinCurve, twinCutT));
+
+                    twinEndpoint = new CarriagewayEndpoint
+                    {
+                        SourceEdge = bestTwinEdge,
+                        SourcePrefab = twinPrefabRef.m_Prefab,
+                        PrefabName = twinPrefabName,
+                        OriginalCurve = bestTwinCurve,
+                        CutCurveT = twinCutT,
+                        PortalPosition = twinPortalPos,
+                        FlowDirection = twinTan,
+                        InwardTangent = twinTan,
+                        Direction = CarriagewayDirection.Outbound,
+                        IsInboundToCenter = false,
+                        IsOneWay = true,
+                        LaneCount = laneCount,
+                        Width = width,
+                        SpeedLimitMs = speedLimit,
+                        AttachToNode = twinAttachToNode,
+                        AttachNodeEntity = twinAttachNode
+                    };
+                }
+            }
+
+            var leg = new HighwayLeg
+            {
+                IsSeparatedDualCarriageway = (twinEndpoint != null),
+                Inbound = endpoint,
+                Outbound = twinEndpoint
+            };
+
+            if (twinEndpoint != null)
+            {
+                leg.PortalCenterPosition = (endpoint.PortalPosition + twinEndpoint.PortalPosition) * 0.5f;
+                leg.CarriagewaySeparation = math.distance(endpoint.PortalPosition.xz, twinEndpoint.PortalPosition.xz);
+            }
+            else
+            {
+                leg.PortalCenterPosition = endpoint.PortalPosition;
+                leg.CarriagewaySeparation = 0f;
+            }
+
+            return leg;
+        }
+
+        public static void RecomputeCenterAndSortLegs(
+            EntityManager em,
+            List<HighwayLeg> legs,
+            InterchangeConfig config,
+            float baseTerrainY,
+            Func<float2, float> sampleTerrainHeight = null)
+        {
+            if (legs == null || legs.Count == 0) return;
+
+            int N = legs.Count;
+            float2 sumM = float2.zero;
+            float2[] midpoints = new float2[N];
+
+            for (int i = 0; i < N; i++)
+            {
+                var leg = legs[i];
+                float3 mPos = leg.IsSeparatedDualCarriageway && leg.Outbound != null
+                    ? (leg.Inbound.PortalPosition + leg.Outbound.PortalPosition) * 0.5f
+                    : leg.Inbound.PortalPosition;
+                leg.PortalCenterPosition = mPos;
+                midpoints[i] = mPos.xz;
+                sumM += mPos.xz;
+            }
+
+            float2 centroid = sumM / N;
+            float2 centerXZ = centroid;
+
+            if (N >= 2)
+            {
+                float2x2 A = float2x2.zero;
+                float2 b = float2.zero;
+
+                for (int i = 0; i < N; i++)
+                {
+                    var leg = legs[i];
+                    var curve = leg.Inbound.OriginalCurve;
+                    float3 tan3 = math.normalize(CubicBezier3D.Tangent(curve, leg.Inbound.CutCurveT));
+                    float2 u = math.normalize(tan3.xz);
+                    if (math.lengthsq(u) < 1e-4f) u = new float2(1f, 0f);
+
+                    float2x2 P = new float2x2(1f - u.x * u.x, -u.x * u.y, -u.x * u.y, 1f - u.y * u.y);
+                    A.c0 += P.c0;
+                    A.c1 += P.c1;
+                    b += math.mul(P, midpoints[i]);
+                }
+
+                float det = A.c0.x * A.c1.y - A.c0.y * A.c1.x;
+                if (math.abs(det) > 0.05f)
+                {
+                    float2x2 invA = new float2x2(A.c1.y, -A.c0.y, -A.c1.x, A.c0.x) * (1f / det);
+                    float2 lsqCenter = math.mul(invA, b);
+                    if (math.distance(lsqCenter, centroid) <= 260f)
+                    {
+                        centerXZ = lsqCenter;
+                    }
+                }
+            }
+
+            if (sampleTerrainHeight != null)
+            {
+                baseTerrainY = sampleTerrainHeight(centerXZ);
+            }
+
+            config.Center = new float3(centerXZ.x, baseTerrainY, centerXZ.y);
+
+            float maxDist = 0f;
+            for (int i = 0; i < N; i++)
+            {
+                float d = math.distance(midpoints[i], centerXZ);
+                if (d > maxDist) maxDist = d;
+            }
+            config.FootprintRadius = math.clamp(maxDist, 80f, 350f);
+
+            // Orient endpoints relative to config.Center
+            for (int i = 0; i < N; i++)
+            {
+                var leg = legs[i];
+                float2 outward = midpoints[i] - centerXZ;
+                float lenOut = math.length(outward);
+                float2 a_i = lenOut > 1e-4f ? outward / lenOut : new float2(1f, 0f);
+                leg.LegAxisDirection = new float3(a_i.x, 0f, a_i.y);
+                leg.AzimuthRad = math.atan2(a_i.y, a_i.x);
+
+                void OrientEndpoint(CarriagewayEndpoint ep)
+                {
+                    if (ep == null) return;
+                    var c = ep.OriginalCurve;
+                    if (ep.AttachToNode)
+                    {
+                        if (ep.CutCurveT < 0.5f)
+                        {
+                            ep.InwardTangent = -math.normalize(CubicBezier3D.Tangent(c, 0f));
+                        }
+                        else
+                        {
+                            ep.InwardTangent = math.normalize(CubicBezier3D.Tangent(c, 1f));
+                        }
+                    }
+                    else
+                    {
+                        float3 t = math.normalize(CubicBezier3D.Tangent(c, ep.CutCurveT));
+                        if (math.dot(t.xz, -a_i) < 0f) t = -t;
+                        ep.InwardTangent = t;
+                    }
+                }
+
+                OrientEndpoint(leg.Inbound);
+                OrientEndpoint(leg.Outbound);
+
+                if (leg.IsSeparatedDualCarriageway && leg.Outbound != null)
+                {
+                    var epA = leg.Inbound;
+                    var epB = leg.Outbound;
+                    float3 flowA = math.normalize(CubicBezier3D.Tangent(epA.OriginalCurve, epA.CutCurveT));
+                    float3 flowB = math.normalize(CubicBezier3D.Tangent(epB.OriginalCurve, epB.CutCurveT));
+                    float flowDotA = math.dot(flowA.xz, -a_i);
+                    float flowDotB = math.dot(flowB.xz, -a_i);
+
+                    if (flowDotA >= flowDotB)
+                    {
+                        leg.Inbound = epA;
+                        leg.Outbound = epB;
+                    }
+                    else
+                    {
+                        leg.Inbound = epB;
+                        leg.Outbound = epA;
+                    }
+
+                    leg.Inbound.Direction = CarriagewayDirection.Inbound;
+                    leg.Inbound.IsInboundToCenter = true;
+                    leg.Outbound.Direction = CarriagewayDirection.Outbound;
+                    leg.Outbound.IsInboundToCenter = false;
+                }
+                else
+                {
+                    leg.Inbound.Direction = CarriagewayDirection.TwoWay;
+                }
+            }
+
+            legs.Sort((a, b) => a.AzimuthRad.CompareTo(b.AzimuthRad));
+            for (int i = 0; i < legs.Count; i++)
+            {
+                legs[i].LegIndex = i;
+            }
+        }
     }
 
     public struct NetSearchTreeIterator : INativeQuadTreeIterator<Entity, QuadTreeBoundsXZ>

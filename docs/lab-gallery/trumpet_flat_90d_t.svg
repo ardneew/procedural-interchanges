@@ -1,0 +1,168 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-220.0 -220.0 440.0 440.0" style="background:#121417; width:100%; height:100%;">
+  <defs>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="2" result="blur"/><feComposite in="SourceGraphic" in2="blur" operator="over"/></filter>
+    <marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="4" markerHeight="4" orient="auto-start-reverse"><path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#e2e8f0"/></marker>
+  </defs>
+  <circle cx="0" cy="0" r="180.0" fill="none" stroke="#1e293b" stroke-width="2" stroke-dasharray="6 6"/>
+  <line x1="-300" y1="0" x2="300" y2="0" stroke="#1e293b" stroke-width="1"/>
+  <line x1="0" y1="-300" x2="0" y2="300" stroke="#1e293b" stroke-width="1"/>
+  <path id="trumpet_main_A_app" d="M 180.0 -12.0 C 162.9 -12.0, 152.1 -9.0, 135.0 -9.0" fill="none" stroke="#64748b" stroke-width="7.3" stroke-linecap="round" stroke-linejoin="round">
+    <title>trumpet_main_A_app (Lanes: 3, Elev: 0.0m)</title>
+  </path>
+  <path d="M 180.0 -12.0 C 162.9 -12.0, 152.1 -9.0, 135.0 -9.0" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="trumpet_main_A_dep" d="M 135.0 9.0 C 152.1 9.0, 162.9 12.0, 180.0 12.0" fill="none" stroke="#64748b" stroke-width="7.3" stroke-linecap="round" stroke-linejoin="round">
+    <title>trumpet_main_A_dep (Lanes: 3, Elev: 0.0m)</title>
+  </path>
+  <path d="M 135.0 9.0 C 152.1 9.0, 162.9 12.0, 180.0 12.0" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="trumpet_main_B_app" d="M -180.0 12.0 C -162.9 12.0, -152.1 9.0, -135.0 9.0" fill="none" stroke="#64748b" stroke-width="7.3" stroke-linecap="round" stroke-linejoin="round">
+    <title>trumpet_main_B_app (Lanes: 3, Elev: 0.0m)</title>
+  </path>
+  <path d="M -180.0 12.0 C -162.9 12.0, -152.1 9.0, -135.0 9.0" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="trumpet_main_B_dep" d="M -135.0 -9.0 C -152.1 -9.0, -162.9 -12.0, -180.0 -12.0" fill="none" stroke="#64748b" stroke-width="7.3" stroke-linecap="round" stroke-linejoin="round">
+    <title>trumpet_main_B_dep (Lanes: 3, Elev: 0.0m)</title>
+  </path>
+  <path d="M -135.0 -9.0 C -152.1 -9.0, -162.9 -12.0, -180.0 -12.0" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="trumpet_stem_app" d="M -12.0 -180.0 C -12.0 -162.9, -9.0 -152.1, -9.0 -135.0" fill="none" stroke="#64748b" stroke-width="7.3" stroke-linecap="round" stroke-linejoin="round">
+    <title>trumpet_stem_app (Lanes: 3, Elev: 0.0m)</title>
+  </path>
+  <path d="M -12.0 -180.0 C -12.0 -162.9, -9.0 -152.1, -9.0 -135.0" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="trumpet_stem_dep" d="M 9.0 -135.0 C 9.0 -152.1, 12.0 -162.9, 12.0 -180.0" fill="none" stroke="#64748b" stroke-width="7.3" stroke-linecap="round" stroke-linejoin="round">
+    <title>trumpet_stem_dep (Lanes: 3, Elev: 0.0m)</title>
+  </path>
+  <path d="M 9.0 -135.0 C 9.0 -152.1, 12.0 -162.9, 12.0 -180.0" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="trumpet_main_AB_core" d="M 135.0 -9.0 C 32.4 -9.0, -32.4 -9.0, -135.0 -9.0" fill="none" stroke="#64748b" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>trumpet_main_AB_core (Lanes: 0, Elev: 0.0m)</title>
+  </path>
+  <path d="M 135.0 -9.0 C 32.4 -9.0, -32.4 -9.0, -135.0 -9.0" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="trumpet_main_BA_core" d="M -135.0 9.0 C -32.4 9.0, 32.4 9.0, 135.0 9.0" fill="none" stroke="#64748b" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>trumpet_main_BA_core (Lanes: 0, Elev: 0.0m)</title>
+  </path>
+  <path d="M -135.0 9.0 C -32.4 9.0, 32.4 9.0, 135.0 9.0" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="trumpet_outer_slip" d="M 135.0 -9.0 C 67.7 -1.9, 9.0 -60.6, 9.0 -135.0" fill="none" stroke="#64748b" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>trumpet_outer_slip (Lanes: 0, Elev: 0.0m)</title>
+  </path>
+  <path d="M 135.0 -9.0 C 67.7 -1.9, 9.0 -60.6, 9.0 -135.0" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="trumpet_stem_to_B" d="M -9.0 -135.0 C -1.9 -67.7, -60.6 -9.0, -135.0 -9.0" fill="none" stroke="#64748b" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>trumpet_stem_to_B (Lanes: 0, Elev: 0.0m)</title>
+  </path>
+  <path d="M -9.0 -135.0 C -1.9 -67.7, -60.6 -9.0, -135.0 -9.0" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="trumpet_loop_4_span_4" d="M 5.7 -104.0 C 6.8 -113.8, 7.8 -124.0, 9.0 -135.0" fill="none" stroke="#f59e0b" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>trumpet_loop_4_span_4 (Lanes: 0, Elev: 0.4m)</title>
+  </path>
+  <path d="M 5.7 -104.0 C 6.8 -113.8, 7.8 -124.0, 9.0 -135.0" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="trumpet_loop_4_span_3" d="M 4.6 -92.8 C 5.0 -96.5, 5.3 -100.2, 5.7 -104.0" fill="none" stroke="#f59e0b" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>trumpet_loop_4_span_3 (Lanes: 0, Elev: 2.2m)</title>
+  </path>
+  <path d="M 4.6 -92.8 C 5.0 -96.5, 5.3 -100.2, 5.7 -104.0" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="trumpet_overpass_ramp" d="M -9.0 -135.0 C -11.4 -112.5, -7.3 -90.8, 1.8 -71.4" fill="none" stroke="#10b981" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>trumpet_overpass_ramp (Lanes: 0, Elev: 1.2m)</title>
+  </path>
+  <path d="M -9.0 -135.0 C -11.4 -112.5, -7.3 -90.8, 1.8 -71.4" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M 1.8 -71.4 C 5.1 -64.3, 9.0 -57.6, 13.6 -51.3" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
+  <path id="trumpet_overpass_ramp_span_1" d="M 1.8 -71.4 C 5.1 -64.3, 9.0 -57.6, 13.6 -51.3" fill="none" stroke="#10b981" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>trumpet_overpass_ramp_span_1 (Lanes: 0, Elev: 5.0m)</title>
+  </path>
+  <path d="M 1.8 -71.4 C 5.1 -64.3, 9.0 -57.6, 13.6 -51.3" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="trumpet_loop_0" d="M -135.0 9.0 C -109.1 6.3, -87.2 4.0, -66.0 1.7" fill="none" stroke="#10b981" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>trumpet_loop_0 (Lanes: 0, Elev: 2.2m)</title>
+  </path>
+  <path d="M -135.0 9.0 C -109.1 6.3, -87.2 4.0, -66.0 1.7" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="trumpet_overpass_ramp_span_6" d="M 95.4 4.0 C 108.0 7.3, 121.3 9.0, 135.0 9.0" fill="none" stroke="#10b981" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>trumpet_overpass_ramp_span_6 (Lanes: 0, Elev: 4.4m)</title>
+  </path>
+  <path d="M 95.4 4.0 C 108.0 7.3, 121.3 9.0, 135.0 9.0" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M 13.6 -51.3 C 17.4 -45.8, 21.7 -40.7, 26.4 -35.9" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
+  <path id="trumpet_overpass_ramp_span_2" d="M 13.6 -51.3 C 17.4 -45.8, 21.7 -40.7, 26.4 -35.9" fill="none" stroke="#10b981" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>trumpet_overpass_ramp_span_2 (Lanes: 0, Elev: 7.0m)</title>
+  </path>
+  <path d="M 13.6 -51.3 C 17.4 -45.8, 21.7 -40.7, 26.4 -35.9" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M 81.1 -0.5 C 85.8 1.2, 90.5 2.7, 95.4 4.0" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
+  <path id="trumpet_overpass_ramp_span_5" d="M 81.1 -0.5 C 85.8 1.2, 90.5 2.7, 95.4 4.0" fill="none" stroke="#10b981" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>trumpet_overpass_ramp_span_5 (Lanes: 0, Elev: 8.1m)</title>
+  </path>
+  <path d="M 81.1 -0.5 C 85.8 1.2, 90.5 2.7, 95.4 4.0" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M 39.1 -24.2 C 51.4 -14.3, 65.6 -6.2, 81.1 -0.5" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
+  <path id="trumpet_overpass_ramp_span_4" d="M 39.1 -24.2 C 51.4 -14.3, 65.6 -6.2, 81.1 -0.5" fill="none" stroke="#10b981" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>trumpet_overpass_ramp_span_4 (Lanes: 0, Elev: 9.5m)</title>
+  </path>
+  <path d="M 39.1 -24.2 C 51.4 -14.3, 65.6 -6.2, 81.1 -0.5" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M 26.4 -35.9 C 30.3 -31.8, 34.6 -27.9, 39.1 -24.2" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
+  <path id="trumpet_overpass_ramp_span_3" d="M 26.4 -35.9 C 30.3 -31.8, 34.6 -27.9, 39.1 -24.2" fill="none" stroke="#10b981" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>trumpet_overpass_ramp_span_3 (Lanes: 0, Elev: 8.4m)</title>
+  </path>
+  <path d="M 26.4 -35.9 C 30.3 -31.8, 34.6 -27.9, 39.1 -24.2" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M -66.0 1.7 C -61.0 1.2, -56.1 0.7, -51.1 0.2" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
+  <path id="trumpet_loop_0_span_1" d="M -66.0 1.7 C -61.0 1.2, -56.1 0.7, -51.1 0.2" fill="none" stroke="#10b981" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>trumpet_loop_0_span_1 (Lanes: 0, Elev: 8.6m)</title>
+  </path>
+  <path d="M -66.0 1.7 C -61.0 1.2, -56.1 0.7, -51.1 0.2" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M -0.4 -46.0 C 1.3 -61.4, 2.9 -76.6, 4.6 -92.8" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
+  <path id="trumpet_loop_4_span_2" d="M -0.4 -46.0 C 1.3 -61.4, 2.9 -76.6, 4.6 -92.8" fill="none" stroke="#f59e0b" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>trumpet_loop_4_span_2 (Lanes: 0, Elev: 6.7m)</title>
+  </path>
+  <path d="M -0.4 -46.0 C 1.3 -61.4, 2.9 -76.6, 4.6 -92.8" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M -51.1 0.2 C -47.5 -0.2, -43.8 -0.6, -40.2 -1.0" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
+  <path id="trumpet_loop_0_span_2" d="M -51.1 0.2 C -47.5 -0.2, -43.8 -0.6, -40.2 -1.0" fill="none" stroke="#f59e0b" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>trumpet_loop_0_span_2 (Lanes: 0, Elev: 11.1m)</title>
+  </path>
+  <path d="M -51.1 0.2 C -47.5 -0.2, -43.8 -0.6, -40.2 -1.0" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M -1.9 -31.1 C -1.4 -36.1, -0.9 -41.1, -0.4 -46.0" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
+  <path id="trumpet_loop_4_span_1" d="M -1.9 -31.1 C -1.4 -36.1, -0.9 -41.1, -0.4 -46.0" fill="none" stroke="#f59e0b" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>trumpet_loop_4_span_1 (Lanes: 0, Elev: 12.3m)</title>
+  </path>
+  <path d="M -1.9 -31.1 C -1.4 -36.1, -0.9 -41.1, -0.4 -46.0" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M -40.2 -1.0 C -34.4 -1.6, -28.5 -2.2, -22.5 -2.8" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
+  <path id="trumpet_loop_0_span_3" d="M -40.2 -1.0 C -34.4 -1.6, -28.5 -2.2, -22.5 -2.8" fill="none" stroke="#f59e0b" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>trumpet_loop_0_span_3 (Lanes: 0, Elev: 13.6m)</title>
+  </path>
+  <path d="M -40.2 -1.0 C -34.4 -1.6, -28.5 -2.2, -22.5 -2.8" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M -8.0 27.2 C -5.8 5.6, -3.8 -13.2, -1.9 -31.1" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
+  <path id="trumpet_loop_4" d="M -8.0 27.2 C -5.8 5.6, -3.8 -13.2, -1.9 -31.1" fill="none" stroke="#f59e0b" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>trumpet_loop_4 (Lanes: 0, Elev: 17.5m)</title>
+  </path>
+  <path d="M -8.0 27.2 C -5.8 5.6, -3.8 -13.2, -1.9 -31.1" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M 12.3 66.1 C -1.2 58.6, -9.8 43.6, -8.0 27.2" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
+  <path id="trumpet_loop_3_span_1" d="M 12.3 66.1 C -1.2 58.6, -9.8 43.6, -8.0 27.2" fill="none" stroke="#ec4899" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>trumpet_loop_3_span_1 (Lanes: 0, Elev: 19.0m)</title>
+  </path>
+  <path d="M 12.3 66.1 C -1.2 58.6, -9.8 43.6, -8.0 27.2" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M 70.9 30.0 C 71.5 46.5, 61.9 60.9, 47.9 67.3" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
+  <path id="trumpet_loop_2" d="M 70.9 30.0 C 71.5 46.5, 61.9 60.9, 47.9 67.3" fill="none" stroke="#ec4899" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>trumpet_loop_2 (Lanes: 0, Elev: 19.0m)</title>
+  </path>
+  <path d="M 70.9 30.0 C 71.5 46.5, 61.9 60.9, 47.9 67.3" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M 47.9 67.3 C 42.5 69.8, 36.4 71.1, 30.0 70.9" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
+  <path id="trumpet_loop_2_span_1" d="M 47.9 67.3 C 42.5 69.8, 36.4 71.1, 30.0 70.9" fill="none" stroke="#ec4899" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>trumpet_loop_2_span_1 (Lanes: 0, Elev: 19.0m)</title>
+  </path>
+  <path d="M 47.9 67.3 C 42.5 69.8, 36.4 71.1, 30.0 70.9" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M 57.3 1.4 C 65.3 8.4, 70.5 18.5, 70.9 30.0" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
+  <path id="trumpet_loop_1_span_1" d="M 57.3 1.4 C 65.3 8.4, 70.5 18.5, 70.9 30.0" fill="none" stroke="#ec4899" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>trumpet_loop_1_span_1 (Lanes: 0, Elev: 19.0m)</title>
+  </path>
+  <path d="M 57.3 1.4 C 65.3 8.4, 70.5 18.5, 70.9 30.0" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M 27.2 -8.0 C 38.6 -9.2, 49.3 -5.5, 57.3 1.4" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
+  <path id="trumpet_loop_1" d="M 27.2 -8.0 C 38.6 -9.2, 49.3 -5.5, 57.3 1.4" fill="none" stroke="#ec4899" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>trumpet_loop_1 (Lanes: 0, Elev: 19.0m)</title>
+  </path>
+  <path d="M 27.2 -8.0 C 38.6 -9.2, 49.3 -5.5, 57.3 1.4" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M 30.0 70.9 C 23.5 70.7, 17.5 69.0, 12.3 66.1" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
+  <path id="trumpet_loop_3" d="M 30.0 70.9 C 23.5 70.7, 17.5 69.0, 12.3 66.1" fill="none" stroke="#ec4899" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>trumpet_loop_3 (Lanes: 0, Elev: 19.0m)</title>
+  </path>
+  <path d="M 30.0 70.9 C 23.5 70.7, 17.5 69.0, 12.3 66.1" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M -22.5 -2.8 C -7.1 -4.4, 9.0 -6.1, 27.2 -8.0" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
+  <path id="trumpet_loop_0_span_4" d="M -22.5 -2.8 C -7.1 -4.4, 9.0 -6.1, 27.2 -8.0" fill="none" stroke="#f59e0b" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>trumpet_loop_0_span_4 (Lanes: 0, Elev: 17.9m)</title>
+  </path>
+  <path d="M -22.5 -2.8 C -7.1 -4.4, 9.0 -6.1, 27.2 -8.0" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <circle cx="58.9" cy="-10.8" r="3.5" fill="#475569" stroke="#cbd5e1" stroke-width="1.5"><title>Pillar at 9.5m</title></circle>
+  <circle cx="2.1" cy="-69.1" r="3.5" fill="#475569" stroke="#cbd5e1" stroke-width="1.5"><title>Pillar at 6.7m</title></circle>
+  <circle cx="-4.8" cy="-3.3" r="3.5" fill="#475569" stroke="#cbd5e1" stroke-width="1.5"><title>Pillar at 17.5m</title></circle>
+  <circle cx="-3.6" cy="50.0" r="3.5" fill="#475569" stroke="#cbd5e1" stroke-width="1.5"><title>Pillar at 19.0m</title></circle>
+  <circle cx="64.9" cy="52.4" r="3.5" fill="#475569" stroke="#cbd5e1" stroke-width="1.5"><title>Pillar at 19.0m</title></circle>
+  <circle cx="1.3" cy="-5.3" r="3.5" fill="#475569" stroke="#cbd5e1" stroke-width="1.5"><title>Pillar at 17.9m</title></circle>
+  <text x="180.0" y="-0.0" fill="#94a3b8" font-family="sans-serif" font-size="11" font-weight="bold" text-anchor="middle" dominant-baseline="central">Leg 0</text>
+  <text x="-0.0" y="-180.0" fill="#94a3b8" font-family="sans-serif" font-size="11" font-weight="bold" text-anchor="middle" dominant-baseline="central">Leg 1</text>
+  <text x="-180.0" y="0.0" fill="#94a3b8" font-family="sans-serif" font-size="11" font-weight="bold" text-anchor="middle" dominant-baseline="central">Leg 2</text>
+</svg>

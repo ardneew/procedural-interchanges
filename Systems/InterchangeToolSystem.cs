@@ -39,7 +39,7 @@ namespace ProceduralInterchanges.Systems
         private CityConfigurationSystem m_CityConfigSystem;
 
         // State
-        public ToolStage Stage { get; private set; } = ToolStage.PickCenter;
+        public ToolStage Stage { get; private set; } = ToolStage.SelectHighways;
         public InterchangeConfig CurrentConfig { get; private set; } = new InterchangeConfig();
         public List<HighwayLeg> CurrentLegs { get; private set; } = new List<HighwayLeg>();
         public InterchangePlan CurrentPlan { get; private set; }
@@ -74,7 +74,7 @@ namespace ProceduralInterchanges.Systems
             m_BuildService.ClearGhostPreview();
             CurrentPlan = null;
             CurrentLegs.Clear();
-            Stage = ToolStage.PickCenter;
+            Stage = ToolStage.SelectHighways;
             m_ToolSystem.activeTool = World.GetOrCreateSystemManaged<DefaultToolSystem>();
         }
 
@@ -141,24 +141,48 @@ namespace ProceduralInterchanges.Systems
                 }
             }
 
-            // Re-index remaining legs
-            for (int i = 0; i < CurrentLegs.Count; i++)
+            int requiredLegs = ProceduralInterchanges.Core.Templates.WorkshopTemplateLibrary.GetTemplate(CurrentConfig.Archetype).RequiredLegs;
+            if (CurrentLegs.Count > 0)
             {
-                CurrentLegs[i].LegIndex = i;
+                HighwayPairingSolver.RecomputeCenterAndSortLegs(
+                    EntityManager,
+                    CurrentLegs,
+                    CurrentConfig,
+                    0f,
+                    p => m_BuildService != null ? m_BuildService.SampleTerrainHeight(p) : 0f);
             }
 
-            if (Stage == ToolStage.ConfigureInterchange)
+            if (CurrentLegs.Count == requiredLegs)
             {
+                Stage = ToolStage.ConfigureInterchange;
                 RegeneratePlan();
+            }
+            else
+            {
+                Stage = ToolStage.SelectHighways;
+                CurrentPlan = null;
+                m_BuildService.ClearGhostPreview();
             }
         }
 
         public void SetArchetype(InterchangeArchetype archetype)
         {
             CurrentConfig.Archetype = archetype;
-            if (Stage == ToolStage.ConfigureInterchange)
+            int requiredLegs = ProceduralInterchanges.Core.Templates.WorkshopTemplateLibrary.GetTemplate(archetype).RequiredLegs;
+            if (CurrentLegs.Count > requiredLegs)
             {
+                CurrentLegs.RemoveRange(requiredLegs, CurrentLegs.Count - requiredLegs);
+            }
+            if (CurrentLegs.Count == requiredLegs)
+            {
+                Stage = ToolStage.ConfigureInterchange;
                 RegeneratePlan();
+            }
+            else
+            {
+                Stage = ToolStage.SelectHighways;
+                CurrentPlan = null;
+                m_BuildService.ClearGhostPreview();
             }
         }
 
@@ -166,20 +190,12 @@ namespace ProceduralInterchanges.Systems
         {
             switch (key.ToLowerInvariant())
             {
+                case "lefthandtraffic":
+                    CurrentConfig.LeftHandTraffic = value >= 0.5f;
+                    break;
                 case "radius":
                 case "footprintradius":
                     CurrentConfig.FootprintRadius = math.clamp(value, 120f, 500f);
-                    if (Stage == ToolStage.SelectHighways && CurrentLegs.Count > 0)
-                    {
-                        HighwayPairingSolver.RefreshLegsForRadius(
-                            EntityManager,
-                            m_NetSearchSystem,
-                            CurrentLegs,
-                            CurrentConfig.Center,
-                            CurrentConfig.FootprintRadius,
-                            CurrentConfig.LeftHandTraffic,
-                            m_PrefabSystem);
-                    }
                     break;
                 case "rotation":
                 case "rotationdeg":
@@ -284,47 +300,27 @@ namespace ProceduralInterchanges.Systems
 
         public void RegeneratePlan()
         {
-            if (CurrentLegs.Count < 3)
+            var template = ProceduralInterchanges.Core.Templates.WorkshopTemplateLibrary.GetTemplate(CurrentConfig.Archetype);
+            int requiredLegs = template.RequiredLegs;
+
+            if (CurrentLegs.Count < requiredLegs)
             {
                 CurrentPlan = null;
                 m_BuildService.ClearGhostPreview();
                 return;
             }
 
-            bool lht = m_CityConfigSystem != null && m_CityConfigSystem.leftHandTraffic;
-            CurrentConfig.LeftHandTraffic = lht;
+            if (CurrentLegs.Count > requiredLegs)
+            {
+                CurrentLegs.RemoveRange(requiredLegs, CurrentLegs.Count - requiredLegs);
+            }
 
-            HighwayPairingSolver.RefreshLegsForRadius(
+            HighwayPairingSolver.RecomputeCenterAndSortLegs(
                 EntityManager,
-                m_NetSearchSystem,
                 CurrentLegs,
-                CurrentConfig.Center,
-                CurrentConfig.FootprintRadius,
-                lht,
-                m_PrefabSystem);
-
-            var generator = InterchangeGeneratorRegistry.GetGenerator(CurrentConfig.Archetype);
-            if (generator == null || !generator.SupportsConfiguration(CurrentLegs, out _))
-            {
-                // Fallback to first supported generator
-                var all = InterchangeGeneratorRegistry.All;
-                for (int i = 0; i < all.Count; i++)
-                {
-                    if (all[i].SupportsConfiguration(CurrentLegs, out _))
-                    {
-                        generator = all[i];
-                        CurrentConfig.Archetype = generator.Archetype;
-                        break;
-                    }
-                }
-            }
-
-            if (generator == null)
-            {
-                CurrentPlan = null;
-                m_BuildService.ClearGhostPreview();
-                return;
-            }
+                CurrentConfig,
+                0f,
+                p => m_BuildService != null ? m_BuildService.SampleTerrainHeight(p) : 0f);
 
             var plan = new InterchangePlan
             {
@@ -332,95 +328,33 @@ namespace ProceduralInterchanges.Systems
                 Legs = new List<HighwayLeg>(CurrentLegs)
             };
 
-            // 1. Solve trim-and-splice boundary cuts & outer replacements first so endpoint portals are snapped to exact split points
+            // 1. Solve trim-and-splice boundary cuts & outer replacements
             TrimAndSpliceSolver.ComputeBoundaryCutsAndOuterReplacements(
                 EntityManager,
                 plan.Legs,
                 plan.Config.Center,
                 plan.Config.FootprintRadius,
-                p => m_BuildService.SampleTerrainHeight(p),
+                p => m_BuildService != null ? m_BuildService.SampleTerrainHeight(p) : 0f,
                 plan.OuterReplacementCourses,
                 plan.EdgesToDelete,
                 plan.RestorableSnapshots);
 
-            // 2. Generate Archetype geometry with exact snapped portal endpoints
-            generator.GenerateGeometry(plan.Config, plan.Legs, plan.Courses);
+            // 2. Generate template-morphed geometry
+            ProceduralInterchanges.Core.Templates.TemplateMorphSolver.GenerateMorphedPlan(
+                template,
+                plan.Config,
+                plan.Legs,
+                m_PrefabCatalogSystem,
+                plan);
 
-            // 3. Solve elevations, clearances, bridge pieces, and shift pillars
-            ClearanceAndPillarSolver.SolveElevationsAndSubdivide(
-                plan.Courses,
-                p => m_BuildService.SampleTerrainHeight(p),
-                plan.Config);
-
-            // Also solve ground heights for ground-level outer replacements, preserving all sub-courses
-            var newOuterList = new List<PlannedNetCourse>();
-            for (int i = 0; i < plan.OuterReplacementCourses.Count; i++)
-            {
-                var or = plan.OuterReplacementCourses[i];
-                if (!or.ForceElevated && or.StackLevel == 0)
-                {
-                    var sub = new List<Bezier4x3>();
-                    TopographySolver.FitGroundCourse(or.Curve, p => m_BuildService.SampleTerrainHeight(p), true, true, sub);
-                    if (sub.Count > 0)
-                    {
-                        var origEndAttach = or.EndAttachEntity;
-                        var origEndSplit = or.EndSplitPosition;
-                        var origEndIsNode = or.EndAttachIsNode;
-
-                        or.Curve = sub[0];
-                        if (sub.Count > 1)
-                        {
-                            or.EndAttachEntity = Unity.Entities.Entity.Null;
-                            or.EndSplitPosition = 0f;
-                            or.EndAttachIsNode = false;
-                        }
-                        newOuterList.Add(or);
-
-                        for (int s = 1; s < sub.Count; s++)
-                        {
-                            var extra = or.Clone();
-                            extra.Id = $"{or.Id}_sub_{s}";
-                            extra.Curve = sub[s];
-                            extra.StartAttachEntity = Unity.Entities.Entity.Null;
-                            extra.StartSplitPosition = 0f;
-                            extra.StartAttachIsNode = false;
-
-                            if (s == sub.Count - 1)
-                            {
-                                extra.EndAttachEntity = origEndAttach;
-                                extra.EndSplitPosition = origEndSplit;
-                                extra.EndAttachIsNode = origEndIsNode;
-                            }
-                            else
-                            {
-                                extra.EndAttachEntity = Unity.Entities.Entity.Null;
-                                extra.EndSplitPosition = 0f;
-                                extra.EndAttachIsNode = false;
-                            }
-                            newOuterList.Add(extra);
-                        }
-                    }
-                    else
-                    {
-                        newOuterList.Add(or);
-                    }
-                }
-                else
-                {
-                    newOuterList.Add(or);
-                }
-            }
-            plan.OuterReplacementCourses.Clear();
-            plan.OuterReplacementCourses.AddRange(newOuterList);
-
-            // 4. AASHTO Lane Balance & Prefab Resolution
+            // 3. AASHTO Lane Balance & Prefab Resolution if needed
             LaneBalanceSolver.ResolveLanesAndPrefabs(
                 plan.Courses,
                 plan.Legs,
                 plan.Config,
                 m_PrefabCatalogSystem);
 
-            // 5. Aggregate engineering telemetry
+            // 4. Aggregate telemetry
             float worstGrade = 0f;
             float tightestRadius = 9999f;
             float lowestClearance = 99f;
@@ -569,7 +503,7 @@ namespace ProceduralInterchanges.Systems
             bool started = m_BuildService.StartBuild(CurrentPlan);
             if (started)
             {
-                Stage = ToolStage.PickCenter;
+                Stage = ToolStage.SelectHighways;
                 CurrentLegs.Clear();
                 CurrentPlan = null;
             }
@@ -578,65 +512,33 @@ namespace ProceduralInterchanges.Systems
 
         public bool UndoLastInterchange()
         {
-            if (m_BuildService.IsBuilding)
+            if (m_BuildService != null && m_BuildService.IsBusy)
             {
+                Mod.log.Warn("Cannot undo: build service is busy.");
                 return false;
             }
 
-            // 1. If currently previewing/configuring in the tool, step back to SelectHighways
-            if (Stage == ToolStage.ConfigureInterchange)
+            if (m_GroupSystem != null && m_GroupSystem.UndoLastReceipt(out var undone))
             {
-                m_BuildService.ClearGhostPreview();
-                CurrentPlan = null;
-                SetStage(ToolStage.SelectHighways);
-                return true;
-            }
-
-            // 2. If in SelectHighways and legs have been picked, remove the most recent leg or back to PickCenter
-            if (Stage == ToolStage.SelectHighways)
-            {
-                if (CurrentLegs.Count > 0)
+                if (undone != null)
                 {
-                    CurrentLegs.RemoveAt(CurrentLegs.Count - 1);
-                    return true;
+                    m_BuildService.ScheduleUndo(undone);
                 }
-                SetStage(ToolStage.PickCenter);
+                CurrentLegs.Clear();
+                CurrentPlan = null;
+                Stage = ToolStage.SelectHighways;
                 return true;
             }
 
-            // 3. Otherwise, undo the most recently built interchange in the city
-            bool ok = m_GroupSystem.UndoLastReceipt(out var undone);
-            if (ok && undone != null && undone.SavedConfig != null)
-            {
-                // Restore configuration for Re-Edit
-                CurrentConfig = undone.SavedConfig.Clone();
-                CurrentLegs.Clear();
-                CurrentLegs.AddRange(undone.SavedLegs);
-                SetStage(ToolStage.ConfigureInterchange);
-            }
-            return ok;
+            return false;
         }
 
         public override void InitializeRaycast()
         {
             base.InitializeRaycast();
-            if (Stage == ToolStage.PickCenter)
-            {
-                m_ToolRaycastSystem.typeMask = TypeMask.Terrain | TypeMask.Net;
-                m_ToolRaycastSystem.netLayerMask = Layer.Road;
-                m_ToolRaycastSystem.collisionMask = CollisionMask.OnGround | CollisionMask.Overground;
-            }
-            else if (Stage == ToolStage.SelectHighways)
-            {
-                m_ToolRaycastSystem.typeMask = TypeMask.Net | TypeMask.Terrain;
-                m_ToolRaycastSystem.netLayerMask = Layer.Road;
-                m_ToolRaycastSystem.collisionMask = CollisionMask.OnGround | CollisionMask.Overground;
-            }
-            else
-            {
-                m_ToolRaycastSystem.typeMask = TypeMask.Terrain;
-                m_ToolRaycastSystem.collisionMask = CollisionMask.OnGround;
-            }
+            m_ToolRaycastSystem.typeMask = TypeMask.Terrain | TypeMask.Net;
+            m_ToolRaycastSystem.netLayerMask = Layer.Road;
+            m_ToolRaycastSystem.collisionMask = CollisionMask.OnGround | CollisionMask.Overground;
         }
 
         [Preserve]
@@ -733,83 +635,100 @@ namespace ProceduralInterchanges.Systems
             // Handle Navigation & State Transitions
             if (rightClick)
             {
-                if (Stage == ToolStage.ConfigureInterchange) SetStage(ToolStage.SelectHighways);
-                else if (Stage == ToolStage.SelectHighways) SetStage(ToolStage.PickCenter);
-                else if (Stage == ToolStage.PickCenter)
+                if (Stage == ToolStage.ConfigureInterchange)
                 {
-                    // Exit tool
-                    m_ToolSystem.activeTool = World.GetOrCreateSystemManaged<DefaultToolSystem>();
+                    if (CurrentLegs.Count > 0)
+                    {
+                        CurrentLegs.RemoveAt(CurrentLegs.Count - 1);
+                        HighwayPairingSolver.RecomputeCenterAndSortLegs(
+                            EntityManager,
+                            CurrentLegs,
+                            CurrentConfig,
+                            0f,
+                            p => m_BuildService != null ? m_BuildService.SampleTerrainHeight(p) : 0f);
+                    }
+                    Stage = ToolStage.SelectHighways;
+                    CurrentPlan = null;
+                    m_BuildService.ClearGhostPreview();
                     return inputDeps;
+                }
+                else if (Stage == ToolStage.SelectHighways)
+                {
+                    if (CurrentLegs.Count > 0)
+                    {
+                        CurrentLegs.RemoveAt(CurrentLegs.Count - 1);
+                        HighwayPairingSolver.RecomputeCenterAndSortLegs(
+                            EntityManager,
+                            CurrentLegs,
+                            CurrentConfig,
+                            0f,
+                            p => m_BuildService != null ? m_BuildService.SampleTerrainHeight(p) : 0f);
+                        return inputDeps;
+                    }
+                    else
+                    {
+                        // Exit tool
+                        m_ToolSystem.activeTool = World.GetOrCreateSystemManaged<DefaultToolSystem>();
+                        return inputDeps;
+                    }
                 }
             }
 
             if (leftClick && m_HasHover)
             {
-                if (Stage == ToolStage.PickCenter)
+                int requiredLegs = ProceduralInterchanges.Core.Templates.WorkshopTemplateLibrary.GetTemplate(CurrentConfig.Archetype).RequiredLegs;
+
+                if (m_HoveredEntity != Entity.Null && EntityManager.HasComponent<Edge>(m_HoveredEntity))
                 {
-                    CurrentConfig.Center = m_HoverPoint;
-                    AutoDetectHighways();
-                    SetStage(ToolStage.SelectHighways);
-                }
-                else if (Stage == ToolStage.SelectHighways)
-                {
-                    if (m_HoveredEntity != Entity.Null && EntityManager.HasComponent<Edge>(m_HoveredEntity))
+                    int existingIdx = -1;
+                    for (int i = 0; i < CurrentLegs.Count; i++)
                     {
-                        bool lht = m_CityConfigSystem != null && m_CityConfigSystem.leftHandTraffic;
-                        float r = CurrentConfig.FootprintRadius;
-                        float oldR = r;
-                        var clickedLegs = HighwayPairingSolver.PickAndPairThroughHighway(
+                        if ((CurrentLegs[i].Inbound != null && CurrentLegs[i].Inbound.SourceEdge == m_HoveredEntity) ||
+                            (CurrentLegs[i].Outbound != null && CurrentLegs[i].Outbound.SourceEdge == m_HoveredEntity))
+                        {
+                            existingIdx = i;
+                            break;
+                        }
+                    }
+
+                    if (existingIdx >= 0)
+                    {
+                        CurrentLegs.RemoveAt(existingIdx);
+                    }
+                    else if (CurrentLegs.Count < requiredLegs)
+                    {
+                        var newLeg = HighwayPairingSolver.PickHighwayEndpointAtClick(
                             EntityManager,
                             m_NetSearchSystem,
+                            m_PrefabSystem,
                             m_HoveredEntity,
-                            CurrentConfig.Center,
-                            ref r,
-                            lht,
-                            autoPairTwin: !shiftHeld,
-                            m_PrefabSystem);
-                        CurrentConfig.FootprintRadius = r;
-                        if (r != oldR && CurrentLegs.Count > 0)
+                            m_HoverPoint,
+                            CurrentConfig.LeftHandTraffic,
+                            autoPairTwin: !shiftHeld);
+
+                        if (newLeg != null)
                         {
-                            HighwayPairingSolver.RefreshLegsForRadius(
-                                EntityManager,
-                                m_NetSearchSystem,
-                                CurrentLegs,
-                                CurrentConfig.Center,
-                                CurrentConfig.FootprintRadius,
-                                lht,
-                                m_PrefabSystem);
+                            CurrentLegs.Add(newLeg);
                         }
+                    }
 
-                        if (clickedLegs != null && clickedLegs.Count > 0)
-                        {
-                            for (int l = 0; l < clickedLegs.Count; l++)
-                            {
-                                var leg = clickedLegs[l];
-                                int existingIdx = -1;
-                                for (int i = 0; i < CurrentLegs.Count; i++)
-                                {
-                                    if (math.abs(math.acos(math.clamp(math.dot(CurrentLegs[i].LegAxisDirection.xz, leg.LegAxisDirection.xz), -1f, 1f))) < 0.25f)
-                                    {
-                                        existingIdx = i;
-                                        break;
-                                    }
-                                }
+                    HighwayPairingSolver.RecomputeCenterAndSortLegs(
+                        EntityManager,
+                        CurrentLegs,
+                        CurrentConfig,
+                        0f,
+                        p => m_BuildService != null ? m_BuildService.SampleTerrainHeight(p) : 0f);
 
-                                if (existingIdx >= 0)
-                                {
-                                    CurrentLegs.RemoveAt(existingIdx);
-                                }
-                                else
-                                {
-                                    leg.LegIndex = CurrentLegs.Count;
-                                    CurrentLegs.Add(leg);
-                                }
-                            }
-
-                            // Re-index
-                            CurrentLegs.Sort((a, b) => a.AzimuthRad.CompareTo(b.AzimuthRad));
-                            for (int i = 0; i < CurrentLegs.Count; i++) CurrentLegs[i].LegIndex = i;
-                        }
+                    if (CurrentLegs.Count == requiredLegs)
+                    {
+                        Stage = ToolStage.ConfigureInterchange;
+                        RegeneratePlan();
+                    }
+                    else
+                    {
+                        Stage = ToolStage.SelectHighways;
+                        CurrentPlan = null;
+                        m_BuildService.ClearGhostPreview();
                     }
                 }
             }

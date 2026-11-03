@@ -73,7 +73,7 @@ namespace ProceduralInterchanges.Systems
                 else
                 {
                     m_ToolSystem.activeTool = m_InterchangeTool;
-                    m_InterchangeTool.SetStage(ToolStage.PickCenter);
+                    m_InterchangeTool.SetStage(ToolStage.SelectHighways);
                 }
             });
         }
@@ -224,6 +224,13 @@ namespace ProceduralInterchanges.Systems
 
             writer.PropertyName("overlayEnabled");
             writer.Write(m_InterchangeTool.EngineeringOverlayEnabled);
+
+            int reqLegs = ProceduralInterchanges.Core.Templates.WorkshopTemplateLibrary.GetTemplate(config.Archetype).RequiredLegs;
+            writer.PropertyName("requiredLegs");
+            writer.Write(reqLegs);
+
+            writer.PropertyName("angleWarning");
+            writer.Write(plan != null ? (plan.AngleWarningMessage ?? string.Empty) : string.Empty);
 
             writer.PropertyName("canUndo");
             writer.Write(m_GroupSystem.CanUndo);

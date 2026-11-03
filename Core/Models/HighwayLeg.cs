@@ -5,6 +5,13 @@ using Unity.Mathematics;
 
 namespace ProceduralInterchanges.Core.Models
 {
+    public enum CarriagewayDirection : byte
+    {
+        Inbound,
+        Outbound,
+        TwoWay
+    }
+
     public sealed class CarriagewayEndpoint
     {
         public Entity SourceEdge;
@@ -14,6 +21,8 @@ namespace ProceduralInterchanges.Core.Models
         public float CutCurveT;          // Parameter t in [0, 1] where the footprint boundary cuts OriginalCurve
         public float3 PortalPosition;    // Exact 3D point on the footprint boundary (or stub end)
         public float3 FlowDirection;     // Normalized 3D tangent pointing INBOUND (+1) or OUTBOUND (-1)
+        public float3 InwardTangent;     // Tangent entering interchange
+        public CarriagewayDirection Direction;
         public bool IsInboundToCenter;   // true = traffic flows toward interchange center; false = flows away
         public bool IsOneWay;            // true if one-way carriageway; false if two-way
         public int LaneCount;            // Drivable car lane count on this carriageway

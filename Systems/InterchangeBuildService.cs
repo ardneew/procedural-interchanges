@@ -59,8 +59,12 @@ namespace ProceduralInterchanges.Systems
         private List<Entity> m_CreatedEdges = new List<Entity>();
         private bool m_IsUndoing = false;
         private InterchangeReceipt m_ActiveUndoReceipt;
+        private readonly HashSet<Entity> m_PreBuildEdges = new HashSet<Entity>();
 
         public bool IsBuilding => m_State != BuildState.Idle;
+        public bool IsBusy => IsBuilding;
+        public bool ScheduleBuild(InterchangePlan plan) => StartBuild(plan);
+        public bool ScheduleUndo(InterchangeReceipt receipt) => StartUndoRestore(receipt);
 
         public float SampleTerrainHeight(float2 xz)
         {
@@ -120,6 +124,12 @@ namespace ProceduralInterchanges.Systems
             m_State = BuildState.ClearingGhosts;
             m_StateFrameCounter = 0;
             m_CreatedEdges.Clear();
+            m_PreBuildEdges.Clear();
+            using (NativeArray<Entity> existing = m_PermanentEdgeQuery.ToEntityArray(Allocator.Temp))
+            {
+                for (int i = 0; i < existing.Length; i++)
+                    m_PreBuildEdges.Add(existing[i]);
+            }
 
             return true;
         }
@@ -199,9 +209,19 @@ namespace ProceduralInterchanges.Systems
                 });
                 EntityManager.AddComponent<Updated>(def);
 
+                Entity validStartNode = (snap.StartNode != Entity.Null &&
+                    EntityManager.Exists(snap.StartNode) &&
+                    !EntityManager.HasComponent<Deleted>(snap.StartNode))
+                    ? snap.StartNode : Entity.Null;
+
+                Entity validEndNode = (snap.EndNode != Entity.Null &&
+                    EntityManager.Exists(snap.EndNode) &&
+                    !EntityManager.HasComponent<Deleted>(snap.EndNode))
+                    ? snap.EndNode : Entity.Null;
+
                 var startPos = new CoursePos
                 {
-                    m_Entity = snap.StartNode,
+                    m_Entity = validStartNode,
                     m_Position = snap.Curve.a,
                     m_Rotation = NetUtils.GetNodeRotation(MathUtils.StartTangent(snap.Curve)),
                     m_CourseDelta = 0f,
@@ -212,7 +232,7 @@ namespace ProceduralInterchanges.Systems
 
                 var endPos = new CoursePos
                 {
-                    m_Entity = snap.EndNode,
+                    m_Entity = validEndNode,
                     m_Position = snap.Curve.d,
                     m_Rotation = NetUtils.GetNodeRotation(MathUtils.EndTangent(snap.Curve)),
                     m_CourseDelta = 1f,
@@ -374,6 +394,26 @@ namespace ProceduralInterchanges.Systems
                 return Entity.Null;
             }
 
+            Entity validStartAttach = (c.StartAttachEntity != Entity.Null &&
+                EntityManager.Exists(c.StartAttachEntity) &&
+                !EntityManager.HasComponent<Deleted>(c.StartAttachEntity))
+                ? c.StartAttachEntity : Entity.Null;
+
+            Entity validEndAttach = (c.EndAttachEntity != Entity.Null &&
+                EntityManager.Exists(c.EndAttachEntity) &&
+                !EntityManager.HasComponent<Deleted>(c.EndAttachEntity))
+                ? c.EndAttachEntity : Entity.Null;
+
+            Bezier4x3 curve = c.Curve;
+            if (validStartAttach != Entity.Null && EntityManager.HasComponent<Game.Net.Node>(validStartAttach))
+            {
+                curve.a = EntityManager.GetComponentData<Game.Net.Node>(validStartAttach).m_Position;
+            }
+            if (validEndAttach != Entity.Null && EntityManager.HasComponent<Game.Net.Node>(validEndAttach))
+            {
+                curve.d = EntityManager.GetComponentData<Game.Net.Node>(validEndAttach).m_Position;
+            }
+
             Entity def = EntityManager.CreateEntity();
 
             EntityManager.AddComponentData(def, new CreationDefinition
@@ -384,40 +424,43 @@ namespace ProceduralInterchanges.Systems
             });
             EntityManager.AddComponent<Updated>(def);
 
-            CoursePosFlags baseFlags = CoursePosFlags.IsLeft | CoursePosFlags.IsRight;
+            CoursePosFlags startFlags = CoursePosFlags.IsFirst | CoursePosFlags.IsLeft | CoursePosFlags.IsRight;
+            if (validStartAttach == Entity.Null)
+                startFlags |= CoursePosFlags.DisableMerge;
+
+            CoursePosFlags endFlags = CoursePosFlags.IsLast | CoursePosFlags.IsLeft | CoursePosFlags.IsRight;
+            if (validEndAttach == Entity.Null)
+                endFlags |= CoursePosFlags.DisableMerge;
 
             var startPos = new CoursePos
             {
-                m_Entity = c.StartAttachEntity,
-                m_Position = c.Curve.a,
-                m_Rotation = NetUtils.GetNodeRotation(MathUtils.StartTangent(c.Curve)),
+                m_Entity = validStartAttach,
+                m_Position = curve.a,
+                m_Rotation = NetUtils.GetNodeRotation(MathUtils.StartTangent(curve)),
                 m_CourseDelta = 0f,
                 m_SplitPosition = c.StartSplitPosition,
-                m_Flags = baseFlags | CoursePosFlags.IsFirst,
+                m_Flags = startFlags,
                 m_ParentMesh = -1,
                 m_Elevation = c.StartElevation
             };
 
             var endPos = new CoursePos
             {
-                m_Entity = c.EndAttachEntity,
-                m_Position = c.Curve.d,
-                m_Rotation = NetUtils.GetNodeRotation(MathUtils.EndTangent(c.Curve)),
+                m_Entity = validEndAttach,
+                m_Position = curve.d,
+                m_Rotation = NetUtils.GetNodeRotation(MathUtils.EndTangent(curve)),
                 m_CourseDelta = 1f,
                 m_SplitPosition = c.EndSplitPosition,
-                m_Flags = baseFlags | CoursePosFlags.IsLast,
+                m_Flags = endFlags,
                 m_ParentMesh = -1,
                 m_Elevation = c.EndElevation
             };
 
-            float3 midPt = CubicBezier3D.Position(c.Curve, 0.5f);
-            float midElevation = midPt.y - SampleTerrainHeight(midPt.xz);
-
             if (c.StartElevation.x < 0.25f) startPos.m_Elevation = float2.zero;
             if (c.EndElevation.x < 0.25f) endPos.m_Elevation = float2.zero;
 
-            // Only force elevated edge if the deck is clearly elevated above ground (>= 5m)
-            if (c.ForceElevated || (c.StackLevel > 0 && (midElevation >= 5.0f || c.StartElevation.x >= 5.0f || c.EndElevation.x >= 5.0f)))
+            bool isElevated = c.ForceElevated || c.StackLevel > 0 || math.max(c.StartElevation.x, c.EndElevation.x) >= 2.5f;
+            if (isElevated)
             {
                 startPos.m_Flags |= CoursePosFlags.ForceElevatedEdge;
                 endPos.m_Flags |= CoursePosFlags.ForceElevatedEdge;
@@ -425,8 +468,8 @@ namespace ProceduralInterchanges.Systems
 
             EntityManager.AddComponentData(def, new NetCourse
             {
-                m_Curve = c.Curve,
-                m_Length = MathUtils.Length(c.Curve),
+                m_Curve = curve,
+                m_Length = MathUtils.Length(curve),
                 m_FixedIndex = -1,
                 m_Elevation = float2.zero,
                 m_StartPosition = startPos,
@@ -434,6 +477,11 @@ namespace ProceduralInterchanges.Systems
             });
 
             var composition = BuildCompositionFlags(c.Upgrades);
+            if (isElevated)
+            {
+                composition.m_General |= CompositionFlags.General.Elevated;
+            }
+
             if (!composition.Equals(default(CompositionFlags)))
             {
                 EntityManager.AddComponentData(def, new Upgraded { m_Flags = composition });
@@ -604,36 +652,20 @@ namespace ProceduralInterchanges.Systems
 
                             if (!m_IsUndoing && m_CurrentBuildPlan != null)
                             {
-                                // Query permanent edges created in the footprint
+                                // Query permanent edges created by diffing against m_PreBuildEdges
                                 var createdSet = new HashSet<Entity>();
-                                var expectedMidpoints = new List<float3>();
-                                for (int i = 0; i < m_CurrentBuildPlan.Courses.Count; i++)
-                                {
-                                    expectedMidpoints.Add(CubicBezier3D.Position(m_CurrentBuildPlan.Courses[i].Curve, 0.5f));
-                                }
-                                for (int i = 0; i < m_CurrentBuildPlan.OuterReplacementCourses.Count; i++)
-                                {
-                                    expectedMidpoints.Add(CubicBezier3D.Position(m_CurrentBuildPlan.OuterReplacementCourses[i].Curve, 0.5f));
-                                }
-
                                 using (var permanentEdges = m_PermanentEdgeQuery.ToEntityArray(Allocator.Temp))
                                 {
                                     for (int e = 0; e < permanentEdges.Length; e++)
                                     {
                                         Entity edgeEnt = permanentEdges[e];
-                                        var curve = EntityManager.GetComponentData<Curve>(edgeEnt).m_Bezier;
-                                        float3 mid = CubicBezier3D.Position(curve, 0.5f);
-
-                                        for (int m = 0; m < expectedMidpoints.Count; m++)
+                                        if (!m_PreBuildEdges.Contains(edgeEnt))
                                         {
-                                            if (math.distance(mid, expectedMidpoints[m]) < 2.5f)
-                                            {
-                                                createdSet.Add(edgeEnt);
-                                                break;
-                                            }
+                                            createdSet.Add(edgeEnt);
                                         }
                                     }
                                 }
+                                m_PreBuildEdges.Clear();
 
                                 m_CreatedEdges = new List<Entity>(createdSet);
 

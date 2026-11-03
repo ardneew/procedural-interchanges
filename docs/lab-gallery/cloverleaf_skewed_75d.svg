@@ -1,0 +1,1151 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-270.0 -270.0 540.0 540.0" style="background:#121417; width:100%; height:100%;">
+  <defs>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="2" result="blur"/><feComposite in="SourceGraphic" in2="blur" operator="over"/></filter>
+    <marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="4" markerHeight="4" orient="auto-start-reverse"><path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#e2e8f0"/></marker>
+  </defs>
+  <circle cx="0" cy="0" r="230.0" fill="none" stroke="#1e293b" stroke-width="2" stroke-dasharray="6 6"/>
+  <line x1="-300" y1="0" x2="300" y2="0" stroke="#1e293b" stroke-width="1"/>
+  <line x1="0" y1="-300" x2="0" y2="300" stroke="#1e293b" stroke-width="1"/>
+  <path id="clover_leg_0_app" d="M -47.9 225.3 C -43.4 208.4, -42.9 197.1, -38.3 180.2" fill="none" stroke="#64748b" stroke-width="7.3" stroke-linecap="round" stroke-linejoin="round">
+    <title>clover_leg_0_app (Lanes: 3, Elev: 0.0m)</title>
+  </path>
+  <path d="M -47.9 225.3 C -43.4 208.4, -42.9 197.1, -38.3 180.2" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="clover_main_2_0_core" d="M 17.3 -81.1 C 1.0 -20.3, -9.3 18.1, -25.6 78.9" fill="none" stroke="#64748b" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>clover_main_2_0_core (Lanes: 0, Elev: 0.0m)</title>
+  </path>
+  <path d="M 17.3 -81.1 C 1.0 -20.3, -9.3 18.1, -25.6 78.9" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="clover_main_2_0_lead2" d="M -25.6 78.9 C -35.6 116.1, -46.9 138.0, -56.9 175.2" fill="none" stroke="#64748b" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>clover_main_2_0_lead2 (Lanes: 0, Elev: 0.0m)</title>
+  </path>
+  <path d="M -25.6 78.9 C -35.6 116.1, -46.9 138.0, -56.9 175.2" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="clover_outer_0_1_sub_3" d="M 169.6 10.0 C 172.7 9.8, 175.8 9.7, 178.9 9.6" fill="none" stroke="#64748b" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>clover_outer_0_1_sub_3 (Lanes: 0, Elev: 0.0m)</title>
+  </path>
+  <path d="M 169.6 10.0 C 172.7 9.8, 175.8 9.7, 178.9 9.6" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="clover_outer_3_0_sub_3" d="M -104.8 31.1 C -63.8 61.1, -41.4 117.5, -56.9 175.2" fill="none" stroke="#64748b" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>clover_outer_3_0_sub_3 (Lanes: 0, Elev: 0.0m)</title>
+  </path>
+  <path d="M -104.8 31.1 C -63.8 61.1, -41.4 117.5, -56.9 175.2" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="clover_outer_3_0_sub_2" d="M -153.7 10.4 C -135.7 13.3, -119.1 20.6, -104.8 31.1" fill="none" stroke="#64748b" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>clover_outer_3_0_sub_2 (Lanes: 0, Elev: 0.0m)</title>
+  </path>
+  <path d="M -153.7 10.4 C -135.7 13.3, -119.1 20.6, -104.8 31.1" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="clover_outer_3_0_sub_1" d="M -173.2 9.0 C -166.5 8.9, -160.0 9.4, -153.7 10.4" fill="none" stroke="#64748b" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>clover_outer_3_0_sub_1 (Lanes: 0, Elev: 0.0m)</title>
+  </path>
+  <path d="M -173.2 9.0 C -166.5 8.9, -160.0 9.4, -153.7 10.4" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="clover_outer_2_3_sub_3" d="M -169.6 -10.0 C -172.7 -9.8, -175.8 -9.7, -178.9 -9.6" fill="none" stroke="#64748b" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>clover_outer_2_3_sub_3 (Lanes: 0, Elev: 0.0m)</title>
+  </path>
+  <path d="M -169.6 -10.0 C -172.7 -9.8, -175.8 -9.7, -178.9 -9.6" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="clover_outer_2_3_sub_2" d="M -143.6 -12.8 C -152.1 -11.4, -160.8 -10.5, -169.6 -10.0" fill="none" stroke="#64748b" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>clover_outer_2_3_sub_2 (Lanes: 0, Elev: 0.0m)</title>
+  </path>
+  <path d="M -143.6 -12.8 C -152.1 -11.4, -160.8 -10.5, -169.6 -10.0" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="clover_outer_2_3_sub_1" d="M -75.2 -34.2 C -96.2 -24.0, -119.2 -16.6, -143.6 -12.8" fill="none" stroke="#64748b" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>clover_outer_2_3_sub_1 (Lanes: 0, Elev: 0.0m)</title>
+  </path>
+  <path d="M -75.2 -34.2 C -96.2 -24.0, -119.2 -16.6, -143.6 -12.8" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="clover_outer_2_3" d="M 38.3 -180.2 C 28.2 -116.3, -15.1 -63.4, -75.2 -34.2" fill="none" stroke="#64748b" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>clover_outer_2_3 (Lanes: 0, Elev: 0.0m)</title>
+  </path>
+  <path d="M 38.3 -180.2 C 28.2 -116.3, -15.1 -63.4, -75.2 -34.2" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="clover_outer_1_2_sub_3" d="M 104.8 -31.1 C 63.8 -61.1, 41.4 -117.5, 56.9 -175.2" fill="none" stroke="#64748b" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>clover_outer_1_2_sub_3 (Lanes: 0, Elev: 0.0m)</title>
+  </path>
+  <path d="M 104.8 -31.1 C 63.8 -61.1, 41.4 -117.5, 56.9 -175.2" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="clover_outer_1_2_sub_2" d="M 153.7 -10.4 C 135.7 -13.3, 119.1 -20.6, 104.8 -31.1" fill="none" stroke="#64748b" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>clover_outer_1_2_sub_2 (Lanes: 0, Elev: 0.0m)</title>
+  </path>
+  <path d="M 153.7 -10.4 C 135.7 -13.3, 119.1 -20.6, 104.8 -31.1" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="clover_outer_0_1" d="M -38.3 180.2 C -28.2 116.3, 15.1 63.4, 75.2 34.2" fill="none" stroke="#64748b" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>clover_outer_0_1 (Lanes: 0, Elev: 0.0m)</title>
+  </path>
+  <path d="M -38.3 180.2 C -28.2 116.3, 15.1 63.4, 75.2 34.2" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="clover_outer_0_1_sub_1" d="M 75.2 34.2 C 96.2 24.0, 119.2 16.6, 143.6 12.8" fill="none" stroke="#64748b" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>clover_outer_0_1_sub_1 (Lanes: 0, Elev: 0.0m)</title>
+  </path>
+  <path d="M 75.2 34.2 C 96.2 24.0, 119.2 16.6, 143.6 12.8" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="clover_outer_0_1_sub_2" d="M 143.6 12.8 C 152.1 11.4, 160.8 10.5, 169.6 10.0" fill="none" stroke="#64748b" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>clover_outer_0_1_sub_2 (Lanes: 0, Elev: 0.0m)</title>
+  </path>
+  <path d="M 143.6 12.8 C 152.1 11.4, 160.8 10.5, 169.6 10.0" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="clover_main_2_0_lead1" d="M 38.3 -180.2 C 28.4 -143.0, 27.2 -118.3, 17.3 -81.1" fill="none" stroke="#64748b" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>clover_main_2_0_lead1 (Lanes: 0, Elev: 0.0m)</title>
+  </path>
+  <path d="M 38.3 -180.2 C 28.4 -143.0, 27.2 -118.3, 17.3 -81.1" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="clover_main_0_2_lead2" d="M 25.6 -78.9 C 35.6 -116.1, 46.9 -138.0, 56.9 -175.2" fill="none" stroke="#64748b" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>clover_main_0_2_lead2 (Lanes: 0, Elev: 0.0m)</title>
+  </path>
+  <path d="M 25.6 -78.9 C 35.6 -116.1, 46.9 -138.0, 56.9 -175.2" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="clover_outer_1_2_sub_1" d="M 173.2 -9.0 C 166.5 -8.9, 160.0 -9.4, 153.7 -10.4" fill="none" stroke="#64748b" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>clover_outer_1_2_sub_1 (Lanes: 0, Elev: 0.0m)</title>
+  </path>
+  <path d="M 173.2 -9.0 C 166.5 -8.9, 160.0 -9.4, 153.7 -10.4" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="clover_main_0_2_lead1" d="M -38.3 180.2 C -28.4 143.0, -27.2 118.3, -17.3 81.1" fill="none" stroke="#64748b" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>clover_main_0_2_lead1 (Lanes: 0, Elev: 0.0m)</title>
+  </path>
+  <path d="M -38.3 180.2 C -28.4 143.0, -27.2 118.3, -17.3 81.1" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="clover_leg_3_dep_sub_2" d="M -200.5 -10.3 C -210.0 -11.0, -218.6 -12.0, -230.0 -12.0" fill="none" stroke="#64748b" stroke-width="7.3" stroke-linecap="round" stroke-linejoin="round">
+    <title>clover_leg_3_dep_sub_2 (Lanes: 3, Elev: 0.0m)</title>
+  </path>
+  <path d="M -200.5 -10.3 C -210.0 -11.0, -218.6 -12.0, -230.0 -12.0" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="clover_leg_3_dep_sub_1" d="M -190.2 -9.7 C -193.8 -9.8, -197.2 -10.0, -200.5 -10.3" fill="none" stroke="#64748b" stroke-width="7.3" stroke-linecap="round" stroke-linejoin="round">
+    <title>clover_leg_3_dep_sub_1 (Lanes: 3, Elev: 0.0m)</title>
+  </path>
+  <path d="M -190.2 -9.7 C -193.8 -9.8, -197.2 -10.0, -200.5 -10.3" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="clover_leg_0_dep" d="M -56.9 175.2 C -61.4 192.2, -66.6 202.1, -71.1 219.1" fill="none" stroke="#64748b" stroke-width="7.3" stroke-linecap="round" stroke-linejoin="round">
+    <title>clover_leg_0_dep (Lanes: 3, Elev: 0.0m)</title>
+  </path>
+  <path d="M -56.9 175.2 C -61.4 192.2, -66.6 202.1, -71.1 219.1" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="clover_leg_1_app" d="M 230.0 -12.0 C 218.6 -12.0, 210.0 -11.0, 200.5 -10.3" fill="none" stroke="#64748b" stroke-width="7.3" stroke-linecap="round" stroke-linejoin="round">
+    <title>clover_leg_1_app (Lanes: 3, Elev: 0.0m)</title>
+  </path>
+  <path d="M 230.0 -12.0 C 218.6 -12.0, 210.0 -11.0, 200.5 -10.3" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="clover_leg_1_app_sub_1" d="M 200.5 -10.3 C 197.2 -10.0, 193.8 -9.8, 190.2 -9.7" fill="none" stroke="#64748b" stroke-width="7.3" stroke-linecap="round" stroke-linejoin="round">
+    <title>clover_leg_1_app_sub_1 (Lanes: 3, Elev: 0.0m)</title>
+  </path>
+  <path d="M 200.5 -10.3 C 197.2 -10.0, 193.8 -9.8, 190.2 -9.7" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="clover_leg_1_dep_sub_1" d="M 190.2 9.7 C 193.8 9.8, 197.2 10.0, 200.5 10.3" fill="none" stroke="#64748b" stroke-width="7.3" stroke-linecap="round" stroke-linejoin="round">
+    <title>clover_leg_1_dep_sub_1 (Lanes: 3, Elev: 0.0m)</title>
+  </path>
+  <path d="M 190.2 9.7 C 193.8 9.8, 197.2 10.0, 200.5 10.3" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="clover_leg_1_dep_sub_2" d="M 200.5 10.3 C 210.0 11.0, 218.6 12.0, 230.0 12.0" fill="none" stroke="#64748b" stroke-width="7.3" stroke-linecap="round" stroke-linejoin="round">
+    <title>clover_leg_1_dep_sub_2 (Lanes: 3, Elev: 0.0m)</title>
+  </path>
+  <path d="M 200.5 10.3 C 210.0 11.0, 218.6 12.0, 230.0 12.0" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="clover_leg_2_app" d="M 47.9 -225.3 C 43.4 -208.4, 42.9 -197.1, 38.3 -180.2" fill="none" stroke="#64748b" stroke-width="7.3" stroke-linecap="round" stroke-linejoin="round">
+    <title>clover_leg_2_app (Lanes: 3, Elev: 0.0m)</title>
+  </path>
+  <path d="M 47.9 -225.3 C 43.4 -208.4, 42.9 -197.1, 38.3 -180.2" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="clover_leg_2_dep" d="M 56.9 -175.2 C 61.4 -192.2, 66.6 -202.1, 71.1 -219.1" fill="none" stroke="#64748b" stroke-width="7.3" stroke-linecap="round" stroke-linejoin="round">
+    <title>clover_leg_2_dep (Lanes: 3, Elev: 0.0m)</title>
+  </path>
+  <path d="M 56.9 -175.2 C 61.4 -192.2, 66.6 -202.1, 71.1 -219.1" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="clover_leg_3_app" d="M -230.0 12.0 C -218.6 12.0, -210.0 11.0, -200.5 10.3" fill="none" stroke="#64748b" stroke-width="7.3" stroke-linecap="round" stroke-linejoin="round">
+    <title>clover_leg_3_app (Lanes: 3, Elev: 0.0m)</title>
+  </path>
+  <path d="M -230.0 12.0 C -218.6 12.0, -210.0 11.0, -200.5 10.3" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="clover_leg_3_app_sub_1" d="M -200.5 10.3 C -197.2 10.0, -193.8 9.8, -190.2 9.7" fill="none" stroke="#64748b" stroke-width="7.3" stroke-linecap="round" stroke-linejoin="round">
+    <title>clover_leg_3_app_sub_1 (Lanes: 3, Elev: 0.0m)</title>
+  </path>
+  <path d="M -200.5 10.3 C -197.2 10.0, -193.8 9.8, -190.2 9.7" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="clover_main_0_2_core" d="M -17.3 81.1 C -1.0 20.3, 9.3 -18.1, 25.6 -78.9" fill="none" stroke="#64748b" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>clover_main_0_2_core (Lanes: 0, Elev: 0.0m)</title>
+  </path>
+  <path d="M -17.3 81.1 C -1.0 20.3, 9.3 -18.1, 25.6 -78.9" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="clover_cd_0_app" d="M -35.2 168.6 C -32.3 157.5, -31.6 147.4, -31.6 137.7" fill="none" stroke="#64748b" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>clover_cd_0_app (Lanes: 0, Elev: 0.1m)</title>
+  </path>
+  <path d="M -35.2 168.6 C -32.3 157.5, -31.6 147.4, -31.6 137.7" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="clover_cd_2_app" d="M 35.2 -168.6 C 32.3 -157.5, 31.6 -147.4, 31.6 -137.7" fill="none" stroke="#64748b" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>clover_cd_2_app (Lanes: 0, Elev: 0.1m)</title>
+  </path>
+  <path d="M 35.2 -168.6 C 32.3 -157.5, 31.6 -147.4, 31.6 -137.7" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="clover_cd_0_app_span_1" d="M -31.6 137.7 C -31.6 128.0, -32.4 118.6, -32.5 108.9" fill="none" stroke="#64748b" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>clover_cd_0_app_span_1 (Lanes: 0, Elev: 0.7m)</title>
+  </path>
+  <path d="M -31.6 137.7 C -31.6 128.0, -32.4 118.6, -32.5 108.9" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="clover_cd_2_app_span_1" d="M 31.6 -137.7 C 31.6 -128.0, 32.4 -118.6, 32.5 -108.9" fill="none" stroke="#64748b" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>clover_cd_2_app_span_1 (Lanes: 0, Elev: 0.7m)</title>
+  </path>
+  <path d="M 31.6 -137.7 C 31.6 -128.0, 32.4 -118.6, 32.5 -108.9" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="clover_cd_0_dep_span_3" d="M 46.0 -151.2 C 51.4 -161.8, 56.3 -173.2, 60.0 -186.8" fill="none" stroke="#10b981" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>clover_cd_0_dep_span_3 (Lanes: 0, Elev: 0.7m)</title>
+  </path>
+  <path d="M 46.0 -151.2 C 51.4 -161.8, 56.3 -173.2, 60.0 -186.8" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="clover_cd_2_dep_span_3" d="M -46.0 151.2 C -51.4 161.8, -56.3 173.2, -60.0 186.8" fill="none" stroke="#10b981" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>clover_cd_2_dep_span_3 (Lanes: 0, Elev: 0.7m)</title>
+  </path>
+  <path d="M -46.0 151.2 C -51.4 161.8, -56.3 173.2, -60.0 186.8" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="clover_cd_2_app_span_2" d="M 32.5 -108.9 C 32.5 -99.2, 31.8 -89.1, 28.8 -78.0" fill="none" stroke="#64748b" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>clover_cd_2_app_span_2 (Lanes: 0, Elev: 1.8m)</title>
+  </path>
+  <path d="M 32.5 -108.9 C 32.5 -99.2, 31.8 -89.1, 28.8 -78.0" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="clover_cd_0_app_span_2" d="M -32.5 108.9 C -32.5 99.2, -31.8 89.1, -28.8 78.0" fill="none" stroke="#64748b" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>clover_cd_0_app_span_2 (Lanes: 0, Elev: 1.8m)</title>
+  </path>
+  <path d="M -32.5 108.9 C -32.5 99.2, -31.8 89.1, -28.8 78.0" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="clover_cd_0_mid" d="M -28.8 78.0 C -25.6 65.8, -22.6 54.6, -19.7 43.8" fill="none" stroke="#10b981" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>clover_cd_0_mid (Lanes: 0, Elev: 3.2m)</title>
+  </path>
+  <path d="M -28.8 78.0 C -25.6 65.8, -22.6 54.6, -19.7 43.8" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="clover_cd_2_mid" d="M 28.8 -78.0 C 25.6 -65.8, 22.6 -54.6, 19.7 -43.8" fill="none" stroke="#10b981" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>clover_cd_2_mid (Lanes: 0, Elev: 3.2m)</title>
+  </path>
+  <path d="M 28.8 -78.0 C 25.6 -65.8, 22.6 -54.6, 19.7 -43.8" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="clover_cd_0_dep_span_2" d="M 39.6 -139.1 C 41.8 -143.0, 43.9 -147.1, 46.0 -151.2" fill="none" stroke="#10b981" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>clover_cd_0_dep_span_2 (Lanes: 0, Elev: 3.3m)</title>
+  </path>
+  <path d="M 39.6 -139.1 C 41.8 -143.0, 43.9 -147.1, 46.0 -151.2" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="clover_cd_2_dep_span_2" d="M -39.6 139.1 C -41.8 143.0, -43.9 147.1, -46.0 151.2" fill="none" stroke="#10b981" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>clover_cd_2_dep_span_2 (Lanes: 0, Elev: 3.3m)</title>
+  </path>
+  <path d="M -39.6 139.1 C -41.8 143.0, -43.9 147.1, -46.0 151.2" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M 35.4 -131.6 C 36.8 -134.1, 38.2 -136.6, 39.6 -139.1" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
+  <path id="clover_cd_0_dep_span_1" d="M 35.4 -131.6 C 36.8 -134.1, 38.2 -136.6, 39.6 -139.1" fill="none" stroke="#10b981" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>clover_cd_0_dep_span_1 (Lanes: 0, Elev: 4.7m)</title>
+  </path>
+  <path d="M 35.4 -131.6 C 36.8 -134.1, 38.2 -136.6, 39.6 -139.1" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M -35.4 131.6 C -36.8 134.1, -38.2 136.6, -39.6 139.1" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
+  <path id="clover_cd_2_dep_span_1" d="M -35.4 131.6 C -36.8 134.1, -38.2 136.6, -39.6 139.1" fill="none" stroke="#10b981" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>clover_cd_2_dep_span_1 (Lanes: 0, Elev: 4.7m)</title>
+  </path>
+  <path d="M -35.4 131.6 C -36.8 134.1, -38.2 136.6, -39.6 139.1" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="clover_loop_q0_0" d="M 25.6 -78.9 C 26.7 -85.9, 27.4 -90.4, 28.5 -97.4" fill="none" stroke="#10b981" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>clover_loop_q0_0 (Lanes: 0, Elev: 1.6m)</title>
+  </path>
+  <path d="M 25.6 -78.9 C 26.7 -85.9, 27.4 -90.4, 28.5 -97.4" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="clover_loop_q2_0" d="M -25.6 78.9 C -26.7 85.9, -27.4 90.4, -28.5 97.4" fill="none" stroke="#10b981" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>clover_loop_q2_0 (Lanes: 0, Elev: 1.6m)</title>
+  </path>
+  <path d="M -25.6 78.9 C -26.7 85.9, -27.4 90.4, -28.5 97.4" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="clover_loop_q1_4_span_3" d="M 2.6 -79.7 C 14.2 -88.3, 21.2 -91.4, 17.3 -81.1" fill="none" stroke="#10b981" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>clover_loop_q1_4_span_3 (Lanes: 0, Elev: 1.7m)</title>
+  </path>
+  <path d="M 2.6 -79.7 C 14.2 -88.3, 21.2 -91.4, 17.3 -81.1" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="clover_loop_q3_4_span_3" d="M -2.6 79.7 C -14.2 88.3, -21.2 91.4, -17.3 81.1" fill="none" stroke="#10b981" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>clover_loop_q3_4_span_3 (Lanes: 0, Elev: 1.7m)</title>
+  </path>
+  <path d="M -2.6 79.7 C -14.2 88.3, -21.2 91.4, -17.3 81.1" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M 19.7 -43.8 C 15.9 -29.7, 12.4 -16.5, 8.9 -3.4" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
+  <path id="clover_cd_2_mid_span_1" d="M 19.7 -43.8 C 15.9 -29.7, 12.4 -16.5, 8.9 -3.4" fill="none" stroke="#10b981" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>clover_cd_2_mid_span_1 (Lanes: 0, Elev: 5.2m)</title>
+  </path>
+  <path d="M 19.7 -43.8 C 15.9 -29.7, 12.4 -16.5, 8.9 -3.4" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M -19.7 43.8 C -15.9 29.7, -12.4 16.5, -8.9 3.4" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
+  <path id="clover_cd_0_mid_span_1" d="M -19.7 43.8 C -15.9 29.7, -12.4 16.5, -8.9 3.4" fill="none" stroke="#10b981" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>clover_cd_0_mid_span_1 (Lanes: 0, Elev: 5.2m)</title>
+  </path>
+  <path d="M -19.7 43.8 C -15.9 29.7, -12.4 16.5, -8.9 3.4" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M 178.9 9.6 C 180.6 9.6, 182.3 9.6, 184.0 9.6" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
+  <path id="clover_outer_0_1_sub_4" d="M 178.9 9.6 C 180.6 9.6, 182.3 9.6, 184.0 9.6" fill="none" stroke="#10b981" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>clover_outer_0_1_sub_4 (Lanes: 0, Elev: 7.1m)</title>
+  </path>
+  <path d="M 178.9 9.6 C 180.6 9.6, 182.3 9.6, 184.0 9.6" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M -184.0 -9.6 C -186.1 -9.6, -188.2 -9.6, -190.2 -9.7" fill="none" stroke="#000000" stroke-width="11.4" opacity="0.6"/>
+  <path id="clover_leg_3_dep" d="M -184.0 -9.6 C -186.1 -9.6, -188.2 -9.6, -190.2 -9.7" fill="none" stroke="#10b981" stroke-width="7.3" stroke-linecap="round" stroke-linejoin="round">
+    <title>clover_leg_3_dep (Lanes: 3, Elev: 6.9m)</title>
+  </path>
+  <path d="M -184.0 -9.6 C -186.1 -9.6, -188.2 -9.6, -190.2 -9.7" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M -184.0 9.6 C -180.4 9.2, -176.7 9.0, -173.2 9.0" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
+  <path id="clover_outer_3_0" d="M -184.0 9.6 C -180.4 9.2, -176.7 9.0, -173.2 9.0" fill="none" stroke="#10b981" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>clover_outer_3_0 (Lanes: 0, Elev: 6.0m)</title>
+  </path>
+  <path d="M -184.0 9.6 C -180.4 9.2, -176.7 9.0, -173.2 9.0" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M -178.9 -9.6 C -180.6 -9.6, -182.3 -9.6, -184.0 -9.6" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
+  <path id="clover_outer_2_3_sub_4" d="M -178.9 -9.6 C -180.6 -9.6, -182.3 -9.6, -184.0 -9.6" fill="none" stroke="#10b981" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>clover_outer_2_3_sub_4 (Lanes: 0, Elev: 7.1m)</title>
+  </path>
+  <path d="M -178.9 -9.6 C -180.6 -9.6, -182.3 -9.6, -184.0 -9.6" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M 184.0 -9.6 C 180.4 -9.2, 176.7 -9.0, 173.2 -9.0" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
+  <path id="clover_outer_1_2" d="M 184.0 -9.6 C 180.4 -9.2, 176.7 -9.0, 173.2 -9.0" fill="none" stroke="#10b981" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>clover_outer_1_2 (Lanes: 0, Elev: 6.0m)</title>
+  </path>
+  <path d="M 184.0 -9.6 C 180.4 -9.2, 176.7 -9.0, 173.2 -9.0" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M 184.0 9.6 C 186.1 9.6, 188.2 9.6, 190.2 9.7" fill="none" stroke="#000000" stroke-width="11.4" opacity="0.6"/>
+  <path id="clover_leg_1_dep" d="M 184.0 9.6 C 186.1 9.6, 188.2 9.6, 190.2 9.7" fill="none" stroke="#10b981" stroke-width="7.3" stroke-linecap="round" stroke-linejoin="round">
+    <title>clover_leg_1_dep (Lanes: 3, Elev: 6.9m)</title>
+  </path>
+  <path d="M 184.0 9.6 C 186.1 9.6, 188.2 9.6, 190.2 9.7" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M -190.2 9.7 C -188.2 9.6, -186.1 9.6, -184.0 9.6" fill="none" stroke="#000000" stroke-width="11.4" opacity="0.6"/>
+  <path id="clover_leg_3_app_sub_2" d="M -190.2 9.7 C -188.2 9.6, -186.1 9.6, -184.0 9.6" fill="none" stroke="#10b981" stroke-width="7.3" stroke-linecap="round" stroke-linejoin="round">
+    <title>clover_leg_3_app_sub_2 (Lanes: 3, Elev: 6.9m)</title>
+  </path>
+  <path d="M -190.2 9.7 C -188.2 9.6, -186.1 9.6, -184.0 9.6" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M 190.2 -9.7 C 188.2 -9.6, 186.1 -9.6, 184.0 -9.6" fill="none" stroke="#000000" stroke-width="11.4" opacity="0.6"/>
+  <path id="clover_leg_1_app_sub_2" d="M 190.2 -9.7 C 188.2 -9.6, 186.1 -9.6, 184.0 -9.6" fill="none" stroke="#10b981" stroke-width="7.3" stroke-linecap="round" stroke-linejoin="round">
+    <title>clover_leg_1_app_sub_2 (Lanes: 3, Elev: 6.9m)</title>
+  </path>
+  <path d="M 190.2 -9.7 C 188.2 -9.6, 186.1 -9.6, 184.0 -9.6" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M -8.9 3.4 C -4.9 -11.4, -1.0 -25.9, 3.2 -41.5" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
+  <path id="clover_cd_0_mid_span_2" d="M -8.9 3.4 C -4.9 -11.4, -1.0 -25.9, 3.2 -41.5" fill="none" stroke="#10b981" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>clover_cd_0_mid_span_2 (Lanes: 0, Elev: 7.5m)</title>
+  </path>
+  <path d="M -8.9 3.4 C -4.9 -11.4, -1.0 -25.9, 3.2 -41.5" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M 8.9 -3.4 C 4.9 11.4, 1.0 25.9, -3.2 41.5" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
+  <path id="clover_cd_2_mid_span_2" d="M 8.9 -3.4 C 4.9 11.4, 1.0 25.9, -3.2 41.5" fill="none" stroke="#10b981" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>clover_cd_2_mid_span_2 (Lanes: 0, Elev: 7.5m)</title>
+  </path>
+  <path d="M 8.9 -3.4 C 4.9 11.4, 1.0 25.9, -3.2 41.5" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M -96.6 4.5 C -92.2 4.4, -87.6 4.3, -82.8 4.3" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
+  <path id="clover_main_3_1_lead1_span_2" d="M -96.6 4.5 C -92.2 4.4, -87.6 4.3, -82.8 4.3" fill="none" stroke="#10b981" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>clover_main_3_1_lead1_span_2 (Lanes: 0, Elev: 8.2m)</title>
+  </path>
+  <path d="M -96.6 4.5 C -92.2 4.4, -87.6 4.3, -82.8 4.3" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M 96.6 -4.5 C 92.2 -4.4, 87.6 -4.3, 82.8 -4.3" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
+  <path id="clover_main_1_3_lead1_span_2" d="M 96.6 -4.5 C 92.2 -4.4, 87.6 -4.3, 82.8 -4.3" fill="none" stroke="#10b981" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>clover_main_1_3_lead1_span_2 (Lanes: 0, Elev: 8.2m)</title>
+  </path>
+  <path d="M 96.6 -4.5 C 92.2 -4.4, 87.6 -4.3, 82.8 -4.3" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M -3.2 41.5 C -5.1 48.9, -7.2 56.4, -9.3 64.3" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
+  <path id="clover_cd_2_mid_span_3" d="M -3.2 41.5 C -5.1 48.9, -7.2 56.4, -9.3 64.3" fill="none" stroke="#10b981" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>clover_cd_2_mid_span_3 (Lanes: 0, Elev: 8.8m)</title>
+  </path>
+  <path d="M -3.2 41.5 C -5.1 48.9, -7.2 56.4, -9.3 64.3" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M 3.2 -41.5 C 5.1 -48.9, 7.2 -56.4, 9.3 -64.3" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
+  <path id="clover_cd_0_mid_span_3" d="M 3.2 -41.5 C 5.1 -48.9, 7.2 -56.4, 9.3 -64.3" fill="none" stroke="#10b981" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>clover_cd_0_mid_span_3 (Lanes: 0, Elev: 8.8m)</title>
+  </path>
+  <path d="M 3.2 -41.5 C 5.1 -48.9, 7.2 -56.4, 9.3 -64.3" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M -82.8 -4.3 C -88.6 -4.3, -94.0 -4.4, -99.3 -4.6" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
+  <path id="clover_main_1_3_lead2" d="M -82.8 -4.3 C -88.6 -4.3, -94.0 -4.4, -99.3 -4.6" fill="none" stroke="#10b981" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>clover_main_1_3_lead2 (Lanes: 0, Elev: 8.3m)</title>
+  </path>
+  <path d="M -82.8 -4.3 C -88.6 -4.3, -94.0 -4.4, -99.3 -4.6" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M 82.8 4.3 C 88.6 4.3, 94.0 4.4, 99.3 4.6" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
+  <path id="clover_main_3_1_lead2" d="M 82.8 4.3 C 88.6 4.3, 94.0 4.4, 99.3 4.6" fill="none" stroke="#10b981" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>clover_main_3_1_lead2 (Lanes: 0, Elev: 8.3m)</title>
+  </path>
+  <path d="M 82.8 4.3 C 88.6 4.3, 94.0 4.4, 99.3 4.6" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M 14.0 -82.0 C 19.3 -101.7, 27.3 -116.8, 35.4 -131.6" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
+  <path id="clover_cd_0_dep" d="M 14.0 -82.0 C 19.3 -101.7, 27.3 -116.8, 35.4 -131.6" fill="none" stroke="#10b981" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>clover_cd_0_dep (Lanes: 0, Elev: 8.3m)</title>
+  </path>
+  <path d="M 14.0 -82.0 C 19.3 -101.7, 27.3 -116.8, 35.4 -131.6" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M -14.0 82.0 C -19.3 101.7, -27.3 116.8, -35.4 131.6" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
+  <path id="clover_cd_2_dep" d="M -14.0 82.0 C -19.3 101.7, -27.3 116.8, -35.4 131.6" fill="none" stroke="#10b981" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>clover_cd_2_dep (Lanes: 0, Elev: 8.3m)</title>
+  </path>
+  <path d="M -14.0 82.0 C -19.3 101.7, -27.3 116.8, -35.4 131.6" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M -9.3 64.3 C -10.8 70.0, -12.4 75.9, -14.0 82.0" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
+  <path id="clover_cd_2_mid_span_4" d="M -9.3 64.3 C -10.8 70.0, -12.4 75.9, -14.0 82.0" fill="none" stroke="#10b981" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>clover_cd_2_mid_span_4 (Lanes: 0, Elev: 9.3m)</title>
+  </path>
+  <path d="M -9.3 64.3 C -10.8 70.0, -12.4 75.9, -14.0 82.0" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M 9.3 -64.3 C 10.8 -70.0, 12.4 -75.9, 14.0 -82.0" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
+  <path id="clover_cd_0_mid_span_4" d="M 9.3 -64.3 C 10.8 -70.0, 12.4 -75.9, 14.0 -82.0" fill="none" stroke="#10b981" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>clover_cd_0_mid_span_4 (Lanes: 0, Elev: 9.3m)</title>
+  </path>
+  <path d="M 9.3 -64.3 C 10.8 -70.0, 12.4 -75.9, 14.0 -82.0" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M 84.5 -11.1 C 86.7 -6.8, 87.0 -3.9, 82.8 -4.3" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
+  <path id="clover_loop_q0_4_span_1" d="M 84.5 -11.1 C 86.7 -6.8, 87.0 -3.9, 82.8 -4.3" fill="none" stroke="#10b981" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>clover_loop_q0_4_span_1 (Lanes: 0, Elev: 8.5m)</title>
+  </path>
+  <path d="M 84.5 -11.1 C 86.7 -6.8, 87.0 -3.9, 82.8 -4.3" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M -84.5 11.1 C -86.7 6.8, -87.0 3.9, -82.8 4.3" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
+  <path id="clover_loop_q2_4_span_1" d="M -84.5 11.1 C -86.7 6.8, -87.0 3.9, -82.8 4.3" fill="none" stroke="#10b981" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>clover_loop_q2_4_span_1 (Lanes: 0, Elev: 8.5m)</title>
+  </path>
+  <path d="M -84.5 11.1 C -86.7 6.8, -87.0 3.9, -82.8 4.3" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M 157.9 5.3 C 169.6 7.8, 181.9 9.6, 196.0 9.6" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
+  <path id="clover_cd_3_dep_span_3" d="M 157.9 5.3 C 169.6 7.8, 181.9 9.6, 196.0 9.6" fill="none" stroke="#f59e0b" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>clover_cd_3_dep_span_3 (Lanes: 0, Elev: 9.3m)</title>
+  </path>
+  <path d="M 157.9 5.3 C 169.6 7.8, 181.9 9.6, 196.0 9.6" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M -157.9 -5.3 C -169.6 -7.8, -181.9 -9.6, -196.0 -9.6" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
+  <path id="clover_cd_1_dep_span_3" d="M -157.9 -5.3 C -169.6 -7.8, -181.9 -9.6, -196.0 -9.6" fill="none" stroke="#f59e0b" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>clover_cd_1_dep_span_3 (Lanes: 0, Elev: 9.3m)</title>
+  </path>
+  <path d="M -157.9 -5.3 C -169.6 -7.8, -181.9 -9.6, -196.0 -9.6" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M 61.1 4.3 C 68.1 4.3, 75.3 4.3, 82.8 4.3" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
+  <path id="clover_main_3_1_core_span_4" d="M 61.1 4.3 C 68.1 4.3, 75.3 4.3, 82.8 4.3" fill="none" stroke="#f59e0b" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>clover_main_3_1_core_span_4 (Lanes: 0, Elev: 10.8m)</title>
+  </path>
+  <path d="M 61.1 4.3 C 68.1 4.3, 75.3 4.3, 82.8 4.3" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M 82.8 -4.3 C 73.4 -4.3, 64.4 -4.3, 55.9 -4.3" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
+  <path id="clover_main_1_3_core" d="M 82.8 -4.3 C 73.4 -4.3, 64.4 -4.3, 55.9 -4.3" fill="none" stroke="#f59e0b" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>clover_main_1_3_core (Lanes: 0, Elev: 11.0m)</title>
+  </path>
+  <path d="M 82.8 -4.3 C 73.4 -4.3, 64.4 -4.3, 55.9 -4.3" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M 122.8 6.1 C 142.2 7.6, 160.4 9.6, 184.0 9.6" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
+  <path id="clover_main_3_1_lead2_span_2" d="M 122.8 6.1 C 142.2 7.6, 160.4 9.6, 184.0 9.6" fill="none" stroke="#f59e0b" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>clover_main_3_1_lead2_span_2 (Lanes: 0, Elev: 17.5m)</title>
+  </path>
+  <path d="M 122.8 6.1 C 142.2 7.6, 160.4 9.6, 184.0 9.6" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M 99.3 4.6 C 107.6 5.0, 115.3 5.5, 122.8 6.1" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
+  <path id="clover_main_3_1_lead2_span_1" d="M 99.3 4.6 C 107.6 5.0, 115.3 5.5, 122.8 6.1" fill="none" stroke="#f59e0b" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>clover_main_3_1_lead2_span_1 (Lanes: 0, Elev: 11.4m)</title>
+  </path>
+  <path d="M 99.3 4.6 C 107.6 5.0, 115.3 5.5, 122.8 6.1" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M -122.8 -6.1 C -142.2 -7.6, -160.4 -9.6, -184.0 -9.6" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
+  <path id="clover_main_1_3_lead2_span_2" d="M -122.8 -6.1 C -142.2 -7.6, -160.4 -9.6, -184.0 -9.6" fill="none" stroke="#f59e0b" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>clover_main_1_3_lead2_span_2 (Lanes: 0, Elev: 17.5m)</title>
+  </path>
+  <path d="M -122.8 -6.1 C -142.2 -7.6, -160.4 -9.6, -184.0 -9.6" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M -99.3 -4.6 C -107.6 -5.0, -115.3 -5.5, -122.8 -6.1" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
+  <path id="clover_main_1_3_lead2_span_1" d="M -99.3 -4.6 C -107.6 -5.0, -115.3 -5.5, -122.8 -6.1" fill="none" stroke="#f59e0b" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>clover_main_1_3_lead2_span_1 (Lanes: 0, Elev: 11.4m)</title>
+  </path>
+  <path d="M -99.3 -4.6 C -107.6 -5.0, -115.3 -5.5, -122.8 -6.1" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M -82.8 -4.3 C -92.3 -3.3, -98.4 -2.7, -107.9 -1.7" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
+  <path id="clover_loop_q1_0" d="M -82.8 -4.3 C -92.3 -3.3, -98.4 -2.7, -107.9 -1.7" fill="none" stroke="#f59e0b" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>clover_loop_q1_0 (Lanes: 0, Elev: 9.9m)</title>
+  </path>
+  <path d="M -82.8 -4.3 C -92.3 -3.3, -98.4 -2.7, -107.9 -1.7" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M 82.8 4.3 C 92.3 3.3, 98.4 2.7, 107.9 1.7" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
+  <path id="clover_loop_q3_0" d="M 82.8 4.3 C 92.3 3.3, 98.4 2.7, 107.9 1.7" fill="none" stroke="#f59e0b" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>clover_loop_q3_0 (Lanes: 0, Elev: 9.9m)</title>
+  </path>
+  <path d="M 82.8 4.3 C 92.3 3.3, 98.4 2.7, 107.9 1.7" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M 184.0 -9.6 C 162.7 -9.6, 145.8 -8.0, 128.4 -6.5" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
+  <path id="clover_main_1_3_lead1" d="M 184.0 -9.6 C 162.7 -9.6, 145.8 -8.0, 128.4 -6.5" fill="none" stroke="#f59e0b" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>clover_main_1_3_lead1 (Lanes: 0, Elev: 17.3m)</title>
+  </path>
+  <path d="M 184.0 -9.6 C 162.7 -9.6, 145.8 -8.0, 128.4 -6.5" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M 128.4 -6.5 C 118.3 -5.7, 108.0 -4.9, 96.6 -4.5" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
+  <path id="clover_main_1_3_lead1_span_1" d="M 128.4 -6.5 C 118.3 -5.7, 108.0 -4.9, 96.6 -4.5" fill="none" stroke="#f59e0b" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>clover_main_1_3_lead1_span_1 (Lanes: 0, Elev: 11.7m)</title>
+  </path>
+  <path d="M 128.4 -6.5 C 118.3 -5.7, 108.0 -4.9, 96.6 -4.5" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M -128.4 6.5 C -118.3 5.7, -108.0 4.9, -96.6 4.5" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
+  <path id="clover_main_3_1_lead1_span_1" d="M -128.4 6.5 C -118.3 5.7, -108.0 4.9, -96.6 4.5" fill="none" stroke="#f59e0b" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>clover_main_3_1_lead1_span_1 (Lanes: 0, Elev: 11.7m)</title>
+  </path>
+  <path d="M -128.4 6.5 C -118.3 5.7, -108.0 4.9, -96.6 4.5" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M -184.0 9.6 C -162.7 9.6, -145.8 8.0, -128.4 6.5" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
+  <path id="clover_main_3_1_lead1" d="M -184.0 9.6 C -162.7 9.6, -145.8 8.0, -128.4 6.5" fill="none" stroke="#f59e0b" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>clover_main_3_1_lead1 (Lanes: 0, Elev: 17.3m)</title>
+  </path>
+  <path d="M -184.0 9.6 C -162.7 9.6, -145.8 8.0, -128.4 6.5" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M -45.8 -4.3 C -57.4 -4.3, -69.6 -4.3, -82.8 -4.3" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
+  <path id="clover_main_1_3_core_span_4" d="M -45.8 -4.3 C -57.4 -4.3, -69.6 -4.3, -82.8 -4.3" fill="none" stroke="#f59e0b" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>clover_main_1_3_core_span_4 (Lanes: 0, Elev: 12.0m)</title>
+  </path>
+  <path d="M -45.8 -4.3 C -57.4 -4.3, -69.6 -4.3, -82.8 -4.3" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M 144.6 2.2 C 149.0 3.3, 153.4 4.4, 157.9 5.3" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
+  <path id="clover_cd_3_dep_span_2" d="M 144.6 2.2 C 149.0 3.3, 153.4 4.4, 157.9 5.3" fill="none" stroke="#f59e0b" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>clover_cd_3_dep_span_2 (Lanes: 0, Elev: 14.0m)</title>
+  </path>
+  <path d="M 144.6 2.2 C 149.0 3.3, 153.4 4.4, 157.9 5.3" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M -144.6 -2.2 C -149.0 -3.3, -153.4 -4.4, -157.9 -5.3" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
+  <path id="clover_cd_1_dep_span_2" d="M -144.6 -2.2 C -149.0 -3.3, -153.4 -4.4, -157.9 -5.3" fill="none" stroke="#f59e0b" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>clover_cd_1_dep_span_2 (Lanes: 0, Elev: 14.0m)</title>
+  </path>
+  <path d="M -144.6 -2.2 C -149.0 -3.3, -153.4 -4.4, -157.9 -5.3" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M 55.9 -4.3 C 48.6 -4.3, 41.6 -4.3, 34.8 -4.3" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
+  <path id="clover_main_1_3_core_span_1" d="M 55.9 -4.3 C 48.6 -4.3, 41.6 -4.3, 34.8 -4.3" fill="none" stroke="#f59e0b" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>clover_main_1_3_core_span_1 (Lanes: 0, Elev: 15.2m)</title>
+  </path>
+  <path d="M 55.9 -4.3 C 48.6 -4.3, 41.6 -4.3, 34.8 -4.3" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M 28.5 -97.4 C 30.5 -109.9, 37.2 -120.5, 46.4 -127.8" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
+  <path id="clover_loop_q0_1" d="M 28.5 -97.4 C 30.5 -109.9, 37.2 -120.5, 46.4 -127.8" fill="none" stroke="#f59e0b" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>clover_loop_q0_1 (Lanes: 0, Elev: 12.7m)</title>
+  </path>
+  <path d="M 28.5 -97.4 C 30.5 -109.9, 37.2 -120.5, 46.4 -127.8" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M -28.5 97.4 C -30.5 109.9, -37.2 120.5, -46.4 127.8" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
+  <path id="clover_loop_q2_1" d="M -28.5 97.4 C -30.5 109.9, -37.2 120.5, -46.4 127.8" fill="none" stroke="#f59e0b" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>clover_loop_q2_1 (Lanes: 0, Elev: 12.7m)</title>
+  </path>
+  <path d="M -28.5 97.4 C -30.5 109.9, -37.2 120.5, -46.4 127.8" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M 34.8 -4.3 C 13.3 -4.3, -6.5 -4.3, -27.6 -4.3" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
+  <path id="clover_main_1_3_core_span_2" d="M 34.8 -4.3 C 13.3 -4.3, -6.5 -4.3, -27.6 -4.3" fill="none" stroke="#ec4899" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>clover_main_1_3_core_span_2 (Lanes: 0, Elev: 18.7m)</title>
+  </path>
+  <path d="M 34.8 -4.3 C 13.3 -4.3, -6.5 -4.3, -27.6 -4.3" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M -27.6 -4.3 C -33.5 -4.3, -39.6 -4.3, -45.8 -4.3" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
+  <path id="clover_main_1_3_core_span_3" d="M -27.6 -4.3 C -33.5 -4.3, -39.6 -4.3, -45.8 -4.3" fill="none" stroke="#f59e0b" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>clover_main_1_3_core_span_3 (Lanes: 0, Elev: 16.4m)</title>
+  </path>
+  <path d="M -27.6 -4.3 C -33.5 -4.3, -39.6 -4.3, -45.8 -4.3" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M -136.3 -0.2 C -139.0 -0.9, -141.8 -1.6, -144.6 -2.2" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
+  <path id="clover_cd_1_dep_span_1" d="M -136.3 -0.2 C -139.0 -0.9, -141.8 -1.6, -144.6 -2.2" fill="none" stroke="#f59e0b" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>clover_cd_1_dep_span_1 (Lanes: 0, Elev: 16.7m)</title>
+  </path>
+  <path d="M -136.3 -0.2 C -139.0 -0.9, -141.8 -1.6, -144.6 -2.2" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M 136.3 0.2 C 139.0 0.9, 141.8 1.6, 144.6 2.2" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
+  <path id="clover_cd_3_dep_span_1" d="M 136.3 0.2 C 139.0 0.9, 141.8 1.6, 144.6 2.2" fill="none" stroke="#f59e0b" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>clover_cd_3_dep_span_1 (Lanes: 0, Elev: 16.7m)</title>
+  </path>
+  <path d="M 136.3 0.2 C 139.0 0.9, 141.8 1.6, 144.6 2.2" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M -82.8 4.3 C -65.2 4.3, -49.4 4.3, -34.4 4.3" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
+  <path id="clover_main_3_1_core" d="M -82.8 4.3 C -65.2 4.3, -49.4 4.3, -34.4 4.3" fill="none" stroke="#f59e0b" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>clover_main_3_1_core (Lanes: 0, Elev: 14.0m)</title>
+  </path>
+  <path d="M -82.8 4.3 C -65.2 4.3, -49.4 4.3, -34.4 4.3" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M 33.6 4.3 C 42.4 4.3, 51.5 4.3, 61.1 4.3" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
+  <path id="clover_main_3_1_core_span_3" d="M 33.6 4.3 C 42.4 4.3, 51.5 4.3, 61.1 4.3" fill="none" stroke="#f59e0b" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>clover_main_3_1_core_span_3 (Lanes: 0, Elev: 16.0m)</title>
+  </path>
+  <path d="M 33.6 4.3 C 42.4 4.3, 51.5 4.3, 61.1 4.3" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M -172.0 9.6 C -152.9 9.6, -138.2 4.3, -123.0 -0.4" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
+  <path id="clover_cd_3_app" d="M -172.0 9.6 C -152.9 9.6, -138.2 4.3, -123.0 -0.4" fill="none" stroke="#f59e0b" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>clover_cd_3_app (Lanes: 0, Elev: 11.4m)</title>
+  </path>
+  <path d="M -172.0 9.6 C -152.9 9.6, -138.2 4.3, -123.0 -0.4" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M 172.0 -9.6 C 152.9 -9.6, 138.2 -4.3, 123.0 0.4" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
+  <path id="clover_cd_1_app" d="M 172.0 -9.6 C 152.9 -9.6, 138.2 -4.3, 123.0 0.4" fill="none" stroke="#f59e0b" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>clover_cd_1_app (Lanes: 0, Elev: 11.4m)</title>
+  </path>
+  <path d="M 172.0 -9.6 C 152.9 -9.6, 138.2 -4.3, 123.0 0.4" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M -46.4 127.8 C -52.2 132.2, -58.9 135.4, -66.2 136.9" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
+  <path id="clover_loop_q2_1_span_1" d="M -46.4 127.8 C -52.2 132.2, -58.9 135.4, -66.2 136.9" fill="none" stroke="#ec4899" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>clover_loop_q2_1_span_1 (Lanes: 0, Elev: 18.1m)</title>
+  </path>
+  <path d="M -46.4 127.8 C -52.2 132.2, -58.9 135.4, -66.2 136.9" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M 46.4 -127.8 C 52.2 -132.2, 58.9 -135.4, 66.2 -136.9" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
+  <path id="clover_loop_q0_1_span_1" d="M 46.4 -127.8 C 52.2 -132.2, 58.9 -135.4, 66.2 -136.9" fill="none" stroke="#ec4899" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>clover_loop_q0_1_span_1 (Lanes: 0, Elev: 18.1m)</title>
+  </path>
+  <path d="M 46.4 -127.8 C 52.2 -132.2, 58.9 -135.4, 66.2 -136.9" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M 70.9 -42.2 C 60.1 -43.3, 78.8 -22.4, 84.5 -11.1" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
+  <path id="clover_loop_q0_4" d="M 70.9 -42.2 C 60.1 -43.3, 78.8 -22.4, 84.5 -11.1" fill="none" stroke="#f59e0b" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>clover_loop_q0_4 (Lanes: 0, Elev: 15.1m)</title>
+  </path>
+  <path d="M 70.9 -42.2 C 60.1 -43.3, 78.8 -22.4, 84.5 -11.1" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M -70.9 42.2 C -60.1 43.3, -78.8 22.4, -84.5 11.1" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
+  <path id="clover_loop_q2_4" d="M -70.9 42.2 C -60.1 43.3, -78.8 22.4, -84.5 11.1" fill="none" stroke="#f59e0b" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>clover_loop_q2_4 (Lanes: 0, Elev: 15.1m)</title>
+  </path>
+  <path d="M -70.9 42.2 C -60.1 43.3, -78.8 22.4, -84.5 11.1" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M -66.2 136.9 C -71.5 138.0, -77.0 138.2, -82.6 137.4" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
+  <path id="clover_loop_q2_1_span_2" d="M -66.2 136.9 C -71.5 138.0, -77.0 138.2, -82.6 137.4" fill="none" stroke="#ec4899" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>clover_loop_q2_1_span_2 (Lanes: 0, Elev: 19.0m)</title>
+  </path>
+  <path d="M -66.2 136.9 C -71.5 138.0, -77.0 138.2, -82.6 137.4" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M 119.7 -109.8 C 123.2 -102.0, 124.7 -93.2, 123.6 -84.1" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
+  <path id="clover_loop_q0_2_span_1" d="M 119.7 -109.8 C 123.2 -102.0, 124.7 -93.2, 123.6 -84.1" fill="none" stroke="#ec4899" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>clover_loop_q0_2_span_1 (Lanes: 0, Elev: 19.0m)</title>
+  </path>
+  <path d="M 119.7 -109.8 C 123.2 -102.0, 124.7 -93.2, 123.6 -84.1" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M 82.6 -137.4 C 99.5 -135.1, 113.1 -124.2, 119.7 -109.8" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
+  <path id="clover_loop_q0_2" d="M 82.6 -137.4 C 99.5 -135.1, 113.1 -124.2, 119.7 -109.8" fill="none" stroke="#ec4899" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>clover_loop_q0_2 (Lanes: 0, Elev: 19.0m)</title>
+  </path>
+  <path d="M 82.6 -137.4 C 99.5 -135.1, 113.1 -124.2, 119.7 -109.8" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M -119.7 109.8 C -123.2 102.0, -124.7 93.2, -123.6 84.1" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
+  <path id="clover_loop_q2_2_span_1" d="M -119.7 109.8 C -123.2 102.0, -124.7 93.2, -123.6 84.1" fill="none" stroke="#ec4899" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>clover_loop_q2_2_span_1 (Lanes: 0, Elev: 19.0m)</title>
+  </path>
+  <path d="M -119.7 109.8 C -123.2 102.0, -124.7 93.2, -123.6 84.1" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M 66.2 -136.9 C 71.5 -138.0, 77.0 -138.2, 82.6 -137.4" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
+  <path id="clover_loop_q0_1_span_2" d="M 66.2 -136.9 C 71.5 -138.0, 77.0 -138.2, 82.6 -137.4" fill="none" stroke="#ec4899" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>clover_loop_q0_1_span_2 (Lanes: 0, Elev: 19.0m)</title>
+  </path>
+  <path d="M 66.2 -136.9 C 71.5 -138.0, 77.0 -138.2, 82.6 -137.4" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M -82.6 137.4 C -99.5 135.1, -113.1 124.2, -119.7 109.8" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
+  <path id="clover_loop_q2_2" d="M -82.6 137.4 C -99.5 135.1, -113.1 124.2, -119.7 109.8" fill="none" stroke="#ec4899" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>clover_loop_q2_2 (Lanes: 0, Elev: 19.0m)</title>
+  </path>
+  <path d="M -82.6 137.4 C -99.5 135.1, -113.1 124.2, -119.7 109.8" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M -116.5 64.3 C -107.1 49.3, -89.7 40.2, -70.9 42.2" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
+  <path id="clover_loop_q2_3_span_1" d="M -116.5 64.3 C -107.1 49.3, -89.7 40.2, -70.9 42.2" fill="none" stroke="#ec4899" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>clover_loop_q2_3_span_1 (Lanes: 0, Elev: 19.8m)</title>
+  </path>
+  <path d="M -116.5 64.3 C -107.1 49.3, -89.7 40.2, -70.9 42.2" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M -123.6 84.1 C -122.7 76.8, -120.2 70.1, -116.5 64.3" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
+  <path id="clover_loop_q2_3" d="M -123.6 84.1 C -122.7 76.8, -120.2 70.1, -116.5 64.3" fill="none" stroke="#ec4899" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>clover_loop_q2_3 (Lanes: 0, Elev: 19.1m)</title>
+  </path>
+  <path d="M -123.6 84.1 C -122.7 76.8, -120.2 70.1, -116.5 64.3" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M 123.6 -84.1 C 122.7 -76.8, 120.2 -70.1, 116.5 -64.3" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
+  <path id="clover_loop_q0_3" d="M 123.6 -84.1 C 122.7 -76.8, 120.2 -70.1, 116.5 -64.3" fill="none" stroke="#ec4899" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>clover_loop_q0_3 (Lanes: 0, Elev: 19.1m)</title>
+  </path>
+  <path d="M 123.6 -84.1 C 122.7 -76.8, 120.2 -70.1, 116.5 -64.3" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M 116.5 -64.3 C 107.1 -49.3, 89.7 -40.2, 70.9 -42.2" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
+  <path id="clover_loop_q0_3_span_1" d="M 116.5 -64.3 C 107.1 -49.3, 89.7 -40.2, 70.9 -42.2" fill="none" stroke="#ec4899" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>clover_loop_q0_3_span_1 (Lanes: 0, Elev: 19.8m)</title>
+  </path>
+  <path d="M 116.5 -64.3 C 107.1 -49.3, 89.7 -40.2, 70.9 -42.2" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M 18.3 4.3 C 23.3 4.3, 28.4 4.3, 33.6 4.3" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
+  <path id="clover_main_3_1_core_span_2" d="M 18.3 4.3 C 23.3 4.3, 28.4 4.3, 33.6 4.3" fill="none" stroke="#ec4899" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>clover_main_3_1_core_span_2 (Lanes: 0, Elev: 19.0m)</title>
+  </path>
+  <path d="M 18.3 4.3 C 23.3 4.3, 28.4 4.3, 33.6 4.3" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M -34.4 4.3 C -16.2 4.3, 0.7 4.3, 18.3 4.3" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
+  <path id="clover_main_3_1_core_span_1" d="M -34.4 4.3 C -16.2 4.3, 0.7 4.3, 18.3 4.3" fill="none" stroke="#ec4899" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>clover_main_3_1_core_span_1 (Lanes: 0, Elev: 20.2m)</title>
+  </path>
+  <path d="M -34.4 4.3 C -16.2 4.3, 0.7 4.3, 18.3 4.3" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M 53.7 33.5 C 37.8 45.3, 13.3 67.7, -2.6 79.7" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
+  <path id="clover_loop_q3_4_span_2" d="M 53.7 33.5 C 37.8 45.3, 13.3 67.7, -2.6 79.7" fill="none" stroke="#f59e0b" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>clover_loop_q3_4_span_2 (Lanes: 0, Elev: 14.3m)</title>
+  </path>
+  <path d="M 53.7 33.5 C 37.8 45.3, 13.3 67.7, -2.6 79.7" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M -53.7 -33.5 C -37.8 -45.3, -13.3 -67.7, 2.6 -79.7" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
+  <path id="clover_loop_q1_4_span_2" d="M -53.7 -33.5 C -37.8 -45.3, -13.3 -67.7, 2.6 -79.7" fill="none" stroke="#f59e0b" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>clover_loop_q1_4_span_2 (Lanes: 0, Elev: 14.3m)</title>
+  </path>
+  <path d="M -53.7 -33.5 C -37.8 -45.3, -13.3 -67.7, 2.6 -79.7" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M 123.0 0.4 C 114.2 3.2, 105.2 5.7, 95.1 6.9" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
+  <path id="clover_cd_1_app_span_1" d="M 123.0 0.4 C 114.2 3.2, 105.2 5.7, 95.1 6.9" fill="none" stroke="#ec4899" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>clover_cd_1_app_span_1 (Lanes: 0, Elev: 22.4m)</title>
+  </path>
+  <path d="M 123.0 0.4 C 114.2 3.2, 105.2 5.7, 95.1 6.9" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M -123.0 -0.4 C -114.2 -3.2, -105.2 -5.7, -95.1 -6.9" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
+  <path id="clover_cd_3_app_span_1" d="M -123.0 -0.4 C -114.2 -3.2, -105.2 -5.7, -95.1 -6.9" fill="none" stroke="#ec4899" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>clover_cd_3_app_span_1 (Lanes: 0, Elev: 22.4m)</title>
+  </path>
+  <path d="M -123.0 -0.4 C -114.2 -3.2, -105.2 -5.7, -95.1 -6.9" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M -28.0 -7.7 C -8.1 -7.7, 10.6 -7.7, 30.6 -7.7" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
+  <path id="clover_cd_3_mid_span_2" d="M -28.0 -7.7 C -8.1 -7.7, 10.6 -7.7, 30.6 -7.7" fill="none" stroke="#ec4899" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>clover_cd_3_mid_span_2 (Lanes: 0, Elev: 25.9m)</title>
+  </path>
+  <path d="M -28.0 -7.7 C -8.1 -7.7, 10.6 -7.7, 30.6 -7.7" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M -50.2 7.7 C -60.5 7.7, -71.3 7.7, -82.8 7.7" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
+  <path id="clover_cd_1_mid_span_4" d="M -50.2 7.7 C -60.5 7.7, -71.3 7.7, -82.8 7.7" fill="none" stroke="#ec4899" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>clover_cd_1_mid_span_4 (Lanes: 0, Elev: 25.9m)</title>
+  </path>
+  <path d="M -50.2 7.7 C -60.5 7.7, -71.3 7.7, -82.8 7.7" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M 95.1 6.9 C 91.2 7.4, 87.1 7.7, 82.8 7.7" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
+  <path id="clover_cd_1_app_span_2" d="M 95.1 6.9 C 91.2 7.4, 87.1 7.7, 82.8 7.7" fill="none" stroke="#ec4899" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>clover_cd_1_app_span_2 (Lanes: 0, Elev: 25.7m)</title>
+  </path>
+  <path d="M 95.1 6.9 C 91.2 7.4, 87.1 7.7, 82.8 7.7" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M 82.8 7.7 C 65.2 7.7, 49.4 7.7, 34.4 7.7" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
+  <path id="clover_cd_1_mid" d="M 82.8 7.7 C 65.2 7.7, 49.4 7.7, 34.4 7.7" fill="none" stroke="#ec4899" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>clover_cd_1_mid (Lanes: 0, Elev: 25.9m)</title>
+  </path>
+  <path d="M 82.8 7.7 C 65.2 7.7, 49.4 7.7, 34.4 7.7" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M 17.3 7.7 C 2.0 7.7, -12.9 7.7, -28.6 7.7" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
+  <path id="clover_cd_1_mid_span_2" d="M 17.3 7.7 C 2.0 7.7, -12.9 7.7, -28.6 7.7" fill="none" stroke="#ec4899" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>clover_cd_1_mid_span_2 (Lanes: 0, Elev: 25.9m)</title>
+  </path>
+  <path d="M 17.3 7.7 C 2.0 7.7, -12.9 7.7, -28.6 7.7" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M -28.6 7.7 C -35.6 7.7, -42.8 7.7, -50.2 7.7" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
+  <path id="clover_cd_1_mid_span_3" d="M -28.6 7.7 C -35.6 7.7, -42.8 7.7, -50.2 7.7" fill="none" stroke="#ec4899" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>clover_cd_1_mid_span_3 (Lanes: 0, Elev: 25.9m)</title>
+  </path>
+  <path d="M -28.6 7.7 C -35.6 7.7, -42.8 7.7, -50.2 7.7" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M -82.8 7.7 C -103.3 7.7, -119.9 3.9, -136.3 -0.2" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
+  <path id="clover_cd_1_dep" d="M -82.8 7.7 C -103.3 7.7, -119.9 3.9, -136.3 -0.2" fill="none" stroke="#ec4899" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>clover_cd_1_dep (Lanes: 0, Elev: 23.4m)</title>
+  </path>
+  <path d="M -82.8 7.7 C -103.3 7.7, -119.9 3.9, -136.3 -0.2" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M -95.1 -6.9 C -91.2 -7.4, -87.1 -7.7, -82.8 -7.7" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
+  <path id="clover_cd_3_app_span_2" d="M -95.1 -6.9 C -91.2 -7.4, -87.1 -7.7, -82.8 -7.7" fill="none" stroke="#ec4899" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>clover_cd_3_app_span_2 (Lanes: 0, Elev: 25.7m)</title>
+  </path>
+  <path d="M -95.1 -6.9 C -91.2 -7.4, -87.1 -7.7, -82.8 -7.7" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M -82.8 -7.7 C -70.2 -7.7, -58.6 -7.7, -47.5 -7.7" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
+  <path id="clover_cd_3_mid" d="M -82.8 -7.7 C -70.2 -7.7, -58.6 -7.7, -47.5 -7.7" fill="none" stroke="#ec4899" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>clover_cd_3_mid (Lanes: 0, Elev: 25.9m)</title>
+  </path>
+  <path d="M -82.8 -7.7 C -70.2 -7.7, -58.6 -7.7, -47.5 -7.7" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M -47.5 -7.7 C -40.8 -7.7, -34.3 -7.7, -28.0 -7.7" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
+  <path id="clover_cd_3_mid_span_1" d="M -47.5 -7.7 C -40.8 -7.7, -34.3 -7.7, -28.0 -7.7" fill="none" stroke="#ec4899" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>clover_cd_3_mid_span_1 (Lanes: 0, Elev: 25.9m)</title>
+  </path>
+  <path d="M -47.5 -7.7 C -40.8 -7.7, -34.3 -7.7, -28.0 -7.7" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M 30.6 -7.7 C 38.6 -7.7, 46.9 -7.7, 55.6 -7.7" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
+  <path id="clover_cd_3_mid_span_3" d="M 30.6 -7.7 C 38.6 -7.7, 46.9 -7.7, 55.6 -7.7" fill="none" stroke="#ec4899" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>clover_cd_3_mid_span_3 (Lanes: 0, Elev: 25.9m)</title>
+  </path>
+  <path d="M 30.6 -7.7 C 38.6 -7.7, 46.9 -7.7, 55.6 -7.7" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M 55.6 -7.7 C 64.2 -7.7, 73.2 -7.7, 82.8 -7.7" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
+  <path id="clover_cd_3_mid_span_4" d="M 55.6 -7.7 C 64.2 -7.7, 73.2 -7.7, 82.8 -7.7" fill="none" stroke="#ec4899" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>clover_cd_3_mid_span_4 (Lanes: 0, Elev: 25.9m)</title>
+  </path>
+  <path d="M 55.6 -7.7 C 64.2 -7.7, 73.2 -7.7, 82.8 -7.7" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M 34.4 7.7 C 28.6 7.7, 22.9 7.7, 17.3 7.7" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
+  <path id="clover_cd_1_mid_span_1" d="M 34.4 7.7 C 28.6 7.7, 22.9 7.7, 17.3 7.7" fill="none" stroke="#ec4899" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>clover_cd_1_mid_span_1 (Lanes: 0, Elev: 25.9m)</title>
+  </path>
+  <path d="M 34.4 7.7 C 28.6 7.7, 22.9 7.7, 17.3 7.7" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M 82.8 -7.7 C 103.3 -7.7, 119.9 -3.9, 136.3 0.2" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
+  <path id="clover_cd_3_dep" d="M 82.8 -7.7 C 103.3 -7.7, 119.9 -3.9, 136.3 0.2" fill="none" stroke="#ec4899" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>clover_cd_3_dep (Lanes: 0, Elev: 23.4m)</title>
+  </path>
+  <path d="M 82.8 -7.7 C 103.3 -7.7, 119.9 -3.9, 136.3 0.2" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M -107.9 -1.7 C -124.1 0.0, -139.1 -6.5, -148.9 -17.7" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
+  <path id="clover_loop_q1_1" d="M -107.9 -1.7 C -124.1 0.0, -139.1 -6.5, -148.9 -17.7" fill="none" stroke="#ec4899" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>clover_loop_q1_1 (Lanes: 0, Elev: 21.9m)</title>
+  </path>
+  <path d="M -107.9 -1.7 C -124.1 0.0, -139.1 -6.5, -148.9 -17.7" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M 107.9 1.7 C 124.1 -0.0, 139.1 6.5, 148.9 17.7" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
+  <path id="clover_loop_q3_1" d="M 107.9 1.7 C 124.1 -0.0, 139.1 6.5, 148.9 17.7" fill="none" stroke="#ec4899" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>clover_loop_q3_1 (Lanes: 0, Elev: 21.9m)</title>
+  </path>
+  <path d="M 107.9 1.7 C 124.1 -0.0, 139.1 6.5, 148.9 17.7" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M -65.3 -26.2 C -62.5 -27.3, -58.5 -29.9, -53.7 -33.5" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
+  <path id="clover_loop_q1_4_span_1" d="M -65.3 -26.2 C -62.5 -27.3, -58.5 -29.9, -53.7 -33.5" fill="none" stroke="#ec4899" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>clover_loop_q1_4_span_1 (Lanes: 0, Elev: 24.6m)</title>
+  </path>
+  <path d="M -65.3 -26.2 C -62.5 -27.3, -58.5 -29.9, -53.7 -33.5" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M 65.3 26.2 C 62.5 27.3, 58.5 29.9, 53.7 33.5" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
+  <path id="clover_loop_q3_4_span_1" d="M 65.3 26.2 C 62.5 27.3, 58.5 29.9, 53.7 33.5" fill="none" stroke="#ec4899" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>clover_loop_q3_4_span_1 (Lanes: 0, Elev: 24.6m)</title>
+  </path>
+  <path d="M 65.3 26.2 C 62.5 27.3, 58.5 29.9, 53.7 33.5" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M -148.9 -17.7 C -152.3 -21.5, -155.0 -25.8, -157.1 -30.5" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
+  <path id="clover_loop_q1_1_span_1" d="M -148.9 -17.7 C -152.3 -21.5, -155.0 -25.8, -157.1 -30.5" fill="none" stroke="#ec4899" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>clover_loop_q1_1_span_1 (Lanes: 0, Elev: 27.2m)</title>
+  </path>
+  <path d="M -148.9 -17.7 C -152.3 -21.5, -155.0 -25.8, -157.1 -30.5" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M 148.9 17.7 C 152.3 21.5, 155.0 25.8, 157.1 30.5" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
+  <path id="clover_loop_q3_1_span_1" d="M 148.9 17.7 C 152.3 21.5, 155.0 25.8, 157.1 30.5" fill="none" stroke="#ec4899" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>clover_loop_q3_1_span_1 (Lanes: 0, Elev: 27.2m)</title>
+  </path>
+  <path d="M 148.9 17.7 C 152.3 21.5, 155.0 25.8, 157.1 30.5" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M -127.1 -95.3 C -119.6 -97.6, -111.3 -98.2, -102.9 -96.4" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
+  <path id="clover_loop_q1_2_span_2" d="M -127.1 -95.3 C -119.6 -97.6, -111.3 -98.2, -102.9 -96.4" fill="none" stroke="#ec4899" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>clover_loop_q1_2_span_2 (Lanes: 0, Elev: 28.5m)</title>
+  </path>
+  <path d="M -127.1 -95.3 C -119.6 -97.6, -111.3 -98.2, -102.9 -96.4" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M -138.6 -90.0 C -135.0 -92.2, -131.2 -94.0, -127.1 -95.3" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
+  <path id="clover_loop_q1_2_span_1" d="M -138.6 -90.0 C -135.0 -92.2, -131.2 -94.0, -127.1 -95.3" fill="none" stroke="#ec4899" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>clover_loop_q1_2_span_1 (Lanes: 0, Elev: 28.5m)</title>
+  </path>
+  <path d="M -138.6 -90.0 C -135.0 -92.2, -131.2 -94.0, -127.1 -95.3" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M -160.8 -51.9 C -160.0 -68.2, -151.2 -82.0, -138.6 -90.0" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
+  <path id="clover_loop_q1_2" d="M -160.8 -51.9 C -160.0 -68.2, -151.2 -82.0, -138.6 -90.0" fill="none" stroke="#ec4899" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>clover_loop_q1_2 (Lanes: 0, Elev: 28.5m)</title>
+  </path>
+  <path d="M -160.8 -51.9 C -160.0 -68.2, -151.2 -82.0, -138.6 -90.0" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M -90.8 -92.1 C -84.9 -89.0, -79.8 -84.8, -75.8 -79.8" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
+  <path id="clover_loop_q1_3_span_1" d="M -90.8 -92.1 C -84.9 -89.0, -79.8 -84.8, -75.8 -79.8" fill="none" stroke="#ec4899" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>clover_loop_q1_3_span_1 (Lanes: 0, Elev: 28.5m)</title>
+  </path>
+  <path d="M -90.8 -92.1 C -84.9 -89.0, -79.8 -84.8, -75.8 -79.8" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M -75.8 -79.8 C -65.3 -67.0, -61.6 -49.1, -68.1 -32.2" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
+  <path id="clover_loop_q1_3_span_2" d="M -75.8 -79.8 C -65.3 -67.0, -61.6 -49.1, -68.1 -32.2" fill="none" stroke="#ec4899" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>clover_loop_q1_3_span_2 (Lanes: 0, Elev: 28.5m)</title>
+  </path>
+  <path d="M -75.8 -79.8 C -65.3 -67.0, -61.6 -49.1, -68.1 -32.2" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M 157.1 30.5 C 159.8 37.0, 161.2 44.3, 160.8 51.9" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
+  <path id="clover_loop_q3_1_span_2" d="M 157.1 30.5 C 159.8 37.0, 161.2 44.3, 160.8 51.9" fill="none" stroke="#ec4899" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>clover_loop_q3_1_span_2 (Lanes: 0, Elev: 28.3m)</title>
+  </path>
+  <path d="M 157.1 30.5 C 159.8 37.0, 161.2 44.3, 160.8 51.9" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M 160.8 51.9 C 160.0 68.2, 151.2 82.0, 138.6 90.0" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
+  <path id="clover_loop_q3_2" d="M 160.8 51.9 C 160.0 68.2, 151.2 82.0, 138.6 90.0" fill="none" stroke="#ec4899" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>clover_loop_q3_2 (Lanes: 0, Elev: 28.5m)</title>
+  </path>
+  <path d="M 160.8 51.9 C 160.0 68.2, 151.2 82.0, 138.6 90.0" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M 138.6 90.0 C 135.0 92.2, 131.2 94.0, 127.1 95.3" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
+  <path id="clover_loop_q3_2_span_1" d="M 138.6 90.0 C 135.0 92.2, 131.2 94.0, 127.1 95.3" fill="none" stroke="#ec4899" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>clover_loop_q3_2_span_1 (Lanes: 0, Elev: 28.5m)</title>
+  </path>
+  <path d="M 138.6 90.0 C 135.0 92.2, 131.2 94.0, 127.1 95.3" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M 127.1 95.3 C 119.6 97.6, 111.3 98.2, 102.9 96.4" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
+  <path id="clover_loop_q3_2_span_2" d="M 127.1 95.3 C 119.6 97.6, 111.3 98.2, 102.9 96.4" fill="none" stroke="#ec4899" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>clover_loop_q3_2_span_2 (Lanes: 0, Elev: 28.5m)</title>
+  </path>
+  <path d="M 127.1 95.3 C 119.6 97.6, 111.3 98.2, 102.9 96.4" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M 102.9 96.4 C 98.6 95.5, 94.5 94.0, 90.8 92.1" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
+  <path id="clover_loop_q3_3" d="M 102.9 96.4 C 98.6 95.5, 94.5 94.0, 90.8 92.1" fill="none" stroke="#ec4899" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>clover_loop_q3_3 (Lanes: 0, Elev: 28.5m)</title>
+  </path>
+  <path d="M 102.9 96.4 C 98.6 95.5, 94.5 94.0, 90.8 92.1" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M 90.8 92.1 C 84.9 89.0, 79.8 84.8, 75.8 79.8" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
+  <path id="clover_loop_q3_3_span_1" d="M 90.8 92.1 C 84.9 89.0, 79.8 84.8, 75.8 79.8" fill="none" stroke="#ec4899" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>clover_loop_q3_3_span_1 (Lanes: 0, Elev: 28.5m)</title>
+  </path>
+  <path d="M 90.8 92.1 C 84.9 89.0, 79.8 84.8, 75.8 79.8" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M 75.8 79.8 C 65.3 67.0, 61.6 49.1, 68.1 32.2" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
+  <path id="clover_loop_q3_3_span_2" d="M 75.8 79.8 C 65.3 67.0, 61.6 49.1, 68.1 32.2" fill="none" stroke="#ec4899" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>clover_loop_q3_3_span_2 (Lanes: 0, Elev: 28.5m)</title>
+  </path>
+  <path d="M 75.8 79.8 C 65.3 67.0, 61.6 49.1, 68.1 32.2" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M 68.1 32.2 C 70.4 26.3, 69.0 24.8, 65.3 26.2" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
+  <path id="clover_loop_q3_4" d="M 68.1 32.2 C 70.4 26.3, 69.0 24.8, 65.3 26.2" fill="none" stroke="#ec4899" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>clover_loop_q3_4 (Lanes: 0, Elev: 27.9m)</title>
+  </path>
+  <path d="M 68.1 32.2 C 70.4 26.3, 69.0 24.8, 65.3 26.2" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M -68.1 -32.2 C -70.4 -26.3, -69.0 -24.8, -65.3 -26.2" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
+  <path id="clover_loop_q1_4" d="M -68.1 -32.2 C -70.4 -26.3, -69.0 -24.8, -65.3 -26.2" fill="none" stroke="#ec4899" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>clover_loop_q1_4 (Lanes: 0, Elev: 27.9m)</title>
+  </path>
+  <path d="M -68.1 -32.2 C -70.4 -26.3, -69.0 -24.8, -65.3 -26.2" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M -102.9 -96.4 C -98.6 -95.5, -94.5 -94.0, -90.8 -92.1" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
+  <path id="clover_loop_q1_3" d="M -102.9 -96.4 C -98.6 -95.5, -94.5 -94.0, -90.8 -92.1" fill="none" stroke="#ec4899" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>clover_loop_q1_3 (Lanes: 0, Elev: 28.5m)</title>
+  </path>
+  <path d="M -102.9 -96.4 C -98.6 -95.5, -94.5 -94.0, -90.8 -92.1" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M -157.1 -30.5 C -159.8 -37.0, -161.2 -44.3, -160.8 -51.9" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
+  <path id="clover_loop_q1_1_span_2" d="M -157.1 -30.5 C -159.8 -37.0, -161.2 -44.3, -160.8 -51.9" fill="none" stroke="#ec4899" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>clover_loop_q1_1_span_2 (Lanes: 0, Elev: 28.3m)</title>
+  </path>
+  <path d="M -157.1 -30.5 C -159.8 -37.0, -161.2 -44.3, -160.8 -51.9" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <circle cx="14.2" cy="-23.2" r="3.5" fill="#475569" stroke="#cbd5e1" stroke-width="1.5"><title>Pillar at 5.2m</title></circle>
+  <circle cx="-14.2" cy="23.2" r="3.5" fill="#475569" stroke="#cbd5e1" stroke-width="1.5"><title>Pillar at 5.2m</title></circle>
+  <circle cx="-2.9" cy="-18.8" r="3.5" fill="#475569" stroke="#cbd5e1" stroke-width="1.5"><title>Pillar at 7.5m</title></circle>
+  <circle cx="2.9" cy="18.8" r="3.5" fill="#475569" stroke="#cbd5e1" stroke-width="1.5"><title>Pillar at 7.5m</title></circle>
+  <circle cx="23.7" cy="-108.6" r="3.5" fill="#475569" stroke="#cbd5e1" stroke-width="1.5"><title>Pillar at 8.3m</title></circle>
+  <circle cx="-23.7" cy="108.6" r="3.5" fill="#475569" stroke="#cbd5e1" stroke-width="1.5"><title>Pillar at 8.3m</title></circle>
+  <circle cx="151.9" cy="8.4" r="3.5" fill="#475569" stroke="#cbd5e1" stroke-width="1.5"><title>Pillar at 17.5m</title></circle>
+  <circle cx="-151.9" cy="-8.4" r="3.5" fill="#475569" stroke="#cbd5e1" stroke-width="1.5"><title>Pillar at 17.5m</title></circle>
+  <circle cx="154.7" cy="-8.6" r="3.5" fill="#475569" stroke="#cbd5e1" stroke-width="1.5"><title>Pillar at 17.3m</title></circle>
+  <circle cx="-154.7" cy="8.6" r="3.5" fill="#475569" stroke="#cbd5e1" stroke-width="1.5"><title>Pillar at 17.3m</title></circle>
+  <circle cx="3.5" cy="-4.3" r="3.5" fill="#475569" stroke="#cbd5e1" stroke-width="1.5"><title>Pillar at 18.7m</title></circle>
+  <circle cx="-57.6" cy="4.3" r="3.5" fill="#475569" stroke="#cbd5e1" stroke-width="1.5"><title>Pillar at 14.0m</title></circle>
+  <circle cx="-146.0" cy="6.4" r="3.5" fill="#475569" stroke="#cbd5e1" stroke-width="1.5"><title>Pillar at 11.4m</title></circle>
+  <circle cx="146.0" cy="-6.4" r="3.5" fill="#475569" stroke="#cbd5e1" stroke-width="1.5"><title>Pillar at 11.4m</title></circle>
+  <circle cx="105.0" cy="-128.1" r="3.5" fill="#475569" stroke="#cbd5e1" stroke-width="1.5"><title>Pillar at 19.0m</title></circle>
+  <circle cx="-105.0" cy="128.1" r="3.5" fill="#475569" stroke="#cbd5e1" stroke-width="1.5"><title>Pillar at 19.0m</title></circle>
+  <circle cx="-97.2" cy="46.9" r="3.5" fill="#475569" stroke="#cbd5e1" stroke-width="1.5"><title>Pillar at 19.8m</title></circle>
+  <circle cx="97.2" cy="-46.9" r="3.5" fill="#475569" stroke="#cbd5e1" stroke-width="1.5"><title>Pillar at 19.8m</title></circle>
+  <circle cx="-7.8" cy="4.3" r="3.5" fill="#475569" stroke="#cbd5e1" stroke-width="1.5"><title>Pillar at 20.2m</title></circle>
+  <circle cx="25.6" cy="56.5" r="3.5" fill="#475569" stroke="#cbd5e1" stroke-width="1.5"><title>Pillar at 14.3m</title></circle>
+  <circle cx="-25.6" cy="-56.5" r="3.5" fill="#475569" stroke="#cbd5e1" stroke-width="1.5"><title>Pillar at 14.3m</title></circle>
+  <circle cx="1.3" cy="-7.7" r="3.5" fill="#475569" stroke="#cbd5e1" stroke-width="1.5"><title>Pillar at 25.9m</title></circle>
+  <circle cx="57.6" cy="7.7" r="3.5" fill="#475569" stroke="#cbd5e1" stroke-width="1.5"><title>Pillar at 25.9m</title></circle>
+  <circle cx="-5.5" cy="7.7" r="3.5" fill="#475569" stroke="#cbd5e1" stroke-width="1.5"><title>Pillar at 25.9m</title></circle>
+  <circle cx="-111.1" cy="5.3" r="3.5" fill="#475569" stroke="#cbd5e1" stroke-width="1.5"><title>Pillar at 23.4m</title></circle>
+  <circle cx="111.1" cy="-5.3" r="3.5" fill="#475569" stroke="#cbd5e1" stroke-width="1.5"><title>Pillar at 23.4m</title></circle>
+  <circle cx="-130.8" cy="-4.9" r="3.5" fill="#475569" stroke="#cbd5e1" stroke-width="1.5"><title>Pillar at 21.9m</title></circle>
+  <circle cx="130.8" cy="4.9" r="3.5" fill="#475569" stroke="#cbd5e1" stroke-width="1.5"><title>Pillar at 21.9m</title></circle>
+  <circle cx="-154.1" cy="-74.1" r="3.5" fill="#475569" stroke="#cbd5e1" stroke-width="1.5"><title>Pillar at 28.5m</title></circle>
+  <circle cx="-65.6" cy="-57.5" r="3.5" fill="#475569" stroke="#cbd5e1" stroke-width="1.5"><title>Pillar at 28.5m</title></circle>
+  <circle cx="154.1" cy="74.1" r="3.5" fill="#475569" stroke="#cbd5e1" stroke-width="1.5"><title>Pillar at 28.5m</title></circle>
+  <circle cx="65.6" cy="57.5" r="3.5" fill="#475569" stroke="#cbd5e1" stroke-width="1.5"><title>Pillar at 28.5m</title></circle>
+  <g transform="translate(82.8, -4.3)">
+    <circle r="5" fill="#ef4444" stroke="#ffffff" stroke-width="1.5"/>
+    <title>[Error] MaximumGrade: Course 'clover_main_1_3_core' grade 20.3% exceeds maximum allowed 20.0%.</title>
+  </g>
+  <g transform="translate(-82.8, 4.3)">
+    <circle r="5" fill="#ef4444" stroke="#ffffff" stroke-width="1.5"/>
+    <title>[Error] MaximumGrade: Course 'clover_main_3_1_core' grade 20.6% exceeds maximum allowed 20.0%.</title>
+  </g>
+  <g transform="translate(61.1, 4.3)">
+    <circle r="5" fill="#ef4444" stroke="#ffffff" stroke-width="1.5"/>
+    <title>[Error] MaximumGrade: Course 'clover_main_3_1_core_span_4' grade 24.1% exceeds maximum allowed 20.0%.</title>
+  </g>
+  <g transform="translate(172.0, -9.6)">
+    <circle r="5" fill="#ef4444" stroke="#ffffff" stroke-width="1.5"/>
+    <title>[Error] MaximumGrade: Course 'clover_cd_1_app' grade 20.8% exceeds maximum allowed 20.0%.</title>
+  </g>
+  <g transform="translate(123.0, 0.4)">
+    <circle r="5" fill="#ef4444" stroke="#ffffff" stroke-width="1.5"/>
+    <title>[Error] MaximumGrade: Course 'clover_cd_1_app_span_1' grade 23.6% exceeds maximum allowed 20.0%.</title>
+  </g>
+  <g transform="translate(-136.3, -0.2)">
+    <circle r="5" fill="#ef4444" stroke="#ffffff" stroke-width="1.5"/>
+    <title>[Error] MaximumGrade: Course 'clover_cd_1_dep_span_1' grade 24.9% exceeds maximum allowed 20.0%.</title>
+  </g>
+  <g transform="translate(-144.6, -2.2)">
+    <circle r="5" fill="#ef4444" stroke="#ffffff" stroke-width="1.5"/>
+    <title>[Error] MaximumGrade: Course 'clover_cd_1_dep_span_2' grade 23.3% exceeds maximum allowed 20.0%.</title>
+  </g>
+  <g transform="translate(-172.0, 9.6)">
+    <circle r="5" fill="#ef4444" stroke="#ffffff" stroke-width="1.5"/>
+    <title>[Error] MaximumGrade: Course 'clover_cd_3_app' grade 20.8% exceeds maximum allowed 20.0%.</title>
+  </g>
+  <g transform="translate(-123.0, -0.4)">
+    <circle r="5" fill="#ef4444" stroke="#ffffff" stroke-width="1.5"/>
+    <title>[Error] MaximumGrade: Course 'clover_cd_3_app_span_1' grade 23.6% exceeds maximum allowed 20.0%.</title>
+  </g>
+  <g transform="translate(136.3, 0.2)">
+    <circle r="5" fill="#ef4444" stroke="#ffffff" stroke-width="1.5"/>
+    <title>[Error] MaximumGrade: Course 'clover_cd_3_dep_span_1' grade 24.9% exceeds maximum allowed 20.0%.</title>
+  </g>
+  <g transform="translate(144.6, 2.2)">
+    <circle r="5" fill="#ef4444" stroke="#ffffff" stroke-width="1.5"/>
+    <title>[Error] MaximumGrade: Course 'clover_cd_3_dep_span_2' grade 23.3% exceeds maximum allowed 20.0%.</title>
+  </g>
+  <g transform="translate(25.6, -78.9)">
+    <circle r="5" fill="#ef4444" stroke="#ffffff" stroke-width="1.5"/>
+    <title>[Error] MaximumGrade: Course 'clover_loop_q0_0' grade 29.6% exceeds maximum allowed 20.0%.</title>
+  </g>
+  <g transform="translate(28.5, -97.4)">
+    <circle r="5" fill="#ef4444" stroke="#ffffff" stroke-width="1.5"/>
+    <title>[Error] MaximumGrade: Course 'clover_loop_q0_1' grade 31.8% exceeds maximum allowed 20.0%.</title>
+  </g>
+  <g transform="translate(70.9, -42.2)">
+    <circle r="5" fill="#ef4444" stroke="#ffffff" stroke-width="1.5"/>
+    <title>[Error] MaximumGrade: Course 'clover_loop_q0_4' grade 26.6% exceeds maximum allowed 20.0%.</title>
+  </g>
+  <g transform="translate(67.8, -41.0)">
+    <circle r="5" fill="#ef4444" stroke="#ffffff" stroke-width="1.5"/>
+    <title>[Error] MinimumTurningRadius: Course 'clover_loop_q0_4' has sharp turning radius 1.8 m at t=0.17 (limit: 18.0 m).</title>
+  </g>
+  <g transform="translate(84.5, -11.1)">
+    <circle r="5" fill="#ef4444" stroke="#ffffff" stroke-width="1.5"/>
+    <title>[Error] MaximumGrade: Course 'clover_loop_q0_4_span_1' grade 26.3% exceeds maximum allowed 20.0%.</title>
+  </g>
+  <g transform="translate(85.5, -9.1)">
+    <circle r="5" fill="#ef4444" stroke="#ffffff" stroke-width="1.5"/>
+    <title>[Error] MinimumTurningRadius: Course 'clover_loop_q0_4_span_1' has sharp turning radius 16.2 m at t=0.17 (limit: 18.0 m).</title>
+  </g>
+  <g transform="translate(-82.8, -4.3)">
+    <circle r="5" fill="#ef4444" stroke="#ffffff" stroke-width="1.5"/>
+    <title>[Error] MaximumGrade: Course 'clover_loop_q1_0' grade 25.5% exceeds maximum allowed 20.0%.</title>
+  </g>
+  <g transform="translate(-107.9, -1.7)">
+    <circle r="5" fill="#ef4444" stroke="#ffffff" stroke-width="1.5"/>
+    <title>[Error] MaximumGrade: Course 'clover_loop_q1_1' grade 26.9% exceeds maximum allowed 20.0%.</title>
+  </g>
+  <g transform="translate(-68.1, -32.2)">
+    <circle r="5" fill="#ef4444" stroke="#ffffff" stroke-width="1.5"/>
+    <title>[Error] MaximumGrade: Course 'clover_loop_q1_4' grade 33.1% exceeds maximum allowed 20.0%.</title>
+  </g>
+  <g transform="translate(-68.9, -29.6)">
+    <circle r="5" fill="#ef4444" stroke="#ffffff" stroke-width="1.5"/>
+    <title>[Error] MinimumTurningRadius: Course 'clover_loop_q1_4' has sharp turning radius 13.8 m at t=0.17 (limit: 18.0 m).</title>
+  </g>
+  <g transform="translate(-65.3, -26.2)">
+    <circle r="5" fill="#ef4444" stroke="#ffffff" stroke-width="1.5"/>
+    <title>[Error] MaximumGrade: Course 'clover_loop_q1_4_span_1' grade 27.5% exceeds maximum allowed 20.0%.</title>
+  </g>
+  <g transform="translate(-53.7, -33.5)">
+    <circle r="5" fill="#ef4444" stroke="#ffffff" stroke-width="1.5"/>
+    <title>[Error] MaximumGrade: Course 'clover_loop_q1_4_span_2' grade 22.7% exceeds maximum allowed 20.0%.</title>
+  </g>
+  <g transform="translate(2.6, -79.7)">
+    <circle r="5" fill="#ef4444" stroke="#ffffff" stroke-width="1.5"/>
+    <title>[Error] MaximumGrade: Course 'clover_loop_q1_4_span_3' grade 41.0% exceeds maximum allowed 20.0%.</title>
+  </g>
+  <g transform="translate(15.8, -87.5)">
+    <circle r="5" fill="#ef4444" stroke="#ffffff" stroke-width="1.5"/>
+    <title>[Error] MinimumTurningRadius: Course 'clover_loop_q1_4_span_3' has sharp turning radius 6.0 m at t=0.50 (limit: 18.0 m).</title>
+  </g>
+  <g transform="translate(-25.6, 78.9)">
+    <circle r="5" fill="#ef4444" stroke="#ffffff" stroke-width="1.5"/>
+    <title>[Error] MaximumGrade: Course 'clover_loop_q2_0' grade 29.6% exceeds maximum allowed 20.0%.</title>
+  </g>
+  <g transform="translate(-28.5, 97.4)">
+    <circle r="5" fill="#ef4444" stroke="#ffffff" stroke-width="1.5"/>
+    <title>[Error] MaximumGrade: Course 'clover_loop_q2_1' grade 31.8% exceeds maximum allowed 20.0%.</title>
+  </g>
+  <g transform="translate(-70.9, 42.2)">
+    <circle r="5" fill="#ef4444" stroke="#ffffff" stroke-width="1.5"/>
+    <title>[Error] MaximumGrade: Course 'clover_loop_q2_4' grade 26.6% exceeds maximum allowed 20.0%.</title>
+  </g>
+  <g transform="translate(-67.8, 41.0)">
+    <circle r="5" fill="#ef4444" stroke="#ffffff" stroke-width="1.5"/>
+    <title>[Error] MinimumTurningRadius: Course 'clover_loop_q2_4' has sharp turning radius 1.8 m at t=0.17 (limit: 18.0 m).</title>
+  </g>
+  <g transform="translate(-84.5, 11.1)">
+    <circle r="5" fill="#ef4444" stroke="#ffffff" stroke-width="1.5"/>
+    <title>[Error] MaximumGrade: Course 'clover_loop_q2_4_span_1' grade 26.3% exceeds maximum allowed 20.0%.</title>
+  </g>
+  <g transform="translate(-85.5, 9.1)">
+    <circle r="5" fill="#ef4444" stroke="#ffffff" stroke-width="1.5"/>
+    <title>[Error] MinimumTurningRadius: Course 'clover_loop_q2_4_span_1' has sharp turning radius 16.2 m at t=0.17 (limit: 18.0 m).</title>
+  </g>
+  <g transform="translate(82.8, 4.3)">
+    <circle r="5" fill="#ef4444" stroke="#ffffff" stroke-width="1.5"/>
+    <title>[Error] MaximumGrade: Course 'clover_loop_q3_0' grade 25.5% exceeds maximum allowed 20.0%.</title>
+  </g>
+  <g transform="translate(107.9, 1.7)">
+    <circle r="5" fill="#ef4444" stroke="#ffffff" stroke-width="1.5"/>
+    <title>[Error] MaximumGrade: Course 'clover_loop_q3_1' grade 26.9% exceeds maximum allowed 20.0%.</title>
+  </g>
+  <g transform="translate(68.1, 32.2)">
+    <circle r="5" fill="#ef4444" stroke="#ffffff" stroke-width="1.5"/>
+    <title>[Error] MaximumGrade: Course 'clover_loop_q3_4' grade 33.1% exceeds maximum allowed 20.0%.</title>
+  </g>
+  <g transform="translate(68.9, 29.6)">
+    <circle r="5" fill="#ef4444" stroke="#ffffff" stroke-width="1.5"/>
+    <title>[Error] MinimumTurningRadius: Course 'clover_loop_q3_4' has sharp turning radius 13.8 m at t=0.17 (limit: 18.0 m).</title>
+  </g>
+  <g transform="translate(65.3, 26.2)">
+    <circle r="5" fill="#ef4444" stroke="#ffffff" stroke-width="1.5"/>
+    <title>[Error] MaximumGrade: Course 'clover_loop_q3_4_span_1' grade 27.5% exceeds maximum allowed 20.0%.</title>
+  </g>
+  <g transform="translate(53.7, 33.5)">
+    <circle r="5" fill="#ef4444" stroke="#ffffff" stroke-width="1.5"/>
+    <title>[Error] MaximumGrade: Course 'clover_loop_q3_4_span_2' grade 22.7% exceeds maximum allowed 20.0%.</title>
+  </g>
+  <g transform="translate(-2.6, 79.7)">
+    <circle r="5" fill="#ef4444" stroke="#ffffff" stroke-width="1.5"/>
+    <title>[Error] MaximumGrade: Course 'clover_loop_q3_4_span_3' grade 41.0% exceeds maximum allowed 20.0%.</title>
+  </g>
+  <g transform="translate(-15.8, 87.5)">
+    <circle r="5" fill="#ef4444" stroke="#ffffff" stroke-width="1.5"/>
+    <title>[Error] MinimumTurningRadius: Course 'clover_loop_q3_4_span_3' has sharp turning radius 6.0 m at t=0.50 (limit: 18.0 m).</title>
+  </g>
+  <g transform="translate(-33.5, 160.6)">
+    <circle r="5" fill="#ef4444" stroke="#ffffff" stroke-width="1.5"/>
+    <title>[Error] VerticalClearance: Insufficient 3D clearance (0.01 m < 7.5 m) between 'clover_main_0_2_lead1' and 'clover_cd_0_app'.</title>
+  </g>
+  <g transform="translate(-31.8, 151.0)">
+    <circle r="5" fill="#ef4444" stroke="#ffffff" stroke-width="1.5"/>
+    <title>[Error] VerticalClearance: Insufficient 3D clearance (0.08 m < 7.5 m) between 'clover_main_0_2_lead1' and 'clover_cd_0_app'.</title>
+  </g>
+  <g transform="translate(-29.8, 131.3)">
+    <circle r="5" fill="#ef4444" stroke="#ffffff" stroke-width="1.5"/>
+    <title>[Error] VerticalClearance: Insufficient 3D clearance (0.46 m < 7.5 m) between 'clover_main_0_2_lead1' and 'clover_cd_0_app_span_1'.</title>
+  </g>
+  <g transform="translate(-27.2, 119.7)">
+    <circle r="5" fill="#ef4444" stroke="#ffffff" stroke-width="1.5"/>
+    <title>[Error] VerticalClearance: Insufficient 3D clearance (7.22 m < 7.5 m) between 'clover_main_0_2_lead1' and 'clover_cd_2_dep'.</title>
+  </g>
+  <g transform="translate(23.0, -62.5)">
+    <circle r="5" fill="#ef4444" stroke="#ffffff" stroke-width="1.5"/>
+    <title>[Error] VerticalClearance: Insufficient 3D clearance (3.08 m < 7.5 m) between 'clover_main_0_2_core' and 'clover_cd_2_mid'.</title>
+  </g>
+  <g transform="translate(10.1, -14.5)">
+    <circle r="5" fill="#ef4444" stroke="#ffffff" stroke-width="1.5"/>
+    <title>[Error] VerticalClearance: Insufficient 3D clearance (5.66 m < 7.5 m) between 'clover_main_0_2_core' and 'clover_cd_2_mid_span_1'.</title>
+  </g>
+  <g transform="translate(14.3, -30.2)">
+    <circle r="5" fill="#ef4444" stroke="#ffffff" stroke-width="1.5"/>
+    <title>[Error] VerticalClearance: Insufficient 3D clearance (4.76 m < 7.5 m) between 'clover_main_0_2_core' and 'clover_cd_2_mid_span_1'.</title>
+  </g>
+  <g transform="translate(2.1, 15.2)">
+    <circle r="5" fill="#ef4444" stroke="#ffffff" stroke-width="1.5"/>
+    <title>[Error] VerticalClearance: Insufficient 3D clearance (7.25 m < 7.5 m) between 'clover_main_0_2_core' and 'clover_cd_2_mid_span_2'.</title>
+  </g>
+  <g transform="translate(52.3, -162.8)">
+    <circle r="5" fill="#ef4444" stroke="#ffffff" stroke-width="1.5"/>
+    <title>[Error] VerticalClearance: Insufficient 3D clearance (1.29 m < 7.5 m) between 'clover_main_0_2_lead2' and 'clover_cd_0_dep_span_3'.</title>
+  </g>
+  <g transform="translate(30.0, -90.2)">
+    <circle r="5" fill="#ef4444" stroke="#ffffff" stroke-width="1.5"/>
+    <title>[Error] VerticalClearance: Insufficient 3D clearance (1.91 m < 7.5 m) between 'clover_main_0_2_lead2' and 'clover_cd_2_app_span_2'.</title>
+  </g>
+  <g transform="translate(32.1, -101.3)">
+    <circle r="5" fill="#ef4444" stroke="#ffffff" stroke-width="1.5"/>
+    <title>[Error] VerticalClearance: Insufficient 3D clearance (1.42 m < 7.5 m) between 'clover_main_0_2_lead2' and 'clover_cd_2_app_span_2'.</title>
+  </g>
+  <g transform="translate(27.2, -119.7)">
+    <circle r="5" fill="#ef4444" stroke="#ffffff" stroke-width="1.5"/>
+    <title>[Error] VerticalClearance: Insufficient 3D clearance (7.22 m < 7.5 m) between 'clover_main_2_0_lead1' and 'clover_cd_0_dep'.</title>
+  </g>
+  <g transform="translate(33.5, -160.6)">
+    <circle r="5" fill="#ef4444" stroke="#ffffff" stroke-width="1.5"/>
+    <title>[Error] VerticalClearance: Insufficient 3D clearance (0.01 m < 7.5 m) between 'clover_main_2_0_lead1' and 'clover_cd_2_app'.</title>
+  </g>
+  <g transform="translate(31.8, -151.0)">
+    <circle r="5" fill="#ef4444" stroke="#ffffff" stroke-width="1.5"/>
+    <title>[Error] VerticalClearance: Insufficient 3D clearance (0.08 m < 7.5 m) between 'clover_main_2_0_lead1' and 'clover_cd_2_app'.</title>
+  </g>
+  <g transform="translate(29.8, -131.3)">
+    <circle r="5" fill="#ef4444" stroke="#ffffff" stroke-width="1.5"/>
+    <title>[Error] VerticalClearance: Insufficient 3D clearance (0.46 m < 7.5 m) between 'clover_main_2_0_lead1' and 'clover_cd_2_app_span_1'.</title>
+  </g>
+  <g transform="translate(-23.0, 62.5)">
+    <circle r="5" fill="#ef4444" stroke="#ffffff" stroke-width="1.5"/>
+    <title>[Error] VerticalClearance: Insufficient 3D clearance (3.08 m < 7.5 m) between 'clover_main_2_0_core' and 'clover_cd_0_mid'.</title>
+  </g>
+  <g transform="translate(-10.1, 14.5)">
+    <circle r="5" fill="#ef4444" stroke="#ffffff" stroke-width="1.5"/>
+    <title>[Error] VerticalClearance: Insufficient 3D clearance (5.66 m < 7.5 m) between 'clover_main_2_0_core' and 'clover_cd_0_mid_span_1'.</title>
+  </g>
+  <g transform="translate(-14.3, 30.2)">
+    <circle r="5" fill="#ef4444" stroke="#ffffff" stroke-width="1.5"/>
+    <title>[Error] VerticalClearance: Insufficient 3D clearance (4.76 m < 7.5 m) between 'clover_main_2_0_core' and 'clover_cd_0_mid_span_1'.</title>
+  </g>
+  <g transform="translate(-2.1, -15.2)">
+    <circle r="5" fill="#ef4444" stroke="#ffffff" stroke-width="1.5"/>
+    <title>[Error] VerticalClearance: Insufficient 3D clearance (7.25 m < 7.5 m) between 'clover_main_2_0_core' and 'clover_cd_0_mid_span_2'.</title>
+  </g>
+  <g transform="translate(-30.0, 90.2)">
+    <circle r="5" fill="#ef4444" stroke="#ffffff" stroke-width="1.5"/>
+    <title>[Error] VerticalClearance: Insufficient 3D clearance (1.91 m < 7.5 m) between 'clover_main_2_0_lead2' and 'clover_cd_0_app_span_2'.</title>
+  </g>
+  <g transform="translate(-32.1, 101.3)">
+    <circle r="5" fill="#ef4444" stroke="#ffffff" stroke-width="1.5"/>
+    <title>[Error] VerticalClearance: Insufficient 3D clearance (1.42 m < 7.5 m) between 'clover_main_2_0_lead2' and 'clover_cd_0_app_span_2'.</title>
+  </g>
+  <g transform="translate(-52.3, 162.8)">
+    <circle r="5" fill="#ef4444" stroke="#ffffff" stroke-width="1.5"/>
+    <title>[Error] VerticalClearance: Insufficient 3D clearance (1.29 m < 7.5 m) between 'clover_main_2_0_lead2' and 'clover_cd_2_dep_span_3'.</title>
+  </g>
+  <g transform="translate(150.1, -7.8)">
+    <circle r="5" fill="#ef4444" stroke="#ffffff" stroke-width="1.5"/>
+    <title>[Error] VerticalClearance: Insufficient 3D clearance (7.26 m < 7.5 m) between 'clover_main_1_3_lead1' and 'clover_cd_1_app'.</title>
+  </g>
+  <g transform="translate(145.0, -7.1)">
+    <circle r="5" fill="#ef4444" stroke="#ffffff" stroke-width="1.5"/>
+    <title>[Error] VerticalClearance: Insufficient 3D clearance (5.97 m < 7.5 m) between 'clover_main_1_3_lead1' and 'clover_cd_1_app'.</title>
+  </g>
+  <g transform="translate(140.1, -6.3)">
+    <circle r="5" fill="#ef4444" stroke="#ffffff" stroke-width="1.5"/>
+    <title>[Error] VerticalClearance: Insufficient 3D clearance (4.21 m < 7.5 m) between 'clover_main_1_3_lead1' and 'clover_cd_1_app'.</title>
+  </g>
+  <g transform="translate(135.1, -5.4)">
+    <circle r="5" fill="#ef4444" stroke="#ffffff" stroke-width="1.5"/>
+    <title>[Error] VerticalClearance: Insufficient 3D clearance (2.07 m < 7.5 m) between 'clover_main_1_3_lead1' and 'clover_cd_1_app'.</title>
+  </g>
+  <g transform="translate(-169.5, -8.4)">
+    <circle r="5" fill="#ef4444" stroke="#ffffff" stroke-width="1.5"/>
+    <title>[Error] VerticalClearance: Insufficient 3D clearance (3.69 m < 7.5 m) between 'clover_main_1_3_lead2_span_2' and 'clover_cd_1_dep_span_3'.</title>
+  </g>
+  <g transform="translate(-176.6, -9.0)">
+    <circle r="5" fill="#ef4444" stroke="#ffffff" stroke-width="1.5"/>
+    <title>[Error] VerticalClearance: Insufficient 3D clearance (2.20 m < 7.5 m) between 'clover_main_1_3_lead2_span_2' and 'clover_cd_1_dep_span_3'.</title>
+  </g>
+  <g transform="translate(-129.7, -5.7)">
+    <circle r="5" fill="#ef4444" stroke="#ffffff" stroke-width="1.5"/>
+    <title>[Error] VerticalClearance: Insufficient 3D clearance (6.79 m < 7.5 m) between 'clover_main_1_3_lead2_span_2' and 'clover_loop_q1_1'.</title>
+  </g>
+  <g transform="translate(-132.6, -6.0)">
+    <circle r="5" fill="#ef4444" stroke="#ffffff" stroke-width="1.5"/>
+    <title>[Error] VerticalClearance: Insufficient 3D clearance (5.74 m < 7.5 m) between 'clover_main_1_3_lead2_span_2' and 'clover_loop_q1_1'.</title>
+  </g>
+  <g transform="translate(-139.5, -8.3)">
+    <circle r="5" fill="#ef4444" stroke="#ffffff" stroke-width="1.5"/>
+    <title>[Error] VerticalClearance: Insufficient 3D clearance (7.03 m < 7.5 m) between 'clover_main_1_3_lead2_span_2' and 'clover_loop_q1_1'.</title>
+  </g>
+  <g transform="translate(-150.1, 7.8)">
+    <circle r="5" fill="#ef4444" stroke="#ffffff" stroke-width="1.5"/>
+    <title>[Error] VerticalClearance: Insufficient 3D clearance (7.26 m < 7.5 m) between 'clover_main_3_1_lead1' and 'clover_cd_3_app'.</title>
+  </g>
+  <g transform="translate(-145.0, 7.1)">
+    <circle r="5" fill="#ef4444" stroke="#ffffff" stroke-width="1.5"/>
+    <title>[Error] VerticalClearance: Insufficient 3D clearance (5.97 m < 7.5 m) between 'clover_main_3_1_lead1' and 'clover_cd_3_app'.</title>
+  </g>
+  <g transform="translate(-140.1, 6.3)">
+    <circle r="5" fill="#ef4444" stroke="#ffffff" stroke-width="1.5"/>
+    <title>[Error] VerticalClearance: Insufficient 3D clearance (4.21 m < 7.5 m) between 'clover_main_3_1_lead1' and 'clover_cd_3_app'.</title>
+  </g>
+  <g transform="translate(-135.1, 5.4)">
+    <circle r="5" fill="#ef4444" stroke="#ffffff" stroke-width="1.5"/>
+    <title>[Error] VerticalClearance: Insufficient 3D clearance (2.07 m < 7.5 m) between 'clover_main_3_1_lead1' and 'clover_cd_3_app'.</title>
+  </g>
+  <g transform="translate(169.5, 8.4)">
+    <circle r="5" fill="#ef4444" stroke="#ffffff" stroke-width="1.5"/>
+    <title>[Error] VerticalClearance: Insufficient 3D clearance (3.69 m < 7.5 m) between 'clover_main_3_1_lead2_span_2' and 'clover_cd_3_dep_span_3'.</title>
+  </g>
+  <g transform="translate(176.6, 9.0)">
+    <circle r="5" fill="#ef4444" stroke="#ffffff" stroke-width="1.5"/>
+    <title>[Error] VerticalClearance: Insufficient 3D clearance (2.20 m < 7.5 m) between 'clover_main_3_1_lead2_span_2' and 'clover_cd_3_dep_span_3'.</title>
+  </g>
+  <g transform="translate(129.7, 5.7)">
+    <circle r="5" fill="#ef4444" stroke="#ffffff" stroke-width="1.5"/>
+    <title>[Error] VerticalClearance: Insufficient 3D clearance (6.79 m < 7.5 m) between 'clover_main_3_1_lead2_span_2' and 'clover_loop_q3_1'.</title>
+  </g>
+  <g transform="translate(132.6, 6.0)">
+    <circle r="5" fill="#ef4444" stroke="#ffffff" stroke-width="1.5"/>
+    <title>[Error] VerticalClearance: Insufficient 3D clearance (5.74 m < 7.5 m) between 'clover_main_3_1_lead2_span_2' and 'clover_loop_q3_1'.</title>
+  </g>
+  <g transform="translate(139.5, 8.3)">
+    <circle r="5" fill="#ef4444" stroke="#ffffff" stroke-width="1.5"/>
+    <title>[Error] VerticalClearance: Insufficient 3D clearance (7.03 m < 7.5 m) between 'clover_main_3_1_lead2_span_2' and 'clover_loop_q3_1'.</title>
+  </g>
+  <g transform="translate(51.3, -157.8)">
+    <circle r="5" fill="#ef4444" stroke="#ffffff" stroke-width="1.5"/>
+    <title>[Error] VerticalClearance: Insufficient 3D clearance (1.64 m < 7.5 m) between 'clover_outer_1_2_sub_3' and 'clover_cd_0_dep_span_3'.</title>
+  </g>
+  <g transform="translate(-51.3, 157.8)">
+    <circle r="5" fill="#ef4444" stroke="#ffffff" stroke-width="1.5"/>
+    <title>[Error] VerticalClearance: Insufficient 3D clearance (1.64 m < 7.5 m) between 'clover_outer_3_0_sub_3' and 'clover_cd_2_dep_span_3'.</title>
+  </g>
+  <g transform="translate(-31.3, 123.0)">
+    <circle r="5" fill="#ef4444" stroke="#ffffff" stroke-width="1.5"/>
+    <title>[Error] VerticalClearance: Insufficient 3D clearance (5.92 m < 7.5 m) between 'clover_cd_0_app_span_1' and 'clover_cd_2_dep'.</title>
+  </g>
+  <g transform="translate(-30.2, 119.3)">
+    <circle r="5" fill="#ef4444" stroke="#ffffff" stroke-width="1.5"/>
+    <title>[Error] VerticalClearance: Insufficient 3D clearance (6.43 m < 7.5 m) between 'clover_cd_0_app_span_1' and 'clover_cd_2_dep'.</title>
+  </g>
+  <g transform="translate(-30.3, 117.8)">
+    <circle r="5" fill="#ef4444" stroke="#ffffff" stroke-width="1.5"/>
+    <title>[Error] VerticalClearance: Insufficient 3D clearance (6.34 m < 7.5 m) between 'clover_cd_0_app_span_1' and 'clover_cd_2_dep'.</title>
+  </g>
+  <g transform="translate(30.2, -119.3)">
+    <circle r="5" fill="#ef4444" stroke="#ffffff" stroke-width="1.5"/>
+    <title>[Error] VerticalClearance: Insufficient 3D clearance (6.43 m < 7.5 m) between 'clover_cd_0_dep' and 'clover_cd_2_app_span_1'.</title>
+  </g>
+  <g transform="translate(31.3, -123.0)">
+    <circle r="5" fill="#ef4444" stroke="#ffffff" stroke-width="1.5"/>
+    <title>[Error] VerticalClearance: Insufficient 3D clearance (5.92 m < 7.5 m) between 'clover_cd_0_dep' and 'clover_cd_2_app_span_1'.</title>
+  </g>
+  <g transform="translate(32.5, -125.2)">
+    <circle r="5" fill="#ef4444" stroke="#ffffff" stroke-width="1.5"/>
+    <title>[Error] VerticalClearance: Insufficient 3D clearance (5.27 m < 7.5 m) between 'clover_cd_0_dep' and 'clover_cd_2_app_span_1'.</title>
+  </g>
+  <g transform="translate(129.4, -1.0)">
+    <circle r="5" fill="#ef4444" stroke="#ffffff" stroke-width="1.5"/>
+    <title>[Error] VerticalClearance: Insufficient 3D clearance (2.11 m < 7.5 m) between 'clover_cd_1_app' and 'clover_cd_3_dep'.</title>
+  </g>
+  <g transform="translate(-129.4, 1.0)">
+    <circle r="5" fill="#ef4444" stroke="#ffffff" stroke-width="1.5"/>
+    <title>[Error] VerticalClearance: Insufficient 3D clearance (2.11 m < 7.5 m) between 'clover_cd_1_dep' and 'clover_cd_3_app'.</title>
+  </g>
+  <g transform="translate(-111.1, 5.3)">
+    <circle r="5" fill="#ef4444" stroke="#ffffff" stroke-width="1.5"/>
+    <title>[Error] PillarEncroachment: Pillar support on 'clover_cd_1_dep' encroaches into carriageway 'clover_main_3_1_lead1_span_1'.</title>
+  </g>
+  <g transform="translate(111.1, -5.3)">
+    <circle r="5" fill="#ef4444" stroke="#ffffff" stroke-width="1.5"/>
+    <title>[Error] PillarEncroachment: Pillar support on 'clover_cd_3_dep' encroaches into carriageway 'clover_main_1_3_lead1_span_1'.</title>
+  </g>
+  <text x="-59.5" y="222.2" fill="#94a3b8" font-family="sans-serif" font-size="11" font-weight="bold" text-anchor="middle" dominant-baseline="central">Leg 0</text>
+  <text x="230.0" y="-0.0" fill="#94a3b8" font-family="sans-serif" font-size="11" font-weight="bold" text-anchor="middle" dominant-baseline="central">Leg 1</text>
+  <text x="59.5" y="-222.2" fill="#94a3b8" font-family="sans-serif" font-size="11" font-weight="bold" text-anchor="middle" dominant-baseline="central">Leg 2</text>
+  <text x="-230.0" y="0.0" fill="#94a3b8" font-family="sans-serif" font-size="11" font-weight="bold" text-anchor="middle" dominant-baseline="central">Leg 3</text>
+</svg>

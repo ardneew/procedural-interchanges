@@ -47,8 +47,12 @@ namespace ProceduralInterchanges.Core.Math
                 float splitT = math.clamp(worstT, 0.35f, 0.65f);
                 CubicBezier3D.Split(curve, splitT, out var left, out var right);
 
-                FitGroundCourse(left, sampleTerrainHeight, pinStart, true, outSubdividedCourses, maxDeviation, maxDepth - 1);
-                FitGroundCourse(right, sampleTerrainHeight, true, pinEnd, outSubdividedCourses, maxDeviation, maxDepth - 1);
+                float midY = sampleTerrainHeight(left.d.xz);
+                left.d.y = midY;
+                right.a.y = midY;
+
+                FitGroundCourse(left, sampleTerrainHeight, pinStart, false, outSubdividedCourses, maxDeviation, maxDepth - 1);
+                FitGroundCourse(right, sampleTerrainHeight, false, pinEnd, outSubdividedCourses, maxDeviation, maxDepth - 1);
             }
             else
             {

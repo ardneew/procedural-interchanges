@@ -51,6 +51,13 @@ namespace ProceduralInterchanges.Core.Integration
                 List<CarriagewayEndpoint> endpoints = kvp.Value;
                 if (!em.Exists(edgeEntity) || !em.HasComponent<Edge>(edgeEntity) || !em.HasComponent<Curve>(edgeEntity)) continue;
 
+                // When a SourceEdge is only referenced by a single leg, do NOT delete it.
+                // Leave it intact and let CS2 natively weld/split at CutCurveT.
+                if (endpoints.Count < 2)
+                {
+                    continue;
+                }
+
                 RecordSnapshot(em, edgeEntity, outSnapshots);
 
                 var origCurve = em.GetComponentData<Curve>(edgeEntity).m_Bezier;
@@ -137,6 +144,8 @@ namespace ProceduralInterchanges.Core.Integration
                 if (tMin > 0.02f)
                 {
                     CubicBezier3D.Split(origCurve, tMin, out var leftOuter, out _);
+                    leftOuter.d = new float3(epStart.PortalPosition.x, center.y, epStart.PortalPosition.z);
+                    epStart.PortalPosition = leftOuter.d;
                     float lenLeft = CubicBezier3D.Length(leftOuter);
 
                     if ((startOutside || lenLeft >= 2.0f) && lenLeft >= 1.5f)
@@ -181,6 +190,8 @@ namespace ProceduralInterchanges.Core.Integration
                 if (tMax < 0.98f)
                 {
                     CubicBezier3D.Split(origCurve, tMax, out _, out var rightOuter);
+                    rightOuter.a = new float3(epEnd.PortalPosition.x, center.y, epEnd.PortalPosition.z);
+                    epEnd.PortalPosition = rightOuter.a;
                     float lenRight = CubicBezier3D.Length(rightOuter);
 
                     if ((endOutside || lenRight >= 2.0f) && lenRight >= 1.5f)
@@ -219,6 +230,15 @@ namespace ProceduralInterchanges.Core.Integration
                             }
                         }
                     }
+                }
+
+                // Per Phase 4 Step 4.2: edgeEntity is deleted, so clear attach references on its endpoints
+                // so the interchange terminal courses weld via bit-for-bit m_Position equality at PortalPosition
+                for (int e = 0; e < endpoints.Count; e++)
+                {
+                    endpoints[e].AttachToNode = false;
+                    endpoints[e].AttachNodeEntity = Entity.Null;
+                    endpoints[e].SourceEdge = Entity.Null;
                 }
             }
 

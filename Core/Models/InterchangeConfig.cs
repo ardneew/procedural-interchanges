@@ -13,6 +13,7 @@ namespace ProceduralInterchanges.Core.Models
     public sealed class InterchangeConfig
     {
         public float3 Center;
+        public float3 CenterPosition { get => Center; set => Center = value; }
         public float FootprintRadius = 260f;            // 120m to 500m
         public float RotationOffsetRad = 0f;
         public InterchangeArchetype Archetype = InterchangeArchetype.Diamond;

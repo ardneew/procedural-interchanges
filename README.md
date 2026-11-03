@@ -1,67 +1,72 @@
-# Procedural Interchanges
+# 🛣️ Procedural Interchanges for Cities: Skylines II
 
-**Procedural Interchanges** is a code mod for **Cities: Skylines II** that procedurally generates highway interchanges and integrates them into existing road networks in real time.
+Tired of spending an hour building a single highway junction by hand? Tired of static workshop assets tearing up your terrain, creating ugly cliffs, or forcing your highways into rigid 90-degree angles?
 
----
-
-## Features
-
-- **Procedural Archetype Generation**:
-  - **Trumpet**: 3-way freeway junction using 270° loops and directional overpasses.
-  - **Directional-T**: High-speed 3-way multi-level flyovers.
-  - **3-Level Y-Stack**: Fully directional 3-level interchange for Y-angle highways.
-  - **Diamond**: Standard highway-to-arterial service interchange with diagonal ramps.
-  - **Parclo A4**: Partial cloverleaf with loop ramps in opposite quadrants.
-  - **Cloverleaf**: 4-way freeway interchange with collector-distributor (C-D) weaving isolation.
-  - **4-Level Stack**: High-speed directional flyovers across 4 grade-separated levels.
-  - **Turbine**: Sweeping orbital left-turn ramps around a central vortex.
-  - **Grade-Separated Roundabout**: 3 to 6-leg rotary junction with elevated circulatory ring and mainline bypass.
-- **Topography & Terrain Conformance**:
-  - Adapts to uneven terrain using native height sampling and Hermite vertical profile transitions.
-  - Enforces CS2 AASHTO standards: maximum slopes ($\le 18\%$, typically $4\%\dots 6\%$), bridge deck vertical clearances ($\ge 9.5\text{ m}$), and natural viaduct pier span spacing ($\sim 38\text{ m}$).
-- **Network Splicing & Continuity**:
-  - $G^1$ collinear tangent splicing at boundary cuts with existing highways at any skew angle.
-  - Supports both separated dual-carriageway highways and single two-way trunk roads with smooth bifurcation flares.
-  - Automatic through-corridor edge trimming and restoration.
-- **Interactive Studio UI**:
-  - Custom React / Coherent Gameface user interface.
-  - 3-step workflow: **1. Pick Center**, **2. Select Connected Highways**, **3. Design & Tune**.
-  - Dynamic footprint circle overlay with `[` / `]` hotkeys, `Alt` + scroll-wheel resizing, and one-click **"Auto-Fit Size"**.
-  - Real-time 2D CAD plan visualizer, vertical elevation profile chart, and engineering telemetry.
-  - Full undo / redo support with `Ctrl+Z` and persistent city receipts.
+**Procedural Interchanges** is an in-game tool for **Cities: Skylines II** that builds beautiful, realistic highway interchanges for you in just a few clicks. It automatically shapes itself to your mountains and hills, connects seamlessly to your existing roads at any angle, and balances highway lanes so your cims don't get stuck in traffic jams.
 
 ---
 
-## Installation & Usage
+## ✨ Why You'll Love It
 
-### Keybindings
-- **`Ctrl + Shift + I`**: Open / Close Interchange Studio.
-- **`Ctrl + Z`**: Undo last built interchange and restore original highways.
-- **`[` / `]`**: Decrease / Increase footprint circle radius by $15\text{ m}$.
-- **`Alt + Mouse Scroll`**: Resize footprint circle dynamically.
-- **`Enter`**: Proceed to next step or build the interchange.
-- **`Right-Click`**: Step back / cancel.
-
-### Development Build
-1. Build the React frontend:
-   ```bash
-   cd ui
-   npm install
-   npm run build
-   ```
-2. Build the C# assembly:
-   ```bash
-   dotnet build ProceduralInterchanges.csproj -c Release
-   ```
-The mod outputs directly to `%LOCALAPPDATA%Low\Colossal Order\Cities Skylines II\Mods\ProceduralInterchanges`.
+* ⛰️ **Hugs Your Terrain Naturally**: No more giant dirt cliffs or floating bridges! The mod samples your land height and gently curves roads over hills and through valleys.
+* 📐 **Works at Any Angle**: Intersecting highways don't need to be square. Whether your roads meet at a sharp angle or along a sweeping curve, the junction automatically adapts.
+* ✂️ **One-Click Hookup**: It cuts directly into your existing highways and attaches every ramp smoothly—no dangling dead ends or fiddly manual connections.
+* 🚦 **Realistic Highway Engineering**: Built with real civil engineering standards in mind:
+  * Smooth, gradual slopes so heavy trucks don't grind to a halt.
+  * Generous bridge clearances so elevated decks never clip lower lanes.
+  * Realistic bridge pillar spacing so concrete piers don't drop into oncoming traffic.
+* ↺ **Instant Accident-Free Undo**: Don't like how it looks? Hit `Ctrl + Z` and your original highway is instantly restored, untouched.
 
 ---
 
-## Version History
+## 🏗️ Available Interchanges
 
-### v0.0.3
-- **Thread-Safe UI Actions & Undo Engine**: Marshaled all UI triggers into a main-thread action queue; fixed crash when pressing GUI Undo.
-- **Doubled Highways Eliminated**: Fixed ghost entity double-commit state machine and through-corridor multi-cut trimming.
-- **Collinear $G^1$ Boundary Splicing**: Fixed outbound flare tangent sign inversion and highway approach kinks at arbitrary skew angles.
-- **Hollow Circle & Top-Level Size Controls**: Projected hollow outline overlay, increased default radius to $260\text{ m}$, unbounded highway selection, and added top-level size slider + Auto-Fit button.
-- **Smooth Overpass Ramps & Pier Spacing**: Solved end-to-end ramp chain elevation profiles ($< 7\%$ slope, $\ge 9.5\text{ m}$ clearance) and increased bridge pier spacing to natural $38\text{ m}$ spans.
+| Type | Best Used For | What It Looks Like |
+| :--- | :--- | :--- |
+| **Diamond** | Highway meeting a local city avenue | Classic 4-ramp diamond with clean traffic signals or stop signs. |
+| **Parclo (A4)** | Busy suburban avenues | Loop ramps in opposite quadrants that eliminate left-turn traffic conflicts. |
+| **Trumpet** | 3-way highway T-junctions | Elegant sweeping flyover and loop ramp, perfect for highway terminuses. |
+| **Directional-T** | High-speed 3-way splits | High-speed, sweeping multi-level bridges where freeways divide. |
+| **Cloverleaf** | 4-way freeway-to-freeway | Full 4-way interchange with collector-distributor ramps to prevent weaving. |
+| **4-Level Stack** | Massive high-capacity hubs | The king of interchanges: 4 soaring tiers of high-speed flyovers. |
+| **Turbine** | Smooth flowing 4-way freeway | A sweeping spiral design that offers high speeds with a lower bridge profile. |
+| **Roundabout** | Highway meeting multiple roads | Elevated roundabout ring with free-flowing highway lanes passing straight underneath. |
+
+---
+
+## 🎮 How to Use In-Game
+
+You don't need to configure any complicated settings or open developer menus:
+
+1. **Open the Studio**: Press <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>I</kbd> (or click the Interchange icon on your toolbar).
+2. **Step 1: Pick the Center**: Click the spot on the ground where you want the center of the interchange to sit.
+3. **Step 2: Select Your Highways**: Click the highways you want to connect into the junction.
+4. **Step 3: Pick & Tune Your Design**:
+   - Choose your favorite design (Trumpet, Diamond, Parclo, Stack, etc.).
+   - Adjust the **Size Slider** to make it compact for tight downtowns or wide and sweeping for open countryside.
+   - Click **"Auto-Fit Size"** if you want the mod to pick the perfect radius for your roads.
+5. **Build!**: Click the **Build** button. The mod cuts your roads, builds all ramps and bridges, and restores traffic flow automatically.
+
+---
+
+## ⌨️ Helpful Shortcuts
+
+* <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>I</kbd> — Open / close the Interchange Studio.
+* <kbd>Ctrl</kbd> + <kbd>Z</kbd> — Undo your last placed interchange and restore your roads.
+* <kbd>[</kbd> and <kbd>]</kbd> — Shrink or enlarge the interchange footprint circle.
+* <kbd>Alt</kbd> + **Scroll Wheel** — Dynamically resize the footprint circle with your mouse.
+* **Right-Click** — Cancel or step back.
+
+---
+
+## 📥 Installation
+
+Install directly via **Paradox Mods** inside Cities: Skylines II by searching for **Procedural Interchanges**. 
+
+Once installed, enable it in your active playset and load into any save game or new map!
+
+---
+
+## 📜 License
+
+Released under the **MIT License**. Created for the Cities: Skylines II community.

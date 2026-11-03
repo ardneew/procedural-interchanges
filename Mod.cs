@@ -1,24 +1,24 @@
-﻿using Colossal.Logging;
+using Colossal.IO.AssetDatabase;
+using Colossal.Logging;
 using Game;
+using Game.Input;
 using Game.Modding;
 using Game.SceneFlow;
-using Colossal.IO.AssetDatabase;
-using Game.Input;
-using UnityEngine;
+using ProceduralInterchanges.Systems;
+using Unity.Entities;
 
 namespace ProceduralInterchanges
 {
     public class Mod : IMod
     {
-        public static ILog log = LogManager.GetLogger($"{nameof(ProceduralInterchanges)}.{nameof(Mod)}").SetShowsErrorsInUI(false);
-        private Setting m_Setting;
-        public static ProxyAction m_ButtonAction;
-        public static ProxyAction m_AxisAction;
-        public static ProxyAction m_VectorAction;   
+        public static ILog log = LogManager.GetLogger(nameof(ProceduralInterchanges)).SetShowsErrorsInUI(false);
 
-        public const string kButtonActionName = "ButtonBinding";
-        public const string kAxisActionName = "FloatBinding";
-        public const string kVectorActionName = "Vector2Binding";
+        private Setting m_Setting;
+        public static ProxyAction m_ToggleToolAction;
+        public static ProxyAction m_UndoAction;
+
+        public const string kToggleToolActionName = "ToggleToolBinding";
+        public const string kUndoActionName = "UndoLastInterchangeBinding";
 
         public void OnLoad(UpdateSystem updateSystem)
         {
@@ -33,19 +33,29 @@ namespace ProceduralInterchanges
 
             m_Setting.RegisterKeyBindings();
 
-            m_ButtonAction = m_Setting.GetAction(kButtonActionName);
-            m_AxisAction = m_Setting.GetAction(kAxisActionName);
-            m_VectorAction = m_Setting.GetAction(kVectorActionName);
-            
-            m_ButtonAction.shouldBeEnabled = true;
-            m_AxisAction.shouldBeEnabled = true;
-            m_VectorAction.shouldBeEnabled = true;
-            
-            m_ButtonAction.onInteraction += (_, phase) => log.Info($"[{m_ButtonAction.name}] On{phase} {m_ButtonAction.ReadValue<float>()}");
-            m_AxisAction.onInteraction += (_, phase) => log.Info($"[{m_AxisAction.name}] On{phase} {m_AxisAction.ReadValue<float>()}");
-            m_VectorAction.onInteraction += (_, phase) => log.Info($"[{m_VectorAction.name}] On{phase} {m_VectorAction.ReadValue<Vector2>()}");
+            m_ToggleToolAction = m_Setting.GetAction(kToggleToolActionName);
+            m_UndoAction = m_Setting.GetAction(kUndoActionName);
+
+            if (m_ToggleToolAction != null)
+            {
+                m_ToggleToolAction.shouldBeEnabled = true;
+            }
+
+            if (m_UndoAction != null)
+            {
+                m_UndoAction.shouldBeEnabled = true;
+            }
 
             AssetDatabase.global.LoadSettings(nameof(ProceduralInterchanges), m_Setting, new Setting(this));
+
+            // Imperative System Registration Order (Section 1.2 of Blueprint)
+            updateSystem.UpdateAt<HighwayPrefabCatalogSystem>(SystemUpdatePhase.UIUpdate);
+            updateSystem.UpdateAt<InterchangeGroupSystem>(SystemUpdatePhase.ModificationEnd);
+            updateSystem.UpdateBefore<InterchangeBuildService, InterchangeBuildToolSystem>(SystemUpdatePhase.ToolUpdate);
+            updateSystem.UpdateAt<InterchangeBuildToolSystem>(SystemUpdatePhase.ToolUpdate);
+            updateSystem.UpdateAt<InterchangeToolSystem>(SystemUpdatePhase.ToolUpdate);
+            updateSystem.UpdateAt<InterchangeTooltipSystem>(SystemUpdatePhase.UITooltip);
+            updateSystem.UpdateAt<InterchangeUISystem>(SystemUpdatePhase.UIUpdate);
         }
 
         public void OnDispose()

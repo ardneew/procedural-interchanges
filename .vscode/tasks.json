@@ -1,0 +1,49 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Build C# Mod",
+      "type": "shell",
+      "command": "dotnet build",
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "problemMatcher": "$msCompile"
+    },
+    {
+      "label": "Build UI",
+      "type": "shell",
+      "command": "npm run build",
+      "options": {
+        "cwd": "${workspaceFolder}/ui"
+      },
+      "group": "build",
+      "problemMatcher": []
+    },
+    {
+      "label": "Build All (C# + UI)",
+      "dependsOn": ["Build C# Mod", "Build UI"],
+      "dependsOrder": "sequence",
+      "group": "build",
+      "problemMatcher": []
+    },
+    {
+      "label": "Watch UI",
+      "type": "shell",
+      "command": "npm run watch",
+      "options": {
+        "cwd": "${workspaceFolder}/ui"
+      },
+      "isBackground": true,
+      "problemMatcher": []
+    },
+    {
+      "label": "Tail Modding.log",
+      "type": "shell",
+      "command": "powershell -NoExit -Command \"Get-Content '$HOME\\AppData\\LocalLow\\Colossal Order\\Cities Skylines II\\Logs\\Modding.log' -Wait -Tail 50\"",
+      "isBackground": true,
+      "problemMatcher": []
+    }
+  ]
+}

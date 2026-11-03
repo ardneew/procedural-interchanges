@@ -67,7 +67,7 @@ namespace ProceduralInterchanges.Core.Generators
                 float3 pIn = leg.Inbound != null ? leg.Inbound.PortalPosition : GetFallbackPortal(leg, true, center, footprintRadius);
                 float3 pOut = leg.Outbound != null ? leg.Outbound.PortalPosition : GetFallbackPortal(leg, false, center, footprintRadius);
 
-                float3 tInward = math.normalize(tRoadIn + (-outward));
+                float3 tInward = tRoadIn;
                 float3 dIn = math.lerp(pIn, center, splitFraction);
                 float3 mOut = math.lerp(pOut, center, splitFraction);
 
@@ -93,7 +93,7 @@ namespace ProceduralInterchanges.Core.Generators
                     Role = NetRole.MainlineThrough,
                     LegIndex = -1,
                     TargetLegIndex = leg.LegIndex,
-                    Curve = BiArcFit.FitSmoothCurve(mOut, -tInward, pOut, tRoadOut),
+                    Curve = BiArcFit.FitSmoothCurve(mOut, tRoadOut, pOut, tRoadOut),
                     StackLevel = 0,
                     IsOneWay = true,
                     Lanes = leg.Outbound?.LaneCount ?? (leg.Inbound?.LaneCount ?? 2),
@@ -123,63 +123,37 @@ namespace ProceduralInterchanges.Core.Generators
                 }
 
                 float3 t0 = tRoadIn;
-                float3 tInward = math.normalize(t0 + (-outward));
+                float3 rightNormal = math.normalize(new float3(-t0.z * sigma, 0f, t0.x * sigma));
 
-                // Inward normal (right-hand side of inbound travel)
-                float3 rightNormal = math.normalize(new float3(-tInward.z * sigma, 0f, tInward.x * sigma));
-
-                // Junction / Bifurcation node J placed along natural entry ray
-                float trunkDist = math.clamp(footprintRadius * 0.12f, 18f, 35f);
-                float3 jNode = pCenter + t0 * trunkDist;
-
-                // Separated diverge and merge nodes inside the footprint
-                float flareDist = footprintRadius * math.max(0.24f, splitFraction);
-                float remDist = math.max(15f, flareDist - trunkDist);
+                float flareDist = math.clamp(footprintRadius * math.max(0.24f, splitFraction), 25f, 65f);
                 float halfSep = math.clamp(footprintRadius * 0.045f, 6.0f, 9.0f);
 
-                float3 dIn = jNode + tInward * remDist + rightNormal * halfSep;
-                float3 mOut = jNode + tInward * remDist - rightNormal * halfSep;
+                float3 dIn = pCenter + t0 * flareDist + rightNormal * halfSep;
+                float3 mOut = pCenter + t0 * flareDist - rightNormal * halfSep;
 
                 int lanes = leg.Inbound?.LaneCount ?? 2;
-                Entity sourcePrefab = leg.Inbound?.SourcePrefab ?? Entity.Null;
-                string prefabName = leg.Inbound?.PrefabName ?? "Highway";
 
-                // 1. Two-way highway trunk from boundary cut P to bifurcation junction J
-                outCourses.Add(new PlannedNetCourse
-                {
-                    Id = $"{idPrefix}_twoway_trunk",
-                    Role = NetRole.MainlineThrough,
-                    LegIndex = leg.LegIndex,
-                    TargetLegIndex = -1,
-                    Curve = BiArcFit.FitSmoothCurve(pCenter, t0, jNode, t0),
-                    StackLevel = 0,
-                    IsOneWay = false,
-                    Lanes = lanes,
-                    ResolvedPrefabEntity = sourcePrefab,
-                    ResolvedPrefabName = prefabName
-                });
-
-                // 2. Inbound flare: J -> dIn
+                // 1. Inbound flare: pCenter -> dIn along natural highway tangent
                 outCourses.Add(new PlannedNetCourse
                 {
                     Id = $"{idPrefix}_inbound_flare",
                     Role = NetRole.MainlineThrough,
                     LegIndex = leg.LegIndex,
                     TargetLegIndex = -1,
-                    Curve = BiArcFit.FitSmoothCurve(jNode, t0, dIn, tInward),
+                    Curve = BiArcFit.FitSmoothCurve(pCenter, t0, dIn, t0),
                     StackLevel = 0,
                     IsOneWay = true,
                     Lanes = lanes
                 });
 
-                // 3. Outbound flare: mOut -> J (arriving at J pointing in direction -t0, matching two-way trunk leaving J)
+                // 2. Outbound flare: mOut -> pCenter along natural highway tangent
                 outCourses.Add(new PlannedNetCourse
                 {
                     Id = $"{idPrefix}_outbound_flare",
                     Role = NetRole.MainlineThrough,
                     LegIndex = -1,
                     TargetLegIndex = leg.LegIndex,
-                    Curve = BiArcFit.FitSmoothCurve(mOut, -tInward, jNode, -t0),
+                    Curve = BiArcFit.FitSmoothCurve(mOut, -t0, pCenter, -t0),
                     StackLevel = 0,
                     IsOneWay = true,
                     Lanes = lanes
@@ -189,8 +163,8 @@ namespace ProceduralInterchanges.Core.Generators
                 {
                     DivergeNode = dIn,
                     MergeNode = mOut,
-                    InboundDir = tInward,
-                    OutboundDir = tInward
+                    InboundDir = t0,
+                    OutboundDir = t0
                 };
             }
         }

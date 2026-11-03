@@ -33,6 +33,9 @@ Whenever the user says **"triage"** (or triggers triage on a bug, glitch, or cra
      - Raw Evidence (exact stack traces, log lines, error codes, and timestamps)
      - *Explicitly omit speculative root-cause hypotheses* — leave root-cause analysis and solution design entirely to the Principal Architect during implementation planning.
 
+5. **Handoff Document Generation (docs/HANDOFF.md)**:
+   - After completing triage, generate a structured docs/HANDOFF.md addressed to the Argon Implementor / Principal Architect.
+   - The handoff document must synthesize all triage findings, reference attached screenshots, enumerate the triaged items from docs/BUGS.md, and explicitly delineate technical code implementation tasks from separate testing suite requirements.
 ---
 
 ## 2. "Create Implementation Plan" Protocol (Principal Architect Role)

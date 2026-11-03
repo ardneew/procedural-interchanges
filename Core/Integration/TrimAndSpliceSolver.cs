@@ -51,14 +51,15 @@ namespace ProceduralInterchanges.Core.Integration
                 List<CarriagewayEndpoint> endpoints = kvp.Value;
                 if (!em.Exists(edgeEntity) || !em.HasComponent<Edge>(edgeEntity) || !em.HasComponent<Curve>(edgeEntity)) continue;
 
+                // Always snapshot all touched host edges so they can be identified and restored if split or modified
+                RecordSnapshot(em, edgeEntity, outSnapshots);
+
                 // When a SourceEdge is only referenced by a single leg, do NOT delete it.
                 // Leave it intact and let CS2 natively weld/split at CutCurveT.
                 if (endpoints.Count < 2)
                 {
                     continue;
                 }
-
-                RecordSnapshot(em, edgeEntity, outSnapshots);
 
                 var origCurve = em.GetComponentData<Curve>(edgeEntity).m_Bezier;
                 var edgeComp = em.GetComponentData<Edge>(edgeEntity);
@@ -144,7 +145,9 @@ namespace ProceduralInterchanges.Core.Integration
                 if (tMin > 0.02f)
                 {
                     CubicBezier3D.Split(origCurve, tMin, out var leftOuter, out _);
+                    float3 endTan = math.normalize(leftOuter.d - leftOuter.c);
                     leftOuter.d = new float3(epStart.PortalPosition.x, center.y, epStart.PortalPosition.z);
+                    leftOuter.c = leftOuter.d - endTan * math.distance(leftOuter.c, leftOuter.d);
                     epStart.PortalPosition = leftOuter.d;
                     float lenLeft = CubicBezier3D.Length(leftOuter);
 
@@ -190,7 +193,9 @@ namespace ProceduralInterchanges.Core.Integration
                 if (tMax < 0.98f)
                 {
                     CubicBezier3D.Split(origCurve, tMax, out _, out var rightOuter);
+                    float3 startTan = math.normalize(rightOuter.b - rightOuter.a);
                     rightOuter.a = new float3(epEnd.PortalPosition.x, center.y, epEnd.PortalPosition.z);
+                    rightOuter.b = rightOuter.a + startTan * math.distance(rightOuter.b, rightOuter.a);
                     epEnd.PortalPosition = rightOuter.a;
                     float lenRight = CubicBezier3D.Length(rightOuter);
 

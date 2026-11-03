@@ -150,7 +150,8 @@ namespace ProceduralInterchanges.Core.Templates
             }
 
             // 2D Polar-Sector Diffeomorphism
-            float sCore = math.clamp(minRadius / math.max(1f, template.CanonicalRadius), 0.35f, 1.60f);
+            float effectiveR = math.clamp(config.FootprintRadius, 120f, 180f);
+            float sCore = math.clamp(effectiveR / math.max(1f, template.CanonicalRadius), 0.60f, 1.00f);
 
             float3 WarpPoint(float3 q)
             {
@@ -415,9 +416,23 @@ namespace ProceduralInterchanges.Core.Templates
                 bifurcationJ
             );
 
-            Entity prefab = leg.Inbound.SourcePrefab != Entity.Null
-                ? leg.Inbound.SourcePrefab
-                : (catalog != null ? catalog.FindBestHighwayPrefab(isOneWay: false, forwardLanes: 2, backwardLanes: 2, highwayRules: true, out _) : Entity.Null);
+            Entity prefab = Entity.Null;
+            string prefabName = "Two-Lane Two-Way Highway";
+
+            if (leg.Inbound != null && leg.Inbound.SourcePrefab != Entity.Null && !leg.Inbound.IsOneWay)
+            {
+                prefab = leg.Inbound.SourcePrefab;
+                prefabName = leg.Inbound.PrefabName ?? "Highway";
+            }
+            else if (catalog != null)
+            {
+                int targetLanes = leg.Inbound != null ? math.max(1, leg.Inbound.LaneCount) : 1;
+                prefab = catalog.FindBestHighwayPrefab(isOneWay: false, forwardLanes: targetLanes, backwardLanes: targetLanes, highwayRules: true, out prefabName);
+                if (prefab == Entity.Null)
+                {
+                    prefab = catalog.FindBestHighwayPrefab(isOneWay: false, forwardLanes: 1, backwardLanes: 1, highwayRules: true, out prefabName);
+                }
+            }
 
             var trunk = new PlannedNetCourse
             {
@@ -430,9 +445,9 @@ namespace ProceduralInterchanges.Core.Templates
                 ForceElevated = false,
                 StartElevation = float2.zero,
                 EndElevation = float2.zero,
-                Lanes = 2,
+                Lanes = leg.Inbound != null ? math.max(2, leg.Inbound.LaneCount * 2) : 2,
                 IsOneWay = false,
-                ResolvedPrefabName = "Highway",
+                ResolvedPrefabName = prefabName,
                 ResolvedPrefabEntity = prefab,
                 Upgrades = RoadUpgradeFlags.StreetLighting,
                 StartAttachEntity = leg.Inbound.AttachToNode ? leg.Inbound.AttachNodeEntity : leg.Inbound.SourceEdge,
@@ -452,7 +467,10 @@ namespace ProceduralInterchanges.Core.Templates
         private static Bezier4x3 FitHermite3D(float3 p0, float3 t0, float3 p1, float3 t1)
         {
             float chord = math.distance(p0.xz, p1.xz);
-            float handle = math.clamp(chord * 0.36f, 6f, 120f);
+            float dot = math.clamp(math.dot(math.normalize(t0.xz), math.normalize(t1.xz)), -1f, 1f);
+            float cosHalfAngle = math.sqrt(math.max(0.01f, (1f + dot) * 0.5f));
+            float handle = math.clamp(chord * 0.333f * cosHalfAngle, 12f, 65f);
+
             float3 b = p0 + t0 * handle;
             float3 c = p1 - t1 * handle;
             b.y = math.lerp(p0.y, p1.y, 0.33333334f);

@@ -168,6 +168,17 @@ namespace ProceduralInterchanges.Systems
             for (int i = 0; i < receipt.CreatedEntities.Count; i++)
             {
                 Entity e = receipt.CreatedEntities[i];
+                bool isPreservedOriginal = false;
+                for (int s = 0; s < receipt.DeletedOriginalEdges.Count; s++)
+                {
+                    if (receipt.DeletedOriginalEdges[s].OriginalEntity == e)
+                    {
+                        isPreservedOriginal = true;
+                        break;
+                    }
+                }
+                if (isPreservedOriginal) continue;
+
                 if (EntityManager.Exists(e) && EntityManager.HasComponent<Edge>(e) && EntityManager.HasComponent<Curve>(e))
                 {
                     Entity def = EntityManager.CreateEntity();
@@ -379,6 +390,48 @@ namespace ProceduralInterchanges.Systems
                     }
                 }
             }
+        }
+
+        private bool IsHostHighwayFragment(Entity edgeEnt, InterchangePlan plan)
+        {
+            if (plan == null || plan.RestorableSnapshots == null) return false;
+            if (!EntityManager.HasComponent<Curve>(edgeEnt)) return false;
+
+            var edgeCurve = EntityManager.GetComponentData<Curve>(edgeEnt).m_Bezier;
+            float3 mid = math.lerp(edgeCurve.a, edgeCurve.d, 0.5f);
+
+            for (int i = 0; i < plan.RestorableSnapshots.Count; i++)
+            {
+                var snap = plan.RestorableSnapshots[i];
+                if (MathUtils.Distance(snap.Curve, mid, out _) < 1.5f)
+                {
+                    bool isOurCourse = false;
+                    if (plan.Courses != null)
+                    {
+                        for (int c = 0; c < plan.Courses.Count; c++)
+                        {
+                            if (MathUtils.Distance(plan.Courses[c].Curve, mid, out _) < 0.5f)
+                            {
+                                isOurCourse = true;
+                                break;
+                            }
+                        }
+                    }
+                    if (!isOurCourse && plan.OuterReplacementCourses != null)
+                    {
+                        for (int c = 0; c < plan.OuterReplacementCourses.Count; c++)
+                        {
+                            if (MathUtils.Distance(plan.OuterReplacementCourses[c].Curve, mid, out _) < 0.5f)
+                            {
+                                isOurCourse = true;
+                                break;
+                            }
+                        }
+                    }
+                    if (!isOurCourse) return true;
+                }
+            }
+            return false;
         }
 
         private Entity EmitSingleCourse(PlannedNetCourse c, int randomSeed)
@@ -661,7 +714,10 @@ namespace ProceduralInterchanges.Systems
                                         Entity edgeEnt = permanentEdges[e];
                                         if (!m_PreBuildEdges.Contains(edgeEnt))
                                         {
-                                            createdSet.Add(edgeEnt);
+                                            if (!IsHostHighwayFragment(edgeEnt, m_CurrentBuildPlan))
+                                            {
+                                                createdSet.Add(edgeEnt);
+                                            }
                                         }
                                     }
                                 }

@@ -339,13 +339,33 @@ namespace ProceduralInterchanges.Systems
                 plan.EdgesToDelete,
                 plan.RestorableSnapshots);
 
-            // 2. Generate template-morphed geometry
-            ProceduralInterchanges.Core.Templates.TemplateMorphSolver.GenerateMorphedPlan(
-                template,
-                plan.Config,
-                plan.Legs,
-                m_PrefabCatalogSystem,
-                plan);
+            // 2. Generate template-morphed geometry (or pure procedural generator when designated)
+            if (plan.Config.Archetype == InterchangeArchetype.ParcloA4)
+            {
+                var generator = InterchangeGeneratorRegistry.GetGenerator(InterchangeArchetype.ParcloA4);
+                if (generator != null)
+                {
+                    generator.GenerateGeometry(plan.Config, plan.Legs, plan.Courses);
+                }
+                else
+                {
+                    ProceduralInterchanges.Core.Templates.TemplateMorphSolver.GenerateMorphedPlan(
+                        template,
+                        plan.Config,
+                        plan.Legs,
+                        m_PrefabCatalogSystem,
+                        plan);
+                }
+            }
+            else
+            {
+                ProceduralInterchanges.Core.Templates.TemplateMorphSolver.GenerateMorphedPlan(
+                    template,
+                    plan.Config,
+                    plan.Legs,
+                    m_PrefabCatalogSystem,
+                    plan);
+            }
 
             // 3. AASHTO Lane Balance & Prefab Resolution if needed
             LaneBalanceSolver.ResolveLanesAndPrefabs(
@@ -676,7 +696,7 @@ namespace ProceduralInterchanges.Systems
 
             if (leftClick && m_HasHover)
             {
-                int requiredLegs = ProceduralInterchanges.Core.Templates.WorkshopTemplateLibrary.GetTemplate(CurrentConfig.Archetype).RequiredLegs;
+                const int kMaxSelectableLegs = 4;
 
                 if (m_HoveredEntity != Entity.Null && EntityManager.HasComponent<Edge>(m_HoveredEntity))
                 {
@@ -695,7 +715,7 @@ namespace ProceduralInterchanges.Systems
                     {
                         CurrentLegs.RemoveAt(existingIdx);
                     }
-                    else if (CurrentLegs.Count < requiredLegs)
+                    else if (CurrentLegs.Count < kMaxSelectableLegs)
                     {
                         var newLeg = HighwayPairingSolver.PickHighwayEndpointAtClick(
                             EntityManager,
@@ -719,8 +739,23 @@ namespace ProceduralInterchanges.Systems
                         0f,
                         p => m_BuildService != null ? m_BuildService.SampleTerrainHeight(p) : 0f);
 
-                    if (CurrentLegs.Count == requiredLegs)
+                    if (CurrentLegs.Count == 4)
                     {
+                        int curReq = ProceduralInterchanges.Core.Templates.WorkshopTemplateLibrary.GetTemplate(CurrentConfig.Archetype).RequiredLegs;
+                        if (curReq != 4)
+                        {
+                            CurrentConfig.Archetype = InterchangeArchetype.Diamond;
+                        }
+                        Stage = ToolStage.ConfigureInterchange;
+                        RegeneratePlan();
+                    }
+                    else if (CurrentLegs.Count == 3)
+                    {
+                        int curReq = ProceduralInterchanges.Core.Templates.WorkshopTemplateLibrary.GetTemplate(CurrentConfig.Archetype).RequiredLegs;
+                        if (curReq != 3)
+                        {
+                            CurrentConfig.Archetype = InterchangeArchetype.Trumpet;
+                        }
                         Stage = ToolStage.ConfigureInterchange;
                         RegeneratePlan();
                     }

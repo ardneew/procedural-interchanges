@@ -19,6 +19,35 @@ import { Visualizer2DPlan } from "./Visualizer2DPlan";
 import { Visualizer2DElevation } from "./Visualizer2DElevation";
 import styles from "./studio.module.scss";
 
+export class PanelErrorBoundary extends React.Component<{ children: React.ReactNode }, { hasError: boolean; error: string }> {
+  constructor(props: { children: React.ReactNode }) {
+    super(props);
+    this.state = { hasError: false, error: "" };
+  }
+
+  static getDerivedStateFromError(error: any) {
+    return { hasError: true, error: error?.message || String(error) };
+  }
+
+  render() {
+    if (this.state.hasError) {
+      return (
+        <div style={{ padding: "12rem", background: "rgba(220, 38, 38, 0.2)", borderRadius: "6rem", border: "1rem solid #ef4444" }}>
+          <div style={{ fontWeight: 600, color: "#f87171", marginBottom: "4rem" }}>UI Render Error</div>
+          <div style={{ fontSize: "11rem", color: "#fca5a5" }}>{this.state.error}</div>
+          <button
+            style={{ marginTop: "8rem", padding: "4rem 8rem", background: "#ef4444", color: "#fff", border: "none", borderRadius: "4rem", cursor: "pointer" }}
+            onClick={() => this.setState({ hasError: false, error: "" })}
+          >
+            Retry
+          </button>
+        </div>
+      );
+    }
+    return this.props.children;
+  }
+}
+
 export const InterchangeStudioPanel: React.FC = () => {
   const state = useValue(state$);
   const [activeTab, setActiveTab] = useState<"visualizer" | "archetypes" | "tuning">("visualizer");
@@ -27,7 +56,16 @@ export const InterchangeStudioPanel: React.FC = () => {
     return null;
   }
 
-  const { stage, legs, courses2D, telemetry, availableArchetypes, selectedArchetype } = state;
+  const {
+    stage = 2,
+    legs = [],
+    courses2D = [],
+    telemetry = { estimatedCost: 0, worstGrade: 0, tightestRadius: 0, lowestClearance: 0, violationCount: 0 },
+    availableArchetypes = [],
+    selectedArchetype = 20,
+    requiredLegs = 3,
+    angleWarning = "",
+  } = state || {};
 
   return (
     <div className={styles.studioContainer}>

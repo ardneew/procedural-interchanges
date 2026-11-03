@@ -75,10 +75,12 @@ namespace ProceduralInterchanges.Systems
                     name = prefabBase.name;
                 }
 
-                // Strictly exclude specialty bridges (suspension, cable-stayed, moveable, fixed elements)
+                // Strictly exclude specialty bridges and landmarks
                 if (EntityManager.HasComponent<BridgeData>(e) ||
                     EntityManager.HasComponent<MoveableBridgeData>(e) ||
-                    EntityManager.HasBuffer<FixedNetElement>(e))
+                    EntityManager.HasBuffer<FixedNetElement>(e) ||
+                    EntityManager.HasComponent<SignatureBuildingData>(e) ||
+                    EntityManager.HasComponent<PlacedSignatureBuildingData>(e))
                 {
                     continue;
                 }
@@ -89,7 +91,54 @@ namespace ProceduralInterchanges.Systems
                     lowerName.Contains("cable") ||
                     lowerName.Contains("extradosed") ||
                     lowerName.Contains("truss") ||
+                    lowerName.Contains("goldengate") ||
+                    lowerName.Contains("golden gate") ||
+                    lowerName.Contains("sanfrancisco") ||
+                    lowerName.Contains("san francisco") ||
+                    lowerName.Contains("drawbridge") ||
                     lowerName.Contains("grand"))
+                {
+                    continue;
+                }
+
+                // Pure highways never permit zoning
+                if ((roadData.m_Flags & Game.Prefabs.RoadFlags.EnableZoning) != 0)
+                {
+                    continue;
+                }
+
+                // Inspect whether this network contains pedestrian lanes or crosswalks
+                bool hasPedestrianLanes = false;
+                if (EntityManager.HasBuffer<NetGeometryComposition>(e))
+                {
+                    var compBuf = EntityManager.GetBuffer<NetGeometryComposition>(e);
+                    for (int c = 0; c < compBuf.Length; c++)
+                    {
+                        Entity compEntity = compBuf[c].m_Composition;
+                        if (compEntity != Entity.Null && EntityManager.Exists(compEntity))
+                        {
+                            if (EntityManager.HasComponent<NetCompositionCrosswalk>(compEntity))
+                            {
+                                hasPedestrianLanes = true;
+                                break;
+                            }
+                            if (EntityManager.HasBuffer<NetCompositionLane>(compEntity))
+                            {
+                                var lanes = EntityManager.GetBuffer<NetCompositionLane>(compEntity);
+                                for (int l = 0; l < lanes.Length; l++)
+                                {
+                                    if ((lanes[l].m_Flags & LaneFlags.Pedestrian) != 0)
+                                    {
+                                        hasPedestrianLanes = true;
+                                        break;
+                                    }
+                                }
+                            }
+                        }
+                        if (hasPedestrianLanes) break;
+                    }
+                }
+                if (hasPedestrianLanes)
                 {
                     continue;
                 }
@@ -139,6 +188,17 @@ namespace ProceduralInterchanges.Systems
                     bestScore = score;
                     bestEntity = info.PrefabEntity;
                     bestName = info.Name;
+                }
+            }
+
+            if (bestEntity == Entity.Null && !isOneWay)
+            {
+                Entity fallback = FindPrefabByName("Two-Lane Two-Way Highway");
+                if (fallback == Entity.Null) fallback = FindPrefabByName("Two-Lane Highway");
+                if (fallback != Entity.Null)
+                {
+                    prefabName = "Two-Lane Two-Way Highway";
+                    return fallback;
                 }
             }
 

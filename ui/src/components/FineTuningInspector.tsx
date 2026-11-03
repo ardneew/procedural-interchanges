@@ -132,10 +132,18 @@ export const FineTuningInspector: React.FC<FineTuningInspectorProps> = ({ state 
 
       {/* Selected Segment Override (when clicked on 2D plan) */}
       {selectedCourse && (
-        <div className={styles.section} style={{ border: "1rem solid #00e5ff" }}>
+        <div
+          className={styles.section}
+          style={{
+            background: "rgba(56, 189, 248, 0.05)",
+            border: "1rem solid rgba(56, 189, 248, 0.35)",
+            borderRadius: "6rem",
+            padding: "8rem 10rem",
+          }}
+        >
           <div className={styles.sectionTitle}>
-            <span>Selected Segment: {selectedCourse.roleName}</span>
-            <span style={{ fontSize: "10rem", color: "#38bdf8" }}>{selectedCourse.id}</span>
+            <span style={{ color: "#38bdf8" }}>Selected: {selectedCourse.roleName}</span>
+            <span style={{ fontSize: "10rem", color: "#94a3b8" }}>{selectedCourse.id}</span>
           </div>
 
           <div className={styles.controlRow}>
@@ -190,7 +198,7 @@ export const FineTuningInspector: React.FC<FineTuningInspectorProps> = ({ state 
         <div className={styles.section}>
           <div className={styles.sectionTitle}>
             <span>Connected Highway Legs</span>
-            <span style={{ fontSize: "10rem", color: "#64748b" }}>{state.legs.length} Portals</span>
+            <span style={{ fontSize: "10rem", color: "#94a3b8" }}>{state.legs.length} Portals</span>
           </div>
 
           {state.legs.map((leg) => (
@@ -200,10 +208,11 @@ export const FineTuningInspector: React.FC<FineTuningInspectorProps> = ({ state 
                 display: "flex",
                 flexDirection: "column",
                 gap: "4rem",
-                padding: "6rem",
-                background: "rgba(0,0,0,0.25)",
-                borderRadius: "4rem",
-                marginBottom: "6rem",
+                padding: "8rem",
+                background: "rgba(255,255,255,0.03)",
+                border: "1rem solid rgba(255,255,255,0.06)",
+                borderRadius: "6rem",
+                marginBottom: "4rem",
               }}
             >
               <div style={{ display: "flex", justifyContent: "space-between", fontSize: "11rem" }}>

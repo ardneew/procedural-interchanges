@@ -4,7 +4,6 @@ import {
   state$,
   toggleTool,
   setStage,
-  autoDetectHighways,
   autoFitFootprint,
   setGlobalParam,
   removeLeg,
@@ -44,31 +43,31 @@ export const InterchangeStudioPanel: React.FC = () => {
 
         <div className={styles.headerControls}>
           <button
-            className={styles.iconBtn}
+            className={`${styles.pillToggle} ${state.leftHandTraffic ? styles.active : ""}`}
             onClick={() => setGlobalParam("lefthandtraffic", state.leftHandTraffic ? 0 : 1)}
             title={state.leftHandTraffic ? "Switch to Right-Hand Traffic (RHT)" : "Switch to Left-Hand Traffic (LHT)"}
-            style={{ fontSize: "11rem", fontWeight: 700, color: state.leftHandTraffic ? "#f59e0b" : "#00e5ff" }}
           >
             {state.leftHandTraffic ? "LHT" : "RHT"}
           </button>
           <button
-            className={styles.iconBtn}
+            className={`${styles.pillToggle} ${state.liveGhostEnabled ? styles.active : ""}`}
             onClick={() => setGhostEnabled(!state.liveGhostEnabled)}
             title={state.liveGhostEnabled ? "Disable 3D Ghost Preview" : "Enable 3D Ghost Preview"}
-            style={{ color: state.liveGhostEnabled ? "#00e5ff" : "#64748b" }}
           >
-            3D
+            3D GHOST
           </button>
           <button
-            className={styles.iconBtn}
+            className={`${styles.pillToggle} ${state.overlayEnabled ? styles.active : ""}`}
             onClick={() => setOverlayEnabled(!state.overlayEnabled)}
             title={state.overlayEnabled ? "Disable Overlay" : "Enable Overlay"}
-            style={{ color: state.overlayEnabled ? "#2ecc71" : "#64748b" }}
           >
             CAD
           </button>
-          <button className={styles.iconBtn} onClick={toggleTool} title="Close Studio">
-            ✕
+          <button className={styles.closeBtn} onClick={toggleTool} title="Close Studio">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
+              <line x1="18" y1="6" x2="6" y2="18" />
+              <line x1="6" y1="6" x2="18" y2="18" />
+            </svg>
           </button>
         </div>
       </div>
@@ -79,7 +78,10 @@ export const InterchangeStudioPanel: React.FC = () => {
           className={`${styles.stepItem} ${stage <= 2 ? styles.active : styles.completed}`}
           onClick={() => setStage(2)}
         >
-          1. Highway Ends ({legs.length}/{state.requiredLegs || 3})
+          <div className={`${styles.stepBadge} ${stage <= 2 ? styles.activeBadge : styles.completedBadge}`}>
+            {stage > 2 ? "✓" : "1"}
+          </div>
+          <span>Highway Ends ({legs.length}/{state.requiredLegs || 3})</span>
         </div>
         <div
           className={`${styles.stepItem} ${stage === 3 ? styles.active : ""}`}
@@ -87,28 +89,22 @@ export const InterchangeStudioPanel: React.FC = () => {
             if (legs.length >= (state.requiredLegs || 3)) setStage(3);
           }}
         >
-          2. Configure & Build
+          <div className={`${styles.stepBadge} ${stage === 3 ? styles.activeBadge : ""}`}>
+            2
+          </div>
+          <span>Configure & Build</span>
         </div>
       </div>
 
       {/* Main Content Area */}
       <div className={styles.contentScroll}>
         {state.angleWarning && (
-          <div
-            style={{
-              background: "rgba(245, 158, 11, 0.15)",
-              border: "1rem solid #f59e0b",
-              color: "#f59e0b",
-              padding: "8rem 12rem",
-              borderRadius: "6rem",
-              fontSize: "11rem",
-              lineHeight: 1.4,
-              display: "flex",
-              alignItems: "center",
-              gap: "6rem",
-            }}
-          >
-            <span style={{ fontSize: "14rem" }}>⚠️</span>
+          <div className={styles.warningBox}>
+            <svg viewBox="0 0 24 24">
+              <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" />
+              <line x1="12" y1="9" x2="12" y2="13" />
+              <line x1="12" y1="17" x2="12.01" y2="17" />
+            </svg>
             <span>{state.angleWarning}</span>
           </div>
         )}
@@ -132,16 +128,17 @@ export const InterchangeStudioPanel: React.FC = () => {
                     alignItems: "center",
                     justifyContent: "space-between",
                     padding: "6rem 10rem",
-                    background: "rgba(255,255,255,0.04)",
+                    background: "rgba(255,255,255,0.035)",
+                    border: "1rem solid rgba(255,255,255,0.06)",
                     borderRadius: "6rem",
                     fontSize: "11rem",
                   }}
                 >
-                  <span>
-                    Leg #{leg.index + 1} ({leg.azimuthDeg.toFixed(0)}°) — {leg.isDual ? "Dual Carriageway" : "Single Two-Way"}
+                  <span style={{ color: "#f8fafc" }}>
+                    Leg #{leg.index + 1} ({leg.azimuthDeg.toFixed(0)}°) — {leg.isDual ? "Dual Carriageway" : "Single Highway"}
                   </span>
                   <button
-                    style={{ background: "none", border: "none", color: "#e74c3c", cursor: "pointer" }}
+                    style={{ background: "none", border: "none", color: "#f87171", cursor: "pointer", fontSize: "13rem" }}
                     onClick={() => removeLeg(leg.index)}
                     title="Remove Leg"
                   >
@@ -153,7 +150,7 @@ export const InterchangeStudioPanel: React.FC = () => {
 
             {legs.length >= (state.requiredLegs || 3) && (
               <button
-                className={styles.buildBtn}
+                className={styles.primaryBtn}
                 style={{ marginTop: "10rem" }}
                 onClick={() => setStage(3)}
               >
@@ -168,8 +165,8 @@ export const InterchangeStudioPanel: React.FC = () => {
             <div className={styles.controlRow} style={{ marginBottom: "6rem" }}>
               <span className={styles.label}>Traffic Handedness</span>
               <button
-                className={styles.undoBtn}
-                style={{ padding: "4rem 8rem", fontSize: "11rem", color: state.leftHandTraffic ? "#f59e0b" : "#00e5ff" }}
+                className={styles.ghostBtn}
+                style={{ padding: "4rem 8rem", fontSize: "11rem", color: "#38bdf8" }}
                 onClick={() => setGlobalParam("lefthandtraffic", state.leftHandTraffic ? 0 : 1)}
               >
                 {state.leftHandTraffic ? "Left-Hand Traffic (LHT)" : "Right-Hand Traffic (RHT)"}
@@ -188,7 +185,7 @@ export const InterchangeStudioPanel: React.FC = () => {
               />
               <span className={styles.value}>{state.footprintRadius}m</span>
               <button
-                className={styles.undoBtn}
+                className={styles.ghostBtn}
                 style={{ padding: "4rem 8rem", fontSize: "10rem", marginLeft: "6rem" }}
                 onClick={autoFitFootprint}
                 title="Automatically find minimal footprint radius that eliminates clearance and grade violations"
@@ -197,28 +194,25 @@ export const InterchangeStudioPanel: React.FC = () => {
               </button>
             </div>
 
-            {/* View Sub-Tabs */}
-            <div style={{ display: "flex", gap: "6rem" }}>
+            {/* Segmented Sub-Tab Bar */}
+            <div className={styles.subTabBar}>
               <button
-                className={`${styles.undoBtn} ${activeTab === "visualizer" ? styles.selected : ""}`}
-                style={{ flex: 1, padding: "6rem", fontSize: "11rem" }}
+                className={`${styles.tabBtn} ${activeTab === "visualizer" ? styles.active : ""}`}
                 onClick={() => setActiveTab("visualizer")}
               >
-                2D CAD & Profile
+                2D Blueprint
               </button>
               <button
-                className={`${styles.undoBtn} ${activeTab === "archetypes" ? styles.selected : ""}`}
-                style={{ flex: 1, padding: "6rem", fontSize: "11rem" }}
+                className={`${styles.tabBtn} ${activeTab === "archetypes" ? styles.active : ""}`}
                 onClick={() => setActiveTab("archetypes")}
               >
-                Intersections
+                Archetypes
               </button>
               <button
-                className={`${styles.undoBtn} ${activeTab === "tuning" ? styles.selected : ""}`}
-                style={{ flex: 1, padding: "6rem", fontSize: "11rem" }}
+                className={`${styles.tabBtn} ${activeTab === "tuning" ? styles.active : ""}`}
                 onClick={() => setActiveTab("tuning")}
               >
-                Fine-Tuning
+                Engineering
               </button>
             </div>
 
@@ -251,7 +245,7 @@ export const InterchangeStudioPanel: React.FC = () => {
         )}
       </div>
 
-      {/* Telemetry Bar */}
+      {/* Telemetry Strip */}
       {stage === 3 && (
         <div style={{ padding: "0 16rem" }}>
           <div className={styles.telemetryBar}>
@@ -284,7 +278,7 @@ export const InterchangeStudioPanel: React.FC = () => {
       {/* Bottom Actions Footer */}
       <div className={styles.footerActions}>
         <button
-          className={styles.undoBtn}
+          className={styles.ghostBtn}
           onClick={undoLastBuild}
           disabled={!state.canUndo}
           title="Demolish last interchange and restore original highways (Ctrl+Z)"
@@ -294,7 +288,7 @@ export const InterchangeStudioPanel: React.FC = () => {
 
         {stage === 3 && (
           <button
-            className={styles.buildBtn}
+            className={styles.primaryBtn}
             onClick={buildInterchange}
             disabled={legs.length < (state.requiredLegs || 3)}
           >

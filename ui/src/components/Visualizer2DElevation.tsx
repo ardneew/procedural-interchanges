@@ -14,7 +14,7 @@ export const Visualizer2DElevation: React.FC<Visualizer2DElevationProps> = ({
   if (!samples || samples.length === 0) {
     return (
       <div className={styles.visWrapper} style={{ height: "90rem", justifyContent: "center" }}>
-        <span style={{ fontSize: "11rem", color: "#64748b" }}>Select a road course above to view elevation profile</span>
+        <span style={{ fontSize: "11rem", color: "#94a3b8" }}>Select a road course above to view elevation profile</span>
       </div>
     );
   }
@@ -33,7 +33,7 @@ export const Visualizer2DElevation: React.FC<Visualizer2DElevationProps> = ({
     maxY = Math.max(maxY, s.terrainY, s.roadY);
   }
 
-  // Add 4m margin top & bottom
+  // Add margin
   minY -= 3;
   maxY += 5;
   const rangeY = Math.max(6, maxY - minY);
@@ -74,21 +74,21 @@ export const Visualizer2DElevation: React.FC<Visualizer2DElevationProps> = ({
       <svg width={svgWidth} height={svgHeight} viewBox={`0 0 ${svgWidth} ${svgHeight}`}>
         <defs>
           <linearGradient id="terrainGrad" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stopColor="#2c2a29" stopOpacity="0.8" />
-            <stop offset="100%" stopColor="#121110" stopOpacity="0.9" />
+            <stop offset="0%" stopColor="#1e293b" stopOpacity="0.8" />
+            <stop offset="100%" stopColor="#0f172a" stopOpacity="0.95" />
           </linearGradient>
         </defs>
 
         {/* Axis lines */}
-        <line x1={padding} y1={svgHeight - padding} x2={svgWidth - padding} y2={svgHeight - padding} stroke="rgba(255,255,255,0.15)" strokeWidth="1" />
-        <line x1={padding} y1={padding} x2={padding} y2={svgHeight - padding} stroke="rgba(255,255,255,0.15)" strokeWidth="1" />
+        <line x1={padding} y1={svgHeight - padding} x2={svgWidth - padding} y2={svgHeight - padding} stroke="rgba(255,255,255,0.1)" strokeWidth="1" />
+        <line x1={padding} y1={padding} x2={padding} y2={svgHeight - padding} stroke="rgba(255,255,255,0.1)" strokeWidth="1" />
 
         {/* Terrain Area & Surface */}
         <path d={terrainAreaD} fill="url(#terrainGrad)" />
-        <path d={terrainD} fill="none" stroke="#685848" strokeWidth="2" strokeDasharray="3,2" />
+        <path d={terrainD} fill="none" stroke="#475569" strokeWidth="1.5" strokeDasharray="3,2" />
 
         {/* Road Surface Profile */}
-        <path d={roadD} fill="none" stroke="#00e5ff" strokeWidth="2.5" />
+        <path d={roadD} fill="none" stroke="#38bdf8" strokeWidth="2.5" />
 
         {/* Bridge clearance headroom bar if elevated */}
         {maxClr > 2.0 && (
@@ -98,7 +98,7 @@ export const Visualizer2DElevation: React.FC<Visualizer2DElevationProps> = ({
               y1={getY(midClrTerrainY)}
               x2={getX(midClrDist)}
               y2={getY(midClrRoadY)}
-              stroke="#2ecc71"
+              stroke="#38bdf8"
               strokeWidth="1.5"
               strokeDasharray="2,2"
             />
@@ -107,14 +107,16 @@ export const Visualizer2DElevation: React.FC<Visualizer2DElevationProps> = ({
               y={(getY(midClrTerrainY) + getY(midClrRoadY)) / 2 - 8}
               width="44"
               height="16"
-              fill="rgba(0,0,0,0.85)"
+              fill="rgba(15, 23, 42, 0.9)"
+              stroke="rgba(56, 189, 248, 0.3)"
+              strokeWidth="1"
               rx="3"
             />
             <text
               x={getX(midClrDist) + 26}
               y={(getY(midClrTerrainY) + getY(midClrRoadY)) / 2 + 3}
               textAnchor="middle"
-              fill="#2ecc71"
+              fill="#38bdf8"
               fontSize="9"
               fontWeight="bold"
             >
@@ -131,7 +133,7 @@ export const Visualizer2DElevation: React.FC<Visualizer2DElevationProps> = ({
       </svg>
 
       <div style={{ display: "flex", justifyContent: "space-between", width: "100%", fontSize: "10rem", color: "#94a3b8", padding: "0 6rem" }}>
-        <span>Profile: <b style={{ color: "#00e5ff" }}>{selectedCourseId}</b></span>
+        <span>Profile: <b style={{ color: "#38bdf8" }}>{selectedCourseId}</b></span>
         <span>Natural Ground vs Overpass Deck</span>
       </div>
     </div>

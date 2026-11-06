@@ -38,9 +38,9 @@ namespace ProceduralInterchanges.Core.Generators
             var legStem = legs[stemIdx];
 
             // Emit leg approaches & departures cleanly handling both dual-carriageway and single two-way roads
-            var portalsA = LegPortalGeometry.EmitLegApproaches(legA, center, R, 0.25f, sigma, outCourses, "trumpet_main_A");
-            var portalsB = LegPortalGeometry.EmitLegApproaches(legB, center, R, 0.25f, sigma, outCourses, "trumpet_main_B");
-            var portalsStem = LegPortalGeometry.EmitLegApproaches(legStem, center, R, 0.25f, sigma, outCourses, "trumpet_stem");
+            var portalsA = LegPortalGeometry.EmitLegApproaches(legA, center, R, 0.14f, sigma, outCourses, "trumpet_main_A");
+            var portalsB = LegPortalGeometry.EmitLegApproaches(legB, center, R, 0.14f, sigma, outCourses, "trumpet_main_B");
+            var portalsStem = LegPortalGeometry.EmitLegApproaches(legStem, center, R, 0.18f, sigma, outCourses, "trumpet_stem");
 
             float3 dA = portalsA.DivergeNode;
             float3 mA = portalsA.MergeNode;
@@ -52,6 +52,36 @@ namespace ProceduralInterchanges.Core.Generators
             float3 dirA = portalsA.InboundDir;
             float3 dirB = portalsB.InboundDir;
             float3 dirStem = portalsStem.InboundDir;
+
+            const float kGoreAngle = 0.20f; // ~11.5° AASHTO gore divergence angle
+
+            // Staggered nodes on the stem leg
+            float3 dS_direct = dS;
+            float3 dS_overpass = dS + dirStem * 26f;
+            float3 mS_slip = mS + dirStem * 26f;
+            float3 mS_loop = mS;
+
+            // Stem approach connector: dS_direct -> dS_overpass
+            outCourses.Add(new PlannedNetCourse
+            {
+                Id = "trumpet_stem_app_connector",
+                Role = NetRole.MainlineThrough,
+                LegIndex = stemIdx,
+                TargetLegIndex = -1,
+                Curve = BiArcFit.FitSmoothCurve(dS_direct, dirStem, dS_overpass, dirStem),
+                StackLevel = 0
+            });
+
+            // Stem departure connector: mS_slip -> mS_loop
+            outCourses.Add(new PlannedNetCourse
+            {
+                Id = "trumpet_stem_dep_connector",
+                Role = NetRole.MainlineThrough,
+                LegIndex = -1,
+                TargetLegIndex = stemIdx,
+                Curve = BiArcFit.FitSmoothCurve(mS_slip, -dirStem, mS_loop, -dirStem),
+                StackLevel = 0
+            });
 
             // 1. Through Mainlines (StackLevel = 0)
             // Near-side Mainline Core: A -> B
@@ -76,51 +106,53 @@ namespace ProceduralInterchanges.Core.Generators
                 StackLevel = 0
             });
 
-            // 2. Near-Side Outer Slip Ramp: dA -> mS (pure ground ramp, never crosses any road)
-            BiArcFit.ApplyGoreTaper(dA, dirA, (int)sigma, BiArcFit.kStandardGoreAngleRad, out float3 slipStartDir);
+            // 2. Near-Side Outer Slip Ramp: dA -> mS_slip (pure ground ramp, never crosses any road)
+            BiArcFit.ApplyGoreTaper(dA, dirA, (int)sigma, kGoreAngle, out float3 slipStartDir);
+            BiArcFit.ApplyGoreTaper(mS_slip, -dirStem, -(int)sigma, kGoreAngle, out float3 slipEndDir);
             outCourses.Add(new PlannedNetCourse
             {
                 Id = "trumpet_outer_slip",
                 Role = NetRole.DirectionalRamp,
                 LegIndex = mainAIdx,
                 TargetLegIndex = stemIdx,
-                Curve = BiArcFit.FitSmoothCurve(dA, slipStartDir, mS, -dirStem),
+                Curve = BiArcFit.FitSmoothCurve(dA, slipStartDir, mS_slip, slipEndDir),
                 StackLevel = 0
             });
 
-            // 3. Near-Side Direct Merge: dS -> mB (ground ramp merging into near-side mainline)
-            BiArcFit.ApplyGoreTaper(dS, dirStem, (int)sigma, BiArcFit.kStandardGoreAngleRad, out float3 directMergeDir);
+            // 3. Near-Side Direct Merge: dS_direct -> mB (ground ramp merging into near-side mainline)
+            BiArcFit.ApplyGoreTaper(dS_direct, dirStem, (int)sigma, kGoreAngle, out float3 directMergeDir);
+            BiArcFit.ApplyGoreTaper(mB, -dirB, -(int)sigma, kGoreAngle, out float3 directEndDir);
             outCourses.Add(new PlannedNetCourse
             {
                 Id = "trumpet_stem_to_B",
                 Role = NetRole.DirectionalRamp,
                 LegIndex = stemIdx,
                 TargetLegIndex = mainBIdx,
-                Curve = BiArcFit.FitSmoothCurve(dS, directMergeDir, mB, -dirB),
+                Curve = BiArcFit.FitSmoothCurve(dS_direct, directMergeDir, mB, directEndDir),
                 StackLevel = 0
             });
 
-            // 4. Semi-Directional Overpass Ramp: dS -> mA across center (StackLevel = 1, crosses near-side mainline AB)
-            BiArcFit.ApplyGoreTaper(dS, dirStem, -(int)sigma, BiArcFit.kStandardGoreAngleRad, out float3 overpassStartDir);
+            // 4. Semi-Directional Overpass Ramp: dS_overpass -> mA across center (StackLevel = 1, crosses near-side mainline AB)
+            BiArcFit.ApplyGoreTaper(dS_overpass, dirStem, -(int)sigma, kGoreAngle, out float3 overpassStartDir);
+            BiArcFit.ApplyGoreTaper(mA, -dirA, (int)sigma, kGoreAngle, out float3 overpassEndDir);
             outCourses.Add(new PlannedNetCourse
             {
                 Id = "trumpet_overpass_ramp",
                 Role = NetRole.DirectionalRamp,
                 LegIndex = stemIdx,
                 TargetLegIndex = mainAIdx,
-                Curve = BiArcFit.FitSmoothCurve(dS, overpassStartDir, mA, -dirA),
+                Curve = BiArcFit.FitSmoothCurve(dS_overpass, overpassStartDir, mA, overpassEndDir),
                 StackLevel = 1,
                 ForceElevated = true
             });
 
-            // 5. 270-degree Trumpet Loop Ramp: dB -> mS with G1 Tangency via FitConnectedLoop270
-            // Loops from far-side mainline B around and crosses OVER near-side mainline AB into Stem
-            float loopRadius = math.clamp(R * 0.22f, 30.0f, 55.0f);
-            BiArcFit.ApplyGoreTaper(dB, dirB, (int)sigma, BiArcFit.kStandardGoreAngleRad, out float3 loopStartDir);
-            BiArcFit.ApplyGoreTaper(mS, -dirStem, -(int)sigma, BiArcFit.kStandardGoreAngleRad, out float3 loopEndDir);
+            // 5. 270-degree Trumpet Loop Ramp: dB -> mS_loop with G1 Tangency via FitConnectedLoop270
+            float loopRadius = math.clamp(R * 0.26f, 44.0f, 62.0f);
+            BiArcFit.ApplyGoreTaper(dB, dirB, (int)sigma, kGoreAngle, out float3 loopStartDir);
+            BiArcFit.ApplyGoreTaper(mS_loop, -dirStem, (int)sigma, kGoreAngle, out float3 loopEndDir);
 
             var loopArcs = new List<Bezier4x3>();
-            BiArcFit.FitConnectedLoop270(dB, loopStartDir, mS, loopEndDir, loopRadius, (int)sigma, center.y, center.y + 10f, center.y, loopArcs);
+            BiArcFit.FitConnectedLoop270(dB, loopStartDir, mS_loop, loopEndDir, loopRadius, (int)sigma, center.y, center.y + config.MinBridgeClearanceMeters, center.y, loopArcs);
 
             for (int l = 0; l < loopArcs.Count; l++)
             {
@@ -131,8 +163,8 @@ namespace ProceduralInterchanges.Core.Generators
                     LegIndex = mainBIdx,
                     TargetLegIndex = stemIdx,
                     Curve = loopArcs[l],
-                    StackLevel = 1,
-                    ForceElevated = true
+                    StackLevel = (l > 0 && l < loopArcs.Count - 1) ? 1 : 0,
+                    ForceElevated = (l > 0 && l < loopArcs.Count - 1)
                 });
             }
         }
@@ -144,7 +176,6 @@ namespace ProceduralInterchanges.Core.Generators
             mainB = 1;
             stem = 2;
 
-            // Find pair of legs with angle closest to 180 degrees (PI radians)
             for (int i = 0; i < 3; i++)
             {
                 for (int j = i + 1; j < 3; j++)
@@ -169,15 +200,12 @@ namespace ProceduralInterchanges.Core.Generators
                 }
             }
 
-            // Ensure leg mainA -> mainB is on the near side (closest to stem)
             float3 dirAtoB = math.normalize(legs[mainB].PortalCenterPosition - legs[mainA].PortalCenterPosition);
             float3 toStem = math.normalize(legs[stem].PortalCenterPosition - (legs[mainA].PortalCenterPosition + legs[mainB].PortalCenterPosition) * 0.5f);
 
-            // In RHT (sigma = 1), traffic from A to B flows forward with its right side at (dirAtoB.z, 0, -dirAtoB.x)
             float3 rightHandSide = new float3(dirAtoB.z * sigma, 0f, -dirAtoB.x * sigma);
             if (math.dot(rightHandSide, toStem) < 0f)
             {
-                // Swap mainA and mainB so mainA is always the near-side origin
                 int tmp = mainA;
                 mainA = mainB;
                 mainB = tmp;

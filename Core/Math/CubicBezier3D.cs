@@ -46,6 +46,13 @@ namespace ProceduralInterchanges.Core.Math
             return num / den;
         }
 
+        public static float CurvatureRadius(in Bezier4x3 c, float t)
+        {
+            float k = CurvatureXZ(c, t);
+            if (k <= 1e-6f) return 9999f;
+            return 1f / k;
+        }
+
         public static float MinRadiusXZ(in Bezier4x3 c, int samples = 24)
         {
             float maxCurvature = 0f;
@@ -101,6 +108,22 @@ namespace ProceduralInterchanges.Core.Math
                 prev = cur;
             }
             return len;
+        }
+
+        public static Bezier4x3 Subcurve(in Bezier4x3 c, float t0, float t1)
+        {
+            t0 = math.clamp(t0, 0f, 1f);
+            t1 = math.clamp(t1, 0f, 1f);
+            if (t1 <= t0)
+            {
+                float3 pt = Position(c, t0);
+                return new Bezier4x3(pt, pt, pt, pt);
+            }
+
+            Split(c, t0, out _, out Bezier4x3 right);
+            float tRel = (t1 - t0) / math.max(1e-5f, 1f - t0);
+            Split(right, math.clamp(tRel, 0f, 1f), out Bezier4x3 sub, out _);
+            return sub;
         }
 
         public static void Split(in Bezier4x3 c, float t, out Bezier4x3 left, out Bezier4x3 right)

@@ -219,6 +219,15 @@ namespace ProceduralInterchanges.Systems
             writer.PropertyName("mainlineOverpass");
             writer.Write(config.MainlineOverpass);
 
+            writer.PropertyName("undergroundMode");
+            writer.Write((int)config.Underground);
+
+            writer.PropertyName("flowPriorityMode");
+            writer.Write((int)config.FlowPriority);
+
+            writer.PropertyName("primaryAxisOffset");
+            writer.Write(config.PrimaryAxisOffset);
+
             writer.PropertyName("liveGhostEnabled");
             writer.Write(m_InterchangeTool.LiveGhostPreviewEnabled);
 

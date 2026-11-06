@@ -7,6 +7,9 @@ description: "Orchestrates the 4-stage human-in-the-loop development pipeline: 1
 
 This skill orchestrates a strict, 4-stage development workflow where each stage uses an optimal model tier and requires **explicit user manual sign-off** before progressing to the next stage.
 
+> [!IMPORTANT]
+> Every stage of this pipeline must strictly adhere to the global Cities: Skylines II modding rules in ~/.gemini/config/plugins/cs2-modding/rules/AGENTS.md (the core CS2 ground truth hierarchy, imperative `UpdateSystem` ordering, power-of-two intervals, zero-field tags, query hygiene, and reference mod corpus).
+
 ---
 
 ## Stage 1: Triage (Model: Flash 3.8 Low)
@@ -67,7 +70,10 @@ Act as the **Principal Architect**: own 100% of the high-level thinking, mathema
    - Strict step-by-step sequencing so execution bots never have to make architectural choices, guess edge-case handling, or invent interfaces.
 3. Explicitly delineate core C# mod changes from unit test specifications in `Tests/`.
 
-🛑 **USER GATE 2**: Present `docs/PLAN.md` to the user for architectural review and manual sign-off. **DO NOT proceed to Stage 3 without explicit user approval.**
+🛑 **USER GATE 2 (Model Switch Pause)**: 
+The plan is written to `docs/PLAN.md`. Stop and give a brief one-line notification to the user:
+> *"Plan written to `docs/PLAN.md`. Ready to switch model to **Flash 3.8 Medium** for Stage 3 (Execution)."*
+Do not require the user to review the full technical plan unless they ask. Wait for the user to prompt to proceed.
 
 ---
 
@@ -85,13 +91,11 @@ Act as the **Flash Execution Bot**: write the exact code and tests defined in th
    - **Refrain from big architectural fixes**: If an unplanned design flaw, engine collision, or API incompatibility arises, do **NOT** improvise an ad-hoc architectural redesign.
 3. **Automated Verification**:
    - Run `dotnet test Tests/ProceduralInterchanges.Tests/ProceduralInterchanges.Tests.csproj` to verify all unit tests pass.
-4. **End-of-Turn Handoff Report**:
-   - Explicitly report:
-     1. What was successfully implemented and verified (compilation, test results).
-     2. Any minor compile/syntax fixes that were necessary.
-     3. **Crucially: anything that could NOT be implemented** strictly following the implementation plan, along with the exact blocking reason, for Principal Architect review.
 
-🛑 **USER GATE 3**: Present the execution report to the user. Ask the user for manual sign-off to proceed to verification and QA. **DO NOT proceed to Stage 4 without user confirmation.**
+🛑 **USER GATE 3 (Model Switch Pause)**:
+Do **NOT** print an extensive execution report. Simply state that execution and initial tests passed, and give a brief one-line notification:
+> *"Execution complete and initial tests pass. Ready to switch model to **Flash 3.8 Low** for Stage 4 (Verification & QA)."*
+Wait for the user to prompt to proceed.
 
 ---
 

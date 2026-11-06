@@ -6,584 +6,605 @@
   <circle cx="0" cy="0" r="210.0" fill="none" stroke="#1e293b" stroke-width="2" stroke-dasharray="6 6"/>
   <line x1="-300" y1="0" x2="300" y2="0" stroke="#1e293b" stroke-width="1"/>
   <line x1="0" y1="-300" x2="0" y2="300" stroke="#1e293b" stroke-width="1"/>
-  <path id="parclo_main_2_0_core" d="M -81.9 4.7 C -19.7 4.7, 19.7 4.7, 81.9 4.7" fill="none" stroke="#06b6d4" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
-    <title>parclo_main_2_0_core (Lanes: 0, Elev: -5.9m)</title>
+  <path id="parclo_freeway_0_2_span_11" d="M -146.9 -12.0 C -157.8 -12.0, -169.0 -12.0, -180.6 -12.0" fill="none" stroke="#06b6d4" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>parclo_freeway_0_2_span_11 (Lanes: 2, Elev: -5.7m)</title>
   </path>
-  <path d="M -81.9 4.7 C -19.7 4.7, 19.7 4.7, 81.9 4.7" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
-  <path id="parclo_main_0_2_core" d="M 81.9 -4.7 C 19.7 -4.7, -19.7 -4.7, -81.9 -4.7" fill="none" stroke="#06b6d4" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
-    <title>parclo_main_0_2_core (Lanes: 0, Elev: -5.9m)</title>
+  <path d="M -146.9 -12.0 C -157.8 -12.0, -169.0 -12.0, -180.6 -12.0" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="parclo_freeway_0_2_span_10" d="M -115.0 -12.0 C -125.4 -12.0, -136.0 -12.0, -146.9 -12.0" fill="none" stroke="#06b6d4" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>parclo_freeway_0_2_span_10 (Lanes: 2, Elev: -5.7m)</title>
   </path>
-  <path d="M 81.9 -4.7 C 19.7 -4.7, -19.7 -4.7, -81.9 -4.7" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
-  <path id="parclo_main_0_2_lead2" d="M -81.9 -4.7 C -113.1 -4.7, -132.6 -9.4, -163.8 -9.4" fill="none" stroke="#06b6d4" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
-    <title>parclo_main_0_2_lead2 (Lanes: 0, Elev: -5.9m)</title>
+  <path d="M -115.0 -12.0 C -125.4 -12.0, -136.0 -12.0, -146.9 -12.0" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="parclo_freeway_0_2_span_9" d="M -84.5 -12.0 C -94.5 -12.0, -104.6 -12.0, -115.0 -12.0" fill="none" stroke="#06b6d4" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>parclo_freeway_0_2_span_9 (Lanes: 2, Elev: -5.7m)</title>
   </path>
-  <path d="M -81.9 -4.7 C -113.1 -4.7, -132.6 -9.4, -163.8 -9.4" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
-  <path id="parclo_main_2_0_lead2" d="M 81.9 4.7 C 113.1 4.7, 132.6 9.4, 163.8 9.4" fill="none" stroke="#06b6d4" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
-    <title>parclo_main_2_0_lead2 (Lanes: 0, Elev: -5.9m)</title>
-  </path>
-  <path d="M 81.9 4.7 C 113.1 4.7, 132.6 9.4, 163.8 9.4" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
-  <path id="parclo_main_0_2_lead1" d="M 163.8 -9.4 C 132.6 -9.4, 113.1 -4.7, 81.9 -4.7" fill="none" stroke="#06b6d4" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
-    <title>parclo_main_0_2_lead1 (Lanes: 0, Elev: -5.9m)</title>
-  </path>
-  <path d="M 163.8 -9.4 C 132.6 -9.4, 113.1 -4.7, 81.9 -4.7" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
-  <path id="parclo_main_2_0_lead1" d="M -163.8 9.4 C -132.6 9.4, -113.1 4.7, -81.9 4.7" fill="none" stroke="#06b6d4" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
-    <title>parclo_main_2_0_lead1 (Lanes: 0, Elev: -5.9m)</title>
-  </path>
-  <path d="M -163.8 9.4 C -132.6 9.4, -113.1 4.7, -81.9 4.7" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
-  <path id="parclo_leg_2_dep" d="M -163.8 -9.4 C -181.4 -9.4, -192.4 -12.0, -210.0 -12.0" fill="none" stroke="#06b6d4" stroke-width="7.3" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M -84.5 -12.0 C -94.5 -12.0, -104.6 -12.0, -115.0 -12.0" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="parclo_leg_2_dep" d="M -180.6 -12.0 C -191.8 -12.0, -198.8 -12.0, -210.0 -12.0" fill="none" stroke="#06b6d4" stroke-width="7.3" stroke-linecap="round" stroke-linejoin="round">
     <title>parclo_leg_2_dep (Lanes: 3, Elev: -5.7m)</title>
   </path>
-  <path d="M -163.8 -9.4 C -181.4 -9.4, -192.4 -12.0, -210.0 -12.0" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
-  <path id="parclo_leg_0_app" d="M 210.0 -12.0 C 192.4 -12.0, 181.4 -9.4, 163.8 -9.4" fill="none" stroke="#06b6d4" stroke-width="7.3" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M -180.6 -12.0 C -191.8 -12.0, -198.8 -12.0, -210.0 -12.0" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="parclo_freeway_0_2_span_8" d="M -55.1 -12.0 C -64.8 -12.0, -74.6 -12.0, -84.5 -12.0" fill="none" stroke="#06b6d4" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>parclo_freeway_0_2_span_8 (Lanes: 2, Elev: -5.7m)</title>
+  </path>
+  <path d="M -55.1 -12.0 C -64.8 -12.0, -74.6 -12.0, -84.5 -12.0" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="parclo_freeway_0_2_span_7" d="M -26.4 -12.0 C -35.9 -12.0, -45.5 -12.0, -55.1 -12.0" fill="none" stroke="#06b6d4" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>parclo_freeway_0_2_span_7 (Lanes: 2, Elev: -5.7m)</title>
+  </path>
+  <path d="M -26.4 -12.0 C -35.9 -12.0, -45.5 -12.0, -55.1 -12.0" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="parclo_freeway_0_2_span_6" d="M -1.4 -12.0 C -9.7 -12.0, -18.1 -12.0, -26.4 -12.0" fill="none" stroke="#06b6d4" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>parclo_freeway_0_2_span_6 (Lanes: 2, Elev: -5.7m)</title>
+  </path>
+  <path d="M -1.4 -12.0 C -9.7 -12.0, -18.1 -12.0, -26.4 -12.0" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="parclo_leg_0_app" d="M 210.0 -12.0 C 198.8 -12.0, 191.8 -12.0, 180.6 -12.0" fill="none" stroke="#06b6d4" stroke-width="7.3" stroke-linecap="round" stroke-linejoin="round">
     <title>parclo_leg_0_app (Lanes: 3, Elev: -5.7m)</title>
   </path>
-  <path d="M 210.0 -12.0 C 192.4 -12.0, 181.4 -9.4, 163.8 -9.4" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
-  <path id="parclo_leg_0_dep" d="M 163.8 9.4 C 181.4 9.4, 192.4 12.0, 210.0 12.0" fill="none" stroke="#06b6d4" stroke-width="7.3" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M 210.0 -12.0 C 198.8 -12.0, 191.8 -12.0, 180.6 -12.0" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="parclo_freeway_2_0_span_6" d="M 1.4 12.0 C 9.7 12.0, 18.1 12.0, 26.4 12.0" fill="none" stroke="#06b6d4" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>parclo_freeway_2_0_span_6 (Lanes: 2, Elev: -5.7m)</title>
+  </path>
+  <path d="M 1.4 12.0 C 9.7 12.0, 18.1 12.0, 26.4 12.0" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="parclo_freeway_0_2_span_5" d="M 28.1 -12.0 C 18.2 -12.0, 8.4 -12.0, -1.4 -12.0" fill="none" stroke="#06b6d4" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>parclo_freeway_0_2_span_5 (Lanes: 2, Elev: -5.7m)</title>
+  </path>
+  <path d="M 28.1 -12.0 C 18.2 -12.0, 8.4 -12.0, -1.4 -12.0" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="parclo_freeway_0_2_span_4" d="M 56.5 -12.0 C 46.9 -12.0, 37.4 -12.0, 28.1 -12.0" fill="none" stroke="#06b6d4" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>parclo_freeway_0_2_span_4 (Lanes: 2, Elev: -5.7m)</title>
+  </path>
+  <path d="M 56.5 -12.0 C 46.9 -12.0, 37.4 -12.0, 28.1 -12.0" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="parclo_freeway_0_2_span_3" d="M 85.6 -12.0 C 75.7 -12.0, 66.0 -12.0, 56.5 -12.0" fill="none" stroke="#06b6d4" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>parclo_freeway_0_2_span_3 (Lanes: 2, Elev: -5.7m)</title>
+  </path>
+  <path d="M 85.6 -12.0 C 75.7 -12.0, 66.0 -12.0, 56.5 -12.0" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="parclo_freeway_0_2_span_2" d="M 115.7 -12.0 C 105.5 -12.0, 95.4 -12.0, 85.6 -12.0" fill="none" stroke="#06b6d4" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>parclo_freeway_0_2_span_2 (Lanes: 2, Elev: -5.7m)</title>
+  </path>
+  <path d="M 115.7 -12.0 C 105.5 -12.0, 95.4 -12.0, 85.6 -12.0" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="parclo_freeway_0_2_span_1" d="M 147.3 -12.0 C 136.5 -12.0, 126.0 -12.0, 115.7 -12.0" fill="none" stroke="#06b6d4" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>parclo_freeway_0_2_span_1 (Lanes: 2, Elev: -5.7m)</title>
+  </path>
+  <path d="M 147.3 -12.0 C 136.5 -12.0, 126.0 -12.0, 115.7 -12.0" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="parclo_freeway_0_2" d="M 180.6 -12.0 C 169.2 -12.0, 158.1 -12.0, 147.3 -12.0" fill="none" stroke="#06b6d4" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>parclo_freeway_0_2 (Lanes: 2, Elev: -5.7m)</title>
+  </path>
+  <path d="M 180.6 -12.0 C 169.2 -12.0, 158.1 -12.0, 147.3 -12.0" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="parclo_freeway_2_0_span_7" d="M 26.4 12.0 C 35.9 12.0, 45.5 12.0, 55.1 12.0" fill="none" stroke="#06b6d4" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>parclo_freeway_2_0_span_7 (Lanes: 2, Elev: -5.7m)</title>
+  </path>
+  <path d="M 26.4 12.0 C 35.9 12.0, 45.5 12.0, 55.1 12.0" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="parclo_freeway_2_0_span_8" d="M 55.1 12.0 C 64.8 12.0, 74.6 12.0, 84.5 12.0" fill="none" stroke="#06b6d4" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>parclo_freeway_2_0_span_8 (Lanes: 2, Elev: -5.7m)</title>
+  </path>
+  <path d="M 55.1 12.0 C 64.8 12.0, 74.6 12.0, 84.5 12.0" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="parclo_freeway_2_0_span_9" d="M 84.5 12.0 C 94.5 12.0, 104.6 12.0, 115.0 12.0" fill="none" stroke="#06b6d4" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>parclo_freeway_2_0_span_9 (Lanes: 2, Elev: -5.7m)</title>
+  </path>
+  <path d="M 84.5 12.0 C 94.5 12.0, 104.6 12.0, 115.0 12.0" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="parclo_freeway_2_0_span_10" d="M 115.0 12.0 C 125.4 12.0, 136.0 12.0, 146.9 12.0" fill="none" stroke="#06b6d4" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>parclo_freeway_2_0_span_10 (Lanes: 2, Elev: -5.7m)</title>
+  </path>
+  <path d="M 115.0 12.0 C 125.4 12.0, 136.0 12.0, 146.9 12.0" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="parclo_freeway_2_0_span_11" d="M 146.9 12.0 C 157.8 12.0, 169.0 12.0, 180.6 12.0" fill="none" stroke="#06b6d4" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>parclo_freeway_2_0_span_11 (Lanes: 2, Elev: -5.7m)</title>
+  </path>
+  <path d="M 146.9 12.0 C 157.8 12.0, 169.0 12.0, 180.6 12.0" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="parclo_leg_0_dep" d="M 180.6 12.0 C 191.8 12.0, 198.8 12.0, 210.0 12.0" fill="none" stroke="#06b6d4" stroke-width="7.3" stroke-linecap="round" stroke-linejoin="round">
     <title>parclo_leg_0_dep (Lanes: 3, Elev: -5.7m)</title>
   </path>
-  <path d="M 163.8 9.4 C 181.4 9.4, 192.4 12.0, 210.0 12.0" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
-  <path id="parclo_leg_2_app" d="M -210.0 12.0 C -192.4 12.0, -181.4 9.4, -163.8 9.4" fill="none" stroke="#06b6d4" stroke-width="7.3" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M 180.6 12.0 C 191.8 12.0, 198.8 12.0, 210.0 12.0" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="parclo_freeway_2_0_span_5" d="M -28.1 12.0 C -18.2 12.0, -8.4 12.0, 1.4 12.0" fill="none" stroke="#06b6d4" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>parclo_freeway_2_0_span_5 (Lanes: 2, Elev: -5.7m)</title>
+  </path>
+  <path d="M -28.1 12.0 C -18.2 12.0, -8.4 12.0, 1.4 12.0" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="parclo_freeway_2_0_span_4" d="M -56.5 12.0 C -46.9 12.0, -37.4 12.0, -28.1 12.0" fill="none" stroke="#06b6d4" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>parclo_freeway_2_0_span_4 (Lanes: 2, Elev: -5.7m)</title>
+  </path>
+  <path d="M -56.5 12.0 C -46.9 12.0, -37.4 12.0, -28.1 12.0" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="parclo_freeway_2_0_span_2" d="M -115.7 12.0 C -105.5 12.0, -95.4 12.0, -85.6 12.0" fill="none" stroke="#06b6d4" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>parclo_freeway_2_0_span_2 (Lanes: 2, Elev: -5.7m)</title>
+  </path>
+  <path d="M -115.7 12.0 C -105.5 12.0, -95.4 12.0, -85.6 12.0" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="parclo_freeway_2_0_span_3" d="M -85.6 12.0 C -75.7 12.0, -66.0 12.0, -56.5 12.0" fill="none" stroke="#06b6d4" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>parclo_freeway_2_0_span_3 (Lanes: 2, Elev: -5.7m)</title>
+  </path>
+  <path d="M -85.6 12.0 C -75.7 12.0, -66.0 12.0, -56.5 12.0" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="parclo_freeway_2_0_span_1" d="M -147.3 12.0 C -136.5 12.0, -126.0 12.0, -115.7 12.0" fill="none" stroke="#06b6d4" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>parclo_freeway_2_0_span_1 (Lanes: 2, Elev: -5.7m)</title>
+  </path>
+  <path d="M -147.3 12.0 C -136.5 12.0, -126.0 12.0, -115.7 12.0" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="parclo_freeway_2_0" d="M -180.6 12.0 C -169.2 12.0, -158.1 12.0, -147.3 12.0" fill="none" stroke="#06b6d4" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>parclo_freeway_2_0 (Lanes: 2, Elev: -5.7m)</title>
+  </path>
+  <path d="M -180.6 12.0 C -169.2 12.0, -158.1 12.0, -147.3 12.0" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="parclo_leg_2_app" d="M -210.0 12.0 C -198.8 12.0, -191.8 12.0, -180.6 12.0" fill="none" stroke="#06b6d4" stroke-width="7.3" stroke-linecap="round" stroke-linejoin="round">
     <title>parclo_leg_2_app (Lanes: 3, Elev: -5.7m)</title>
   </path>
-  <path d="M -210.0 12.0 C -192.4 12.0, -181.4 9.4, -163.8 9.4" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
-  <path id="parclo_slip_1_2_sub_5" d="M -83.1 -30.0 C -106.5 -17.0, -134.2 -9.4, -163.8 -9.4" fill="none" stroke="#06b6d4" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
-    <title>parclo_slip_1_2_sub_5 (Lanes: 0, Elev: -5.5m)</title>
+  <path d="M -210.0 12.0 C -198.8 12.0, -191.8 12.0, -180.6 12.0" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="parclo_slip_3_0_span_8" d="M 148.2 18.3 C 158.7 15.3, 169.5 13.2, 180.6 12.0" fill="none" stroke="#06b6d4" stroke-width="4.0" stroke-linecap="round" stroke-linejoin="round">
+    <title>parclo_slip_3_0_span_8 (Lanes: 1, Elev: -3.3m)</title>
   </path>
-  <path d="M -83.1 -30.0 C -106.5 -17.0, -134.2 -9.4, -163.8 -9.4" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
-  <path id="parclo_slip_3_0_sub_5" d="M 83.1 30.0 C 106.5 17.0, 134.2 9.4, 163.8 9.4" fill="none" stroke="#06b6d4" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
-    <title>parclo_slip_3_0_sub_5 (Lanes: 0, Elev: -5.5m)</title>
+  <path d="M 148.2 18.3 C 158.7 15.3, 169.5 13.2, 180.6 12.0" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="parclo_slip_1_2_span_8" d="M -148.2 -18.3 C -158.7 -15.3, -169.5 -13.2, -180.6 -12.0" fill="none" stroke="#06b6d4" stroke-width="4.0" stroke-linecap="round" stroke-linejoin="round">
+    <title>parclo_slip_1_2_span_8 (Lanes: 1, Elev: -3.3m)</title>
   </path>
-  <path d="M 83.1 30.0 C 106.5 17.0, 134.2 9.4, 163.8 9.4" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
-  <path id="parclo_loop0_0" d="M -81.9 -4.7 C -91.2 -3.7, -97.0 -3.1, -106.3 -2.1" fill="none" stroke="#06b6d4" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
-    <title>parclo_loop0_0 (Lanes: 0, Elev: -5.1m)</title>
+  <path d="M -148.2 -18.3 C -158.7 -15.3, -169.5 -13.2, -180.6 -12.0" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="parclo_slip_2_3" d="M -180.6 12.0 C -170.7 13.0, -161.1 14.8, -151.7 17.3" fill="none" stroke="#06b6d4" stroke-width="4.0" stroke-linecap="round" stroke-linejoin="round">
+    <title>parclo_slip_2_3 (Lanes: 1, Elev: -3.3m)</title>
   </path>
-  <path d="M -81.9 -4.7 C -91.2 -3.7, -97.0 -3.1, -106.3 -2.1" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
-  <path id="parclo_loop2_0" d="M 81.9 4.7 C 91.2 3.7, 97.0 3.1, 106.3 2.1" fill="none" stroke="#06b6d4" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
-    <title>parclo_loop2_0 (Lanes: 0, Elev: -5.1m)</title>
+  <path d="M -180.6 12.0 C -170.7 13.0, -161.1 14.8, -151.7 17.3" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="parclo_slip_0_1" d="M 180.6 -12.0 C 170.7 -13.0, 161.1 -14.8, 151.7 -17.3" fill="none" stroke="#06b6d4" stroke-width="4.0" stroke-linecap="round" stroke-linejoin="round">
+    <title>parclo_slip_0_1 (Lanes: 1, Elev: -3.3m)</title>
   </path>
-  <path d="M 81.9 4.7 C 91.2 3.7, 97.0 3.1, 106.3 2.1" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
-  <path id="parclo_slip_0_1" d="M 163.8 -9.4 C 128.9 -5.7, 95.9 -16.4, 69.5 -36.9" fill="none" stroke="#06b6d4" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
-    <title>parclo_slip_0_1 (Lanes: 0, Elev: -5.5m)</title>
+  <path d="M 180.6 -12.0 C 170.7 -13.0, 161.1 -14.8, 151.7 -17.3" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="parclo_leg_3_dep" d="M -12.0 180.6 C -12.0 191.8, -12.0 198.8, -12.0 210.0" fill="none" stroke="#64748b" stroke-width="7.3" stroke-linecap="round" stroke-linejoin="round">
+    <title>parclo_leg_3_dep (Lanes: 3, Elev: 0.0m)</title>
   </path>
-  <path d="M 163.8 -9.4 C 128.9 -5.7, 95.9 -16.4, 69.5 -36.9" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
-  <path id="parclo_slip_2_3" d="M -163.8 9.4 C -128.9 5.7, -95.9 16.4, -69.5 36.9" fill="none" stroke="#06b6d4" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
-    <title>parclo_slip_2_3 (Lanes: 0, Elev: -5.5m)</title>
-  </path>
-  <path d="M -163.8 9.4 C -128.9 5.7, -95.9 16.4, -69.5 36.9" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
-  <path id="parclo_slip_1_2_sub_4" d="M -56.1 -49.1 C -64.3 -41.9, -73.3 -35.5, -83.1 -30.0" fill="none" stroke="#06b6d4" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
-    <title>parclo_slip_1_2_sub_4 (Lanes: 0, Elev: -2.4m)</title>
-  </path>
-  <path d="M -56.1 -49.1 C -64.3 -41.9, -73.3 -35.5, -83.1 -30.0" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
-  <path id="parclo_slip_3_0_sub_4" d="M 56.1 49.1 C 64.3 41.9, 73.3 35.5, 83.1 30.0" fill="none" stroke="#06b6d4" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
-    <title>parclo_slip_3_0_sub_4 (Lanes: 0, Elev: -2.4m)</title>
-  </path>
-  <path d="M 56.1 49.1 C 64.3 41.9, 73.3 35.5, 83.1 30.0" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
-  <path id="parclo_slip_0_1_sub_1" d="M 69.5 -36.9 C 64.5 -40.7, 59.8 -45.0, 55.3 -49.5" fill="none" stroke="#06b6d4" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
-    <title>parclo_slip_0_1_sub_1 (Lanes: 0, Elev: -1.6m)</title>
-  </path>
-  <path d="M 69.5 -36.9 C 64.5 -40.7, 59.8 -45.0, 55.3 -49.5" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
-  <path id="parclo_slip_2_3_sub_1" d="M -69.5 36.9 C -64.5 40.7, -59.8 45.0, -55.3 49.5" fill="none" stroke="#06b6d4" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
-    <title>parclo_slip_2_3_sub_1 (Lanes: 0, Elev: -1.6m)</title>
-  </path>
-  <path d="M -69.5 36.9 C -64.5 40.7, -59.8 45.0, -55.3 49.5" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
-  <path id="parclo_slip_2_3_sub_2" d="M -55.3 49.5 C -46.9 57.9, -39.5 67.4, -33.2 77.7" fill="none" stroke="#64748b" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
-    <title>parclo_slip_2_3_sub_2 (Lanes: 0, Elev: 0.0m)</title>
-  </path>
-  <path d="M -55.3 49.5 C -46.9 57.9, -39.5 67.4, -33.2 77.7" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
-  <path id="parclo_slip_2_3_sub_3" d="M -33.2 77.7 C -23.4 93.7, -16.3 111.8, -12.5 131.3" fill="none" stroke="#64748b" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
-    <title>parclo_slip_2_3_sub_3 (Lanes: 0, Elev: 0.0m)</title>
-  </path>
-  <path d="M -33.2 77.7 C -23.4 93.7, -16.3 111.8, -12.5 131.3" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
-  <path id="parclo_slip_2_3_sub_4" d="M -12.5 131.3 C -11.2 138.1, -10.2 145.1, -9.8 152.2" fill="none" stroke="#64748b" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
-    <title>parclo_slip_2_3_sub_4 (Lanes: 0, Elev: 0.0m)</title>
-  </path>
-  <path d="M -12.5 131.3 C -11.2 138.1, -10.2 145.1, -9.8 152.2" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
-  <path id="parclo_slip_3_0_sub_1" d="M 8.7 153.2 C 8.5 146.8, 8.9 140.3, 9.7 134.1" fill="none" stroke="#64748b" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
-    <title>parclo_slip_3_0_sub_1 (Lanes: 0, Elev: 0.0m)</title>
-  </path>
-  <path d="M 8.7 153.2 C 8.5 146.8, 8.9 140.3, 9.7 134.1" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
-  <path id="parclo_slip_3_0_sub_2" d="M 9.7 134.1 C 12.0 116.1, 18.1 99.0, 27.2 83.7" fill="none" stroke="#64748b" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
-    <title>parclo_slip_3_0_sub_2 (Lanes: 0, Elev: 0.0m)</title>
-  </path>
-  <path d="M 9.7 134.1 C 12.0 116.1, 18.1 99.0, 27.2 83.7" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
-  <path id="parclo_slip_3_0_sub_3" d="M 27.2 83.7 C 34.9 70.9, 44.6 59.2, 56.1 49.1" fill="none" stroke="#64748b" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
-    <title>parclo_slip_3_0_sub_3 (Lanes: 0, Elev: 0.0m)</title>
-  </path>
-  <path d="M 27.2 83.7 C 34.9 70.9, 44.6 59.2, 56.1 49.1" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
-  <path id="parclo_slip_1_2_sub_2" d="M -9.7 -134.1 C -12.0 -116.1, -18.1 -99.0, -27.2 -83.7" fill="none" stroke="#64748b" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
-    <title>parclo_slip_1_2_sub_2 (Lanes: 0, Elev: 0.0m)</title>
-  </path>
-  <path d="M -9.7 -134.1 C -12.0 -116.1, -18.1 -99.0, -27.2 -83.7" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
-  <path id="parclo_slip_1_2_sub_1" d="M -8.7 -153.2 C -8.5 -146.8, -8.9 -140.3, -9.7 -134.1" fill="none" stroke="#64748b" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
-    <title>parclo_slip_1_2_sub_1 (Lanes: 0, Elev: 0.0m)</title>
-  </path>
-  <path d="M -8.7 -153.2 C -8.5 -146.8, -8.9 -140.3, -9.7 -134.1" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
-  <path id="parclo_slip_0_1_sub_4" d="M 12.5 -131.3 C 11.2 -138.1, 10.2 -145.1, 9.8 -152.2" fill="none" stroke="#64748b" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
-    <title>parclo_slip_0_1_sub_4 (Lanes: 0, Elev: 0.0m)</title>
-  </path>
-  <path d="M 12.5 -131.3 C 11.2 -138.1, 10.2 -145.1, 9.8 -152.2" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
-  <path id="parclo_slip_0_1_sub_3" d="M 33.2 -77.7 C 23.4 -93.7, 16.3 -111.8, 12.5 -131.3" fill="none" stroke="#64748b" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
-    <title>parclo_slip_0_1_sub_3 (Lanes: 0, Elev: 0.0m)</title>
-  </path>
-  <path d="M 33.2 -77.7 C 23.4 -93.7, 16.3 -111.8, 12.5 -131.3" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
-  <path id="parclo_slip_0_1_sub_2" d="M 55.3 -49.5 C 46.9 -57.9, 39.5 -67.4, 33.2 -77.7" fill="none" stroke="#64748b" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
-    <title>parclo_slip_0_1_sub_2 (Lanes: 0, Elev: 0.0m)</title>
-  </path>
-  <path d="M 55.3 -49.5 C 46.9 -57.9, 39.5 -67.4, 33.2 -77.7" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
-  <path id="parclo_slip_1_2_sub_3" d="M -27.2 -83.7 C -34.9 -70.9, -44.6 -59.2, -56.1 -49.1" fill="none" stroke="#64748b" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
-    <title>parclo_slip_1_2_sub_3 (Lanes: 0, Elev: 0.0m)</title>
-  </path>
-  <path d="M -27.2 -83.7 C -34.9 -70.9, -44.6 -59.2, -56.1 -49.1" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
-  <path id="parclo_leg_3_dep_sub_1" d="M -9.5 170.0 C -9.6 173.7, -9.8 177.1, -10.1 180.4" fill="none" stroke="#64748b" stroke-width="7.3" stroke-linecap="round" stroke-linejoin="round">
-    <title>parclo_leg_3_dep_sub_1 (Lanes: 3, Elev: 0.0m)</title>
-  </path>
-  <path d="M -9.5 170.0 C -9.6 173.7, -9.8 177.1, -10.1 180.4" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
-  <path id="parclo_leg_1_app" d="M -12.0 -210.0 C -12.0 -198.6, -10.9 -189.9, -10.1 -180.4" fill="none" stroke="#64748b" stroke-width="7.3" stroke-linecap="round" stroke-linejoin="round">
-    <title>parclo_leg_1_app (Lanes: 3, Elev: 0.0m)</title>
-  </path>
-  <path d="M -12.0 -210.0 C -12.0 -198.6, -10.9 -189.9, -10.1 -180.4" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
-  <path id="parclo_leg_3_app_sub_1" d="M 10.1 180.4 C 9.8 177.1, 9.6 173.7, 9.5 170.0" fill="none" stroke="#64748b" stroke-width="7.3" stroke-linecap="round" stroke-linejoin="round">
-    <title>parclo_leg_3_app_sub_1 (Lanes: 3, Elev: 0.0m)</title>
-  </path>
-  <path d="M 10.1 180.4 C 9.8 177.1, 9.6 173.7, 9.5 170.0" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
-  <path id="parclo_leg_1_app_sub_1" d="M -10.1 -180.4 C -9.8 -177.1, -9.6 -173.7, -9.5 -170.0" fill="none" stroke="#64748b" stroke-width="7.3" stroke-linecap="round" stroke-linejoin="round">
-    <title>parclo_leg_1_app_sub_1 (Lanes: 3, Elev: 0.0m)</title>
-  </path>
-  <path d="M -10.1 -180.4 C -9.8 -177.1, -9.6 -173.7, -9.5 -170.0" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
-  <path id="parclo_leg_1_dep_sub_1" d="M 9.5 -170.0 C 9.6 -173.7, 9.8 -177.1, 10.1 -180.4" fill="none" stroke="#64748b" stroke-width="7.3" stroke-linecap="round" stroke-linejoin="round">
-    <title>parclo_leg_1_dep_sub_1 (Lanes: 3, Elev: 0.0m)</title>
-  </path>
-  <path d="M 9.5 -170.0 C 9.6 -173.7, 9.8 -177.1, 10.1 -180.4" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
-  <path id="parclo_leg_3_dep_sub_2" d="M -10.1 180.4 C -10.9 189.9, -12.0 198.6, -12.0 210.0" fill="none" stroke="#64748b" stroke-width="7.3" stroke-linecap="round" stroke-linejoin="round">
-    <title>parclo_leg_3_dep_sub_2 (Lanes: 3, Elev: 0.0m)</title>
-  </path>
-  <path d="M -10.1 180.4 C -10.9 189.9, -12.0 198.6, -12.0 210.0" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
-  <path id="parclo_leg_1_dep_sub_2" d="M 10.1 -180.4 C 10.9 -189.9, 12.0 -198.6, 12.0 -210.0" fill="none" stroke="#64748b" stroke-width="7.3" stroke-linecap="round" stroke-linejoin="round">
-    <title>parclo_leg_1_dep_sub_2 (Lanes: 3, Elev: 0.0m)</title>
-  </path>
-  <path d="M 10.1 -180.4 C 10.9 -189.9, 12.0 -198.6, 12.0 -210.0" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
-  <path id="parclo_leg_3_app" d="M 12.0 210.0 C 12.0 198.6, 10.9 189.9, 10.1 180.4" fill="none" stroke="#64748b" stroke-width="7.3" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M -12.0 180.6 C -12.0 191.8, -12.0 198.8, -12.0 210.0" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="parclo_leg_3_app" d="M 12.0 210.0 C 12.0 198.8, 12.0 191.8, 12.0 180.6" fill="none" stroke="#64748b" stroke-width="7.3" stroke-linecap="round" stroke-linejoin="round">
     <title>parclo_leg_3_app (Lanes: 3, Elev: 0.0m)</title>
   </path>
-  <path d="M 12.0 210.0 C 12.0 198.6, 10.9 189.9, 10.1 180.4" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
-  <path d="M -9.4 163.8 C -9.4 166.0, -9.4 168.0, -9.5 170.0" fill="none" stroke="#000000" stroke-width="11.4" opacity="0.6"/>
-  <path id="parclo_leg_3_dep" d="M -9.4 163.8 C -9.4 166.0, -9.4 168.0, -9.5 170.0" fill="none" stroke="#10b981" stroke-width="7.3" stroke-linecap="round" stroke-linejoin="round">
-    <title>parclo_leg_3_dep (Lanes: 3, Elev: 6.9m)</title>
-  </path>
-  <path d="M -9.4 163.8 C -9.4 166.0, -9.4 168.0, -9.5 170.0" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
-  <path d="M 9.5 170.0 C 9.4 168.0, 9.4 166.0, 9.4 163.8" fill="none" stroke="#000000" stroke-width="11.4" opacity="0.6"/>
-  <path id="parclo_leg_3_app_sub_2" d="M 9.5 170.0 C 9.4 168.0, 9.4 166.0, 9.4 163.8" fill="none" stroke="#10b981" stroke-width="7.3" stroke-linecap="round" stroke-linejoin="round">
-    <title>parclo_leg_3_app_sub_2 (Lanes: 3, Elev: 6.9m)</title>
-  </path>
-  <path d="M 9.5 170.0 C 9.4 168.0, 9.4 166.0, 9.4 163.8" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
-  <path d="M -9.4 -163.8 C -9.0 -160.3, -8.8 -156.7, -8.7 -153.2" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
-  <path id="parclo_slip_1_2" d="M -9.4 -163.8 C -9.0 -160.3, -8.8 -156.7, -8.7 -153.2" fill="none" stroke="#10b981" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
-    <title>parclo_slip_1_2 (Lanes: 0, Elev: 6.1m)</title>
-  </path>
-  <path d="M -9.4 -163.8 C -9.0 -160.3, -8.8 -156.7, -8.7 -153.2" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
-  <path d="M 9.8 -152.2 C 9.5 -156.0, 9.4 -159.9, 9.4 -163.8" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
-  <path id="parclo_slip_0_1_sub_5" d="M 9.8 -152.2 C 9.5 -156.0, 9.4 -159.9, 9.4 -163.8" fill="none" stroke="#10b981" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
-    <title>parclo_slip_0_1_sub_5 (Lanes: 0, Elev: 5.9m)</title>
-  </path>
-  <path d="M 9.8 -152.2 C 9.5 -156.0, 9.4 -159.9, 9.4 -163.8" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
-  <path d="M -9.5 -170.0 C -9.4 -168.0, -9.4 -166.0, -9.4 -163.8" fill="none" stroke="#000000" stroke-width="11.4" opacity="0.6"/>
-  <path id="parclo_leg_1_app_sub_2" d="M -9.5 -170.0 C -9.4 -168.0, -9.4 -166.0, -9.4 -163.8" fill="none" stroke="#10b981" stroke-width="7.3" stroke-linecap="round" stroke-linejoin="round">
-    <title>parclo_leg_1_app_sub_2 (Lanes: 3, Elev: 6.9m)</title>
-  </path>
-  <path d="M -9.5 -170.0 C -9.4 -168.0, -9.4 -166.0, -9.4 -163.8" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
-  <path d="M -9.8 152.2 C -9.5 156.0, -9.4 159.9, -9.4 163.8" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
-  <path id="parclo_slip_2_3_sub_5" d="M -9.8 152.2 C -9.5 156.0, -9.4 159.9, -9.4 163.8" fill="none" stroke="#10b981" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
-    <title>parclo_slip_2_3_sub_5 (Lanes: 0, Elev: 5.9m)</title>
-  </path>
-  <path d="M -9.8 152.2 C -9.5 156.0, -9.4 159.9, -9.4 163.8" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
-  <path d="M 9.4 -163.8 C 9.4 -166.0, 9.4 -168.0, 9.5 -170.0" fill="none" stroke="#000000" stroke-width="11.4" opacity="0.6"/>
-  <path id="parclo_leg_1_dep" d="M 9.4 -163.8 C 9.4 -166.0, 9.4 -168.0, 9.5 -170.0" fill="none" stroke="#10b981" stroke-width="7.3" stroke-linecap="round" stroke-linejoin="round">
-    <title>parclo_leg_1_dep (Lanes: 3, Elev: 6.9m)</title>
-  </path>
-  <path d="M 9.4 -163.8 C 9.4 -166.0, 9.4 -168.0, 9.5 -170.0" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
-  <path d="M 9.4 163.8 C 9.0 160.3, 8.8 156.7, 8.7 153.2" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
-  <path id="parclo_slip_3_0" d="M 9.4 163.8 C 9.0 160.3, 8.8 156.7, 8.7 153.2" fill="none" stroke="#10b981" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
-    <title>parclo_slip_3_0 (Lanes: 0, Elev: 6.1m)</title>
-  </path>
-  <path d="M 9.4 163.8 C 9.0 160.3, 8.8 156.7, 8.7 153.2" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
-  <path d="M -0.4 -94.0 C -2.6 -92.0, -4.0 -88.1, -4.7 -81.9" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
-  <path id="parclo_loop2_4_span_6" d="M -0.4 -94.0 C -2.6 -92.0, -4.0 -88.1, -4.7 -81.9" fill="none" stroke="#f59e0b" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
-    <title>parclo_loop2_4_span_6 (Lanes: 0, Elev: 8.0m)</title>
-  </path>
-  <path d="M -0.4 -94.0 C -2.6 -92.0, -4.0 -88.1, -4.7 -81.9" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
-  <path d="M 0.4 94.0 C 2.6 92.0, 4.0 88.1, 4.7 81.9" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
-  <path id="parclo_loop0_4_span_6" d="M 0.4 94.0 C 2.6 92.0, 4.0 88.1, 4.7 81.9" fill="none" stroke="#f59e0b" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
-    <title>parclo_loop0_4_span_6 (Lanes: 0, Elev: 8.0m)</title>
-  </path>
-  <path d="M 0.4 94.0 C 2.6 92.0, 4.0 88.1, 4.7 81.9" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
-  <path d="M -4.9 -93.1 C -4.8 -89.5, -4.7 -85.8, -4.7 -81.9" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
-  <path id="parclo_main_1_3_lead1_span_2" d="M -4.9 -93.1 C -4.8 -89.5, -4.7 -85.8, -4.7 -81.9" fill="none" stroke="#10b981" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
-    <title>parclo_main_1_3_lead1_span_2 (Lanes: 0, Elev: 8.2m)</title>
-  </path>
-  <path d="M -4.9 -93.1 C -4.8 -89.5, -4.7 -85.8, -4.7 -81.9" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
-  <path d="M 4.9 93.1 C 4.8 89.5, 4.7 85.8, 4.7 81.9" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
-  <path id="parclo_main_3_1_lead1_span_2" d="M 4.9 93.1 C 4.8 89.5, 4.7 85.8, 4.7 81.9" fill="none" stroke="#10b981" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
-    <title>parclo_main_3_1_lead1_span_2 (Lanes: 0, Elev: 8.2m)</title>
-  </path>
-  <path d="M 4.9 93.1 C 4.8 89.5, 4.7 85.8, 4.7 81.9" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
-  <path d="M -12.3 92.4 C -6.9 96.0, -2.6 96.8, 0.4 94.0" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
-  <path id="parclo_loop0_4_span_5" d="M -12.3 92.4 C -6.9 96.0, -2.6 96.8, 0.4 94.0" fill="none" stroke="#f59e0b" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
-    <title>parclo_loop0_4_span_5 (Lanes: 0, Elev: 8.5m)</title>
-  </path>
-  <path d="M -12.3 92.4 C -6.9 96.0, -2.6 96.8, 0.4 94.0" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
-  <path d="M 12.3 -92.4 C 6.9 -96.0, 2.6 -96.8, -0.4 -94.0" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
-  <path id="parclo_loop2_4_span_5" d="M 12.3 -92.4 C 6.9 -96.0, 2.6 -96.8, -0.4 -94.0" fill="none" stroke="#f59e0b" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
-    <title>parclo_loop2_4_span_5 (Lanes: 0, Elev: 8.5m)</title>
-  </path>
-  <path d="M 12.3 -92.4 C 6.9 -96.0, 2.6 -96.8, -0.4 -94.0" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
-  <path d="M 4.7 -81.9 C 4.7 -86.6, 4.8 -91.0, 5.0 -95.2" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
-  <path id="parclo_main_3_1_lead2" d="M 4.7 -81.9 C 4.7 -86.6, 4.8 -91.0, 5.0 -95.2" fill="none" stroke="#10b981" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
-    <title>parclo_main_3_1_lead2 (Lanes: 0, Elev: 8.3m)</title>
-  </path>
-  <path d="M 4.7 -81.9 C 4.7 -86.6, 4.8 -91.0, 5.0 -95.2" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
-  <path d="M -4.7 81.9 C -4.7 86.6, -4.8 91.0, -5.0 95.2" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
-  <path id="parclo_main_1_3_lead2" d="M -4.7 81.9 C -4.7 86.6, -4.8 91.0, -5.0 95.2" fill="none" stroke="#10b981" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
-    <title>parclo_main_1_3_lead2 (Lanes: 0, Elev: 8.3m)</title>
-  </path>
-  <path d="M -4.7 81.9 C -4.7 86.6, -4.8 91.0, -5.0 95.2" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
-  <path d="M -17.4 88.5 C -15.6 90.0, -13.9 91.4, -12.3 92.4" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
-  <path id="parclo_loop0_4_span_4" d="M -17.4 88.5 C -15.6 90.0, -13.9 91.4, -12.3 92.4" fill="none" stroke="#f59e0b" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
-    <title>parclo_loop0_4_span_4 (Lanes: 0, Elev: 9.2m)</title>
-  </path>
-  <path d="M -17.4 88.5 C -15.6 90.0, -13.9 91.4, -12.3 92.4" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
-  <path d="M 17.4 -88.5 C 15.6 -90.0, 13.9 -91.4, 12.3 -92.4" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
-  <path id="parclo_loop2_4_span_4" d="M 17.4 -88.5 C 15.6 -90.0, 13.9 -91.4, 12.3 -92.4" fill="none" stroke="#f59e0b" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
-    <title>parclo_loop2_4_span_4 (Lanes: 0, Elev: 9.2m)</title>
-  </path>
-  <path d="M 17.4 -88.5 C 15.6 -90.0, 13.9 -91.4, 12.3 -92.4" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
-  <path id="parclo_loop0_1" d="M -106.3 -2.1 C -129.2 0.3, -146.2 -12.6, -153.5 -29.7" fill="none" stroke="#10b981" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
-    <title>parclo_loop0_1 (Lanes: 0, Elev: 3.8m)</title>
-  </path>
-  <path d="M -106.3 -2.1 C -129.2 0.3, -146.2 -12.6, -153.5 -29.7" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
-  <path id="parclo_loop2_1" d="M 106.3 2.1 C 129.2 -0.3, 146.2 12.6, 153.5 29.7" fill="none" stroke="#10b981" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
-    <title>parclo_loop2_1 (Lanes: 0, Elev: 3.8m)</title>
-  </path>
-  <path d="M 106.3 2.1 C 129.2 -0.3, 146.2 12.6, 153.5 29.7" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
-  <path d="M 55.8 -42.7 C 41.5 -62.2, 28.0 -79.3, 17.4 -88.5" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
-  <path id="parclo_loop2_4_span_3" d="M 55.8 -42.7 C 41.5 -62.2, 28.0 -79.3, 17.4 -88.5" fill="none" stroke="#f59e0b" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
-    <title>parclo_loop2_4_span_3 (Lanes: 0, Elev: 10.6m)</title>
-  </path>
-  <path d="M 55.8 -42.7 C 41.5 -62.2, 28.0 -79.3, 17.4 -88.5" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
-  <path d="M -55.8 42.7 C -41.5 62.2, -28.0 79.3, -17.4 88.5" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
-  <path id="parclo_loop0_4_span_3" d="M -55.8 42.7 C -41.5 62.2, -28.0 79.3, -17.4 88.5" fill="none" stroke="#f59e0b" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
-    <title>parclo_loop0_4_span_3 (Lanes: 0, Elev: 10.6m)</title>
-  </path>
-  <path d="M -55.8 42.7 C -41.5 62.2, -28.0 79.3, -17.4 88.5" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
-  <path d="M -72.3 19.9 C -66.8 27.6, -61.2 35.3, -55.8 42.7" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
-  <path id="parclo_loop0_4_span_2" d="M -72.3 19.9 C -66.8 27.6, -61.2 35.3, -55.8 42.7" fill="none" stroke="#f59e0b" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
-    <title>parclo_loop0_4_span_2 (Lanes: 0, Elev: 12.6m)</title>
-  </path>
-  <path d="M -72.3 19.9 C -66.8 27.6, -61.2 35.3, -55.8 42.7" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
-  <path d="M 72.3 -19.9 C 66.8 -27.6, 61.2 -35.3, 55.8 -42.7" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
-  <path id="parclo_loop2_4_span_2" d="M 72.3 -19.9 C 66.8 -27.6, 61.2 -35.3, 55.8 -42.7" fill="none" stroke="#f59e0b" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
-    <title>parclo_loop2_4_span_2 (Lanes: 0, Elev: 12.6m)</title>
-  </path>
-  <path d="M 72.3 -19.9 C 66.8 -27.6, 61.2 -35.3, 55.8 -42.7" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
-  <path d="M -5.0 95.2 C -5.2 101.9, -5.7 108.2, -6.2 114.3" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
-  <path id="parclo_main_1_3_lead2_span_1" d="M -5.0 95.2 C -5.2 101.9, -5.7 108.2, -6.2 114.3" fill="none" stroke="#f59e0b" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
-    <title>parclo_main_1_3_lead2_span_1 (Lanes: 0, Elev: 11.4m)</title>
-  </path>
-  <path d="M -5.0 95.2 C -5.2 101.9, -5.7 108.2, -6.2 114.3" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
-  <path d="M 5.0 -95.2 C 5.2 -101.9, 5.7 -108.2, 6.2 -114.3" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
-  <path id="parclo_main_3_1_lead2_span_1" d="M 5.0 -95.2 C 5.2 -101.9, 5.7 -108.2, 6.2 -114.3" fill="none" stroke="#f59e0b" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
-    <title>parclo_main_3_1_lead2_span_1 (Lanes: 0, Elev: 11.4m)</title>
-  </path>
-  <path d="M 5.0 -95.2 C 5.2 -101.9, 5.7 -108.2, 6.2 -114.3" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
-  <path d="M -6.2 114.3 C -7.6 130.0, -9.4 144.7, -9.4 163.8" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
-  <path id="parclo_main_1_3_lead2_span_2" d="M -6.2 114.3 C -7.6 130.0, -9.4 144.7, -9.4 163.8" fill="none" stroke="#f59e0b" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
-    <title>parclo_main_1_3_lead2_span_2 (Lanes: 0, Elev: 17.5m)</title>
-  </path>
-  <path d="M -6.2 114.3 C -7.6 130.0, -9.4 144.7, -9.4 163.8" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
-  <path d="M 6.2 -114.3 C 7.6 -130.0, 9.4 -144.7, 9.4 -163.8" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
-  <path id="parclo_main_3_1_lead2_span_2" d="M 6.2 -114.3 C 7.6 -130.0, 9.4 -144.7, 9.4 -163.8" fill="none" stroke="#f59e0b" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
-    <title>parclo_main_3_1_lead2_span_2 (Lanes: 0, Elev: 17.5m)</title>
-  </path>
-  <path d="M 6.2 -114.3 C 7.6 -130.0, 9.4 -144.7, 9.4 -163.8" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
-  <path d="M 4.7 -47.4 C 4.7 -58.2, 4.7 -69.6, 4.7 -81.9" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
-  <path id="parclo_main_3_1_core_span_4" d="M 4.7 -47.4 C 4.7 -58.2, 4.7 -69.6, 4.7 -81.9" fill="none" stroke="#f59e0b" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
-    <title>parclo_main_3_1_core_span_4 (Lanes: 0, Elev: 11.8m)</title>
-  </path>
-  <path d="M 4.7 -47.4 C 4.7 -58.2, 4.7 -69.6, 4.7 -81.9" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
-  <path d="M -4.7 47.4 C -4.7 58.2, -4.7 69.6, -4.7 81.9" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
-  <path id="parclo_main_1_3_core_span_4" d="M -4.7 47.4 C -4.7 58.2, -4.7 69.6, -4.7 81.9" fill="none" stroke="#f59e0b" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
-    <title>parclo_main_1_3_core_span_4 (Lanes: 0, Elev: 11.8m)</title>
-  </path>
-  <path d="M -4.7 47.4 C -4.7 58.2, -4.7 69.6, -4.7 81.9" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
-  <path d="M -4.7 -81.9 C -4.7 -69.5, -4.7 -57.9, -4.7 -46.9" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
-  <path id="parclo_main_1_3_core" d="M -4.7 -81.9 C -4.7 -69.5, -4.7 -57.9, -4.7 -46.9" fill="none" stroke="#f59e0b" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
-    <title>parclo_main_1_3_core (Lanes: 0, Elev: 11.8m)</title>
-  </path>
-  <path d="M -4.7 -81.9 C -4.7 -69.5, -4.7 -57.9, -4.7 -46.9" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
-  <path d="M 4.7 81.9 C 4.7 69.5, 4.7 57.9, 4.7 46.9" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
-  <path id="parclo_main_3_1_core" d="M 4.7 81.9 C 4.7 69.5, 4.7 57.9, 4.7 46.9" fill="none" stroke="#f59e0b" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
-    <title>parclo_main_3_1_core (Lanes: 0, Elev: 11.8m)</title>
-  </path>
-  <path d="M 4.7 81.9 C 4.7 69.5, 4.7 57.9, 4.7 46.9" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
-  <path d="M -6.6 -118.8 C -5.9 -110.6, -5.2 -102.3, -4.9 -93.1" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
-  <path id="parclo_main_1_3_lead1_span_1" d="M -6.6 -118.8 C -5.9 -110.6, -5.2 -102.3, -4.9 -93.1" fill="none" stroke="#f59e0b" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
-    <title>parclo_main_1_3_lead1_span_1 (Lanes: 0, Elev: 11.7m)</title>
-  </path>
-  <path d="M -6.6 -118.8 C -5.9 -110.6, -5.2 -102.3, -4.9 -93.1" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
-  <path d="M 9.4 163.8 C 9.4 146.6, 7.9 132.9, 6.6 118.8" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
-  <path id="parclo_main_3_1_lead1" d="M 9.4 163.8 C 9.4 146.6, 7.9 132.9, 6.6 118.8" fill="none" stroke="#f59e0b" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
-    <title>parclo_main_3_1_lead1 (Lanes: 0, Elev: 17.3m)</title>
-  </path>
-  <path d="M 9.4 163.8 C 9.4 146.6, 7.9 132.9, 6.6 118.8" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
-  <path d="M 6.6 118.8 C 5.9 110.6, 5.2 102.3, 4.9 93.1" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
-  <path id="parclo_main_3_1_lead1_span_1" d="M 6.6 118.8 C 5.9 110.6, 5.2 102.3, 4.9 93.1" fill="none" stroke="#f59e0b" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
-    <title>parclo_main_3_1_lead1_span_1 (Lanes: 0, Elev: 11.7m)</title>
-  </path>
-  <path d="M 6.6 118.8 C 5.9 110.6, 5.2 102.3, 4.9 93.1" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
-  <path d="M -9.4 -163.8 C -9.4 -146.6, -7.9 -132.9, -6.6 -118.8" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
-  <path id="parclo_main_1_3_lead1" d="M -9.4 -163.8 C -9.4 -146.6, -7.9 -132.9, -6.6 -118.8" fill="none" stroke="#f59e0b" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
-    <title>parclo_main_1_3_lead1 (Lanes: 0, Elev: 17.3m)</title>
-  </path>
-  <path d="M -9.4 -163.8 C -9.4 -146.6, -7.9 -132.9, -6.6 -118.8" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
-  <path d="M 121.4 45.5 C 106.9 28.6, 89.5 4.1, 72.3 -19.9" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
-  <path id="parclo_loop2_4_span_1" d="M 121.4 45.5 C 106.9 28.6, 89.5 4.1, 72.3 -19.9" fill="none" stroke="#f59e0b" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
-    <title>parclo_loop2_4_span_1 (Lanes: 0, Elev: 15.1m)</title>
-  </path>
-  <path d="M 121.4 45.5 C 106.9 28.6, 89.5 4.1, 72.3 -19.9" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
-  <path d="M -121.4 -45.5 C -106.9 -28.6, -89.5 -4.1, -72.3 19.9" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
-  <path id="parclo_loop0_4_span_1" d="M -121.4 -45.5 C -106.9 -28.6, -89.5 -4.1, -72.3 19.9" fill="none" stroke="#f59e0b" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
-    <title>parclo_loop0_4_span_1 (Lanes: 0, Elev: 15.1m)</title>
-  </path>
-  <path d="M -121.4 -45.5 C -106.9 -28.6, -89.5 -4.1, -72.3 19.9" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
-  <path d="M 4.7 -30.2 C 4.7 -35.8, 4.7 -41.5, 4.7 -47.4" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
-  <path id="parclo_main_3_1_core_span_3" d="M 4.7 -30.2 C 4.7 -35.8, 4.7 -41.5, 4.7 -47.4" fill="none" stroke="#f59e0b" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
-    <title>parclo_main_3_1_core_span_3 (Lanes: 0, Elev: 16.0m)</title>
-  </path>
-  <path d="M 4.7 -30.2 C 4.7 -35.8, 4.7 -41.5, 4.7 -47.4" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
-  <path d="M -4.7 30.2 C -4.7 35.8, -4.7 41.5, -4.7 47.4" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
-  <path id="parclo_main_1_3_core_span_3" d="M -4.7 30.2 C -4.7 35.8, -4.7 41.5, -4.7 47.4" fill="none" stroke="#f59e0b" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
-    <title>parclo_main_1_3_core_span_3 (Lanes: 0, Elev: 16.0m)</title>
-  </path>
-  <path d="M -4.7 30.2 C -4.7 35.8, -4.7 41.5, -4.7 47.4" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
-  <path d="M 153.5 29.7 C 158.0 40.4, 158.8 52.6, 154.9 63.8" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
-  <path id="parclo_loop2_1_span_1" d="M 153.5 29.7 C 158.0 40.4, 158.8 52.6, 154.9 63.8" fill="none" stroke="#f59e0b" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
-    <title>parclo_loop2_1_span_1 (Lanes: 0, Elev: 14.2m)</title>
-  </path>
-  <path d="M 153.5 29.7 C 158.0 40.4, 158.8 52.6, 154.9 63.8" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
-  <path d="M -153.5 -29.7 C -158.0 -40.4, -158.8 -52.6, -154.9 -63.8" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
-  <path id="parclo_loop0_1_span_1" d="M -153.5 -29.7 C -158.0 -40.4, -158.8 -52.6, -154.9 -63.8" fill="none" stroke="#f59e0b" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
-    <title>parclo_loop0_1_span_1 (Lanes: 0, Elev: 14.2m)</title>
-  </path>
-  <path d="M -153.5 -29.7 C -158.0 -40.4, -158.8 -52.6, -154.9 -63.8" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
-  <path d="M -4.7 -46.9 C -4.7 -40.3, -4.7 -34.0, -4.7 -27.7" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
-  <path id="parclo_main_1_3_core_span_1" d="M -4.7 -46.9 C -4.7 -40.3, -4.7 -34.0, -4.7 -27.7" fill="none" stroke="#f59e0b" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
-    <title>parclo_main_1_3_core_span_1 (Lanes: 0, Elev: 16.2m)</title>
-  </path>
-  <path d="M -4.7 -46.9 C -4.7 -40.3, -4.7 -34.0, -4.7 -27.7" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
-  <path d="M 4.7 46.9 C 4.7 40.3, 4.7 34.0, 4.7 27.7" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
-  <path id="parclo_main_3_1_core_span_1" d="M 4.7 46.9 C 4.7 40.3, 4.7 34.0, 4.7 27.7" fill="none" stroke="#f59e0b" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
-    <title>parclo_main_3_1_core_span_1 (Lanes: 0, Elev: 16.2m)</title>
-  </path>
-  <path d="M 4.7 46.9 C 4.7 40.3, 4.7 34.0, 4.7 27.7" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
-  <path d="M 4.7 27.7 C 4.7 8.0, 4.7 -10.5, 4.7 -30.2" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
-  <path id="parclo_main_3_1_core_span_2" d="M 4.7 27.7 C 4.7 8.0, 4.7 -10.5, 4.7 -30.2" fill="none" stroke="#ec4899" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
-    <title>parclo_main_3_1_core_span_2 (Lanes: 0, Elev: 18.7m)</title>
-  </path>
-  <path d="M 4.7 27.7 C 4.7 8.0, 4.7 -10.5, 4.7 -30.2" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
-  <path d="M -4.7 -27.7 C -4.7 -8.0, -4.7 10.5, -4.7 30.2" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
-  <path id="parclo_main_1_3_core_span_2" d="M -4.7 -27.7 C -4.7 -8.0, -4.7 10.5, -4.7 30.2" fill="none" stroke="#ec4899" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
-    <title>parclo_main_1_3_core_span_2 (Lanes: 0, Elev: 18.7m)</title>
-  </path>
-  <path d="M -4.7 -27.7 C -4.7 -8.0, -4.7 10.5, -4.7 30.2" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
-  <path d="M -154.9 -63.8 C -152.6 -70.3, -148.7 -76.4, -143.0 -81.6" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
-  <path id="parclo_loop0_1_span_2" d="M -154.9 -63.8 C -152.6 -70.3, -148.7 -76.4, -143.0 -81.6" fill="none" stroke="#ec4899" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
-    <title>parclo_loop0_1_span_2 (Lanes: 0, Elev: 18.2m)</title>
-  </path>
-  <path d="M -154.9 -63.8 C -152.6 -70.3, -148.7 -76.4, -143.0 -81.6" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
-  <path d="M 154.9 63.8 C 152.6 70.3, 148.7 76.4, 143.0 81.6" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
-  <path id="parclo_loop2_1_span_2" d="M 154.9 63.8 C 152.6 70.3, 148.7 76.4, 143.0 81.6" fill="none" stroke="#ec4899" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
-    <title>parclo_loop2_1_span_2 (Lanes: 0, Elev: 18.2m)</title>
-  </path>
-  <path d="M 154.9 63.8 C 152.6 70.3, 148.7 76.4, 143.0 81.6" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
-  <path d="M -154.7 -31.9 C -156.9 -38.1, -157.8 -45.2, -157.0 -52.9" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
-  <path id="parclo_loop0_3_span_3" d="M -154.7 -31.9 C -156.9 -38.1, -157.8 -45.2, -157.0 -52.9" fill="none" stroke="#ec4899" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
-    <title>parclo_loop0_3_span_3 (Lanes: 0, Elev: 19.0m)</title>
-  </path>
-  <path d="M -154.7 -31.9 C -156.9 -38.1, -157.8 -45.2, -157.0 -52.9" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
-  <path d="M -135.6 -87.2 C -129.3 -91.1, -123.0 -93.4, -116.7 -94.2" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
-  <path id="parclo_loop0_2" d="M -135.6 -87.2 C -129.3 -91.1, -123.0 -93.4, -116.7 -94.2" fill="none" stroke="#ec4899" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
-    <title>parclo_loop0_2 (Lanes: 0, Elev: 19.0m)</title>
-  </path>
-  <path d="M -135.6 -87.2 C -129.3 -91.1, -123.0 -93.4, -116.7 -94.2" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
-  <path d="M -116.7 -94.2 C -111.4 -94.9, -106.2 -94.6, -101.2 -93.5" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
-  <path id="parclo_loop0_2_span_1" d="M -116.7 -94.2 C -111.4 -94.9, -106.2 -94.6, -101.2 -93.5" fill="none" stroke="#ec4899" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
-    <title>parclo_loop0_2_span_1 (Lanes: 0, Elev: 19.0m)</title>
-  </path>
-  <path d="M -116.7 -94.2 C -111.4 -94.9, -106.2 -94.6, -101.2 -93.5" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
-  <path d="M -101.2 -93.5 C -93.3 -91.7, -86.1 -87.8, -80.1 -82.4" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
-  <path id="parclo_loop0_2_span_2" d="M -101.2 -93.5 C -93.3 -91.7, -86.1 -87.8, -80.1 -82.4" fill="none" stroke="#ec4899" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
-    <title>parclo_loop0_2_span_2 (Lanes: 0, Elev: 19.0m)</title>
-  </path>
-  <path d="M -101.2 -93.5 C -93.3 -91.7, -86.1 -87.8, -80.1 -82.4" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
-  <path d="M -80.1 -82.4 C -64.9 -68.6, -58.4 -45.2, -71.9 -23.6" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
-  <path id="parclo_loop0_2_span_3" d="M -80.1 -82.4 C -64.9 -68.6, -58.4 -45.2, -71.9 -23.6" fill="none" stroke="#ec4899" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
-    <title>parclo_loop0_2_span_3 (Lanes: 0, Elev: 19.0m)</title>
-  </path>
-  <path d="M -80.1 -82.4 C -64.9 -68.6, -58.4 -45.2, -71.9 -23.6" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
-  <path d="M 157.0 52.9 C 154.6 76.2, 140.4 67.5, 121.4 45.5" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
-  <path id="parclo_loop2_4" d="M 157.0 52.9 C 154.6 76.2, 140.4 67.5, 121.4 45.5" fill="none" stroke="#ec4899" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
-    <title>parclo_loop2_4 (Lanes: 0, Elev: 18.4m)</title>
-  </path>
-  <path d="M 157.0 52.9 C 154.6 76.2, 140.4 67.5, 121.4 45.5" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
-  <path d="M 154.7 31.9 C 156.9 38.1, 157.8 45.2, 157.0 52.9" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
-  <path id="parclo_loop2_3_span_3" d="M 154.7 31.9 C 156.9 38.1, 157.8 45.2, 157.0 52.9" fill="none" stroke="#ec4899" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
-    <title>parclo_loop2_3_span_3 (Lanes: 0, Elev: 19.0m)</title>
-  </path>
-  <path d="M 154.7 31.9 C 156.9 38.1, 157.8 45.2, 157.0 52.9" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
-  <path d="M 118.5 2.4 C 134.4 5.1, 148.9 15.8, 154.7 31.9" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
-  <path id="parclo_loop2_3_span_2" d="M 118.5 2.4 C 134.4 5.1, 148.9 15.8, 154.7 31.9" fill="none" stroke="#ec4899" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
-    <title>parclo_loop2_3_span_2 (Lanes: 0, Elev: 19.0m)</title>
-  </path>
-  <path d="M 118.5 2.4 C 134.4 5.1, 148.9 15.8, 154.7 31.9" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
-  <path d="M 85.8 9.1 C 95.7 2.5, 107.4 0.5, 118.5 2.4" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
-  <path id="parclo_loop2_3_span_1" d="M 85.8 9.1 C 95.7 2.5, 107.4 0.5, 118.5 2.4" fill="none" stroke="#ec4899" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
-    <title>parclo_loop2_3_span_1 (Lanes: 0, Elev: 19.0m)</title>
-  </path>
-  <path d="M 85.8 9.1 C 95.7 2.5, 107.4 0.5, 118.5 2.4" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
-  <path d="M 80.1 82.4 C 64.9 68.6, 58.4 45.2, 71.9 23.6" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
-  <path id="parclo_loop2_2_span_3" d="M 80.1 82.4 C 64.9 68.6, 58.4 45.2, 71.9 23.6" fill="none" stroke="#ec4899" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
-    <title>parclo_loop2_2_span_3 (Lanes: 0, Elev: 19.0m)</title>
-  </path>
-  <path d="M 80.1 82.4 C 64.9 68.6, 58.4 45.2, 71.9 23.6" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
-  <path d="M -157.0 -52.9 C -154.6 -76.2, -140.4 -67.5, -121.4 -45.5" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
-  <path id="parclo_loop0_4" d="M -157.0 -52.9 C -154.6 -76.2, -140.4 -67.5, -121.4 -45.5" fill="none" stroke="#ec4899" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
-    <title>parclo_loop0_4 (Lanes: 0, Elev: 18.4m)</title>
-  </path>
-  <path d="M -157.0 -52.9 C -154.6 -76.2, -140.4 -67.5, -121.4 -45.5" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
-  <path d="M 101.2 93.5 C 93.3 91.7, 86.1 87.8, 80.1 82.4" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
-  <path id="parclo_loop2_2_span_2" d="M 101.2 93.5 C 93.3 91.7, 86.1 87.8, 80.1 82.4" fill="none" stroke="#ec4899" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
-    <title>parclo_loop2_2_span_2 (Lanes: 0, Elev: 19.0m)</title>
-  </path>
-  <path d="M 101.2 93.5 C 93.3 91.7, 86.1 87.8, 80.1 82.4" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
-  <path d="M 116.7 94.2 C 111.4 94.9, 106.2 94.6, 101.2 93.5" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
-  <path id="parclo_loop2_2_span_1" d="M 116.7 94.2 C 111.4 94.9, 106.2 94.6, 101.2 93.5" fill="none" stroke="#ec4899" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
-    <title>parclo_loop2_2_span_1 (Lanes: 0, Elev: 19.0m)</title>
-  </path>
-  <path d="M 116.7 94.2 C 111.4 94.9, 106.2 94.6, 101.2 93.5" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
-  <path d="M 135.6 87.2 C 129.3 91.1, 123.0 93.4, 116.7 94.2" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
-  <path id="parclo_loop2_2" d="M 135.6 87.2 C 129.3 91.1, 123.0 93.4, 116.7 94.2" fill="none" stroke="#ec4899" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
-    <title>parclo_loop2_2 (Lanes: 0, Elev: 19.0m)</title>
-  </path>
-  <path d="M 135.6 87.2 C 129.3 91.1, 123.0 93.4, 116.7 94.2" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
-  <path d="M 143.0 81.6 C 140.8 83.6, 138.3 85.5, 135.6 87.2" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
-  <path id="parclo_loop2_1_span_3" d="M 143.0 81.6 C 140.8 83.6, 138.3 85.5, 135.6 87.2" fill="none" stroke="#ec4899" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
-    <title>parclo_loop2_1_span_3 (Lanes: 0, Elev: 19.0m)</title>
-  </path>
-  <path d="M 143.0 81.6 C 140.8 83.6, 138.3 85.5, 135.6 87.2" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
-  <path d="M -71.9 -23.6 C -75.8 -17.4, -80.6 -12.6, -85.8 -9.1" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
-  <path id="parclo_loop0_3" d="M -71.9 -23.6 C -75.8 -17.4, -80.6 -12.6, -85.8 -9.1" fill="none" stroke="#ec4899" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
-    <title>parclo_loop0_3 (Lanes: 0, Elev: 19.0m)</title>
-  </path>
-  <path d="M -71.9 -23.6 C -75.8 -17.4, -80.6 -12.6, -85.8 -9.1" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
-  <path d="M -85.8 -9.1 C -95.7 -2.5, -107.4 -0.5, -118.5 -2.4" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
-  <path id="parclo_loop0_3_span_1" d="M -85.8 -9.1 C -95.7 -2.5, -107.4 -0.5, -118.5 -2.4" fill="none" stroke="#ec4899" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
-    <title>parclo_loop0_3_span_1 (Lanes: 0, Elev: 19.0m)</title>
-  </path>
-  <path d="M -85.8 -9.1 C -95.7 -2.5, -107.4 -0.5, -118.5 -2.4" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
-  <path d="M -118.5 -2.4 C -134.4 -5.1, -148.9 -15.8, -154.7 -31.9" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
-  <path id="parclo_loop0_3_span_2" d="M -118.5 -2.4 C -134.4 -5.1, -148.9 -15.8, -154.7 -31.9" fill="none" stroke="#ec4899" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
-    <title>parclo_loop0_3_span_2 (Lanes: 0, Elev: 19.0m)</title>
-  </path>
-  <path d="M -118.5 -2.4 C -134.4 -5.1, -148.9 -15.8, -154.7 -31.9" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
-  <path d="M 71.9 23.6 C 75.8 17.4, 80.6 12.6, 85.8 9.1" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
-  <path id="parclo_loop2_3" d="M 71.9 23.6 C 75.8 17.4, 80.6 12.6, 85.8 9.1" fill="none" stroke="#ec4899" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
-    <title>parclo_loop2_3 (Lanes: 0, Elev: 19.0m)</title>
-  </path>
-  <path d="M 71.9 23.6 C 75.8 17.4, 80.6 12.6, 85.8 9.1" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
-  <path d="M -143.0 -81.6 C -140.8 -83.6, -138.3 -85.5, -135.6 -87.2" fill="none" stroke="#000000" stroke-width="8.9" opacity="0.6"/>
-  <path id="parclo_loop0_1_span_3" d="M -143.0 -81.6 C -140.8 -83.6, -138.3 -85.5, -135.6 -87.2" fill="none" stroke="#ec4899" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
-    <title>parclo_loop0_1_span_3 (Lanes: 0, Elev: 19.0m)</title>
-  </path>
-  <path d="M -143.0 -81.6 C -140.8 -83.6, -138.3 -85.5, -135.6 -87.2" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
-  <circle cx="35.2" cy="-69.4" r="3.5" fill="#475569" stroke="#cbd5e1" stroke-width="1.5"><title>Pillar at 10.6m</title></circle>
-  <circle cx="-35.2" cy="69.4" r="3.5" fill="#475569" stroke="#cbd5e1" stroke-width="1.5"><title>Pillar at 10.6m</title></circle>
-  <circle cx="-8.3" cy="137.8" r="3.5" fill="#475569" stroke="#cbd5e1" stroke-width="1.5"><title>Pillar at 17.5m</title></circle>
-  <circle cx="8.3" cy="-137.8" r="3.5" fill="#475569" stroke="#cbd5e1" stroke-width="1.5"><title>Pillar at 17.5m</title></circle>
-  <circle cx="8.5" cy="140.1" r="3.5" fill="#475569" stroke="#cbd5e1" stroke-width="1.5"><title>Pillar at 17.3m</title></circle>
-  <circle cx="-8.5" cy="-140.1" r="3.5" fill="#475569" stroke="#cbd5e1" stroke-width="1.5"><title>Pillar at 17.3m</title></circle>
-  <circle cx="97.8" cy="15.5" r="3.5" fill="#475569" stroke="#cbd5e1" stroke-width="1.5"><title>Pillar at 15.1m</title></circle>
-  <circle cx="-97.8" cy="-15.5" r="3.5" fill="#475569" stroke="#cbd5e1" stroke-width="1.5"><title>Pillar at 15.1m</title></circle>
-  <circle cx="4.7" cy="-1.2" r="3.5" fill="#475569" stroke="#cbd5e1" stroke-width="1.5"><title>Pillar at 18.7m</title></circle>
-  <circle cx="-4.7" cy="1.2" r="3.5" fill="#475569" stroke="#cbd5e1" stroke-width="1.5"><title>Pillar at 18.7m</title></circle>
-  <circle cx="-65.3" cy="-55.9" r="3.5" fill="#475569" stroke="#cbd5e1" stroke-width="1.5"><title>Pillar at 19.0m</title></circle>
-  <circle cx="145.4" cy="66.2" r="3.5" fill="#475569" stroke="#cbd5e1" stroke-width="1.5"><title>Pillar at 18.4m</title></circle>
-  <circle cx="140.4" cy="12.1" r="3.5" fill="#475569" stroke="#cbd5e1" stroke-width="1.5"><title>Pillar at 19.0m</title></circle>
-  <circle cx="65.3" cy="55.9" r="3.5" fill="#475569" stroke="#cbd5e1" stroke-width="1.5"><title>Pillar at 19.0m</title></circle>
-  <circle cx="-145.4" cy="-66.2" r="3.5" fill="#475569" stroke="#cbd5e1" stroke-width="1.5"><title>Pillar at 18.4m</title></circle>
-  <circle cx="-140.4" cy="-12.1" r="3.5" fill="#475569" stroke="#cbd5e1" stroke-width="1.5"><title>Pillar at 19.0m</title></circle>
-  <g transform="translate(-6.6, -118.8)">
-    <circle r="5" fill="#ef4444" stroke="#ffffff" stroke-width="1.5"/>
-    <title>[Error] MaximumGrade: Course 'parclo_main_1_3_lead1_span_1' grade 24.1% exceeds maximum allowed 20.0%.</title>
-  </g>
-  <g transform="translate(-5.0, 95.2)">
-    <circle r="5" fill="#ef4444" stroke="#ffffff" stroke-width="1.5"/>
-    <title>[Error] MaximumGrade: Course 'parclo_main_1_3_lead2_span_1' grade 24.5% exceeds maximum allowed 20.0%.</title>
-  </g>
-  <g transform="translate(6.6, 118.8)">
-    <circle r="5" fill="#ef4444" stroke="#ffffff" stroke-width="1.5"/>
-    <title>[Error] MaximumGrade: Course 'parclo_main_3_1_lead1_span_1' grade 24.1% exceeds maximum allowed 20.0%.</title>
-  </g>
-  <g transform="translate(5.0, -95.2)">
-    <circle r="5" fill="#ef4444" stroke="#ffffff" stroke-width="1.5"/>
-    <title>[Error] MaximumGrade: Course 'parclo_main_3_1_lead2_span_1' grade 24.5% exceeds maximum allowed 20.0%.</title>
-  </g>
-  <g transform="translate(-106.3, -2.1)">
-    <circle r="5" fill="#ef4444" stroke="#ffffff" stroke-width="1.5"/>
-    <title>[Error] MaximumGrade: Course 'parclo_loop0_1' grade 24.7% exceeds maximum allowed 20.0%.</title>
-  </g>
-  <g transform="translate(-154.9, -62.0)">
-    <circle r="5" fill="#ef4444" stroke="#ffffff" stroke-width="1.5"/>
-    <title>[Error] MinimumTurningRadius: Course 'parclo_loop0_4' has sharp turning radius 14.5 m at t=0.17 (limit: 18.0 m).</title>
-  </g>
-  <g transform="translate(-7.3, 95.0)">
-    <circle r="5" fill="#ef4444" stroke="#ffffff" stroke-width="1.5"/>
-    <title>[Error] MinimumTurningRadius: Course 'parclo_loop0_4_span_5' has sharp turning radius 14.6 m at t=0.33 (limit: 18.0 m).</title>
-  </g>
-  <g transform="translate(1.4, 92.9)">
-    <circle r="5" fill="#ef4444" stroke="#ffffff" stroke-width="1.5"/>
-    <title>[Error] MinimumTurningRadius: Course 'parclo_loop0_4_span_6' has sharp turning radius 9.4 m at t=0.17 (limit: 18.0 m).</title>
-  </g>
-  <g transform="translate(106.3, 2.1)">
-    <circle r="5" fill="#ef4444" stroke="#ffffff" stroke-width="1.5"/>
-    <title>[Error] MaximumGrade: Course 'parclo_loop2_1' grade 24.7% exceeds maximum allowed 20.0%.</title>
-  </g>
-  <g transform="translate(154.9, 62.0)">
-    <circle r="5" fill="#ef4444" stroke="#ffffff" stroke-width="1.5"/>
-    <title>[Error] MinimumTurningRadius: Course 'parclo_loop2_4' has sharp turning radius 14.5 m at t=0.17 (limit: 18.0 m).</title>
-  </g>
-  <g transform="translate(7.3, -95.0)">
-    <circle r="5" fill="#ef4444" stroke="#ffffff" stroke-width="1.5"/>
-    <title>[Error] MinimumTurningRadius: Course 'parclo_loop2_4_span_5' has sharp turning radius 14.6 m at t=0.33 (limit: 18.0 m).</title>
-  </g>
-  <g transform="translate(-1.4, -92.9)">
-    <circle r="5" fill="#ef4444" stroke="#ffffff" stroke-width="1.5"/>
-    <title>[Error] MinimumTurningRadius: Course 'parclo_loop2_4_span_6' has sharp turning radius 9.4 m at t=0.17 (limit: 18.0 m).</title>
-  </g>
-  <g transform="translate(-124.0, -5.4)">
-    <circle r="5" fill="#ef4444" stroke="#ffffff" stroke-width="1.5"/>
-    <title>[Error] VerticalClearance: Insufficient 3D clearance (6.95 m < 7.5 m) between 'parclo_main_0_2_lead2' and 'parclo_loop0_1'.</title>
-  </g>
-  <g transform="translate(124.0, 5.4)">
-    <circle r="5" fill="#ef4444" stroke="#ffffff" stroke-width="1.5"/>
-    <title>[Error] VerticalClearance: Insufficient 3D clearance (6.95 m < 7.5 m) between 'parclo_main_2_0_lead2' and 'parclo_loop2_1'.</title>
-  </g>
-  <g transform="translate(-8.5, -140.1)">
-    <circle r="5" fill="#ef4444" stroke="#ffffff" stroke-width="1.5"/>
-    <title>[Error] PillarEncroachment: Pillar support on 'parclo_main_1_3_lead1' encroaches into carriageway 'parclo_slip_1_2_sub_1'.</title>
-  </g>
-  <g transform="translate(8.5, 140.1)">
-    <circle r="5" fill="#ef4444" stroke="#ffffff" stroke-width="1.5"/>
-    <title>[Error] PillarEncroachment: Pillar support on 'parclo_main_3_1_lead1' encroaches into carriageway 'parclo_slip_3_0_sub_1'.</title>
-  </g>
+  <path d="M 12.0 210.0 C 12.0 198.8, 12.0 191.8, 12.0 180.6" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="parclo_leg_1_dep" d="M 12.0 -180.6 C 12.0 -191.8, 12.0 -198.8, 12.0 -210.0" fill="none" stroke="#64748b" stroke-width="7.3" stroke-linecap="round" stroke-linejoin="round">
+    <title>parclo_leg_1_dep (Lanes: 3, Elev: 0.0m)</title>
+  </path>
+  <path d="M 12.0 -180.6 C 12.0 -191.8, 12.0 -198.8, 12.0 -210.0" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="parclo_leg_1_app" d="M -12.0 -210.0 C -12.0 -198.8, -12.0 -191.8, -12.0 -180.6" fill="none" stroke="#64748b" stroke-width="7.3" stroke-linecap="round" stroke-linejoin="round">
+    <title>parclo_leg_1_app (Lanes: 3, Elev: 0.0m)</title>
+  </path>
+  <path d="M -12.0 -210.0 C -12.0 -198.8, -12.0 -191.8, -12.0 -180.6" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="parclo_arterial_1_3_span_11" d="M -12.0 147.6 C -12.0 158.3, -12.0 169.3, -12.0 180.6" fill="none" stroke="#10b981" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>parclo_arterial_1_3_span_11 (Lanes: 2, Elev: 0.3m)</title>
+  </path>
+  <path d="M -12.0 147.6 C -12.0 158.3, -12.0 169.3, -12.0 180.6" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="parclo_arterial_3_1_span_11" d="M 12.0 -147.6 C 12.0 -158.3, 12.0 -169.3, 12.0 -180.6" fill="none" stroke="#10b981" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>parclo_arterial_3_1_span_11 (Lanes: 2, Elev: 0.3m)</title>
+  </path>
+  <path d="M 12.0 -147.6 C 12.0 -158.3, 12.0 -169.3, 12.0 -180.6" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="parclo_arterial_3_1" d="M 12.0 180.6 C 12.0 169.2, 12.0 158.1, 12.0 147.3" fill="none" stroke="#10b981" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>parclo_arterial_3_1 (Lanes: 2, Elev: 0.3m)</title>
+  </path>
+  <path d="M 12.0 180.6 C 12.0 169.2, 12.0 158.1, 12.0 147.3" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="parclo_arterial_1_3" d="M -12.0 -180.6 C -12.0 -169.2, -12.0 -158.1, -12.0 -147.3" fill="none" stroke="#10b981" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>parclo_arterial_1_3 (Lanes: 2, Elev: 0.3m)</title>
+  </path>
+  <path d="M -12.0 -180.6 C -12.0 -169.2, -12.0 -158.1, -12.0 -147.3" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="parclo_arterial_3_1_span_10" d="M 12.0 -116.2 C 12.0 -126.4, 12.0 -136.8, 12.0 -147.6" fill="none" stroke="#10b981" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>parclo_arterial_3_1_span_10 (Lanes: 2, Elev: 1.0m)</title>
+  </path>
+  <path d="M 12.0 -116.2 C 12.0 -126.4, 12.0 -136.8, 12.0 -147.6" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="parclo_arterial_1_3_span_10" d="M -12.0 116.2 C -12.0 126.4, -12.0 136.8, -12.0 147.6" fill="none" stroke="#10b981" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>parclo_arterial_1_3_span_10 (Lanes: 2, Elev: 1.0m)</title>
+  </path>
+  <path d="M -12.0 116.2 C -12.0 126.4, -12.0 136.8, -12.0 147.6" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="parclo_arterial_1_3_span_1" d="M -12.0 -147.3 C -12.0 -136.5, -12.0 -126.0, -12.0 -115.7" fill="none" stroke="#10b981" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>parclo_arterial_1_3_span_1 (Lanes: 2, Elev: 1.0m)</title>
+  </path>
+  <path d="M -12.0 -147.3 C -12.0 -136.5, -12.0 -126.0, -12.0 -115.7" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="parclo_arterial_3_1_span_1" d="M 12.0 147.3 C 12.0 136.5, 12.0 126.0, 12.0 115.7" fill="none" stroke="#10b981" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>parclo_arterial_3_1_span_1 (Lanes: 2, Elev: 1.0m)</title>
+  </path>
+  <path d="M 12.0 147.3 C 12.0 136.5, 12.0 126.0, 12.0 115.7" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="parclo_arterial_3_1_span_9" d="M 12.0 -86.3 C 12.0 -96.1, 12.0 -106.0, 12.0 -116.2" fill="none" stroke="#10b981" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>parclo_arterial_3_1_span_9 (Lanes: 2, Elev: 1.7m)</title>
+  </path>
+  <path d="M 12.0 -86.3 C 12.0 -96.1, 12.0 -106.0, 12.0 -116.2" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="parclo_arterial_1_3_span_9" d="M -12.0 86.3 C -12.0 96.1, -12.0 106.0, -12.0 116.2" fill="none" stroke="#10b981" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>parclo_arterial_1_3_span_9 (Lanes: 2, Elev: 1.7m)</title>
+  </path>
+  <path d="M -12.0 86.3 C -12.0 96.1, -12.0 106.0, -12.0 116.2" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="parclo_arterial_1_3_span_2" d="M -12.0 -115.7 C -12.0 -105.5, -12.0 -95.4, -12.0 -85.6" fill="none" stroke="#10b981" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>parclo_arterial_1_3_span_2 (Lanes: 2, Elev: 1.7m)</title>
+  </path>
+  <path d="M -12.0 -115.7 C -12.0 -105.5, -12.0 -95.4, -12.0 -85.6" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="parclo_arterial_3_1_span_2" d="M 12.0 115.7 C 12.0 105.5, 12.0 95.4, 12.0 85.6" fill="none" stroke="#10b981" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>parclo_arterial_3_1_span_2 (Lanes: 2, Elev: 1.7m)</title>
+  </path>
+  <path d="M 12.0 115.7 C 12.0 105.5, 12.0 95.4, 12.0 85.6" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="parclo_slip_1_2" d="M -12.0 -180.6 C -13.0 -170.7, -14.8 -161.1, -17.3 -151.7" fill="none" stroke="#10b981" stroke-width="4.0" stroke-linecap="round" stroke-linejoin="round">
+    <title>parclo_slip_1_2 (Lanes: 1, Elev: 1.3m)</title>
+  </path>
+  <path d="M -12.0 -180.6 C -13.0 -170.7, -14.8 -161.1, -17.3 -151.7" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="parclo_slip_3_0" d="M 12.0 180.6 C 13.0 170.7, 14.8 161.1, 17.3 151.7" fill="none" stroke="#10b981" stroke-width="4.0" stroke-linecap="round" stroke-linejoin="round">
+    <title>parclo_slip_3_0 (Lanes: 1, Elev: 1.3m)</title>
+  </path>
+  <path d="M 12.0 180.6 C 13.0 170.7, 14.8 161.1, 17.3 151.7" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="parclo_arterial_3_1_span_8" d="M 12.0 -57.4 C 12.0 -66.9, 12.0 -76.5, 12.0 -86.3" fill="none" stroke="#10b981" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>parclo_arterial_3_1_span_8 (Lanes: 2, Elev: 2.3m)</title>
+  </path>
+  <path d="M 12.0 -57.4 C 12.0 -66.9, 12.0 -76.5, 12.0 -86.3" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="parclo_arterial_1_3_span_8" d="M -12.0 57.4 C -12.0 66.9, -12.0 76.5, -12.0 86.3" fill="none" stroke="#10b981" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>parclo_arterial_1_3_span_8 (Lanes: 2, Elev: 2.3m)</title>
+  </path>
+  <path d="M -12.0 57.4 C -12.0 66.9, -12.0 76.5, -12.0 86.3" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="parclo_arterial_3_1_span_3" d="M 12.0 85.6 C 12.0 75.7, 12.0 66.0, 12.0 56.5" fill="none" stroke="#10b981" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>parclo_arterial_3_1_span_3 (Lanes: 2, Elev: 2.3m)</title>
+  </path>
+  <path d="M 12.0 85.6 C 12.0 75.7, 12.0 66.0, 12.0 56.5" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="parclo_arterial_1_3_span_3" d="M -12.0 -85.6 C -12.0 -75.7, -12.0 -66.0, -12.0 -56.5" fill="none" stroke="#10b981" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>parclo_arterial_1_3_span_3 (Lanes: 2, Elev: 2.3m)</title>
+  </path>
+  <path d="M -12.0 -85.6 C -12.0 -75.7, -12.0 -66.0, -12.0 -56.5" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="parclo_arterial_3_1_span_6" d="M 12.0 -1.4 C 12.0 -10.7, 12.0 -19.9, 12.0 -29.2" fill="none" stroke="#10b981" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>parclo_arterial_3_1_span_6 (Lanes: 2, Elev: 3.2m)</title>
+  </path>
+  <path d="M 12.0 -1.4 C 12.0 -10.7, 12.0 -19.9, 12.0 -29.2" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="parclo_arterial_3_1_span_7" d="M 12.0 -29.2 C 12.0 -38.5, 12.0 -47.9, 12.0 -57.4" fill="none" stroke="#10b981" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>parclo_arterial_3_1_span_7 (Lanes: 2, Elev: 2.9m)</title>
+  </path>
+  <path d="M 12.0 -29.2 C 12.0 -38.5, 12.0 -47.9, 12.0 -57.4" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="parclo_arterial_1_3_span_7" d="M -12.0 29.2 C -12.0 38.5, -12.0 47.9, -12.0 57.4" fill="none" stroke="#10b981" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>parclo_arterial_1_3_span_7 (Lanes: 2, Elev: 2.9m)</title>
+  </path>
+  <path d="M -12.0 29.2 C -12.0 38.5, -12.0 47.9, -12.0 57.4" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="parclo_arterial_1_3_span_6" d="M -12.0 1.4 C -12.0 10.7, -12.0 19.9, -12.0 29.2" fill="none" stroke="#10b981" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>parclo_arterial_1_3_span_6 (Lanes: 2, Elev: 3.2m)</title>
+  </path>
+  <path d="M -12.0 1.4 C -12.0 10.7, -12.0 19.9, -12.0 29.2" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="parclo_arterial_3_1_span_4" d="M 12.0 56.5 C 12.0 46.9, 12.0 37.4, 12.0 28.1" fill="none" stroke="#10b981" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>parclo_arterial_3_1_span_4 (Lanes: 2, Elev: 2.9m)</title>
+  </path>
+  <path d="M 12.0 56.5 C 12.0 46.9, 12.0 37.4, 12.0 28.1" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="parclo_arterial_3_1_span_5" d="M 12.0 28.1 C 12.0 18.2, 12.0 8.4, 12.0 -1.4" fill="none" stroke="#10b981" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>parclo_arterial_3_1_span_5 (Lanes: 2, Elev: 3.2m)</title>
+  </path>
+  <path d="M 12.0 28.1 C 12.0 18.2, 12.0 8.4, 12.0 -1.4" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="parclo_arterial_1_3_span_5" d="M -12.0 -28.1 C -12.0 -18.2, -12.0 -8.4, -12.0 1.4" fill="none" stroke="#10b981" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>parclo_arterial_1_3_span_5 (Lanes: 2, Elev: 3.2m)</title>
+  </path>
+  <path d="M -12.0 -28.1 C -12.0 -18.2, -12.0 -8.4, -12.0 1.4" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="parclo_arterial_1_3_span_4" d="M -12.0 -56.5 C -12.0 -46.9, -12.0 -37.4, -12.0 -28.1" fill="none" stroke="#10b981" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>parclo_arterial_1_3_span_4 (Lanes: 2, Elev: 2.9m)</title>
+  </path>
+  <path d="M -12.0 -56.5 C -12.0 -46.9, -12.0 -37.4, -12.0 -28.1" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="parclo_slip_1_2_span_7" d="M -118.1 -29.8 C -127.7 -25.1, -137.8 -21.3, -148.2 -18.3" fill="none" stroke="#10b981" stroke-width="4.0" stroke-linecap="round" stroke-linejoin="round">
+    <title>parclo_slip_1_2_span_7 (Lanes: 1, Elev: 1.2m)</title>
+  </path>
+  <path d="M -118.1 -29.8 C -127.7 -25.1, -137.8 -21.3, -148.2 -18.3" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="parclo_slip_3_0_span_7" d="M 118.1 29.8 C 127.7 25.1, 137.8 21.3, 148.2 18.3" fill="none" stroke="#10b981" stroke-width="4.0" stroke-linecap="round" stroke-linejoin="round">
+    <title>parclo_slip_3_0_span_7 (Lanes: 1, Elev: 1.2m)</title>
+  </path>
+  <path d="M 118.1 29.8 C 127.7 25.1, 137.8 21.3, 148.2 18.3" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="parclo_loop_1_0_4_span_5" d="M 63.9 10.3 C 75.1 9.2, 86.8 7.9, 99.3 6.6" fill="none" stroke="#ec4899" stroke-width="4.0" stroke-linecap="round" stroke-linejoin="round">
+    <title>parclo_loop_1_0_4_span_5 (Lanes: 1, Elev: 2.8m)</title>
+  </path>
+  <path d="M 63.9 10.3 C 75.1 9.2, 86.8 7.9, 99.3 6.6" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="parclo_slip_2_3_span_1" d="M -151.7 17.3 C -142.3 19.8, -133.3 23.0, -124.5 26.8" fill="none" stroke="#10b981" stroke-width="4.0" stroke-linecap="round" stroke-linejoin="round">
+    <title>parclo_slip_2_3_span_1 (Lanes: 1, Elev: 1.4m)</title>
+  </path>
+  <path d="M -151.7 17.3 C -142.3 19.8, -133.3 23.0, -124.5 26.8" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="parclo_slip_0_1_span_1" d="M 151.7 -17.3 C 142.3 -19.8, 133.3 -23.0, 124.5 -26.8" fill="none" stroke="#10b981" stroke-width="4.0" stroke-linecap="round" stroke-linejoin="round">
+    <title>parclo_slip_0_1_span_1 (Lanes: 1, Elev: 1.4m)</title>
+  </path>
+  <path d="M 151.7 -17.3 C 142.3 -19.8, 133.3 -23.0, 124.5 -26.8" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="parclo_slip_2_3_span_8" d="M -18.3 148.2 C -15.3 158.7, -13.2 169.5, -12.0 180.6" fill="none" stroke="#10b981" stroke-width="4.0" stroke-linecap="round" stroke-linejoin="round">
+    <title>parclo_slip_2_3_span_8 (Lanes: 1, Elev: 2.1m)</title>
+  </path>
+  <path d="M -18.3 148.2 C -15.3 158.7, -13.2 169.5, -12.0 180.6" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="parclo_slip_0_1_span_8" d="M 18.3 -148.2 C 15.3 -158.7, 13.2 -169.5, 12.0 -180.6" fill="none" stroke="#10b981" stroke-width="4.0" stroke-linecap="round" stroke-linejoin="round">
+    <title>parclo_slip_0_1_span_8 (Lanes: 1, Elev: 2.1m)</title>
+  </path>
+  <path d="M 18.3 -148.2 C 15.3 -158.7, 13.2 -169.5, 12.0 -180.6" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="parclo_slip_3_0_span_1" d="M 17.3 151.7 C 19.8 142.3, 23.0 133.3, 26.8 124.5" fill="none" stroke="#10b981" stroke-width="4.0" stroke-linecap="round" stroke-linejoin="round">
+    <title>parclo_slip_3_0_span_1 (Lanes: 1, Elev: 3.7m)</title>
+  </path>
+  <path d="M 17.3 151.7 C 19.8 142.3, 23.0 133.3, 26.8 124.5" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="parclo_slip_1_2_span_1" d="M -17.3 -151.7 C -19.8 -142.3, -23.0 -133.3, -26.8 -124.5" fill="none" stroke="#10b981" stroke-width="4.0" stroke-linecap="round" stroke-linejoin="round">
+    <title>parclo_slip_1_2_span_1 (Lanes: 1, Elev: 3.7m)</title>
+  </path>
+  <path d="M -17.3 -151.7 C -19.8 -142.3, -23.0 -133.3, -26.8 -124.5" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M 26.8 124.5 C 30.8 115.4, 35.5 106.6, 40.9 98.2" fill="none" stroke="#000000" stroke-width="8.0" opacity="0.6"/>
+  <path id="parclo_slip_3_0_span_2" d="M 26.8 124.5 C 30.8 115.4, 35.5 106.6, 40.9 98.2" fill="none" stroke="#10b981" stroke-width="4.0" stroke-linecap="round" stroke-linejoin="round">
+    <title>parclo_slip_3_0_span_2 (Lanes: 1, Elev: 6.2m)</title>
+  </path>
+  <path d="M 26.8 124.5 C 30.8 115.4, 35.5 106.6, 40.9 98.2" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M -26.8 -124.5 C -30.8 -115.4, -35.5 -106.6, -40.9 -98.2" fill="none" stroke="#000000" stroke-width="8.0" opacity="0.6"/>
+  <path id="parclo_slip_1_2_span_2" d="M -26.8 -124.5 C -30.8 -115.4, -35.5 -106.6, -40.9 -98.2" fill="none" stroke="#10b981" stroke-width="4.0" stroke-linecap="round" stroke-linejoin="round">
+    <title>parclo_slip_1_2_span_2 (Lanes: 1, Elev: 6.2m)</title>
+  </path>
+  <path d="M -26.8 -124.5 C -30.8 -115.4, -35.5 -106.6, -40.9 -98.2" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M 90.7 45.9 C 99.3 39.8, 108.5 34.4, 118.1 29.8" fill="none" stroke="#000000" stroke-width="8.0" opacity="0.6"/>
+  <path id="parclo_slip_3_0_span_6" d="M 90.7 45.9 C 99.3 39.8, 108.5 34.4, 118.1 29.8" fill="none" stroke="#10b981" stroke-width="4.0" stroke-linecap="round" stroke-linejoin="round">
+    <title>parclo_slip_3_0_span_6 (Lanes: 1, Elev: 5.7m)</title>
+  </path>
+  <path d="M 90.7 45.9 C 99.3 39.8, 108.5 34.4, 118.1 29.8" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M -90.7 -45.9 C -99.3 -39.8, -108.5 -34.4, -118.1 -29.8" fill="none" stroke="#000000" stroke-width="8.0" opacity="0.6"/>
+  <path id="parclo_slip_1_2_span_6" d="M -90.7 -45.9 C -99.3 -39.8, -108.5 -34.4, -118.1 -29.8" fill="none" stroke="#10b981" stroke-width="4.0" stroke-linecap="round" stroke-linejoin="round">
+    <title>parclo_slip_1_2_span_6 (Lanes: 1, Elev: 5.7m)</title>
+  </path>
+  <path d="M -90.7 -45.9 C -99.3 -39.8, -108.5 -34.4, -118.1 -29.8" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M -29.8 118.1 C -25.1 127.7, -21.3 137.8, -18.3 148.2" fill="none" stroke="#000000" stroke-width="8.0" opacity="0.6"/>
+  <path id="parclo_slip_2_3_span_7" d="M -29.8 118.1 C -25.1 127.7, -21.3 137.8, -18.3 148.2" fill="none" stroke="#10b981" stroke-width="4.0" stroke-linecap="round" stroke-linejoin="round">
+    <title>parclo_slip_2_3_span_7 (Lanes: 1, Elev: 6.3m)</title>
+  </path>
+  <path d="M -29.8 118.1 C -25.1 127.7, -21.3 137.8, -18.3 148.2" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M 29.8 -118.1 C 25.1 -127.7, 21.3 -137.8, 18.3 -148.2" fill="none" stroke="#000000" stroke-width="8.0" opacity="0.6"/>
+  <path id="parclo_slip_0_1_span_7" d="M 29.8 -118.1 C 25.1 -127.7, 21.3 -137.8, 18.3 -148.2" fill="none" stroke="#10b981" stroke-width="4.0" stroke-linecap="round" stroke-linejoin="round">
+    <title>parclo_slip_0_1_span_7 (Lanes: 1, Elev: 6.3m)</title>
+  </path>
+  <path d="M 29.8 -118.1 C 25.1 -127.7, 21.3 -137.8, 18.3 -148.2" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M -124.5 26.8 C -115.4 30.8, -106.6 35.5, -98.2 40.9" fill="none" stroke="#000000" stroke-width="8.0" opacity="0.6"/>
+  <path id="parclo_slip_2_3_span_2" d="M -124.5 26.8 C -115.4 30.8, -106.6 35.5, -98.2 40.9" fill="none" stroke="#10b981" stroke-width="4.0" stroke-linecap="round" stroke-linejoin="round">
+    <title>parclo_slip_2_3_span_2 (Lanes: 1, Elev: 6.1m)</title>
+  </path>
+  <path d="M -124.5 26.8 C -115.4 30.8, -106.6 35.5, -98.2 40.9" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M 124.5 -26.8 C 115.4 -30.8, 106.6 -35.5, 98.2 -40.9" fill="none" stroke="#000000" stroke-width="8.0" opacity="0.6"/>
+  <path id="parclo_slip_0_1_span_2" d="M 124.5 -26.8 C 115.4 -30.8, 106.6 -35.5, 98.2 -40.9" fill="none" stroke="#10b981" stroke-width="4.0" stroke-linecap="round" stroke-linejoin="round">
+    <title>parclo_slip_0_1_span_2 (Lanes: 1, Elev: 6.1m)</title>
+  </path>
+  <path d="M 124.5 -26.8 C 115.4 -30.8, 106.6 -35.5, 98.2 -40.9" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M 57.6 75.9 C 62.2 70.6, 67.1 65.6, 72.2 60.9" fill="none" stroke="#000000" stroke-width="8.0" opacity="0.6"/>
+  <path id="parclo_slip_3_0_span_4" d="M 57.6 75.9 C 62.2 70.6, 67.1 65.6, 72.2 60.9" fill="none" stroke="#10b981" stroke-width="4.0" stroke-linecap="round" stroke-linejoin="round">
+    <title>parclo_slip_3_0_span_4 (Lanes: 1, Elev: 8.8m)</title>
+  </path>
+  <path d="M 57.6 75.9 C 62.2 70.6, 67.1 65.6, 72.2 60.9" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M 98.2 -40.9 C 90.4 -45.9, 82.9 -51.5, 75.9 -57.6" fill="none" stroke="#000000" stroke-width="8.0" opacity="0.6"/>
+  <path id="parclo_slip_0_1_span_3" d="M 98.2 -40.9 C 90.4 -45.9, 82.9 -51.5, 75.9 -57.6" fill="none" stroke="#10b981" stroke-width="4.0" stroke-linecap="round" stroke-linejoin="round">
+    <title>parclo_slip_0_1_span_3 (Lanes: 1, Elev: 8.6m)</title>
+  </path>
+  <path d="M 98.2 -40.9 C 90.4 -45.9, 82.9 -51.5, 75.9 -57.6" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M 75.9 -57.6 C 70.6 -62.2, 65.6 -67.1, 60.9 -72.2" fill="none" stroke="#000000" stroke-width="8.0" opacity="0.6"/>
+  <path id="parclo_slip_0_1_span_4" d="M 75.9 -57.6 C 70.6 -62.2, 65.6 -67.1, 60.9 -72.2" fill="none" stroke="#10b981" stroke-width="4.0" stroke-linecap="round" stroke-linejoin="round">
+    <title>parclo_slip_0_1_span_4 (Lanes: 1, Elev: 8.8m)</title>
+  </path>
+  <path d="M 75.9 -57.6 C 70.6 -62.2, 65.6 -67.1, 60.9 -72.2" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M -57.6 -75.9 C -62.2 -70.6, -67.1 -65.6, -72.2 -60.9" fill="none" stroke="#000000" stroke-width="8.0" opacity="0.6"/>
+  <path id="parclo_slip_1_2_span_4" d="M -57.6 -75.9 C -62.2 -70.6, -67.1 -65.6, -72.2 -60.9" fill="none" stroke="#10b981" stroke-width="4.0" stroke-linecap="round" stroke-linejoin="round">
+    <title>parclo_slip_1_2_span_4 (Lanes: 1, Elev: 8.8m)</title>
+  </path>
+  <path d="M -57.6 -75.9 C -62.2 -70.6, -67.1 -65.6, -72.2 -60.9" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M 72.2 60.9 C 78.1 55.5, 84.2 50.5, 90.7 45.9" fill="none" stroke="#000000" stroke-width="8.0" opacity="0.6"/>
+  <path id="parclo_slip_3_0_span_5" d="M 72.2 60.9 C 78.1 55.5, 84.2 50.5, 90.7 45.9" fill="none" stroke="#10b981" stroke-width="4.0" stroke-linecap="round" stroke-linejoin="round">
+    <title>parclo_slip_3_0_span_5 (Lanes: 1, Elev: 8.4m)</title>
+  </path>
+  <path d="M 72.2 60.9 C 78.1 55.5, 84.2 50.5, 90.7 45.9" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M -40.9 -98.2 C -45.9 -90.4, -51.5 -82.9, -57.6 -75.9" fill="none" stroke="#000000" stroke-width="8.0" opacity="0.6"/>
+  <path id="parclo_slip_1_2_span_3" d="M -40.9 -98.2 C -45.9 -90.4, -51.5 -82.9, -57.6 -75.9" fill="none" stroke="#10b981" stroke-width="4.0" stroke-linecap="round" stroke-linejoin="round">
+    <title>parclo_slip_1_2_span_3 (Lanes: 1, Elev: 8.2m)</title>
+  </path>
+  <path d="M -40.9 -98.2 C -45.9 -90.4, -51.5 -82.9, -57.6 -75.9" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M 40.9 98.2 C 45.9 90.4, 51.5 82.9, 57.6 75.9" fill="none" stroke="#000000" stroke-width="8.0" opacity="0.6"/>
+  <path id="parclo_slip_3_0_span_3" d="M 40.9 98.2 C 45.9 90.4, 51.5 82.9, 57.6 75.9" fill="none" stroke="#10b981" stroke-width="4.0" stroke-linecap="round" stroke-linejoin="round">
+    <title>parclo_slip_3_0_span_3 (Lanes: 1, Elev: 8.2m)</title>
+  </path>
+  <path d="M 40.9 98.2 C 45.9 90.4, 51.5 82.9, 57.6 75.9" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M -72.2 -60.9 C -78.1 -55.5, -84.2 -50.5, -90.7 -45.9" fill="none" stroke="#000000" stroke-width="8.0" opacity="0.6"/>
+  <path id="parclo_slip_1_2_span_5" d="M -72.2 -60.9 C -78.1 -55.5, -84.2 -50.5, -90.7 -45.9" fill="none" stroke="#10b981" stroke-width="4.0" stroke-linecap="round" stroke-linejoin="round">
+    <title>parclo_slip_1_2_span_5 (Lanes: 1, Elev: 8.4m)</title>
+  </path>
+  <path d="M -72.2 -60.9 C -78.1 -55.5, -84.2 -50.5, -90.7 -45.9" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M 60.9 -72.2 C 55.5 -78.1, 50.5 -84.2, 45.9 -90.7" fill="none" stroke="#000000" stroke-width="8.0" opacity="0.6"/>
+  <path id="parclo_slip_0_1_span_5" d="M 60.9 -72.2 C 55.5 -78.1, 50.5 -84.2, 45.9 -90.7" fill="none" stroke="#10b981" stroke-width="4.0" stroke-linecap="round" stroke-linejoin="round">
+    <title>parclo_slip_0_1_span_5 (Lanes: 1, Elev: 8.8m)</title>
+  </path>
+  <path d="M 60.9 -72.2 C 55.5 -78.1, 50.5 -84.2, 45.9 -90.7" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M 45.9 -90.7 C 39.8 -99.3, 34.4 -108.5, 29.8 -118.1" fill="none" stroke="#000000" stroke-width="8.0" opacity="0.6"/>
+  <path id="parclo_slip_0_1_span_6" d="M 45.9 -90.7 C 39.8 -99.3, 34.4 -108.5, 29.8 -118.1" fill="none" stroke="#10b981" stroke-width="4.0" stroke-linecap="round" stroke-linejoin="round">
+    <title>parclo_slip_0_1_span_6 (Lanes: 1, Elev: 8.6m)</title>
+  </path>
+  <path d="M 45.9 -90.7 C 39.8 -99.3, 34.4 -108.5, 29.8 -118.1" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M -45.9 90.7 C -39.8 99.3, -34.4 108.5, -29.8 118.1" fill="none" stroke="#000000" stroke-width="8.0" opacity="0.6"/>
+  <path id="parclo_slip_2_3_span_6" d="M -45.9 90.7 C -39.8 99.3, -34.4 108.5, -29.8 118.1" fill="none" stroke="#10b981" stroke-width="4.0" stroke-linecap="round" stroke-linejoin="round">
+    <title>parclo_slip_2_3_span_6 (Lanes: 1, Elev: 8.6m)</title>
+  </path>
+  <path d="M -45.9 90.7 C -39.8 99.3, -34.4 108.5, -29.8 118.1" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M -60.9 72.2 C -55.5 78.1, -50.5 84.2, -45.9 90.7" fill="none" stroke="#000000" stroke-width="8.0" opacity="0.6"/>
+  <path id="parclo_slip_2_3_span_5" d="M -60.9 72.2 C -55.5 78.1, -50.5 84.2, -45.9 90.7" fill="none" stroke="#10b981" stroke-width="4.0" stroke-linecap="round" stroke-linejoin="round">
+    <title>parclo_slip_2_3_span_5 (Lanes: 1, Elev: 8.8m)</title>
+  </path>
+  <path d="M -60.9 72.2 C -55.5 78.1, -50.5 84.2, -45.9 90.7" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M -75.9 57.6 C -70.6 62.2, -65.6 67.1, -60.9 72.2" fill="none" stroke="#000000" stroke-width="8.0" opacity="0.6"/>
+  <path id="parclo_slip_2_3_span_4" d="M -75.9 57.6 C -70.6 62.2, -65.6 67.1, -60.9 72.2" fill="none" stroke="#10b981" stroke-width="4.0" stroke-linecap="round" stroke-linejoin="round">
+    <title>parclo_slip_2_3_span_4 (Lanes: 1, Elev: 8.8m)</title>
+  </path>
+  <path d="M -75.9 57.6 C -70.6 62.2, -65.6 67.1, -60.9 72.2" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M -98.2 40.9 C -90.4 45.9, -82.9 51.5, -75.9 57.6" fill="none" stroke="#000000" stroke-width="8.0" opacity="0.6"/>
+  <path id="parclo_slip_2_3_span_3" d="M -98.2 40.9 C -90.4 45.9, -82.9 51.5, -75.9 57.6" fill="none" stroke="#10b981" stroke-width="4.0" stroke-linecap="round" stroke-linejoin="round">
+    <title>parclo_slip_2_3_span_3 (Lanes: 1, Elev: 8.6m)</title>
+  </path>
+  <path d="M -98.2 40.9 C -90.4 45.9, -82.9 51.5, -75.9 57.6" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M 31.6 13.7 C 42.0 12.6, 52.7 11.5, 63.9 10.3" fill="none" stroke="#000000" stroke-width="8.0" opacity="0.6"/>
+  <path id="parclo_loop_1_0_4_span_4" d="M 31.6 13.7 C 42.0 12.6, 52.7 11.5, 63.9 10.3" fill="none" stroke="#ec4899" stroke-width="4.0" stroke-linecap="round" stroke-linejoin="round">
+    <title>parclo_loop_1_0_4_span_4 (Lanes: 1, Elev: 6.2m)</title>
+  </path>
+  <path d="M 31.6 13.7 C 42.0 12.6, 52.7 11.5, 63.9 10.3" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M -6.6 -99.3 C -7.7 -88.9, -8.7 -79.1, -9.7 -69.6" fill="none" stroke="#000000" stroke-width="8.0" opacity="0.6"/>
+  <path id="parclo_loop_1_0_0" d="M -6.6 -99.3 C -7.7 -88.9, -8.7 -79.1, -9.7 -69.6" fill="none" stroke="#f59e0b" stroke-width="4.0" stroke-linecap="round" stroke-linejoin="round">
+    <title>parclo_loop_1_0_0 (Lanes: 1, Elev: 10.4m)</title>
+  </path>
+  <path d="M -6.6 -99.3 C -7.7 -88.9, -8.7 -79.1, -9.7 -69.6" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M 6.6 99.3 C 7.7 88.9, 8.7 79.1, 9.7 69.6" fill="none" stroke="#000000" stroke-width="8.0" opacity="0.6"/>
+  <path id="parclo_loop_3_2_0" d="M 6.6 99.3 C 7.7 88.9, 8.7 79.1, 9.7 69.6" fill="none" stroke="#f59e0b" stroke-width="4.0" stroke-linecap="round" stroke-linejoin="round">
+    <title>parclo_loop_3_2_0 (Lanes: 1, Elev: 10.4m)</title>
+  </path>
+  <path d="M 6.6 99.3 C 7.7 88.9, 8.7 79.1, 9.7 69.6" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M -9.7 -69.6 C -10.8 -58.9, -11.9 -48.7, -13.0 -38.8" fill="none" stroke="#000000" stroke-width="8.0" opacity="0.6"/>
+  <path id="parclo_loop_1_0_0_span_1" d="M -9.7 -69.6 C -10.8 -58.9, -11.9 -48.7, -13.0 -38.8" fill="none" stroke="#f59e0b" stroke-width="4.0" stroke-linecap="round" stroke-linejoin="round">
+    <title>parclo_loop_1_0_0_span_1 (Lanes: 1, Elev: 11.4m)</title>
+  </path>
+  <path d="M -9.7 -69.6 C -10.8 -58.9, -11.9 -48.7, -13.0 -38.8" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M 9.7 69.6 C 10.8 58.9, 11.9 48.7, 13.0 38.8" fill="none" stroke="#000000" stroke-width="8.0" opacity="0.6"/>
+  <path id="parclo_loop_3_2_0_span_1" d="M 9.7 69.6 C 10.8 58.9, 11.9 48.7, 13.0 38.8" fill="none" stroke="#f59e0b" stroke-width="4.0" stroke-linecap="round" stroke-linejoin="round">
+    <title>parclo_loop_3_2_0_span_1 (Lanes: 1, Elev: 11.4m)</title>
+  </path>
+  <path d="M 9.7 69.6 C 10.8 58.9, 11.9 48.7, 13.0 38.8" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M 0.7 17.0 C 11.0 15.9, 21.2 14.8, 31.6 13.7" fill="none" stroke="#000000" stroke-width="8.0" opacity="0.6"/>
+  <path id="parclo_loop_1_0_4_span_3" d="M 0.7 17.0 C 11.0 15.9, 21.2 14.8, 31.6 13.7" fill="none" stroke="#ec4899" stroke-width="4.0" stroke-linecap="round" stroke-linejoin="round">
+    <title>parclo_loop_1_0_4_span_3 (Lanes: 1, Elev: 10.4m)</title>
+  </path>
+  <path d="M 0.7 17.0 C 11.0 15.9, 21.2 14.8, 31.6 13.7" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M -13.0 -38.8 C -14.0 -28.9, -15.0 -19.2, -16.0 -9.6" fill="none" stroke="#000000" stroke-width="8.0" opacity="0.6"/>
+  <path id="parclo_loop_1_0_0_span_2" d="M -13.0 -38.8 C -14.0 -28.9, -15.0 -19.2, -16.0 -9.6" fill="none" stroke="#f59e0b" stroke-width="4.0" stroke-linecap="round" stroke-linejoin="round">
+    <title>parclo_loop_1_0_0_span_2 (Lanes: 1, Elev: 13.1m)</title>
+  </path>
+  <path d="M -13.0 -38.8 C -14.0 -28.9, -15.0 -19.2, -16.0 -9.6" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M 13.0 38.8 C 14.0 28.9, 15.0 19.2, 16.0 9.6" fill="none" stroke="#000000" stroke-width="8.0" opacity="0.6"/>
+  <path id="parclo_loop_3_2_0_span_2" d="M 13.0 38.8 C 14.0 28.9, 15.0 19.2, 16.0 9.6" fill="none" stroke="#f59e0b" stroke-width="4.0" stroke-linecap="round" stroke-linejoin="round">
+    <title>parclo_loop_3_2_0_span_2 (Lanes: 1, Elev: 13.1m)</title>
+  </path>
+  <path d="M 13.0 38.8 C 14.0 28.9, 15.0 19.2, 16.0 9.6" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M -63.9 -10.3 C -75.1 -9.2, -86.8 -7.9, -99.3 -6.6" fill="none" stroke="#000000" stroke-width="8.0" opacity="0.6"/>
+  <path id="parclo_loop_3_2_4_span_5" d="M -63.9 -10.3 C -75.1 -9.2, -86.8 -7.9, -99.3 -6.6" fill="none" stroke="#ec4899" stroke-width="4.0" stroke-linecap="round" stroke-linejoin="round">
+    <title>parclo_loop_3_2_4_span_5 (Lanes: 1, Elev: 12.1m)</title>
+  </path>
+  <path d="M -63.9 -10.3 C -75.1 -9.2, -86.8 -7.9, -99.3 -6.6" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M -30.6 20.3 C -19.9 19.1, -9.5 18.0, 0.7 17.0" fill="none" stroke="#000000" stroke-width="8.0" opacity="0.6"/>
+  <path id="parclo_loop_1_0_4_span_2" d="M -30.6 20.3 C -19.9 19.1, -9.5 18.0, 0.7 17.0" fill="none" stroke="#ec4899" stroke-width="4.0" stroke-linecap="round" stroke-linejoin="round">
+    <title>parclo_loop_1_0_4_span_2 (Lanes: 1, Elev: 13.5m)</title>
+  </path>
+  <path d="M -30.6 20.3 C -19.9 19.1, -9.5 18.0, 0.7 17.0" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M -16.0 -9.6 C -16.9 -1.4, -17.8 6.8, -18.6 15.1" fill="none" stroke="#000000" stroke-width="8.0" opacity="0.6"/>
+  <path id="parclo_loop_1_0_0_span_3" d="M -16.0 -9.6 C -16.9 -1.4, -17.8 6.8, -18.6 15.1" fill="none" stroke="#f59e0b" stroke-width="4.0" stroke-linecap="round" stroke-linejoin="round">
+    <title>parclo_loop_1_0_0_span_3 (Lanes: 1, Elev: 16.5m)</title>
+  </path>
+  <path d="M -16.0 -9.6 C -16.9 -1.4, -17.8 6.8, -18.6 15.1" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M 16.0 9.6 C 16.9 1.4, 17.8 -6.8, 18.6 -15.1" fill="none" stroke="#000000" stroke-width="8.0" opacity="0.6"/>
+  <path id="parclo_loop_3_2_0_span_3" d="M 16.0 9.6 C 16.9 1.4, 17.8 -6.8, 18.6 -15.1" fill="none" stroke="#f59e0b" stroke-width="4.0" stroke-linecap="round" stroke-linejoin="round">
+    <title>parclo_loop_3_2_0_span_3 (Lanes: 1, Elev: 16.5m)</title>
+  </path>
+  <path d="M 16.0 9.6 C 16.9 1.4, 17.8 -6.8, 18.6 -15.1" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M -53.9 22.7 C -45.8 21.9, -38.1 21.0, -30.6 20.3" fill="none" stroke="#000000" stroke-width="8.0" opacity="0.6"/>
+  <path id="parclo_loop_1_0_4_span_1" d="M -53.9 22.7 C -45.8 21.9, -38.1 21.0, -30.6 20.3" fill="none" stroke="#ec4899" stroke-width="4.0" stroke-linecap="round" stroke-linejoin="round">
+    <title>parclo_loop_1_0_4_span_1 (Lanes: 1, Elev: 16.9m)</title>
+  </path>
+  <path d="M -53.9 22.7 C -45.8 21.9, -38.1 21.0, -30.6 20.3" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M -31.6 -13.7 C -42.0 -12.6, -52.7 -11.5, -63.9 -10.3" fill="none" stroke="#000000" stroke-width="8.0" opacity="0.6"/>
+  <path id="parclo_loop_3_2_4_span_4" d="M -31.6 -13.7 C -42.0 -12.6, -52.7 -11.5, -63.9 -10.3" fill="none" stroke="#ec4899" stroke-width="4.0" stroke-linecap="round" stroke-linejoin="round">
+    <title>parclo_loop_3_2_4_span_4 (Lanes: 1, Elev: 17.5m)</title>
+  </path>
+  <path d="M -31.6 -13.7 C -42.0 -12.6, -52.7 -11.5, -63.9 -10.3" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M 31.0 -101.4 C 35.9 -111.3, 43.8 -119.3, 53.4 -124.4" fill="none" stroke="#000000" stroke-width="8.0" opacity="0.6"/>
+  <path id="parclo_loop_3_2_1_span_1" d="M 31.0 -101.4 C 35.9 -111.3, 43.8 -119.3, 53.4 -124.4" fill="none" stroke="#ec4899" stroke-width="4.0" stroke-linecap="round" stroke-linejoin="round">
+    <title>parclo_loop_3_2_1_span_1 (Lanes: 1, Elev: 20.1m)</title>
+  </path>
+  <path d="M 31.0 -101.4 C 35.9 -111.3, 43.8 -119.3, 53.4 -124.4" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M -31.0 101.4 C -35.9 111.3, -43.8 119.3, -53.4 124.4" fill="none" stroke="#000000" stroke-width="8.0" opacity="0.6"/>
+  <path id="parclo_loop_1_0_1_span_1" d="M -31.0 101.4 C -35.9 111.3, -43.8 119.3, -53.4 124.4" fill="none" stroke="#ec4899" stroke-width="4.0" stroke-linecap="round" stroke-linejoin="round">
+    <title>parclo_loop_1_0_1_span_1 (Lanes: 1, Elev: 20.1m)</title>
+  </path>
+  <path d="M -31.0 101.4 C -35.9 111.3, -43.8 119.3, -53.4 124.4" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M -0.7 -17.0 C -11.0 -15.9, -21.2 -14.8, -31.6 -13.7" fill="none" stroke="#000000" stroke-width="8.0" opacity="0.6"/>
+  <path id="parclo_loop_3_2_4_span_3" d="M -0.7 -17.0 C -11.0 -15.9, -21.2 -14.8, -31.6 -13.7" fill="none" stroke="#ec4899" stroke-width="4.0" stroke-linecap="round" stroke-linejoin="round">
+    <title>parclo_loop_3_2_4_span_3 (Lanes: 1, Elev: 20.3m)</title>
+  </path>
+  <path d="M -0.7 -17.0 C -11.0 -15.9, -21.2 -14.8, -31.6 -13.7" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M 30.6 -20.3 C 19.9 -19.1, 9.5 -18.0, -0.7 -17.0" fill="none" stroke="#000000" stroke-width="8.0" opacity="0.6"/>
+  <path id="parclo_loop_3_2_4_span_2" d="M 30.6 -20.3 C 19.9 -19.1, 9.5 -18.0, -0.7 -17.0" fill="none" stroke="#ec4899" stroke-width="4.0" stroke-linecap="round" stroke-linejoin="round">
+    <title>parclo_loop_3_2_4_span_2 (Lanes: 1, Elev: 20.2m)</title>
+  </path>
+  <path d="M 30.6 -20.3 C 19.9 -19.1, 9.5 -18.0, -0.7 -17.0" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M 53.4 -124.4 C 61.3 -128.6, 70.4 -130.8, 79.9 -130.5" fill="none" stroke="#000000" stroke-width="8.0" opacity="0.6"/>
+  <path id="parclo_loop_3_2_1_span_2" d="M 53.4 -124.4 C 61.3 -128.6, 70.4 -130.8, 79.9 -130.5" fill="none" stroke="#ec4899" stroke-width="4.0" stroke-linecap="round" stroke-linejoin="round">
+    <title>parclo_loop_3_2_1_span_2 (Lanes: 1, Elev: 20.3m)</title>
+  </path>
+  <path d="M 53.4 -124.4 C 61.3 -128.6, 70.4 -130.8, 79.9 -130.5" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M -53.4 124.4 C -61.3 128.6, -70.4 130.8, -79.9 130.5" fill="none" stroke="#000000" stroke-width="8.0" opacity="0.6"/>
+  <path id="parclo_loop_1_0_1_span_2" d="M -53.4 124.4 C -61.3 128.6, -70.4 130.8, -79.9 130.5" fill="none" stroke="#ec4899" stroke-width="4.0" stroke-linecap="round" stroke-linejoin="round">
+    <title>parclo_loop_1_0_1_span_2 (Lanes: 1, Elev: 20.3m)</title>
+  </path>
+  <path d="M -53.4 124.4 C -61.3 128.6, -70.4 130.8, -79.9 130.5" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M 79.9 -130.5 C 90.4 -130.1, 100.2 -126.7, 108.3 -121.0" fill="none" stroke="#000000" stroke-width="8.0" opacity="0.6"/>
+  <path id="parclo_loop_3_2_2" d="M 79.9 -130.5 C 90.4 -130.1, 100.2 -126.7, 108.3 -121.0" fill="none" stroke="#ec4899" stroke-width="4.0" stroke-linecap="round" stroke-linejoin="round">
+    <title>parclo_loop_3_2_2 (Lanes: 1, Elev: 21.3m)</title>
+  </path>
+  <path d="M 79.9 -130.5 C 90.4 -130.1, 100.2 -126.7, 108.3 -121.0" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M -79.9 130.5 C -90.4 130.1, -100.2 126.7, -108.3 121.0" fill="none" stroke="#000000" stroke-width="8.0" opacity="0.6"/>
+  <path id="parclo_loop_1_0_2" d="M -79.9 130.5 C -90.4 130.1, -100.2 126.7, -108.3 121.0" fill="none" stroke="#ec4899" stroke-width="4.0" stroke-linecap="round" stroke-linejoin="round">
+    <title>parclo_loop_1_0_2 (Lanes: 1, Elev: 21.3m)</title>
+  </path>
+  <path d="M -79.9 130.5 C -90.4 130.1, -100.2 126.7, -108.3 121.0" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M 53.9 -22.7 C 45.8 -21.9, 38.1 -21.0, 30.6 -20.3" fill="none" stroke="#000000" stroke-width="8.0" opacity="0.6"/>
+  <path id="parclo_loop_3_2_4_span_1" d="M 53.9 -22.7 C 45.8 -21.9, 38.1 -21.0, 30.6 -20.3" fill="none" stroke="#ec4899" stroke-width="4.0" stroke-linecap="round" stroke-linejoin="round">
+    <title>parclo_loop_3_2_4_span_1 (Lanes: 1, Elev: 21.0m)</title>
+  </path>
+  <path d="M 53.9 -22.7 C 45.8 -21.9, 38.1 -21.0, 30.6 -20.3" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M 108.3 -121.0 C 113.5 -117.3, 118.0 -112.7, 121.5 -107.4" fill="none" stroke="#000000" stroke-width="8.0" opacity="0.6"/>
+  <path id="parclo_loop_3_2_2_span_1" d="M 108.3 -121.0 C 113.5 -117.3, 118.0 -112.7, 121.5 -107.4" fill="none" stroke="#ec4899" stroke-width="4.0" stroke-linecap="round" stroke-linejoin="round">
+    <title>parclo_loop_3_2_2_span_1 (Lanes: 1, Elev: 22.1m)</title>
+  </path>
+  <path d="M 108.3 -121.0 C 113.5 -117.3, 118.0 -112.7, 121.5 -107.4" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M -108.3 121.0 C -113.5 117.3, -118.0 112.7, -121.5 107.4" fill="none" stroke="#000000" stroke-width="8.0" opacity="0.6"/>
+  <path id="parclo_loop_1_0_2_span_1" d="M -108.3 121.0 C -113.5 117.3, -118.0 112.7, -121.5 107.4" fill="none" stroke="#ec4899" stroke-width="4.0" stroke-linecap="round" stroke-linejoin="round">
+    <title>parclo_loop_1_0_2_span_1 (Lanes: 1, Elev: 22.1m)</title>
+  </path>
+  <path d="M -108.3 121.0 C -113.5 117.3, -118.0 112.7, -121.5 107.4" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M 25.8 -83.5 C 26.5 -89.9, 28.3 -95.9, 31.0 -101.4" fill="none" stroke="#000000" stroke-width="8.0" opacity="0.6"/>
+  <path id="parclo_loop_3_2_1" d="M 25.8 -83.5 C 26.5 -89.9, 28.3 -95.9, 31.0 -101.4" fill="none" stroke="#ec4899" stroke-width="4.0" stroke-linecap="round" stroke-linejoin="round">
+    <title>parclo_loop_3_2_1 (Lanes: 1, Elev: 21.8m)</title>
+  </path>
+  <path d="M 25.8 -83.5 C 26.5 -89.9, 28.3 -95.9, 31.0 -101.4" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M -25.8 83.5 C -26.5 89.9, -28.3 95.9, -31.0 101.4" fill="none" stroke="#000000" stroke-width="8.0" opacity="0.6"/>
+  <path id="parclo_loop_1_0_1" d="M -25.8 83.5 C -26.5 89.9, -28.3 95.9, -31.0 101.4" fill="none" stroke="#ec4899" stroke-width="4.0" stroke-linecap="round" stroke-linejoin="round">
+    <title>parclo_loop_1_0_1 (Lanes: 1, Elev: 21.8m)</title>
+  </path>
+  <path d="M -25.8 83.5 C -26.5 89.9, -28.3 95.9, -31.0 101.4" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M 121.5 -107.4 C 126.9 -99.5, 130.1 -90.1, 130.5 -79.9" fill="none" stroke="#000000" stroke-width="8.0" opacity="0.6"/>
+  <path id="parclo_loop_3_2_2_span_2" d="M 121.5 -107.4 C 126.9 -99.5, 130.1 -90.1, 130.5 -79.9" fill="none" stroke="#ec4899" stroke-width="4.0" stroke-linecap="round" stroke-linejoin="round">
+    <title>parclo_loop_3_2_2_span_2 (Lanes: 1, Elev: 22.9m)</title>
+  </path>
+  <path d="M 121.5 -107.4 C 126.9 -99.5, 130.1 -90.1, 130.5 -79.9" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M -121.5 107.4 C -126.9 99.5, -130.1 90.1, -130.5 79.9" fill="none" stroke="#000000" stroke-width="8.0" opacity="0.6"/>
+  <path id="parclo_loop_1_0_2_span_2" d="M -121.5 107.4 C -126.9 99.5, -130.1 90.1, -130.5 79.9" fill="none" stroke="#ec4899" stroke-width="4.0" stroke-linecap="round" stroke-linejoin="round">
+    <title>parclo_loop_1_0_2_span_2 (Lanes: 1, Elev: 22.9m)</title>
+  </path>
+  <path d="M -121.5 107.4 C -126.9 99.5, -130.1 90.1, -130.5 79.9" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M -83.5 25.8 C -73.1 24.7, -63.3 23.7, -53.9 22.7" fill="none" stroke="#000000" stroke-width="8.0" opacity="0.6"/>
+  <path id="parclo_loop_1_0_4" d="M -83.5 25.8 C -73.1 24.7, -63.3 23.7, -53.9 22.7" fill="none" stroke="#ec4899" stroke-width="4.0" stroke-linecap="round" stroke-linejoin="round">
+    <title>parclo_loop_1_0_4 (Lanes: 1, Elev: 21.1m)</title>
+  </path>
+  <path d="M -83.5 25.8 C -73.1 24.7, -63.3 23.7, -53.9 22.7" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M -22.1 47.7 C -23.2 59.0, -24.5 70.8, -25.8 83.5" fill="none" stroke="#000000" stroke-width="8.0" opacity="0.6"/>
+  <path id="parclo_loop_1_0_0_span_5" d="M -22.1 47.7 C -23.2 59.0, -24.5 70.8, -25.8 83.5" fill="none" stroke="#ec4899" stroke-width="4.0" stroke-linecap="round" stroke-linejoin="round">
+    <title>parclo_loop_1_0_0_span_5 (Lanes: 1, Elev: 23.5m)</title>
+  </path>
+  <path d="M -22.1 47.7 C -23.2 59.0, -24.5 70.8, -25.8 83.5" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M -18.6 15.1 C -19.7 25.6, -20.9 36.4, -22.1 47.7" fill="none" stroke="#000000" stroke-width="8.0" opacity="0.6"/>
+  <path id="parclo_loop_1_0_0_span_4" d="M -18.6 15.1 C -19.7 25.6, -20.9 36.4, -22.1 47.7" fill="none" stroke="#ec4899" stroke-width="4.0" stroke-linecap="round" stroke-linejoin="round">
+    <title>parclo_loop_1_0_0_span_4 (Lanes: 1, Elev: 21.1m)</title>
+  </path>
+  <path d="M -18.6 15.1 C -19.7 25.6, -20.9 36.4, -22.1 47.7" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M 22.1 -47.7 C 23.2 -59.0, 24.5 -70.8, 25.8 -83.5" fill="none" stroke="#000000" stroke-width="8.0" opacity="0.6"/>
+  <path id="parclo_loop_3_2_0_span_5" d="M 22.1 -47.7 C 23.2 -59.0, 24.5 -70.8, 25.8 -83.5" fill="none" stroke="#ec4899" stroke-width="4.0" stroke-linecap="round" stroke-linejoin="round">
+    <title>parclo_loop_3_2_0_span_5 (Lanes: 1, Elev: 23.5m)</title>
+  </path>
+  <path d="M 22.1 -47.7 C 23.2 -59.0, 24.5 -70.8, 25.8 -83.5" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M 18.6 -15.1 C 19.7 -25.6, 20.9 -36.4, 22.1 -47.7" fill="none" stroke="#000000" stroke-width="8.0" opacity="0.6"/>
+  <path id="parclo_loop_3_2_0_span_4" d="M 18.6 -15.1 C 19.7 -25.6, 20.9 -36.4, 22.1 -47.7" fill="none" stroke="#ec4899" stroke-width="4.0" stroke-linecap="round" stroke-linejoin="round">
+    <title>parclo_loop_3_2_0_span_4 (Lanes: 1, Elev: 21.1m)</title>
+  </path>
+  <path d="M 18.6 -15.1 C 19.7 -25.6, 20.9 -36.4, 22.1 -47.7" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M 130.5 -79.9 C 130.7 -73.4, 129.8 -67.2, 127.8 -61.4" fill="none" stroke="#000000" stroke-width="8.0" opacity="0.6"/>
+  <path id="parclo_loop_3_2_3" d="M 130.5 -79.9 C 130.7 -73.4, 129.8 -67.2, 127.8 -61.4" fill="none" stroke="#ec4899" stroke-width="4.0" stroke-linecap="round" stroke-linejoin="round">
+    <title>parclo_loop_3_2_3 (Lanes: 1, Elev: 23.6m)</title>
+  </path>
+  <path d="M 130.5 -79.9 C 130.7 -73.4, 129.8 -67.2, 127.8 -61.4" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M -130.5 79.9 C -130.7 73.4, -129.8 67.2, -127.8 61.4" fill="none" stroke="#000000" stroke-width="8.0" opacity="0.6"/>
+  <path id="parclo_loop_1_0_3" d="M -130.5 79.9 C -130.7 73.4, -129.8 67.2, -127.8 61.4" fill="none" stroke="#ec4899" stroke-width="4.0" stroke-linecap="round" stroke-linejoin="round">
+    <title>parclo_loop_1_0_3 (Lanes: 1, Elev: 23.6m)</title>
+  </path>
+  <path d="M -130.5 79.9 C -130.7 73.4, -129.8 67.2, -127.8 61.4" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M 83.5 -25.8 C 73.1 -24.7, 63.3 -23.7, 53.9 -22.7" fill="none" stroke="#000000" stroke-width="8.0" opacity="0.6"/>
+  <path id="parclo_loop_3_2_4" d="M 83.5 -25.8 C 73.1 -24.7, 63.3 -23.7, 53.9 -22.7" fill="none" stroke="#ec4899" stroke-width="4.0" stroke-linecap="round" stroke-linejoin="round">
+    <title>parclo_loop_3_2_4 (Lanes: 1, Elev: 23.4m)</title>
+  </path>
+  <path d="M 83.5 -25.8 C 73.1 -24.7, 63.3 -23.7, 53.9 -22.7" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M 127.8 -61.4 C 125.0 -52.9, 120.0 -45.3, 113.4 -39.3" fill="none" stroke="#000000" stroke-width="8.0" opacity="0.6"/>
+  <path id="parclo_loop_3_2_3_span_1" d="M 127.8 -61.4 C 125.0 -52.9, 120.0 -45.3, 113.4 -39.3" fill="none" stroke="#ec4899" stroke-width="4.0" stroke-linecap="round" stroke-linejoin="round">
+    <title>parclo_loop_3_2_3_span_1 (Lanes: 1, Elev: 24.4m)</title>
+  </path>
+  <path d="M 127.8 -61.4 C 125.0 -52.9, 120.0 -45.3, 113.4 -39.3" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M 113.4 -39.3 C 105.4 -31.9, 95.1 -27.0, 83.5 -25.8" fill="none" stroke="#000000" stroke-width="8.0" opacity="0.6"/>
+  <path id="parclo_loop_3_2_3_span_2" d="M 113.4 -39.3 C 105.4 -31.9, 95.1 -27.0, 83.5 -25.8" fill="none" stroke="#ec4899" stroke-width="4.0" stroke-linecap="round" stroke-linejoin="round">
+    <title>parclo_loop_3_2_3_span_2 (Lanes: 1, Elev: 24.8m)</title>
+  </path>
+  <path d="M 113.4 -39.3 C 105.4 -31.9, 95.1 -27.0, 83.5 -25.8" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M -113.4 39.3 C -105.4 31.9, -95.1 27.0, -83.5 25.8" fill="none" stroke="#000000" stroke-width="8.0" opacity="0.6"/>
+  <path id="parclo_loop_1_0_3_span_2" d="M -113.4 39.3 C -105.4 31.9, -95.1 27.0, -83.5 25.8" fill="none" stroke="#ec4899" stroke-width="4.0" stroke-linecap="round" stroke-linejoin="round">
+    <title>parclo_loop_1_0_3_span_2 (Lanes: 1, Elev: 24.2m)</title>
+  </path>
+  <path d="M -113.4 39.3 C -105.4 31.9, -95.1 27.0, -83.5 25.8" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M -127.8 61.4 C -125.0 52.9, -120.0 45.3, -113.4 39.3" fill="none" stroke="#000000" stroke-width="8.0" opacity="0.6"/>
+  <path id="parclo_loop_1_0_3_span_1" d="M -127.8 61.4 C -125.0 52.9, -120.0 45.3, -113.4 39.3" fill="none" stroke="#ec4899" stroke-width="4.0" stroke-linecap="round" stroke-linejoin="round">
+    <title>parclo_loop_1_0_3_span_1 (Lanes: 1, Elev: 24.4m)</title>
+  </path>
+  <path d="M -127.8 61.4 C -125.0 52.9, -120.0 45.3, -113.4 39.3" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
   <text x="210.0" y="-0.0" fill="#94a3b8" font-family="sans-serif" font-size="11" font-weight="bold" text-anchor="middle" dominant-baseline="central">Leg 0</text>
   <text x="-0.0" y="-210.0" fill="#94a3b8" font-family="sans-serif" font-size="11" font-weight="bold" text-anchor="middle" dominant-baseline="central">Leg 1</text>
   <text x="-210.0" y="0.0" fill="#94a3b8" font-family="sans-serif" font-size="11" font-weight="bold" text-anchor="middle" dominant-baseline="central">Leg 2</text>

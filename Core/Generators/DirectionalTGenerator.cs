@@ -37,9 +37,9 @@ namespace ProceduralInterchanges.Core.Generators
 
             float sigma = config.LeftHandTraffic ? -1f : 1f;
 
-            var portalsA = LegPortalGeometry.EmitLegApproaches(legA, center, R, 0.45f, sigma, outCourses, "dirT_main_A");
-            var portalsB = LegPortalGeometry.EmitLegApproaches(legB, center, R, 0.45f, sigma, outCourses, "dirT_main_B");
-            var portalsStem = LegPortalGeometry.EmitLegApproaches(legStem, center, R, 0.45f, sigma, outCourses, "dirT_stem");
+            var portalsA = LegPortalGeometry.EmitLegApproaches(legA, center, R, 0.20f, sigma, outCourses, "dirT_main_A");
+            var portalsB = LegPortalGeometry.EmitLegApproaches(legB, center, R, 0.20f, sigma, outCourses, "dirT_main_B");
+            var portalsStem = LegPortalGeometry.EmitLegApproaches(legStem, center, R, 0.20f, sigma, outCourses, "dirT_stem");
 
             float3 dA = portalsA.DivergeNode;
             float3 mA = portalsA.MergeNode;
@@ -51,6 +51,44 @@ namespace ProceduralInterchanges.Core.Generators
             float3 dirA = portalsA.InboundDir;
             float3 dirB = portalsB.InboundDir;
             float3 dirStem = portalsStem.InboundDir;
+
+            // Determine side of stem relative to AB direction (XZ 2D cross product)
+            float3 vAB = math.normalize(dB - dA);
+            float3 vStem = math.normalize(dS - center);
+            float cross = vAB.x * vStem.z - vAB.z * vStem.x;
+            bool stemIsRight = cross > 0f;
+
+            // Spaced diverge and merge nodes along the continuous stem corridor
+            float3 dS_near = dS;
+            float3 dS_far = dS + dirStem * 26f;
+            float3 mS_far = mS + dirStem * 26f;
+            float3 mS_near = mS;
+
+            float3 dS_A = stemIsRight ? dS_far : dS_near;
+            float3 dS_B = stemIsRight ? dS_near : dS_far;
+            float3 mS_A = stemIsRight ? mS_near : mS_far;
+            float3 mS_B = stemIsRight ? mS_far : mS_near;
+
+            // Continuous stem mainline connector courses
+            outCourses.Add(new PlannedNetCourse
+            {
+                Id = "dirT_stem_app_connector",
+                Role = NetRole.MainlineThrough,
+                LegIndex = stemIdx,
+                TargetLegIndex = -1,
+                Curve = BiArcFit.FitSmoothCurve(dS_near, dirStem, dS_far, dirStem),
+                StackLevel = 0
+            });
+
+            outCourses.Add(new PlannedNetCourse
+            {
+                Id = "dirT_stem_dep_connector",
+                Role = NetRole.MainlineThrough,
+                LegIndex = -1,
+                TargetLegIndex = stemIdx,
+                Curve = BiArcFit.FitSmoothCurve(mS_far, -dirStem, mS_near, -dirStem),
+                StackLevel = 0
+            });
 
             // 3. Through Mainline Cores (Level 0)
             outCourses.Add(new PlannedNetCourse
@@ -73,12 +111,6 @@ namespace ProceduralInterchanges.Core.Generators
                 StackLevel = 0
             });
 
-            // Determine side of stem relative to AB direction (XZ 2D cross product)
-            float3 vAB = math.normalize(dB - dA);
-            float3 vStem = math.normalize(dS - center);
-            float cross = vAB.x * vStem.z - vAB.z * vStem.x;
-            bool stemIsRight = cross > 0f;
-
             int lvl_A_to_S = stemIsRight ? 0 : 1;
             int lvl_S_to_B = stemIsRight ? 0 : 2;
             int lvl_B_to_S = stemIsRight ? 1 : 0;
@@ -91,19 +123,19 @@ namespace ProceduralInterchanges.Core.Generators
             int sideS_to_A = stemIsRight ? (int)sigma : -(int)sigma;
 
             BiArcFit.ApplyGoreTaper(dA, dirA, sideA, BiArcFit.kStandardGoreAngleRad, out float3 rampA_S_start);
-            BiArcFit.ApplyGoreTaper(mS, -dirStem, -sideA, BiArcFit.kStandardGoreAngleRad, out float3 rampA_S_end);
+            BiArcFit.ApplyGoreTaper(mS_A, -dirStem, -sideA, BiArcFit.kStandardGoreAngleRad, out float3 rampA_S_end);
             outCourses.Add(new PlannedNetCourse
             {
                 Id = "dirT_ramp_A_to_S",
                 Role = NetRole.DirectionalRamp,
                 LegIndex = mainAIdx,
                 TargetLegIndex = stemIdx,
-                Curve = BiArcFit.FitSmoothCurve(dA, rampA_S_start, mS, rampA_S_end),
+                Curve = BiArcFit.FitSmoothCurve(dA, rampA_S_start, mS_A, rampA_S_end),
                 StackLevel = lvl_A_to_S,
                 ForceElevated = lvl_A_to_S > 0
             });
 
-            BiArcFit.ApplyGoreTaper(dS, dirStem, sideS_to_B, BiArcFit.kStandardGoreAngleRad, out float3 rampS_B_start);
+            BiArcFit.ApplyGoreTaper(dS_B, dirStem, sideS_to_B, BiArcFit.kStandardGoreAngleRad, out float3 rampS_B_start);
             BiArcFit.ApplyGoreTaper(mB, -dirB, -sideS_to_B, BiArcFit.kStandardGoreAngleRad, out float3 rampS_B_end);
             outCourses.Add(new PlannedNetCourse
             {
@@ -111,25 +143,25 @@ namespace ProceduralInterchanges.Core.Generators
                 Role = NetRole.DirectionalRamp,
                 LegIndex = stemIdx,
                 TargetLegIndex = mainBIdx,
-                Curve = BiArcFit.FitSmoothCurve(dS, rampS_B_start, mB, rampS_B_end),
+                Curve = BiArcFit.FitSmoothCurve(dS_B, rampS_B_start, mB, rampS_B_end),
                 StackLevel = lvl_S_to_B,
                 ForceElevated = lvl_S_to_B > 0
             });
 
             BiArcFit.ApplyGoreTaper(dB, dirB, sideB, BiArcFit.kStandardGoreAngleRad, out float3 rampB_S_start);
-            BiArcFit.ApplyGoreTaper(mS, -dirStem, -sideB, BiArcFit.kStandardGoreAngleRad, out float3 rampB_S_end);
+            BiArcFit.ApplyGoreTaper(mS_B, -dirStem, -sideB, BiArcFit.kStandardGoreAngleRad, out float3 rampB_S_end);
             outCourses.Add(new PlannedNetCourse
             {
                 Id = "dirT_ramp_B_to_S",
                 Role = NetRole.DirectionalRamp,
                 LegIndex = mainBIdx,
                 TargetLegIndex = stemIdx,
-                Curve = BiArcFit.FitSmoothCurve(dB, rampB_S_start, mS, rampB_S_end),
+                Curve = BiArcFit.FitSmoothCurve(dB, rampB_S_start, mS_B, rampB_S_end),
                 StackLevel = lvl_B_to_S,
                 ForceElevated = lvl_B_to_S > 0
             });
 
-            BiArcFit.ApplyGoreTaper(dS, dirStem, sideS_to_A, BiArcFit.kStandardGoreAngleRad, out float3 rampS_A_start);
+            BiArcFit.ApplyGoreTaper(dS_A, dirStem, sideS_to_A, BiArcFit.kStandardGoreAngleRad, out float3 rampS_A_start);
             BiArcFit.ApplyGoreTaper(mA, -dirA, -sideS_to_A, BiArcFit.kStandardGoreAngleRad, out float3 rampS_A_end);
             outCourses.Add(new PlannedNetCourse
             {
@@ -137,7 +169,7 @@ namespace ProceduralInterchanges.Core.Generators
                 Role = NetRole.DirectionalRamp,
                 LegIndex = stemIdx,
                 TargetLegIndex = mainAIdx,
-                Curve = BiArcFit.FitSmoothCurve(dS, rampS_A_start, mA, rampS_A_end),
+                Curve = BiArcFit.FitSmoothCurve(dS_A, rampS_A_start, mA, rampS_A_end),
                 StackLevel = lvl_S_to_A,
                 ForceElevated = lvl_S_to_A > 0
             });

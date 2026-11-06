@@ -34,14 +34,21 @@ namespace ProceduralInterchanges.Core.Generators
             var port = new LegPortals[4];
             float3[] dNodes = new float3[4];
             float3[] mNodes = new float3[4];
+            float3[] dLeftNodes = new float3[4];
+            float3[] mLeftNodes = new float3[4];
             float3[] dirs = new float3[4];
 
             for (int k = 0; k < 4; k++)
             {
-                port[k] = LegPortalGeometry.EmitLegApproaches(legs[k], center, R, 0.25f, sigma, outCourses, $"turbine_leg_{k}");
+                port[k] = LegPortalGeometry.EmitLegApproaches(legs[k], center, R, 0.12f, sigma, outCourses, $"turbine_leg_{k}");
                 dNodes[k] = port[k].DivergeNode;
                 mNodes[k] = port[k].MergeNode;
                 dirs[k] = port[k].InboundDir;
+
+                // Spaced interior nodes for left turn turbine ramps
+                dLeftNodes[k] = dNodes[k] + dirs[k] * 24f;
+                int opp = (k + 2) % 4;
+                mLeftNodes[opp] = mNodes[opp] - dirs[opp] * 24f;
             }
 
             // 1. Level 0: Primary Mainline (0 <-> 2)
@@ -68,21 +75,24 @@ namespace ProceduralInterchanges.Core.Generators
                 });
             }
 
-            // 4. Four Sweeping Orbital Left-Turn Turbine Ramps around vortex perimeter at R_orbit = 0.34 * R
-            float rOrbit = R * 0.34f;
+            // 4. Four Sweeping Orbital Left-Turn Turbine Ramps around vortex perimeter at R_orbit = 0.38 * R
+            float rOrbit = math.clamp(R * 0.38f, 55f, 130f);
             for (int i = 0; i < 4; i++)
             {
                 int targetLeg = (i + 3) % 4;
-                float theta_i = math.atan2(-dirs[i].z, -dirs[i].x);
-                float theta_mid = theta_i - sigma * (math.PI * 0.25f);
+                float3 vFrom = math.normalize(-dirs[i]);
+                float3 vTo = math.normalize(-dirs[targetLeg]);
+                float3 midDir = math.normalize(vFrom + vTo);
 
                 float effectiveClearance = math.max(8.0f, config.MinBridgeClearanceMeters);
-                float3 wPos = center + new float3(math.cos(theta_mid), 0f, math.sin(theta_mid)) * rOrbit;
+                float3 wPos = center + midDir * rOrbit;
                 wPos.y = center.y + effectiveClearance * (2 + (i % 2));
 
-                float3 tMid = math.normalize(new float3(-math.sin(theta_mid), 0f, math.cos(theta_mid)) * (-sigma));
+                float3 tMid = new float3(-midDir.z, 0f, midDir.x);
+                if (math.dot(tMid, vTo) < 0f) tMid = -tMid;
+                tMid = math.normalize(tMid);
 
-                BiArcFit.ApplyGoreTaper(dNodes[i], dirs[i], -(int)sigma, BiArcFit.kStandardGoreAngleRad, out float3 rampLeftDir);
+                BiArcFit.ApplyGoreTaper(dLeftNodes[i], dirs[i], -(int)sigma, BiArcFit.kStandardGoreAngleRad, out float3 rampLeftDir);
 
                 // Sub-course A: Diverge to orbital waypoint
                 outCourses.Add(new PlannedNetCourse
@@ -91,7 +101,7 @@ namespace ProceduralInterchanges.Core.Generators
                     Role = NetRole.DirectionalRamp,
                     LegIndex = i,
                     TargetLegIndex = targetLeg,
-                    Curve = BiArcFit.FitSmoothCurve(dNodes[i], rampLeftDir, wPos, tMid),
+                    Curve = BiArcFit.FitSmoothCurve(dLeftNodes[i], rampLeftDir, wPos, tMid),
                     StackLevel = 2 + (i % 2),
                     ForceElevated = true
                 });
@@ -103,7 +113,7 @@ namespace ProceduralInterchanges.Core.Generators
                     Role = NetRole.DirectionalRamp,
                     LegIndex = i,
                     TargetLegIndex = targetLeg,
-                    Curve = BiArcFit.FitSmoothCurve(wPos, tMid, mNodes[targetLeg], -dirs[targetLeg]),
+                    Curve = BiArcFit.FitSmoothCurve(wPos, tMid, mLeftNodes[targetLeg], -dirs[targetLeg]),
                     StackLevel = 2 + (i % 2),
                     ForceElevated = true
                 });
@@ -121,16 +131,57 @@ namespace ProceduralInterchanges.Core.Generators
             float3 dir = dirs[fromLeg];
             float3 targetDir = -dirs[toLeg];
 
-            outCourses.Add(new PlannedNetCourse
+            if (level != 0)
             {
-                Id = $"turbine_main_{fromLeg}_{toLeg}_core",
-                Role = NetRole.MainlineThrough,
-                LegIndex = fromLeg,
-                TargetLegIndex = toLeg,
-                Curve = BiArcFit.FitSmoothCurve(d, dir, m, targetDir),
-                StackLevel = level,
-                ForceElevated = elevated
-            });
+                float3 p1 = d + dir * 35f;
+                float3 p2 = m - targetDir * 35f;
+
+                outCourses.Add(new PlannedNetCourse
+                {
+                    Id = $"turbine_main_{fromLeg}_{toLeg}_app",
+                    Role = NetRole.MainlineThrough,
+                    LegIndex = fromLeg,
+                    TargetLegIndex = toLeg,
+                    Curve = BiArcFit.FitSmoothCurve(d, dir, p1, dir),
+                    StackLevel = 0,
+                    ForceElevated = false
+                });
+
+                outCourses.Add(new PlannedNetCourse
+                {
+                    Id = $"turbine_main_{fromLeg}_{toLeg}_core",
+                    Role = NetRole.MainlineThrough,
+                    LegIndex = fromLeg,
+                    TargetLegIndex = toLeg,
+                    Curve = BiArcFit.FitSmoothCurve(p1, dir, p2, targetDir),
+                    StackLevel = level,
+                    ForceElevated = elevated
+                });
+
+                outCourses.Add(new PlannedNetCourse
+                {
+                    Id = $"turbine_main_{fromLeg}_{toLeg}_dep",
+                    Role = NetRole.MainlineThrough,
+                    LegIndex = fromLeg,
+                    TargetLegIndex = toLeg,
+                    Curve = BiArcFit.FitSmoothCurve(p2, targetDir, m, targetDir),
+                    StackLevel = 0,
+                    ForceElevated = false
+                });
+            }
+            else
+            {
+                outCourses.Add(new PlannedNetCourse
+                {
+                    Id = $"turbine_main_{fromLeg}_{toLeg}_core",
+                    Role = NetRole.MainlineThrough,
+                    LegIndex = fromLeg,
+                    TargetLegIndex = toLeg,
+                    Curve = BiArcFit.FitSmoothCurve(d, dir, m, targetDir),
+                    StackLevel = 0,
+                    ForceElevated = false
+                });
+            }
         }
     }
 }

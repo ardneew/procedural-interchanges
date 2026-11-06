@@ -31,6 +31,9 @@ namespace ProceduralInterchanges
         [SettingsUISection(kSection, kGeneralGroup)]
         public bool EnableEngineeringOverlay { get; set; } = true;
 
+        [SettingsUISection(kSection, kGeneralGroup)]
+        public bool UseLegacyParametricGenerators { get; set; } = false;
+
         [SettingsUISlider(min = 80f, max = 350f, step = 5f, scalarMultiplier = 1f, unit = Unit.kFloatSingleFraction)]
         [SettingsUISection(kSection, kDefaultsGroup)]
         public float DefaultFootprintRadius { get; set; } = 180f;
@@ -59,6 +62,7 @@ namespace ProceduralInterchanges
         {
             EnableLiveGhostPreview = true;
             EnableEngineeringOverlay = true;
+            UseLegacyParametricGenerators = false;
             DefaultFootprintRadius = 180f;
             DefaultMaxMainlineGrade = 4.0f;
             DefaultMaxRampGrade = 6.0f;
@@ -84,6 +88,8 @@ namespace ProceduralInterchanges
                 { m_Setting.GetOptionDescLocaleID(nameof(Setting.EnableLiveGhostPreview)), "Renders live 3D highway bridge and road preview models in the world while adjusting parameters." },
                 { m_Setting.GetOptionLabelLocaleID(nameof(Setting.EnableEngineeringOverlay)), "3D Engineering Overlay" },
                 { m_Setting.GetOptionDescLocaleID(nameof(Setting.EnableEngineeringOverlay)), "Shows vector CAD curves, grade-separated clearance indicators, and AASHTO compliance color grading." },
+                { m_Setting.GetOptionLabelLocaleID(nameof(Setting.UseLegacyParametricGenerators)), "Legacy Parametric Generators" },
+                { m_Setting.GetOptionDescLocaleID(nameof(Setting.UseLegacyParametricGenerators)), "Enables legacy geometric math generators instead of the modern RL-driven substructure template solver." },
                 { m_Setting.GetOptionLabelLocaleID(nameof(Setting.DefaultFootprintRadius)), "Default Footprint Radius (m)" },
                 { m_Setting.GetOptionDescLocaleID(nameof(Setting.DefaultFootprintRadius)), "Standard circular interchange footprint radius in meters (80m to 350m)." },
                 { m_Setting.GetOptionLabelLocaleID(nameof(Setting.DefaultMaxMainlineGrade)), "Max Mainline Slope (%)" },

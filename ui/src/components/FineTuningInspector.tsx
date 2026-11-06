@@ -1,3 +1,4 @@
+import { CustomSlider } from "./CustomSlider";
 import React from "react";
 import { InterchangeUIState } from "../types/interchange-types";
 import {
@@ -39,88 +40,129 @@ export const FineTuningInspector: React.FC<FineTuningInspectorProps> = ({ state 
           <span style={{ fontSize: "10rem", color: "#38bdf8" }}>AASHTO Compliant</span>
         </div>
 
-        {/* Footprint Radius */}
-        <div className={styles.controlRow}>
-          <span className={styles.label}>Intersection Size</span>
-          <input
-            type="range"
-            min="120"
-            max="500"
-            step="10"
-            value={state.footprintRadius ?? 260}
-            onChange={(e) => setGlobalParam("radius", parseFloat(e.target.value))}
-          />
-          <span className={styles.value}>{state.footprintRadius ?? 260}m</span>
-        </div>
+        {/* Intersection Size */}
+        <CustomSlider
+          label="Intersection Size"
+          min={120}
+          max={500}
+          step={10}
+          value={state.footprintRadius ?? 260}
+          unit="m"
+          onChange={(v) => setGlobalParam("radius", v)}
+        />
 
         {/* Rotation Skew */}
-        <div className={styles.controlRow}>
-          <span className={styles.label}>Rotation Skew</span>
-          <input
-            type="range"
-            min="-180"
-            max="180"
-            step="1"
-            value={state.rotationDeg ?? 0}
-            onChange={(e) => setGlobalParam("rotation", parseFloat(e.target.value))}
-          />
-          <span className={styles.value}>{(state.rotationDeg ?? 0).toFixed(0)}°</span>
-        </div>
+        <CustomSlider
+          label="Rotation Skew"
+          min={-180}
+          max={180}
+          step={1}
+          value={state.rotationDeg ?? 0}
+          unit="deg"
+          onChange={(v) => setGlobalParam("rotation", v)}
+        />
 
-        {/* Max Mainline Grade */}
-        <div className={styles.controlRow}>
-          <span className={styles.label}>Max Mainline Slope</span>
-          <input
-            type="range"
-            min="2.0"
-            max="8.0"
-            step="0.5"
-            value={state.maxMainlineGrade ?? 4.0}
-            onChange={(e) => setGlobalParam("maxMainlineGrade", parseFloat(e.target.value))}
-          />
-          <span className={styles.value}>{(state.maxMainlineGrade ?? 4.0).toFixed(1)}%</span>
-        </div>
+        {/* Max Mainline Slope */}
+        <CustomSlider
+          label="Max Mainline Slope"
+          min={2.0}
+          max={8.0}
+          step={0.5}
+          decimals={1}
+          value={state.maxMainlineGrade ?? 4.0}
+          unit="%"
+          onChange={(v) => setGlobalParam("maxMainlineGrade", v)}
+        />
 
-        {/* Max Ramp Grade */}
-        <div className={styles.controlRow}>
-          <span className={styles.label}>Max Ramp Slope</span>
-          <input
-            type="range"
-            min="3.0"
-            max="10.0"
-            step="0.5"
-            value={state.maxRampGrade ?? 6.0}
-            onChange={(e) => setGlobalParam("maxRampGrade", parseFloat(e.target.value))}
-          />
-          <span className={styles.value}>{(state.maxRampGrade ?? 6.0).toFixed(1)}%</span>
-        </div>
+        {/* Max Ramp Slope */}
+        <CustomSlider
+          label="Max Ramp Slope"
+          min={3.0}
+          max={10.0}
+          step={0.5}
+          decimals={1}
+          value={state.maxRampGrade ?? 6.0}
+          unit="%"
+          onChange={(v) => setGlobalParam("maxRampGrade", v)}
+        />
 
-        {/* Min Bridge Clearance */}
-        <div className={styles.controlRow}>
-          <span className={styles.label}>Overpass Clearance</span>
-          <input
-            type="range"
-            min="8.0"
-            max="15.0"
-            step="0.5"
-            value={state.minClearance ?? 9.5}
-            onChange={(e) => setGlobalParam("minClearance", parseFloat(e.target.value))}
-          />
-          <span className={styles.value}>{(state.minClearance ?? 9.5).toFixed(1)}m</span>
-        </div>
+        {/* Overpass Clearance (Default 7.5m) */}
+        <CustomSlider
+          label="Overpass Clearance"
+          min={6.0}
+          max={15.0}
+          step={0.5}
+          decimals={1}
+          value={state.minClearance ?? 7.5}
+          unit="m"
+          onChange={(v) => setGlobalParam("minClearance", v)}
+        />
 
         {/* Design Speed */}
-        <div className={styles.controlRow}>
-          <span className={styles.label}>Design Speed</span>
-          <input
-            type="range"
-            min="60"
-            max="130"
-            step="10"
-            value={state.designSpeed ?? 100}
-            onChange={(e) => setGlobalParam("designSpeed", parseFloat(e.target.value))}
-          />
-          <span className={styles.value}>{state.designSpeed ?? 100} km/h</span>
+        <CustomSlider
+          label="Design Speed"
+          min={60}
+          max={130}
+          step={10}
+          value={state.designSpeed ?? 100}
+          unit=" km/h"
+          onChange={(v) => setGlobalParam("designSpeed", v)}
+        />
+
+        {/* Flow Priority & Underground Controls */}
+        <div className={styles.controlRow} style={{ marginTop: "8rem" }}>
+          <span className={styles.label}>Flow Priority</span>
+          <div style={{ display: "flex", gap: "4rem" }}>
+            <button
+              className={styles.ghostBtn}
+              style={{
+                padding: "3rem 6rem",
+                fontSize: "10rem",
+                color: (state.flowPriorityMode ?? 0) === 0 ? "#38bdf8" : "#94a3b8",
+                borderColor: (state.flowPriorityMode ?? 0) === 0 ? "#38bdf8" : "rgba(255,255,255,0.1)",
+              }}
+              onClick={() => setGlobalParam("flowpriority", 0)}
+              title="Maintain 100% of mainline lanes through diverge/merge with acute gore exit"
+            >
+              Maintain Thru-Lanes
+            </button>
+            <button
+              className={styles.ghostBtn}
+              style={{
+                padding: "3rem 6rem",
+                fontSize: "10rem",
+                color: (state.flowPriorityMode ?? 0) === 1 ? "#38bdf8" : "#94a3b8",
+                borderColor: (state.flowPriorityMode ?? 0) === 1 ? "#38bdf8" : "rgba(255,255,255,0.1)",
+              }}
+              onClick={() => setGlobalParam("flowpriority", 1)}
+              title="Split mainline lanes evenly at major exits"
+            >
+              Lane-Drop Split
+            </button>
+            <button
+              className={styles.ghostBtn}
+              style={{ padding: "3rem 6rem", fontSize: "10rem", color: "#f8fafc" }}
+              onClick={() => setGlobalParam("swapprimary", (state.primaryAxisOffset ?? 0) + 1)}
+              title="Cycle which opposing highway pair is the continuous Primary Throughway"
+            >
+              Swap Primary
+            </button>
+          </div>
+        </div>
+
+        {/* Underground Mode Selector */}
+        <div className={styles.controlRow} style={{ marginTop: "6rem" }}>
+          <span className={styles.label}>Underground Mode</span>
+          <select
+            value={state.undergroundMode ?? 0}
+            onChange={(e) => setGlobalParam("underground", parseInt(e.target.value, 10))}
+            style={{ flex: 1, marginLeft: "10rem" }}
+          >
+            <option value={0}>None (Surface & Overpasses)</option>
+            <option value={1}>Depress Secondary Thruway (-1 Tunnel)</option>
+            <option value={2}>Shift Stack Down (-1 Tunnel, Lower Bridges)</option>
+            <option value={3}>Both Thruways Underground (-1 / -2 Tunnels)</option>
+          </select>
         </div>
 
         {/* Grade Separation & Overpass Toggles */}

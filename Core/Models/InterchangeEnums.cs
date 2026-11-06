@@ -24,10 +24,7 @@ namespace ProceduralInterchanges.Core.Models
         ParcloA4 = 21,
         Cloverleaf = 22,
         FourLevelStack = 23,
-        Turbine = 24,
-
-        // Multi-Leg (3 to 6 Legs)
-        RoundaboutInterchange = 30
+        Turbine = 24
     }
 
     public enum NetRole : int
@@ -36,9 +33,9 @@ namespace ProceduralInterchanges.Core.Models
         DirectionalRamp = 1,
         LoopRamp = 2,
         CollectorDistributor = 3,
-        RoundaboutRing = 4,
         CrossStreet = 5,
-        TransitionTaper = 6
+        TransitionTaper = 6,
+        SlipRamp = 7
     }
 
     [Flags]

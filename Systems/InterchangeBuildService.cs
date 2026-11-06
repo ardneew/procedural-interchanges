@@ -278,7 +278,7 @@ namespace ProceduralInterchanges.Systems
             for (int i = 0; i < plan.OuterReplacementCourses.Count; i++)
             {
                 var c = plan.OuterReplacementCourses[i];
-                Entity def = EmitSingleCourse(c, seed++);
+                Entity def = EmitSingleCourse(c, seed++, plan);
                 if (def != Entity.Null)
                 {
                     m_ActiveBuildDefinitions.Add(def);
@@ -289,7 +289,7 @@ namespace ProceduralInterchanges.Systems
             for (int i = 0; i < plan.Courses.Count; i++)
             {
                 var c = plan.Courses[i];
-                Entity def = EmitSingleCourse(c, seed++);
+                Entity def = EmitSingleCourse(c, seed++, plan);
                 if (def != Entity.Null)
                 {
                     m_ActiveBuildDefinitions.Add(def);
@@ -337,7 +337,7 @@ namespace ProceduralInterchanges.Systems
                 for (int i = 0; i < m_PendingGhostPlan.OuterReplacementCourses.Count; i++)
                 {
                     var c = m_PendingGhostPlan.OuterReplacementCourses[i];
-                    Entity ghostDef = EmitSingleCourse(c, ghostSeed++);
+                    Entity ghostDef = EmitSingleCourse(c, ghostSeed++, m_PendingGhostPlan);
                     if (ghostDef != Entity.Null)
                     {
                         m_ActiveGhostDefinitions.Add(ghostDef);
@@ -351,7 +351,7 @@ namespace ProceduralInterchanges.Systems
                 for (int i = 0; i < m_PendingGhostPlan.Courses.Count; i++)
                 {
                     var c = m_PendingGhostPlan.Courses[i];
-                    Entity ghostDef = EmitSingleCourse(c, ghostSeed++);
+                    Entity ghostDef = EmitSingleCourse(c, ghostSeed++, m_PendingGhostPlan);
                     if (ghostDef != Entity.Null)
                     {
                         m_ActiveGhostDefinitions.Add(ghostDef);
@@ -434,7 +434,7 @@ namespace ProceduralInterchanges.Systems
             return false;
         }
 
-        private Entity EmitSingleCourse(PlannedNetCourse c, int randomSeed)
+        private Entity EmitSingleCourse(PlannedNetCourse c, int randomSeed, InterchangePlan plan = null)
         {
             if (c.ResolvedPrefabEntity == Entity.Null && m_CatalogSystem != null)
             {
@@ -477,12 +477,77 @@ namespace ProceduralInterchanges.Systems
             });
             EntityManager.AddComponent<Updated>(def);
 
+            bool startShared = false;
+            bool endShared = false;
+
+            if (validStartAttach == Entity.Null && plan != null)
+            {
+                float3 posA = curve.a;
+                if (plan.Courses != null)
+                {
+                    for (int i = 0; i < plan.Courses.Count; i++)
+                    {
+                        var other = plan.Courses[i];
+                        if (ReferenceEquals(other, c)) continue;
+                        if (math.distance(other.Curve.a.xz, posA.xz) < 0.15f || math.distance(other.Curve.d.xz, posA.xz) < 0.15f)
+                        {
+                            startShared = true;
+                            break;
+                        }
+                    }
+                }
+                if (!startShared && plan.OuterReplacementCourses != null)
+                {
+                    for (int i = 0; i < plan.OuterReplacementCourses.Count; i++)
+                    {
+                        var other = plan.OuterReplacementCourses[i];
+                        if (ReferenceEquals(other, c)) continue;
+                        if (math.distance(other.Curve.a.xz, posA.xz) < 0.15f || math.distance(other.Curve.d.xz, posA.xz) < 0.15f)
+                        {
+                            startShared = true;
+                            break;
+                        }
+                    }
+                }
+            }
+
+            if (validEndAttach == Entity.Null && plan != null)
+            {
+                float3 posD = curve.d;
+                if (plan.Courses != null)
+                {
+                    for (int i = 0; i < plan.Courses.Count; i++)
+                    {
+                        var other = plan.Courses[i];
+                        if (ReferenceEquals(other, c)) continue;
+                        if (math.distance(other.Curve.a.xz, posD.xz) < 0.15f || math.distance(other.Curve.d.xz, posD.xz) < 0.15f)
+                        {
+                            endShared = true;
+                            break;
+                        }
+                    }
+                }
+                if (!endShared && plan.OuterReplacementCourses != null)
+                {
+                    for (int i = 0; i < plan.OuterReplacementCourses.Count; i++)
+                    {
+                        var other = plan.OuterReplacementCourses[i];
+                        if (ReferenceEquals(other, c)) continue;
+                        if (math.distance(other.Curve.a.xz, posD.xz) < 0.15f || math.distance(other.Curve.d.xz, posD.xz) < 0.15f)
+                        {
+                            endShared = true;
+                            break;
+                        }
+                    }
+                }
+            }
+
             CoursePosFlags startFlags = CoursePosFlags.IsFirst | CoursePosFlags.IsLeft | CoursePosFlags.IsRight;
-            if (validStartAttach == Entity.Null)
+            if (validStartAttach == Entity.Null && !startShared)
                 startFlags |= CoursePosFlags.DisableMerge;
 
             CoursePosFlags endFlags = CoursePosFlags.IsLast | CoursePosFlags.IsLeft | CoursePosFlags.IsRight;
-            if (validEndAttach == Entity.Null)
+            if (validEndAttach == Entity.Null && !endShared)
                 endFlags |= CoursePosFlags.DisableMerge;
 
             var startPos = new CoursePos
@@ -512,7 +577,8 @@ namespace ProceduralInterchanges.Systems
             if (c.StartElevation.x < 0.25f) startPos.m_Elevation = float2.zero;
             if (c.EndElevation.x < 0.25f) endPos.m_Elevation = float2.zero;
 
-            bool isElevated = c.ForceElevated || c.StackLevel > 0 || math.max(c.StartElevation.x, c.EndElevation.x) >= 2.5f;
+            bool isTunnel = c.ForceTunnel || c.StackLevel < 0 || math.min(c.StartElevation.x, c.EndElevation.x) <= -3.0f;
+            bool isElevated = !isTunnel && (c.ForceElevated || c.StackLevel > 0 || math.max(c.StartElevation.x, c.EndElevation.x) >= 2.5f);
             if (isElevated)
             {
                 startPos.m_Flags |= CoursePosFlags.ForceElevatedEdge;
@@ -524,7 +590,7 @@ namespace ProceduralInterchanges.Systems
                 m_Curve = curve,
                 m_Length = MathUtils.Length(curve),
                 m_FixedIndex = -1,
-                m_Elevation = float2.zero,
+                m_Elevation = isTunnel ? new float2(c.StartElevation.x, c.EndElevation.x) : float2.zero,
                 m_StartPosition = startPos,
                 m_EndPosition = endPos
             });
@@ -533,6 +599,10 @@ namespace ProceduralInterchanges.Systems
             if (isElevated)
             {
                 composition.m_General |= CompositionFlags.General.Elevated;
+            }
+            else if (isTunnel)
+            {
+                composition.m_General |= CompositionFlags.General.Tunnel;
             }
 
             if (!composition.Equals(default(CompositionFlags)))

@@ -2,6 +2,8 @@ using System;
 using System.IO;
 using ProceduralInterchanges.Lab.Cases;
 using ProceduralInterchanges.Lab.Rendering;
+using ProceduralInterchanges.Lab.RL;
+using ProceduralInterchanges.Lab.Server;
 using ProceduralInterchanges.Tests.Audit;
 
 namespace ProceduralInterchanges.Lab
@@ -11,6 +13,10 @@ namespace ProceduralInterchanges.Lab
         public static int Main(string[] args)
         {
             string outDir = "docs/lab-gallery";
+            bool runTrain = false;
+            bool runSandbox = false;
+            bool continuous = false;
+            int port = 5050;
 
             for (int i = 0; i < args.Length; i++)
             {
@@ -18,6 +24,51 @@ namespace ProceduralInterchanges.Lab
                 {
                     outDir = args[++i];
                 }
+                else if (args[i] == "--train")
+                {
+                    runTrain = true;
+                }
+                else if (args[i] == "--continuous" || args[i] == "--auto-train" || args[i] == "--train-continuous")
+                {
+                    continuous = true;
+                }
+                else if (args[i] == "--sandbox")
+                {
+                    runSandbox = true;
+                }
+                else if (args[i] == "--port" && i + 1 < args.Length)
+                {
+                    int.TryParse(args[++i], out port);
+                }
+            }
+
+            if (runTrain && continuous)
+            {
+                Console.WriteLine("=================================================");
+                Console.WriteLine("  Continuous Auto-Trainer (Headless .NET 8)      ");
+                Console.WriteLine("=================================================");
+                ContinuousTrainer.Start();
+                while (ContinuousTrainer.IsRunning)
+                {
+                    System.Threading.Thread.Sleep(1000);
+                }
+                return 0;
+            }
+
+            if (runTrain)
+            {
+                RlPolicyTrainer.TrainAllArchetypes();
+                return 0;
+            }
+
+            if (runSandbox)
+            {
+                if (continuous)
+                {
+                    ContinuousTrainer.Start();
+                }
+                SandboxServer.Start(port);
+                return 0;
             }
 
             Console.WriteLine("=================================================");
@@ -26,6 +77,11 @@ namespace ProceduralInterchanges.Lab
             Console.WriteLine($"Output directory: {outDir}\n");
 
             Directory.CreateDirectory(outDir);
+
+            // Generate standalone HTML sandbox
+            string sandboxHtmlPath = Path.Combine(outDir, "sandbox.html");
+            SandboxHtmlGenerator.WriteToFile(sandboxHtmlPath);
+            Console.WriteLine($"Generated interactive sandbox at: {Path.GetFullPath(sandboxHtmlPath)}");
 
             var cards = LabCases.RunAllCases();
             int passedCount = 0;
@@ -37,7 +93,7 @@ namespace ProceduralInterchanges.Lab
                 if (passed) passedCount++;
 
                 string status = passed ? "[PASS]" : "[AUDIT ISSUES]";
-                Console.WriteLine($"{status,-16} {card.Archetype,-12} {card.Variant,-16} ({card.ExecutionTimeMs:F1} ms, {card.Verdict?.Metrics.TotalLengthMeters:F0} m)");
+                Console.WriteLine($"{status,-16} {card.Archetype,-12} {card.Variant,-24} ({card.ExecutionTimeMs:F1} ms, {card.Verdict?.Metrics.TotalLengthMeters:F0} m)");
 
                 // Save standalone SVG
                 string safeName = $"{card.Archetype.ToLowerInvariant()}_{card.Variant.ToLowerInvariant().Replace(' ', '_').Replace('°', 'd')}.svg";

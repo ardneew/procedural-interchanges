@@ -16,6 +16,7 @@ import { ArchetypeSelector } from "./ArchetypeSelector";
 import { FineTuningInspector } from "./FineTuningInspector";
 import { Visualizer2DPlan } from "./Visualizer2DPlan";
 import { Visualizer2DElevation } from "./Visualizer2DElevation";
+import { InterchangeLogo } from "./InterchangeLogo";
 import styles from "./studio.module.scss";
 
 export class PanelErrorBoundary extends React.Component<{ children: React.ReactNode }, { hasError: boolean; error: string }> {
@@ -71,11 +72,7 @@ export const InterchangeStudioPanel: React.FC = () => {
       {/* Studio Header */}
       <div className={styles.studioHeader}>
         <div className={styles.titleBlock}>
-          <svg className={styles.icon} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-            <circle cx="12" cy="12" r="3" />
-            <path d="M 2 12 H 9 M 15 12 H 22" />
-            <path d="M 12 2 V 9 M 12 15 V 22" />
-          </svg>
+          <InterchangeLogo className={styles.icon} />
           <h2>Interchange Studio</h2>
         </div>
 

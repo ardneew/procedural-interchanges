@@ -76,13 +76,20 @@ namespace ProceduralInterchanges.Core.Math
                         else
                         {
                             // AASHTO Lane Balance: Core mainline between diverge and merge drops 1 lane if approach >= 3
-                            if (c.Id.Contains("_core") && legInboundLanes >= 3)
+                            if (config.FlowPriority == FlowPriorityMode.MaintainThruLanes)
                             {
-                                c.Lanes = Unity.Mathematics.math.max(2, legInboundLanes - 1);
+                                c.Lanes = legInboundLanes;
                             }
                             else
                             {
-                                c.Lanes = legInboundLanes;
+                                if (c.Id.Contains("_core") && legInboundLanes >= 2)
+                                {
+                                    c.Lanes = Unity.Mathematics.math.max(1, legInboundLanes - 1);
+                                }
+                                else
+                                {
+                                    c.Lanes = legInboundLanes;
+                                }
                             }
                         }
 
@@ -97,14 +104,6 @@ namespace ProceduralInterchanges.Core.Math
                         if (!string.IsNullOrEmpty(config.GlobalRampPrefabOverride))
                         {
                             c.ResolvedPrefabName = config.GlobalRampPrefabOverride;
-                        }
-                    }
-                    else if (c.Role == NetRole.RoundaboutRing)
-                    {
-                        c.Lanes = legInboundLanes >= 3 ? 3 : 2;
-                        if (!string.IsNullOrEmpty(config.GlobalMainlinePrefabOverride))
-                        {
-                            c.ResolvedPrefabName = config.GlobalMainlinePrefabOverride;
                         }
                     }
                     else

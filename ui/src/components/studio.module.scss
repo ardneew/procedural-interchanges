@@ -705,3 +705,41 @@
     font-weight: 600;
   }
 }
+
+.sliderTrack {
+  position: relative;
+  flex: 1;
+  height: 6rem;
+  background-color: rgba(0, 0, 0, 0.45);
+  border-width: 1rem;
+  border-style: solid;
+  border-color: rgba(255, 255, 255, 0.12);
+  border-radius: 3rem;
+  margin: 0 10rem;
+  user-select: none;
+}
+
+.sliderFill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background-color: #38bdf8;
+  border-radius: 2rem;
+  pointer-events: none;
+}
+
+.sliderThumb {
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 14rem;
+  height: 14rem;
+  background-color: #ffffff;
+  border-width: 2rem;
+  border-style: solid;
+  border-color: #38bdf8;
+  border-radius: 50%;
+  box-shadow: 0 2rem 6rem rgba(0, 0, 0, 0.5);
+  pointer-events: none;
+}

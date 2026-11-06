@@ -12,6 +12,7 @@
   <ItemGroup>
     <Compile Include="..\..\Core\**\*.cs" Link="Core\%(RecursiveDir)%(Filename)%(Extension)" />
     <Compile Include="..\..\Systems\HighwayPrefabCatalogSystem.cs" Link="Systems\HighwayPrefabCatalogSystem.cs" />
+    <Compile Include="..\ProceduralInterchanges.Lab\RL\**\*.cs" Link="RL\%(RecursiveDir)%(Filename)%(Extension)" />
   </ItemGroup>
 
   <ItemGroup>

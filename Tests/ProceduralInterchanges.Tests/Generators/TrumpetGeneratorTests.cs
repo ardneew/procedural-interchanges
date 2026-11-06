@@ -21,7 +21,7 @@ namespace ProceduralInterchanges.Tests.Generators
                 Center = new float3(0f, 0f, 0f),
                 FootprintRadius = 180f,
                 MinBridgeClearanceMeters = 8.0f,
-                MainlineOverpass = true
+                MainlineOverpass = false
             };
 
             var courses = new List<PlannedNetCourse>();
@@ -44,7 +44,7 @@ namespace ProceduralInterchanges.Tests.Generators
                 Center = new float3(0f, 0f, 0f),
                 FootprintRadius = 200f,
                 MinBridgeClearanceMeters = 8.0f,
-                MainlineOverpass = true
+                MainlineOverpass = false
             };
 
             var courses = new List<PlannedNetCourse>();

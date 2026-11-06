@@ -11,8 +11,9 @@ namespace ProceduralInterchanges.Core.Models
         public int LegIndex = -1;
         public int TargetLegIndex = -1;
         public Bezier4x3 Curve;
-        public int StackLevel;               // 0 = ground, 1..3 = elevated overpass tiers
+        public int StackLevel;               // 0 = ground, 1..3 = elevated overpass tiers, -1..-2 = tunnel tiers
         public bool ForceElevated;
+        public bool ForceTunnel;
         public float2 StartElevation;        // Height above terrain at A
         public float2 EndElevation;          // Height above terrain at D
         public int Lanes;                    // Drivable forward lanes (or per-direction for two-way)
@@ -48,6 +49,7 @@ namespace ProceduralInterchanges.Core.Models
                 Curve = Curve,
                 StackLevel = StackLevel,
                 ForceElevated = ForceElevated,
+                ForceTunnel = ForceTunnel,
                 StartElevation = StartElevation,
                 EndElevation = EndElevation,
                 Lanes = Lanes,

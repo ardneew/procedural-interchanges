@@ -39,15 +39,6 @@ export const ArchetypeSelector: React.FC<ArchetypeSelectorProps> = ({
                   <line x1="20" y1="6" x2="20" y2="28" />
                   {arch.id === 10 && <circle cx="27" cy="18" r="5" fill="none" stroke={isSelected ? "#7dd3fc" : "#cbd5e1"} strokeWidth="1.5" />}
                 </g>
-              ) : arch.id === 30 ? (
-                // Roundabout icon
-                <g stroke={isSelected ? "#38bdf8" : "#94a3b8"} strokeWidth="2" strokeLinecap="round">
-                  <circle cx="20" cy="20" r="8" fill="none" stroke={isSelected ? "#38bdf8" : "#94a3b8"} strokeWidth="2" />
-                  <line x1="4" y1="20" x2="12" y2="20" />
-                  <line x1="28" y1="20" x2="36" y2="20" />
-                  <line x1="20" y1="4" x2="20" y2="12" />
-                  <line x1="20" y1="28" x2="20" y2="36" />
-                </g>
               ) : (
                 // 4-way cross icon with flyover/loop
                 <g stroke={isSelected ? "#38bdf8" : "#94a3b8"} strokeWidth="2" strokeLinecap="round">

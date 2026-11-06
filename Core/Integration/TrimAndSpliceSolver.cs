@@ -54,10 +54,87 @@ namespace ProceduralInterchanges.Core.Integration
                 // Always snapshot all touched host edges so they can be identified and restored if split or modified
                 RecordSnapshot(em, edgeEntity, outSnapshots);
 
-                // When a SourceEdge is only referenced by a single leg, do NOT delete it.
-                // Leave it intact and let CS2 natively weld/split at CutCurveT.
+                // When a SourceEdge is only referenced by a single leg, check if it requires
+                // trimming back to a common perpendicular boundary plane.
                 if (endpoints.Count < 2)
                 {
+                    if (endpoints.Count == 1 && endpoints[0].RequiresOuterTrimReplacement)
+                    {
+                        var ep = endpoints[0];
+                        float tCut = ep.CutCurveT;
+                        if (tCut > 0.02f && tCut < 0.98f)
+                        {
+                            var oCurve = em.GetComponentData<Curve>(edgeEntity).m_Bezier;
+                            var eComp = em.GetComponentData<Edge>(edgeEntity);
+                            float tStart = sampleTerrainHeight(oCurve.a.xz);
+                            float tEnd = sampleTerrainHeight(oCurve.d.xz);
+                            bool elevated = (oCurve.a.y - tStart > 3.0f) || (oCurve.d.y - tEnd > 3.0f);
+
+                            processedEdges.Add(edgeEntity);
+                            outEdgesToDelete.Add(edgeEntity);
+
+                            if (ep.KeepStartPortionOnTrim)
+                            {
+                                CubicBezier3D.Split(oCurve, tCut, out var leftOuter, out _);
+                                float yCut = CubicBezier3D.Position(oCurve, tCut).y;
+                                leftOuter.d = new float3(ep.PortalPosition.x, yCut, ep.PortalPosition.z);
+                                ep.PortalPosition = leftOuter.d;
+
+                                var leftCourse = new PlannedNetCourse
+                                {
+                                    Id = $"outer_trim_{edgeEntity.Index}_start",
+                                    Role = NetRole.TransitionTaper,
+                                    Curve = leftOuter,
+                                    StackLevel = elevated ? 1 : 0,
+                                    ForceElevated = elevated,
+                                    Lanes = ep.LaneCount,
+                                    IsOneWay = ep.IsOneWay,
+                                    ResolvedPrefabEntity = ep.SourcePrefab,
+                                    ResolvedPrefabName = ep.PrefabName,
+                                    StartAttachEntity = eComp.m_Start,
+                                    StartAttachIsNode = true,
+                                    EndAttachEntity = Entity.Null,
+                                    EndAttachIsNode = false
+                                };
+                                if (elevated)
+                                {
+                                    leftCourse.StartElevation = new float2(math.max(0f, oCurve.a.y - tStart));
+                                    leftCourse.EndElevation = new float2(math.max(0f, leftOuter.d.y - sampleTerrainHeight(leftOuter.d.xz)));
+                                }
+                                outOuterReplacements.Add(leftCourse);
+                            }
+                            else
+                            {
+                                CubicBezier3D.Split(oCurve, tCut, out _, out var rightOuter);
+                                float yCut = CubicBezier3D.Position(oCurve, tCut).y;
+                                rightOuter.a = new float3(ep.PortalPosition.x, yCut, ep.PortalPosition.z);
+                                ep.PortalPosition = rightOuter.a;
+
+                                var rightCourse = new PlannedNetCourse
+                                {
+                                    Id = $"outer_trim_{edgeEntity.Index}_end",
+                                    Role = NetRole.TransitionTaper,
+                                    Curve = rightOuter,
+                                    StackLevel = elevated ? 1 : 0,
+                                    ForceElevated = elevated,
+                                    Lanes = ep.LaneCount,
+                                    IsOneWay = ep.IsOneWay,
+                                    ResolvedPrefabEntity = ep.SourcePrefab,
+                                    ResolvedPrefabName = ep.PrefabName,
+                                    StartAttachEntity = Entity.Null,
+                                    StartAttachIsNode = false,
+                                    EndAttachEntity = eComp.m_End,
+                                    EndAttachIsNode = true
+                                };
+                                if (elevated)
+                                {
+                                    rightCourse.StartElevation = new float2(math.max(0f, rightOuter.a.y - sampleTerrainHeight(rightOuter.a.xz)));
+                                    rightCourse.EndElevation = new float2(math.max(0f, oCurve.d.y - tEnd));
+                                }
+                                outOuterReplacements.Add(rightCourse);
+                            }
+                        }
+                    }
                     continue;
                 }
 
@@ -146,7 +223,8 @@ namespace ProceduralInterchanges.Core.Integration
                 {
                     CubicBezier3D.Split(origCurve, tMin, out var leftOuter, out _);
                     float3 endTan = math.normalize(leftOuter.d - leftOuter.c);
-                    leftOuter.d = new float3(epStart.PortalPosition.x, center.y, epStart.PortalPosition.z);
+                    float yStartPortal = CubicBezier3D.Position(origCurve, tMin).y;
+                    leftOuter.d = new float3(epStart.PortalPosition.x, yStartPortal, epStart.PortalPosition.z);
                     leftOuter.c = leftOuter.d - endTan * math.distance(leftOuter.c, leftOuter.d);
                     epStart.PortalPosition = leftOuter.d;
                     float lenLeft = CubicBezier3D.Length(leftOuter);
@@ -194,7 +272,8 @@ namespace ProceduralInterchanges.Core.Integration
                 {
                     CubicBezier3D.Split(origCurve, tMax, out _, out var rightOuter);
                     float3 startTan = math.normalize(rightOuter.b - rightOuter.a);
-                    rightOuter.a = new float3(epEnd.PortalPosition.x, center.y, epEnd.PortalPosition.z);
+                    float yEndPortal = CubicBezier3D.Position(origCurve, tMax).y;
+                    rightOuter.a = new float3(epEnd.PortalPosition.x, yEndPortal, epEnd.PortalPosition.z);
                     rightOuter.b = rightOuter.a + startTan * math.distance(rightOuter.b, rightOuter.a);
                     epEnd.PortalPosition = rightOuter.a;
                     float lenRight = CubicBezier3D.Length(rightOuter);

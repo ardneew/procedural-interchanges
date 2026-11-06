@@ -1,0 +1,719 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-280.0 -280.0 560.0 560.0" style="background:#121417; width:100%; height:100%;">
+  <defs>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="2" result="blur"/><feComposite in="SourceGraphic" in2="blur" operator="over"/></filter>
+    <marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="4" markerHeight="4" orient="auto-start-reverse"><path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#e2e8f0"/></marker>
+  </defs>
+  <circle cx="0" cy="0" r="240.0" fill="none" stroke="#1e293b" stroke-width="2" stroke-dasharray="6 6"/>
+  <line x1="-300" y1="0" x2="300" y2="0" stroke="#1e293b" stroke-width="1"/>
+  <line x1="0" y1="-300" x2="0" y2="300" stroke="#1e293b" stroke-width="1"/>
+  <path id="seg_0" d="M 79.8 -100.5 C 84.3 -107.4, 87.6 -115.2, 92.1 -122.1" fill="none" stroke="#64748b" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>seg_0 (Lanes: 2, Elev: 0.0m)</title>
+  </path>
+  <path d="M 79.8 -100.5 C 84.3 -107.4, 87.6 -115.2, 92.1 -122.1" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="setback_0_span_3" d="M 176.3 31.7 C 167.4 37.9, 158.2 41.3, 148.2 37.9" fill="none" stroke="#64748b" stroke-width="7.3" stroke-linecap="round" stroke-linejoin="round">
+    <title>setback_0_span_3 (Lanes: 3, Elev: 0.0m)</title>
+  </path>
+  <path d="M 176.3 31.7 C 167.4 37.9, 158.2 41.3, 148.2 37.9" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="setback_0_span_2" d="M 202.6 8.0 C 193.7 16.3, 185.1 25.5, 176.3 31.7" fill="none" stroke="#64748b" stroke-width="7.3" stroke-linecap="round" stroke-linejoin="round">
+    <title>setback_0_span_2 (Lanes: 3, Elev: 0.0m)</title>
+  </path>
+  <path d="M 202.6 8.0 C 193.7 16.3, 185.1 25.5, 176.3 31.7" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="setback_0_span_1" d="M 224.8 -8.3 C 217.0 -4.7, 209.7 1.4, 202.6 8.0" fill="none" stroke="#64748b" stroke-width="7.3" stroke-linecap="round" stroke-linejoin="round">
+    <title>setback_0_span_1 (Lanes: 3, Elev: 0.0m)</title>
+  </path>
+  <path d="M 224.8 -8.3 C 217.0 -4.7, 209.7 1.4, 202.6 8.0" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="setback_0" d="M 240.0 -12.0 C 234.7 -12.0, 229.6 -10.6, 224.8 -8.3" fill="none" stroke="#64748b" stroke-width="7.3" stroke-linecap="round" stroke-linejoin="round">
+    <title>setback_0 (Lanes: 3, Elev: 0.0m)</title>
+  </path>
+  <path d="M 240.0 -12.0 C 234.7 -12.0, 229.6 -10.6, 224.8 -8.3" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="seg_41_span_2" d="M 41.2 97.4 C 51.4 93.1, 60.7 86.5, 68.0 77.6" fill="none" stroke="#64748b" stroke-width="4.0" stroke-linecap="round" stroke-linejoin="round">
+    <title>seg_41_span_2 (Lanes: 1, Elev: 0.0m)</title>
+  </path>
+  <path d="M 41.2 97.4 C 51.4 93.1, 60.7 86.5, 68.0 77.6" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="seg_41_span_1" d="M 14.5 103.2 C 23.7 102.8, 32.8 100.9, 41.2 97.4" fill="none" stroke="#64748b" stroke-width="4.0" stroke-linecap="round" stroke-linejoin="round">
+    <title>seg_41_span_1 (Lanes: 1, Elev: 0.0m)</title>
+  </path>
+  <path d="M 14.5 103.2 C 23.7 102.8, 32.8 100.9, 41.2 97.4" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="seg_41" d="M -4.3 101.5 C 1.9 102.8, 8.3 103.4, 14.5 103.2" fill="none" stroke="#64748b" stroke-width="4.0" stroke-linecap="round" stroke-linejoin="round">
+    <title>seg_41 (Lanes: 1, Elev: 0.0m)</title>
+  </path>
+  <path d="M -4.3 101.5 C 1.9 102.8, 8.3 103.4, 14.5 103.2" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="seg_40_span_1" d="M 100.6 -30.2 C 98.6 -39.9, 93.9 -48.8, 86.6 -56.1" fill="none" stroke="#64748b" stroke-width="4.0" stroke-linecap="round" stroke-linejoin="round">
+    <title>seg_40_span_1 (Lanes: 1, Elev: 0.0m)</title>
+  </path>
+  <path d="M 100.6 -30.2 C 98.6 -39.9, 93.9 -48.8, 86.6 -56.1" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="seg_40" d="M 101.1 -10.2 C 102.1 -17.0, 101.9 -23.8, 100.6 -30.2" fill="none" stroke="#64748b" stroke-width="4.0" stroke-linecap="round" stroke-linejoin="round">
+    <title>seg_40 (Lanes: 1, Elev: 0.0m)</title>
+  </path>
+  <path d="M 101.1 -10.2 C 102.1 -17.0, 101.9 -23.8, 100.6 -30.2" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="seg_39_span_1" d="M 75.3 -82.4 C 75.0 -88.9, 76.4 -95.3, 79.8 -100.5" fill="none" stroke="#64748b" stroke-width="4.0" stroke-linecap="round" stroke-linejoin="round">
+    <title>seg_39_span_1 (Lanes: 1, Elev: 0.0m)</title>
+  </path>
+  <path d="M 75.3 -82.4 C 75.0 -88.9, 76.4 -95.3, 79.8 -100.5" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="setback_1" d="M 141.3 58.6 C 151.5 62.0, 161.2 59.2, 170.7 53.5" fill="none" stroke="#64748b" stroke-width="7.3" stroke-linecap="round" stroke-linejoin="round">
+    <title>setback_1 (Lanes: 3, Elev: 0.0m)</title>
+  </path>
+  <path d="M 141.3 58.6 C 151.5 62.0, 161.2 59.2, 170.7 53.5" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="setback_7_span_2" d="M -146.1 145.9 C -153.4 147.7, -160.5 149.8, -166.8 153.1" fill="none" stroke="#64748b" stroke-width="7.3" stroke-linecap="round" stroke-linejoin="round">
+    <title>setback_7_span_2 (Lanes: 3, Elev: 0.0m)</title>
+  </path>
+  <path d="M -146.1 145.9 C -153.4 147.7, -160.5 149.8, -166.8 153.1" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="seg_36" d="M -59.8 112.4 C -53.7 103.1, -43.5 99.5, -32.3 98.8" fill="none" stroke="#64748b" stroke-width="4.0" stroke-linecap="round" stroke-linejoin="round">
+    <title>seg_36 (Lanes: 1, Elev: 0.0m)</title>
+  </path>
+  <path d="M -59.8 112.4 C -53.7 103.1, -43.5 99.5, -32.3 98.8" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="seg_35_span_1" d="M 87.2 58.3 C 96.0 51.7, 105.6 48.0, 115.8 51.3" fill="none" stroke="#64748b" stroke-width="4.0" stroke-linecap="round" stroke-linejoin="round">
+    <title>seg_35_span_1 (Lanes: 1, Elev: 0.0m)</title>
+  </path>
+  <path d="M 87.2 58.3 C 96.0 51.7, 105.6 48.0, 115.8 51.3" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="seg_35" d="M 68.0 77.6 C 73.6 70.9, 80.1 63.6, 87.2 58.3" fill="none" stroke="#64748b" stroke-width="4.0" stroke-linecap="round" stroke-linejoin="round">
+    <title>seg_35 (Lanes: 1, Elev: 0.0m)</title>
+  </path>
+  <path d="M 68.0 77.6 C 73.6 70.9, 80.1 63.6, 87.2 58.3" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="seg_34_span_1" d="M 104.3 10.0 C 101.4 3.7, 100.2 -3.4, 101.1 -10.2" fill="none" stroke="#64748b" stroke-width="4.0" stroke-linecap="round" stroke-linejoin="round">
+    <title>seg_34_span_1 (Lanes: 1, Elev: 0.0m)</title>
+  </path>
+  <path d="M 104.3 10.0 C 101.4 3.7, 100.2 -3.4, 101.1 -10.2" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="seg_34" d="M 126.4 30.7 C 116.6 27.5, 108.6 19.5, 104.3 10.0" fill="none" stroke="#64748b" stroke-width="4.0" stroke-linecap="round" stroke-linejoin="round">
+    <title>seg_34 (Lanes: 1, Elev: 0.0m)</title>
+  </path>
+  <path d="M 126.4 30.7 C 116.6 27.5, 108.6 19.5, 104.3 10.0" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="seg_33_span_1" d="M -87.8 -58.3 C -96.8 -51.9, -106.8 -48.3, -117.1 -51.7" fill="none" stroke="#64748b" stroke-width="4.0" stroke-linecap="round" stroke-linejoin="round">
+    <title>seg_33_span_1 (Lanes: 1, Elev: 0.0m)</title>
+  </path>
+  <path d="M -87.8 -58.3 C -96.8 -51.9, -106.8 -48.3, -117.1 -51.7" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="seg_33" d="M -68.0 -77.6 C -73.7 -70.7, -80.4 -63.6, -87.8 -58.3" fill="none" stroke="#64748b" stroke-width="4.0" stroke-linecap="round" stroke-linejoin="round">
+    <title>seg_33 (Lanes: 1, Elev: 0.0m)</title>
+  </path>
+  <path d="M -68.0 -77.6 C -73.7 -70.7, -80.4 -63.6, -87.8 -58.3" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="seg_31_span_2" d="M -41.2 -97.4 C -51.4 -93.1, -60.7 -86.5, -68.0 -77.6" fill="none" stroke="#64748b" stroke-width="4.0" stroke-linecap="round" stroke-linejoin="round">
+    <title>seg_31_span_2 (Lanes: 1, Elev: 0.0m)</title>
+  </path>
+  <path d="M -41.2 -97.4 C -51.4 -93.1, -60.7 -86.5, -68.0 -77.6" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="seg_31_span_1" d="M -14.5 -103.2 C -23.7 -102.8, -32.8 -100.9, -41.2 -97.4" fill="none" stroke="#64748b" stroke-width="4.0" stroke-linecap="round" stroke-linejoin="round">
+    <title>seg_31_span_1 (Lanes: 1, Elev: 0.0m)</title>
+  </path>
+  <path d="M -14.5 -103.2 C -23.7 -102.8, -32.8 -100.9, -41.2 -97.4" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="seg_28" d="M -117.1 -51.7 C -125.0 -54.3, -133.3 -56.0, -141.3 -58.6" fill="none" stroke="#64748b" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>seg_28 (Lanes: 2, Elev: 0.0m)</title>
+  </path>
+  <path d="M -117.1 -51.7 C -125.0 -54.3, -133.3 -56.0, -141.3 -58.6" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="seg_36_span_1" d="M -32.3 98.8 C -23.1 98.3, -13.2 99.7, -4.3 101.5" fill="none" stroke="#64748b" stroke-width="4.0" stroke-linecap="round" stroke-linejoin="round">
+    <title>seg_36_span_1 (Lanes: 1, Elev: 0.0m)</title>
+  </path>
+  <path d="M -32.3 98.8 C -23.1 98.3, -13.2 99.7, -4.3 101.5" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="seg_27_span_4" d="M 26.6 -33.2 C 33.0 -42.5, 39.7 -51.5, 47.2 -60.0" fill="none" stroke="#64748b" stroke-width="7.3" stroke-linecap="round" stroke-linejoin="round">
+    <title>seg_27_span_4 (Lanes: 3, Elev: 0.0m)</title>
+  </path>
+  <path d="M 26.6 -33.2 C 33.0 -42.5, 39.7 -51.5, 47.2 -60.0" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="setback_1_span_1" d="M 170.7 53.5 C 179.1 48.5, 187.5 41.2, 196.0 34.2" fill="none" stroke="#64748b" stroke-width="7.3" stroke-linecap="round" stroke-linejoin="round">
+    <title>setback_1_span_1 (Lanes: 3, Elev: 0.0m)</title>
+  </path>
+  <path d="M 170.7 53.5 C 179.1 48.5, 187.5 41.2, 196.0 34.2" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="setback_1_span_3" d="M 221.6 16.5 C 227.5 13.7, 233.6 12.0, 240.0 12.0" fill="none" stroke="#64748b" stroke-width="7.3" stroke-linecap="round" stroke-linejoin="round">
+    <title>setback_1_span_3 (Lanes: 3, Elev: 0.0m)</title>
+  </path>
+  <path d="M 221.6 16.5 C 227.5 13.7, 233.6 12.0, 240.0 12.0" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="setback_7_span_1" d="M -118.4 139.3 C -127.2 141.9, -136.8 143.6, -146.1 145.9" fill="none" stroke="#64748b" stroke-width="7.3" stroke-linecap="round" stroke-linejoin="round">
+    <title>setback_7_span_1 (Lanes: 3, Elev: 0.0m)</title>
+  </path>
+  <path d="M -118.4 139.3 C -127.2 141.9, -136.8 143.6, -146.1 145.9" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="setback_7" d="M -92.1 122.1 C -98.0 131.2, -107.6 136.0, -118.4 139.3" fill="none" stroke="#64748b" stroke-width="7.3" stroke-linecap="round" stroke-linejoin="round">
+    <title>setback_7 (Lanes: 3, Elev: 0.0m)</title>
+  </path>
+  <path d="M -92.1 122.1 C -98.0 131.2, -107.6 136.0, -118.4 139.3" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="setback_6_span_3" d="M -98.3 151.9 C -88.3 148.0, -79.5 142.7, -73.8 133.9" fill="none" stroke="#64748b" stroke-width="7.3" stroke-linecap="round" stroke-linejoin="round">
+    <title>setback_6_span_3 (Lanes: 3, Elev: 0.0m)</title>
+  </path>
+  <path d="M -98.3 151.9 C -88.3 148.0, -79.5 142.7, -73.8 133.9" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="setback_6_span_2" d="M -130.5 161.8 C -119.7 158.4, -108.4 155.8, -98.3 151.9" fill="none" stroke="#64748b" stroke-width="7.3" stroke-linecap="round" stroke-linejoin="round">
+    <title>setback_6_span_2 (Lanes: 3, Elev: 0.0m)</title>
+  </path>
+  <path d="M -130.5 161.8 C -119.7 158.4, -108.4 155.8, -98.3 151.9" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="setback_6_span_1" d="M -149.3 169.4 C -143.5 166.2, -137.1 163.8, -130.5 161.8" fill="none" stroke="#64748b" stroke-width="7.3" stroke-linecap="round" stroke-linejoin="round">
+    <title>setback_6_span_1 (Lanes: 3, Elev: 0.0m)</title>
+  </path>
+  <path d="M -149.3 169.4 C -143.5 166.2, -137.1 163.8, -130.5 161.8" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="setback_6" d="M -161.2 178.2 C -157.7 174.7, -153.6 171.8, -149.3 169.4" fill="none" stroke="#64748b" stroke-width="7.3" stroke-linecap="round" stroke-linejoin="round">
+    <title>setback_6 (Lanes: 3, Elev: 0.0m)</title>
+  </path>
+  <path d="M -161.2 178.2 C -157.7 174.7, -153.6 171.8, -149.3 169.4" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="setback_5_span_3" d="M -221.6 -16.5 C -227.5 -13.7, -233.6 -12.0, -240.0 -12.0" fill="none" stroke="#64748b" stroke-width="7.3" stroke-linecap="round" stroke-linejoin="round">
+    <title>setback_5_span_3 (Lanes: 3, Elev: 0.0m)</title>
+  </path>
+  <path d="M -221.6 -16.5 C -227.5 -13.7, -233.6 -12.0, -240.0 -12.0" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="setback_5_span_2" d="M -196.0 -34.2 C -204.3 -27.3, -212.7 -20.7, -221.6 -16.5" fill="none" stroke="#64748b" stroke-width="7.3" stroke-linecap="round" stroke-linejoin="round">
+    <title>setback_5_span_2 (Lanes: 3, Elev: 0.0m)</title>
+  </path>
+  <path d="M -196.0 -34.2 C -204.3 -27.3, -212.7 -20.7, -221.6 -16.5" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="setback_5_span_1" d="M -170.7 -53.5 C -179.1 -48.5, -187.5 -41.2, -196.0 -34.2" fill="none" stroke="#64748b" stroke-width="7.3" stroke-linecap="round" stroke-linejoin="round">
+    <title>setback_5_span_1 (Lanes: 3, Elev: 0.0m)</title>
+  </path>
+  <path d="M -170.7 -53.5 C -179.1 -48.5, -187.5 -41.2, -196.0 -34.2" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="setback_5" d="M -141.3 -58.6 C -151.5 -62.0, -161.2 -59.2, -170.7 -53.5" fill="none" stroke="#64748b" stroke-width="7.3" stroke-linecap="round" stroke-linejoin="round">
+    <title>setback_5 (Lanes: 3, Elev: 0.0m)</title>
+  </path>
+  <path d="M -141.3 -58.6 C -151.5 -62.0, -161.2 -59.2, -170.7 -53.5" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="setback_1_span_2" d="M 196.0 34.2 C 204.3 27.3, 212.7 20.7, 221.6 16.5" fill="none" stroke="#64748b" stroke-width="7.3" stroke-linecap="round" stroke-linejoin="round">
+    <title>setback_1_span_2 (Lanes: 3, Elev: 0.0m)</title>
+  </path>
+  <path d="M 196.0 34.2 C 204.3 27.3, 212.7 20.7, 221.6 16.5" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="setback_4_span_3" d="M -176.3 -31.7 C -167.4 -37.9, -158.2 -41.3, -148.2 -37.9" fill="none" stroke="#64748b" stroke-width="7.3" stroke-linecap="round" stroke-linejoin="round">
+    <title>setback_4_span_3 (Lanes: 3, Elev: 0.0m)</title>
+  </path>
+  <path d="M -176.3 -31.7 C -167.4 -37.9, -158.2 -41.3, -148.2 -37.9" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="setback_4_span_1" d="M -224.8 8.3 C -217.0 4.7, -209.7 -1.4, -202.6 -8.0" fill="none" stroke="#64748b" stroke-width="7.3" stroke-linecap="round" stroke-linejoin="round">
+    <title>setback_4_span_1 (Lanes: 3, Elev: 0.0m)</title>
+  </path>
+  <path d="M -224.8 8.3 C -217.0 4.7, -209.7 -1.4, -202.6 -8.0" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="setback_4" d="M -240.0 12.0 C -234.7 12.0, -229.6 10.6, -224.8 8.3" fill="none" stroke="#64748b" stroke-width="7.3" stroke-linecap="round" stroke-linejoin="round">
+    <title>setback_4 (Lanes: 3, Elev: 0.0m)</title>
+  </path>
+  <path d="M -240.0 12.0 C -234.7 12.0, -229.6 10.6, -224.8 8.3" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="setback_3_span_3" d="M 166.8 -153.1 C 171.0 -155.2, 174.8 -157.9, 178.2 -161.2" fill="none" stroke="#64748b" stroke-width="7.3" stroke-linecap="round" stroke-linejoin="round">
+    <title>setback_3_span_3 (Lanes: 3, Elev: 0.0m)</title>
+  </path>
+  <path d="M 166.8 -153.1 C 171.0 -155.2, 174.8 -157.9, 178.2 -161.2" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="setback_3_span_2" d="M 146.1 -145.9 C 153.4 -147.7, 160.5 -149.8, 166.8 -153.1" fill="none" stroke="#64748b" stroke-width="7.3" stroke-linecap="round" stroke-linejoin="round">
+    <title>setback_3_span_2 (Lanes: 3, Elev: 0.0m)</title>
+  </path>
+  <path d="M 146.1 -145.9 C 153.4 -147.7, 160.5 -149.8, 166.8 -153.1" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="setback_3_span_1" d="M 118.4 -139.3 C 127.2 -141.9, 136.8 -143.6, 146.1 -145.9" fill="none" stroke="#64748b" stroke-width="7.3" stroke-linecap="round" stroke-linejoin="round">
+    <title>setback_3_span_1 (Lanes: 3, Elev: 0.0m)</title>
+  </path>
+  <path d="M 118.4 -139.3 C 127.2 -141.9, 136.8 -143.6, 146.1 -145.9" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="setback_3" d="M 92.1 -122.1 C 98.0 -131.2, 107.6 -136.0, 118.4 -139.3" fill="none" stroke="#64748b" stroke-width="7.3" stroke-linecap="round" stroke-linejoin="round">
+    <title>setback_3 (Lanes: 3, Elev: 0.0m)</title>
+  </path>
+  <path d="M 92.1 -122.1 C 98.0 -131.2, 107.6 -136.0, 118.4 -139.3" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="setback_2_span_3" d="M 98.3 -151.9 C 88.3 -148.0, 79.5 -142.7, 73.8 -133.9" fill="none" stroke="#64748b" stroke-width="7.3" stroke-linecap="round" stroke-linejoin="round">
+    <title>setback_2_span_3 (Lanes: 3, Elev: 0.0m)</title>
+  </path>
+  <path d="M 98.3 -151.9 C 88.3 -148.0, 79.5 -142.7, 73.8 -133.9" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="setback_2_span_2" d="M 130.5 -161.8 C 119.7 -158.4, 108.4 -155.8, 98.3 -151.9" fill="none" stroke="#64748b" stroke-width="7.3" stroke-linecap="round" stroke-linejoin="round">
+    <title>setback_2_span_2 (Lanes: 3, Elev: 0.0m)</title>
+  </path>
+  <path d="M 130.5 -161.8 C 119.7 -158.4, 108.4 -155.8, 98.3 -151.9" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="setback_2_span_1" d="M 149.3 -169.4 C 143.5 -166.2, 137.1 -163.8, 130.5 -161.8" fill="none" stroke="#64748b" stroke-width="7.3" stroke-linecap="round" stroke-linejoin="round">
+    <title>setback_2_span_1 (Lanes: 3, Elev: 0.0m)</title>
+  </path>
+  <path d="M 149.3 -169.4 C 143.5 -166.2, 137.1 -163.8, 130.5 -161.8" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="setback_2" d="M 161.2 -178.2 C 157.7 -174.7, 153.6 -171.8, 149.3 -169.4" fill="none" stroke="#64748b" stroke-width="7.3" stroke-linecap="round" stroke-linejoin="round">
+    <title>setback_2 (Lanes: 3, Elev: 0.0m)</title>
+  </path>
+  <path d="M 161.2 -178.2 C 157.7 -174.7, 153.6 -171.8, 149.3 -169.4" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="setback_4_span_2" d="M -202.6 -8.0 C -193.7 -16.3, -185.1 -25.5, -176.3 -31.7" fill="none" stroke="#64748b" stroke-width="7.3" stroke-linecap="round" stroke-linejoin="round">
+    <title>setback_4_span_2 (Lanes: 3, Elev: 0.0m)</title>
+  </path>
+  <path d="M -202.6 -8.0 C -193.7 -16.3, -185.1 -25.5, -176.3 -31.7" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="seg_27_span_3" d="M 14.6 -14.0 C 18.4 -20.5, 22.4 -26.9, 26.6 -33.2" fill="none" stroke="#64748b" stroke-width="7.3" stroke-linecap="round" stroke-linejoin="round">
+    <title>seg_27_span_3 (Lanes: 3, Elev: 0.0m)</title>
+  </path>
+  <path d="M 14.6 -14.0 C 18.4 -20.5, 22.4 -26.9, 26.6 -33.2" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="seg_39" d="M 86.6 -56.1 C 79.9 -62.8, 75.8 -72.7, 75.3 -82.4" fill="none" stroke="#64748b" stroke-width="4.0" stroke-linecap="round" stroke-linejoin="round">
+    <title>seg_39 (Lanes: 1, Elev: 0.0m)</title>
+  </path>
+  <path d="M 86.6 -56.1 C 79.9 -62.8, 75.8 -72.7, 75.3 -82.4" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="seg_27_span_1" d="M -9.3 29.5 C -6.0 23.3, -2.7 17.0, 0.7 10.7" fill="none" stroke="#64748b" stroke-width="7.3" stroke-linecap="round" stroke-linejoin="round">
+    <title>seg_27_span_1 (Lanes: 3, Elev: 0.0m)</title>
+  </path>
+  <path d="M -9.3 29.5 C -6.0 23.3, -2.7 17.0, 0.7 10.7" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="seg_21" d="M 47.2 -60.0 C 54.0 -67.8, 61.0 -75.6, 67.5 -83.8" fill="none" stroke="#64748b" stroke-width="7.3" stroke-linecap="round" stroke-linejoin="round">
+    <title>seg_21 (Lanes: 3, Elev: 0.0m)</title>
+  </path>
+  <path d="M 47.2 -60.0 C 54.0 -67.8, 61.0 -75.6, 67.5 -83.8" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="seg_20" d="M 115.8 51.3 C 124.1 54.1, 132.9 55.8, 141.3 58.6" fill="none" stroke="#64748b" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>seg_20 (Lanes: 2, Elev: 0.0m)</title>
+  </path>
+  <path d="M 115.8 51.3 C 124.1 54.1, 132.9 55.8, 141.3 58.6" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="seg_18" d="M -79.2 100.4 C -83.8 107.5, -87.5 115.1, -92.1 122.1" fill="none" stroke="#64748b" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>seg_18 (Lanes: 2, Elev: 0.0m)</title>
+  </path>
+  <path d="M -79.2 100.4 C -83.8 107.5, -87.5 115.1, -92.1 122.1" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="seg_27_span_2" d="M 0.7 10.7 C 5.2 2.4, 9.8 -5.9, 14.6 -14.0" fill="none" stroke="#64748b" stroke-width="7.3" stroke-linecap="round" stroke-linejoin="round">
+    <title>seg_27_span_2 (Lanes: 3, Elev: 0.0m)</title>
+  </path>
+  <path d="M 0.7 10.7 C 5.2 2.4, 9.8 -5.9, 14.6 -14.0" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="seg_7_span_1" d="M -68.0 85.1 C -71.9 90.1, -75.7 95.1, -79.2 100.4" fill="none" stroke="#64748b" stroke-width="7.3" stroke-linecap="round" stroke-linejoin="round">
+    <title>seg_7_span_1 (Lanes: 3, Elev: 0.0m)</title>
+  </path>
+  <path d="M -68.0 85.1 C -71.9 90.1, -75.7 95.1, -79.2 100.4" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="seg_7" d="M -50.6 62.5 C -56.2 70.2, -62.2 77.5, -68.0 85.1" fill="none" stroke="#64748b" stroke-width="7.3" stroke-linecap="round" stroke-linejoin="round">
+    <title>seg_7 (Lanes: 3, Elev: 0.0m)</title>
+  </path>
+  <path d="M -50.6 62.5 C -56.2 70.2, -62.2 77.5, -68.0 85.1" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="seg_21_span_1" d="M 67.5 -83.8 C 71.9 -89.2, 76.0 -94.7, 79.8 -100.5" fill="none" stroke="#64748b" stroke-width="7.3" stroke-linecap="round" stroke-linejoin="round">
+    <title>seg_21_span_1 (Lanes: 3, Elev: 0.0m)</title>
+  </path>
+  <path d="M 67.5 -83.8 C 71.9 -89.2, 76.0 -94.7, 79.8 -100.5" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="seg_6_span_1" d="M 51.0 -96.9 C 45.5 -87.1, 40.0 -77.4, 32.7 -69.0" fill="none" stroke="#64748b" stroke-width="4.0" stroke-linecap="round" stroke-linejoin="round">
+    <title>seg_6_span_1 (Lanes: 1, Elev: 0.0m)</title>
+  </path>
+  <path d="M 51.0 -96.9 C 45.5 -87.1, 40.0 -77.4, 32.7 -69.0" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="seg_5_span_1" d="M -50.4 96.0 C -46.0 87.6, -41.6 79.2, -36.1 71.5" fill="none" stroke="#64748b" stroke-width="4.0" stroke-linecap="round" stroke-linejoin="round">
+    <title>seg_5_span_1 (Lanes: 1, Elev: 0.0m)</title>
+  </path>
+  <path d="M -50.4 96.0 C -46.0 87.6, -41.6 79.2, -36.1 71.5" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="seg_5" d="M -59.8 112.4 C -56.4 107.1, -53.3 101.6, -50.4 96.0" fill="none" stroke="#64748b" stroke-width="4.0" stroke-linecap="round" stroke-linejoin="round">
+    <title>seg_5 (Lanes: 1, Elev: 0.0m)</title>
+  </path>
+  <path d="M -59.8 112.4 C -56.4 107.1, -53.3 101.6, -50.4 96.0" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="seg_4" d="M -73.8 133.9 C -69.1 126.8, -64.5 119.6, -59.8 112.4" fill="none" stroke="#64748b" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>seg_4 (Lanes: 2, Elev: 0.0m)</title>
+  </path>
+  <path d="M -73.8 133.9 C -69.1 126.8, -64.5 119.6, -59.8 112.4" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="seg_3" d="M 148.2 37.9 C 140.9 35.5, 133.7 33.1, 126.4 30.7" fill="none" stroke="#64748b" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>seg_3 (Lanes: 2, Elev: 0.0m)</title>
+  </path>
+  <path d="M 148.2 37.9 C 140.9 35.5, 133.7 33.1, 126.4 30.7" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="seg_2" d="M -148.2 -37.9 C -139.8 -35.1, -131.4 -32.3, -123.0 -29.6" fill="none" stroke="#64748b" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>seg_2 (Lanes: 2, Elev: 0.0m)</title>
+  </path>
+  <path d="M -148.2 -37.9 C -139.8 -35.1, -131.4 -32.3, -123.0 -29.6" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="seg_1" d="M 73.8 -133.9 C 70.0 -128.0, 66.1 -122.2, 62.3 -116.3" fill="none" stroke="#64748b" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+    <title>seg_1 (Lanes: 2, Elev: 0.0m)</title>
+  </path>
+  <path d="M 73.8 -133.9 C 70.0 -128.0, 66.1 -122.2, 62.3 -116.3" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="seg_6" d="M 62.3 -116.3 C 58.2 -110.0, 54.6 -103.5, 51.0 -96.9" fill="none" stroke="#64748b" stroke-width="4.0" stroke-linecap="round" stroke-linejoin="round">
+    <title>seg_6 (Lanes: 1, Elev: 0.0m)</title>
+  </path>
+  <path d="M 62.3 -116.3 C 58.2 -110.0, 54.6 -103.5, 51.0 -96.9" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="seg_24" d="M 32.7 -69.0 C 29.6 -65.5, 26.3 -62.3, 23.0 -59.0" fill="none" stroke="#64748b" stroke-width="4.0" stroke-linecap="round" stroke-linejoin="round">
+    <title>seg_24 (Lanes: 1, Elev: 0.0m)</title>
+  </path>
+  <path d="M 32.7 -69.0 C 29.6 -65.5, 26.3 -62.3, 23.0 -59.0" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="setback_7_span_3" d="M -166.8 153.1 C -171.0 155.2, -174.8 157.9, -178.2 161.2" fill="none" stroke="#64748b" stroke-width="7.3" stroke-linecap="round" stroke-linejoin="round">
+    <title>setback_7_span_3 (Lanes: 3, Elev: 0.0m)</title>
+  </path>
+  <path d="M -166.8 153.1 C -171.0 155.2, -174.8 157.9, -178.2 161.2" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="seg_25" d="M -36.1 71.5 C -31.6 65.2, -25.6 59.8, -21.8 53.0" fill="none" stroke="#64748b" stroke-width="4.0" stroke-linecap="round" stroke-linejoin="round">
+    <title>seg_25 (Lanes: 1, Elev: 0.0m)</title>
+  </path>
+  <path d="M -36.1 71.5 C -31.6 65.2, -25.6 59.8, -21.8 53.0" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="seg_24_span_1" d="M 23.0 -59.0 C 18.0 -54.2, 13.0 -49.3, 8.9 -43.8" fill="none" stroke="#64748b" stroke-width="4.0" stroke-linecap="round" stroke-linejoin="round">
+    <title>seg_24_span_1 (Lanes: 1, Elev: 0.0m)</title>
+  </path>
+  <path d="M 23.0 -59.0 C 18.0 -54.2, 13.0 -49.3, 8.9 -43.8" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="seg_26_span_2" d="M -19.2 5.0 C -24.0 14.8, -28.7 24.8, -33.7 34.5" fill="none" stroke="#64748b" stroke-width="7.3" stroke-linecap="round" stroke-linejoin="round">
+    <title>seg_26_span_2 (Lanes: 3, Elev: 0.0m)</title>
+  </path>
+  <path d="M -19.2 5.0 C -24.0 14.8, -28.7 24.8, -33.7 34.5" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="seg_27" d="M -21.8 53.0 C -17.6 45.2, -13.5 37.4, -9.3 29.5" fill="none" stroke="#64748b" stroke-width="7.3" stroke-linecap="round" stroke-linejoin="round">
+    <title>seg_27 (Lanes: 3, Elev: 0.0m)</title>
+  </path>
+  <path d="M -21.8 53.0 C -17.6 45.2, -13.5 37.4, -9.3 29.5" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="seg_26_span_1" d="M -7.4 -18.2 C -11.6 -10.6, -15.4 -2.8, -19.2 5.0" fill="none" stroke="#64748b" stroke-width="7.3" stroke-linecap="round" stroke-linejoin="round">
+    <title>seg_26_span_1 (Lanes: 3, Elev: 0.0m)</title>
+  </path>
+  <path d="M -7.4 -18.2 C -11.6 -10.6, -15.4 -2.8, -19.2 5.0" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="seg_26" d="M 8.9 -43.8 C 2.7 -35.7, -2.6 -27.1, -7.4 -18.2" fill="none" stroke="#64748b" stroke-width="7.3" stroke-linecap="round" stroke-linejoin="round">
+    <title>seg_26 (Lanes: 3, Elev: 0.0m)</title>
+  </path>
+  <path d="M 8.9 -43.8 C 2.7 -35.7, -2.6 -27.1, -7.4 -18.2" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="seg_26_span_3" d="M -33.7 34.5 C -38.8 44.2, -44.3 53.6, -50.6 62.5" fill="none" stroke="#64748b" stroke-width="7.3" stroke-linecap="round" stroke-linejoin="round">
+    <title>seg_26_span_3 (Lanes: 3, Elev: 0.0m)</title>
+  </path>
+  <path d="M -33.7 34.5 C -38.8 44.2, -44.3 53.6, -50.6 62.5" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="seg_23_span_1" d="M -18.9 80.3 C -24.5 72.0, -26.5 61.6, -21.8 53.0" fill="none" stroke="#64748b" stroke-width="4.0" stroke-linecap="round" stroke-linejoin="round">
+    <title>seg_23_span_1 (Lanes: 1, Elev: 0.8m)</title>
+  </path>
+  <path d="M -18.9 80.3 C -24.5 72.0, -26.5 61.6, -21.8 53.0" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="seg_22_span_1" d="M 11.6 -69.0 C 14.7 -60.7, 14.1 -50.8, 8.9 -43.8" fill="none" stroke="#64748b" stroke-width="4.0" stroke-linecap="round" stroke-linejoin="round">
+    <title>seg_22_span_1 (Lanes: 1, Elev: 0.8m)</title>
+  </path>
+  <path d="M 11.6 -69.0 C 14.7 -60.7, 14.1 -50.8, 8.9 -43.8" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="seg_32" d="M 62.3 -116.3 C 59.6 -112.1, 56.1 -108.8, 52.1 -106.3" fill="none" stroke="#64748b" stroke-width="4.0" stroke-linecap="round" stroke-linejoin="round">
+    <title>seg_32 (Lanes: 1, Elev: 1.2m)</title>
+  </path>
+  <path d="M 62.3 -116.3 C 59.6 -112.1, 56.1 -108.8, 52.1 -106.3" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="seg_22" d="M 0.7 -82.4 C 5.8 -79.5, 9.5 -74.6, 11.6 -69.0" fill="none" stroke="#64748b" stroke-width="4.0" stroke-linecap="round" stroke-linejoin="round">
+    <title>seg_22 (Lanes: 1, Elev: 2.0m)</title>
+  </path>
+  <path d="M 0.7 -82.4 C 5.8 -79.5, 9.5 -74.6, 11.6 -69.0" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="seg_23" d="M -3.9 93.2 C -9.9 90.6, -15.2 85.9, -18.9 80.3" fill="none" stroke="#64748b" stroke-width="4.0" stroke-linecap="round" stroke-linejoin="round">
+    <title>seg_23 (Lanes: 1, Elev: 2.0m)</title>
+  </path>
+  <path d="M -3.9 93.2 C -9.9 90.6, -15.2 85.9, -18.9 80.3" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="seg_37_span_1" d="M -74.7 82.2 C -74.3 88.7, -75.7 95.1, -79.2 100.4" fill="none" stroke="#64748b" stroke-width="4.0" stroke-linecap="round" stroke-linejoin="round">
+    <title>seg_37_span_1 (Lanes: 1, Elev: 1.5m)</title>
+  </path>
+  <path d="M -74.7 82.2 C -74.3 88.7, -75.7 95.1, -79.2 100.4" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="seg_44" d="M 126.4 30.7 C 116.3 27.4, 105.8 24.8, 95.3 23.1" fill="none" stroke="#10b981" stroke-width="4.0" stroke-linecap="round" stroke-linejoin="round">
+    <title>seg_44 (Lanes: 1, Elev: 1.6m)</title>
+  </path>
+  <path d="M 126.4 30.7 C 116.3 27.4, 105.8 24.8, 95.3 23.1" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="seg_17_span_1" d="M -15.0 -84.4 C -9.8 -85.7, -4.4 -85.2, 0.7 -82.4" fill="none" stroke="#64748b" stroke-width="4.0" stroke-linecap="round" stroke-linejoin="round">
+    <title>seg_17_span_1 (Lanes: 1, Elev: 3.0m)</title>
+  </path>
+  <path d="M -15.0 -84.4 C -9.8 -85.7, -4.4 -85.2, 0.7 -82.4" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="seg_16_span_1" d="M 13.4 95.5 C 7.8 96.4, 1.7 95.7, -3.9 93.2" fill="none" stroke="#64748b" stroke-width="4.0" stroke-linecap="round" stroke-linejoin="round">
+    <title>seg_16_span_1 (Lanes: 1, Elev: 3.0m)</title>
+  </path>
+  <path d="M 13.4 95.5 C 7.8 96.4, 1.7 95.7, -3.9 93.2" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="seg_43" d="M -123.0 -29.6 C -114.1 -26.7, -104.9 -24.8, -95.7 -22.9" fill="none" stroke="#10b981" stroke-width="4.0" stroke-linecap="round" stroke-linejoin="round">
+    <title>seg_43 (Lanes: 1, Elev: 1.8m)</title>
+  </path>
+  <path d="M -123.0 -29.6 C -114.1 -26.7, -104.9 -24.8, -95.7 -22.9" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="seg_38" d="M -123.0 -29.6 C -115.3 -27.0, -109.2 -21.1, -105.4 -13.8" fill="none" stroke="#64748b" stroke-width="4.0" stroke-linecap="round" stroke-linejoin="round">
+    <title>seg_38 (Lanes: 1, Elev: 1.9m)</title>
+  </path>
+  <path d="M -123.0 -29.6 C -115.3 -27.0, -109.2 -21.1, -105.4 -13.8" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="seg_51_span_1" d="M 87.5 40.9 C 97.0 44.0, 106.3 48.2, 115.8 51.3" fill="none" stroke="#10b981" stroke-width="7.3" stroke-linecap="round" stroke-linejoin="round">
+    <title>seg_51_span_1 (Lanes: 3, Elev: 2.3m)</title>
+  </path>
+  <path d="M 87.5 40.9 C 97.0 44.0, 106.3 48.2, 115.8 51.3" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="seg_16" d="M 33.5 80.7 C 29.5 89.0, 21.9 94.1, 13.4 95.5" fill="none" stroke="#10b981" stroke-width="4.0" stroke-linecap="round" stroke-linejoin="round">
+    <title>seg_16 (Lanes: 1, Elev: 4.2m)</title>
+  </path>
+  <path d="M 33.5 80.7 C 29.5 89.0, 21.9 94.1, 13.4 95.5" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="seg_17" d="M -34.3 -69.0 C -29.8 -76.5, -22.7 -82.4, -15.0 -84.4" fill="none" stroke="#10b981" stroke-width="4.0" stroke-linecap="round" stroke-linejoin="round">
+    <title>seg_17 (Lanes: 1, Elev: 4.2m)</title>
+  </path>
+  <path d="M -34.3 -69.0 C -29.8 -76.5, -22.7 -82.4, -15.0 -84.4" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="seg_44_span_1" d="M 95.3 23.1 C 88.2 21.9, 81.1 21.1, 74.0 20.8" fill="none" stroke="#10b981" stroke-width="4.0" stroke-linecap="round" stroke-linejoin="round">
+    <title>seg_44_span_1 (Lanes: 1, Elev: 4.2m)</title>
+  </path>
+  <path d="M 95.3 23.1 C 88.2 21.9, 81.1 21.1, 74.0 20.8" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="seg_60_span_1" d="M -89.8 -41.2 C -98.9 -44.8, -107.8 -48.7, -117.1 -51.7" fill="none" stroke="#10b981" stroke-width="7.3" stroke-linecap="round" stroke-linejoin="round">
+    <title>seg_60_span_1 (Lanes: 3, Elev: 3.0m)</title>
+  </path>
+  <path d="M -89.8 -41.2 C -98.9 -44.8, -107.8 -48.7, -117.1 -51.7" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path id="seg_61_span_1" d="M -97.7 39.1 C -95.0 44.8, -90.9 49.6, -85.0 52.7" fill="none" stroke="#10b981" stroke-width="4.0" stroke-linecap="round" stroke-linejoin="round">
+    <title>seg_61_span_1 (Lanes: 1, Elev: 4.3m)</title>
+  </path>
+  <path d="M -97.7 39.1 C -95.0 44.8, -90.9 49.6, -85.0 52.7" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M 36.3 62.8 C 37.1 68.8, 36.2 75.2, 33.5 80.7" fill="none" stroke="#000000" stroke-width="8.0" opacity="0.6"/>
+  <path id="seg_15_span_1" d="M 36.3 62.8 C 37.1 68.8, 36.2 75.2, 33.5 80.7" fill="none" stroke="#10b981" stroke-width="4.0" stroke-linecap="round" stroke-linejoin="round">
+    <title>seg_15_span_1 (Lanes: 1, Elev: 5.3m)</title>
+  </path>
+  <path d="M 36.3 62.8 C 37.1 68.8, 36.2 75.2, 33.5 80.7" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M -36.5 -53.4 C -37.8 -58.6, -37.3 -64.0, -34.3 -69.0" fill="none" stroke="#000000" stroke-width="8.0" opacity="0.6"/>
+  <path id="seg_14_span_1" d="M -36.5 -53.4 C -37.8 -58.6, -37.3 -64.0, -34.3 -69.0" fill="none" stroke="#10b981" stroke-width="4.0" stroke-linecap="round" stroke-linejoin="round">
+    <title>seg_14_span_1 (Lanes: 1, Elev: 5.4m)</title>
+  </path>
+  <path d="M -36.5 -53.4 C -37.8 -58.6, -37.3 -64.0, -34.3 -69.0" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M -95.7 -22.9 C -89.5 -21.5, -83.4 -20.1, -77.5 -18.3" fill="none" stroke="#000000" stroke-width="8.0" opacity="0.6"/>
+  <path id="seg_43_span_1" d="M -95.7 -22.9 C -89.5 -21.5, -83.4 -20.1, -77.5 -18.3" fill="none" stroke="#10b981" stroke-width="4.0" stroke-linecap="round" stroke-linejoin="round">
+    <title>seg_43_span_1 (Lanes: 1, Elev: 4.9m)</title>
+  </path>
+  <path d="M -95.7 -22.9 C -89.5 -21.5, -83.4 -20.1, -77.5 -18.3" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M 52.1 -106.3 C 44.3 -101.4, 34.4 -99.5, 24.3 -99.4" fill="none" stroke="#000000" stroke-width="8.0" opacity="0.6"/>
+  <path id="seg_32_span_1" d="M 52.1 -106.3 C 44.3 -101.4, 34.4 -99.5, 24.3 -99.4" fill="none" stroke="#10b981" stroke-width="4.0" stroke-linecap="round" stroke-linejoin="round">
+    <title>seg_32_span_1 (Lanes: 1, Elev: 4.8m)</title>
+  </path>
+  <path d="M 52.1 -106.3 C 44.3 -101.4, 34.4 -99.5, 24.3 -99.4" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M 21.0 43.3 C 29.9 45.9, 35.0 53.9, 36.3 62.8" fill="none" stroke="#000000" stroke-width="8.0" opacity="0.6"/>
+  <path id="seg_15" d="M 21.0 43.3 C 29.9 45.9, 35.0 53.9, 36.3 62.8" fill="none" stroke="#10b981" stroke-width="4.0" stroke-linecap="round" stroke-linejoin="round">
+    <title>seg_15 (Lanes: 1, Elev: 6.5m)</title>
+  </path>
+  <path d="M 21.0 43.3 C 29.9 45.9, 35.0 53.9, 36.3 62.8" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M -21.0 -34.0 C -28.5 -38.5, -34.5 -45.7, -36.5 -53.4" fill="none" stroke="#000000" stroke-width="8.0" opacity="0.6"/>
+  <path id="seg_14" d="M -21.0 -34.0 C -28.5 -38.5, -34.5 -45.7, -36.5 -53.4" fill="none" stroke="#10b981" stroke-width="4.0" stroke-linecap="round" stroke-linejoin="round">
+    <title>seg_14 (Lanes: 1, Elev: 6.6m)</title>
+  </path>
+  <path d="M -21.0 -34.0 C -28.5 -38.5, -34.5 -45.7, -36.5 -53.4" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M 68.1 36.9 C 74.7 37.3, 81.1 38.8, 87.5 40.9" fill="none" stroke="#000000" stroke-width="11.4" opacity="0.6"/>
+  <path id="seg_51" d="M 68.1 36.9 C 74.7 37.3, 81.1 38.8, 87.5 40.9" fill="none" stroke="#10b981" stroke-width="7.3" stroke-linecap="round" stroke-linejoin="round">
+    <title>seg_51 (Lanes: 3, Elev: 6.0m)</title>
+  </path>
+  <path d="M 68.1 36.9 C 74.7 37.3, 81.1 38.8, 87.5 40.9" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M -86.5 56.2 C -79.6 62.7, -75.2 72.6, -74.7 82.2" fill="none" stroke="#000000" stroke-width="8.0" opacity="0.6"/>
+  <path id="seg_37" d="M -86.5 56.2 C -79.6 62.7, -75.2 72.6, -74.7 82.2" fill="none" stroke="#10b981" stroke-width="4.0" stroke-linecap="round" stroke-linejoin="round">
+    <title>seg_37 (Lanes: 1, Elev: 5.4m)</title>
+  </path>
+  <path d="M -86.5 56.2 C -79.6 62.7, -75.2 72.6, -74.7 82.2" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M -101.1 10.2 C -102.5 20.0, -101.7 30.6, -97.7 39.1" fill="none" stroke="#000000" stroke-width="8.0" opacity="0.6"/>
+  <path id="seg_61" d="M -101.1 10.2 C -102.5 20.0, -101.7 30.6, -97.7 39.1" fill="none" stroke="#10b981" stroke-width="4.0" stroke-linecap="round" stroke-linejoin="round">
+    <title>seg_61 (Lanes: 1, Elev: 5.4m)</title>
+  </path>
+  <path d="M -101.1 10.2 C -102.5 20.0, -101.7 30.6, -97.7 39.1" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M -105.4 -13.8 C -101.6 -6.5, -100.0 2.2, -101.1 10.2" fill="none" stroke="#000000" stroke-width="8.0" opacity="0.6"/>
+  <path id="seg_38_span_1" d="M -105.4 -13.8 C -101.6 -6.5, -100.0 2.2, -101.1 10.2" fill="none" stroke="#10b981" stroke-width="4.0" stroke-linecap="round" stroke-linejoin="round">
+    <title>seg_38_span_1 (Lanes: 1, Elev: 5.9m)</title>
+  </path>
+  <path d="M -105.4 -13.8 C -101.6 -6.5, -100.0 2.2, -101.1 10.2" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M 1.0 41.7 C 7.6 41.0, 14.3 41.3, 21.0 43.3" fill="none" stroke="#000000" stroke-width="8.0" opacity="0.6"/>
+  <path id="seg_46_span_1" d="M 1.0 41.7 C 7.6 41.0, 14.3 41.3, 21.0 43.3" fill="none" stroke="#10b981" stroke-width="4.0" stroke-linecap="round" stroke-linejoin="round">
+    <title>seg_46_span_1 (Lanes: 1, Elev: 7.7m)</title>
+  </path>
+  <path d="M 1.0 41.7 C 7.6 41.0, 14.3 41.3, 21.0 43.3" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M -71.5 -34.4 C -77.7 -36.4, -83.8 -38.7, -89.8 -41.2" fill="none" stroke="#000000" stroke-width="11.4" opacity="0.6"/>
+  <path id="seg_60" d="M -71.5 -34.4 C -77.7 -36.4, -83.8 -38.7, -89.8 -41.2" fill="none" stroke="#10b981" stroke-width="7.3" stroke-linecap="round" stroke-linejoin="round">
+    <title>seg_60 (Lanes: 3, Elev: 6.9m)</title>
+  </path>
+  <path d="M -71.5 -34.4 C -77.7 -36.4, -83.8 -38.7, -89.8 -41.2" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M 74.0 20.8 C 63.6 20.2, 53.2 18.1, 42.9 16.5" fill="none" stroke="#000000" stroke-width="8.0" opacity="0.6"/>
+  <path id="seg_57" d="M 74.0 20.8 C 63.6 20.2, 53.2 18.1, 42.9 16.5" fill="none" stroke="#10b981" stroke-width="4.0" stroke-linecap="round" stroke-linejoin="round">
+    <title>seg_57 (Lanes: 1, Elev: 6.9m)</title>
+  </path>
+  <path d="M 74.0 20.8 C 63.6 20.2, 53.2 18.1, 42.9 16.5" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M 61.7 20.0 C 55.5 19.2, 48.9 17.4, 42.9 16.5" fill="none" stroke="#000000" stroke-width="8.0" opacity="0.6"/>
+  <path id="seg_53_span_1" d="M 61.7 20.0 C 55.5 19.2, 48.9 17.4, 42.9 16.5" fill="none" stroke="#10b981" stroke-width="4.0" stroke-linecap="round" stroke-linejoin="round">
+    <title>seg_53_span_1 (Lanes: 1, Elev: 8.6m)</title>
+  </path>
+  <path d="M 61.7 20.0 C 55.5 19.2, 48.9 17.4, 42.9 16.5" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M 83.6 12.7 C 79.4 20.8, 71.0 21.4, 61.7 20.0" fill="none" stroke="#000000" stroke-width="8.0" opacity="0.6"/>
+  <path id="seg_53" d="M 83.6 12.7 C 79.4 20.8, 71.0 21.4, 61.7 20.0" fill="none" stroke="#10b981" stroke-width="4.0" stroke-linecap="round" stroke-linejoin="round">
+    <title>seg_53 (Lanes: 1, Elev: 8.8m)</title>
+  </path>
+  <path d="M 83.6 12.7 C 79.4 20.8, 71.0 21.4, 61.7 20.0" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M 7.1 -33.9 C -2.7 -30.4, -12.4 -28.9, -21.0 -34.0" fill="none" stroke="#000000" stroke-width="8.0" opacity="0.6"/>
+  <path id="seg_45_span_1" d="M 7.1 -33.9 C -2.7 -30.4, -12.4 -28.9, -21.0 -34.0" fill="none" stroke="#10b981" stroke-width="4.0" stroke-linecap="round" stroke-linejoin="round">
+    <title>seg_45_span_1 (Lanes: 1, Elev: 8.2m)</title>
+  </path>
+  <path d="M 7.1 -33.9 C -2.7 -30.4, -12.4 -28.9, -21.0 -34.0" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M 85.2 -12.7 C 88.3 -5.1, 87.6 4.9, 83.6 12.7" fill="none" stroke="#000000" stroke-width="8.0" opacity="0.6"/>
+  <path id="seg_10_span_1" d="M 85.2 -12.7 C 88.3 -5.1, 87.6 4.9, 83.6 12.7" fill="none" stroke="#10b981" stroke-width="4.0" stroke-linecap="round" stroke-linejoin="round">
+    <title>seg_10_span_1 (Lanes: 1, Elev: 9.0m)</title>
+  </path>
+  <path d="M 85.2 -12.7 C 88.3 -5.1, 87.6 4.9, 83.6 12.7" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M 73.6 -23.4 C 79.3 -21.8, 83.1 -17.8, 85.2 -12.7" fill="none" stroke="#000000" stroke-width="8.0" opacity="0.6"/>
+  <path id="seg_10" d="M 73.6 -23.4 C 79.3 -21.8, 83.1 -17.8, 85.2 -12.7" fill="none" stroke="#10b981" stroke-width="4.0" stroke-linecap="round" stroke-linejoin="round">
+    <title>seg_10 (Lanes: 1, Elev: 9.2m)</title>
+  </path>
+  <path d="M 73.6 -23.4 C 79.3 -21.8, 83.1 -17.8, 85.2 -12.7" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M -85.0 52.7 C -77.1 56.8, -68.8 57.8, -60.3 57.2" fill="none" stroke="#000000" stroke-width="8.0" opacity="0.6"/>
+  <path id="seg_48" d="M -85.0 52.7 C -77.1 56.8, -68.8 57.8, -60.3 57.2" fill="none" stroke="#10b981" stroke-width="4.0" stroke-linecap="round" stroke-linejoin="round">
+    <title>seg_48 (Lanes: 1, Elev: 7.4m)</title>
+  </path>
+  <path d="M -85.0 52.7 C -77.1 56.8, -68.8 57.8, -60.3 57.2" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M 49.6 -23.4 C 56.7 -26.1, 65.2 -25.7, 73.6 -23.4" fill="none" stroke="#000000" stroke-width="8.0" opacity="0.6"/>
+  <path id="seg_8_span_1" d="M 49.6 -23.4 C 56.7 -26.1, 65.2 -25.7, 73.6 -23.4" fill="none" stroke="#10b981" stroke-width="4.0" stroke-linecap="round" stroke-linejoin="round">
+    <title>seg_8_span_1 (Lanes: 1, Elev: 9.3m)</title>
+  </path>
+  <path d="M 49.6 -23.4 C 56.7 -26.1, 65.2 -25.7, 73.6 -23.4" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M -77.5 -18.3 C -69.8 -15.9, -63.0 -11.0, -55.9 -7.3" fill="none" stroke="#000000" stroke-width="8.0" opacity="0.6"/>
+  <path id="seg_56" d="M -77.5 -18.3 C -69.8 -15.9, -63.0 -11.0, -55.9 -7.3" fill="none" stroke="#10b981" stroke-width="4.0" stroke-linecap="round" stroke-linejoin="round">
+    <title>seg_56 (Lanes: 1, Elev: 7.8m)</title>
+  </path>
+  <path d="M -77.5 -18.3 C -69.8 -15.9, -63.0 -11.0, -55.9 -7.3" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M 37.5 -13.4 C 40.7 -18.4, 44.8 -21.6, 49.6 -23.4" fill="none" stroke="#000000" stroke-width="8.0" opacity="0.6"/>
+  <path id="seg_8" d="M 37.5 -13.4 C 40.7 -18.4, 44.8 -21.6, 49.6 -23.4" fill="none" stroke="#10b981" stroke-width="4.0" stroke-linecap="round" stroke-linejoin="round">
+    <title>seg_8 (Lanes: 1, Elev: 9.5m)</title>
+  </path>
+  <path d="M 37.5 -13.4 C 40.7 -18.4, 44.8 -21.6, 49.6 -23.4" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M 31.5 5.9 C 31.9 -1.0, 33.9 -7.8, 37.5 -13.4" fill="none" stroke="#000000" stroke-width="8.0" opacity="0.6"/>
+  <path id="seg_12_span_1" d="M 31.5 5.9 C 31.9 -1.0, 33.9 -7.8, 37.5 -13.4" fill="none" stroke="#10b981" stroke-width="4.0" stroke-linecap="round" stroke-linejoin="round">
+    <title>seg_12_span_1 (Lanes: 1, Elev: 9.6m)</title>
+  </path>
+  <path d="M 31.5 5.9 C 31.9 -1.0, 33.9 -7.8, 37.5 -13.4" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M -60.3 57.2 C -49.8 56.3, -39.2 53.0, -28.9 49.5" fill="none" stroke="#000000" stroke-width="8.0" opacity="0.6"/>
+  <path id="seg_48_span_1" d="M -60.3 57.2 C -49.8 56.3, -39.2 53.0, -28.9 49.5" fill="none" stroke="#10b981" stroke-width="4.0" stroke-linecap="round" stroke-linejoin="round">
+    <title>seg_48_span_1 (Lanes: 1, Elev: 9.5m)</title>
+  </path>
+  <path d="M -60.3 57.2 C -49.8 56.3, -39.2 53.0, -28.9 49.5" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M -28.9 49.5 C -18.9 46.2, -9.0 42.8, 1.0 41.7" fill="none" stroke="#000000" stroke-width="8.0" opacity="0.6"/>
+  <path id="seg_46" d="M -28.9 49.5 C -18.9 46.2, -9.0 42.8, 1.0 41.7" fill="none" stroke="#10b981" stroke-width="4.0" stroke-linecap="round" stroke-linejoin="round">
+    <title>seg_46 (Lanes: 1, Elev: 9.0m)</title>
+  </path>
+  <path d="M -28.9 49.5 C -18.9 46.2, -9.0 42.8, 1.0 41.7" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M 40.9 34.2 C 34.0 27.0, 30.9 16.3, 31.5 5.9" fill="none" stroke="#000000" stroke-width="8.0" opacity="0.6"/>
+  <path id="seg_12" d="M 40.9 34.2 C 34.0 27.0, 30.9 16.3, 31.5 5.9" fill="none" stroke="#10b981" stroke-width="4.0" stroke-linecap="round" stroke-linejoin="round">
+    <title>seg_12 (Lanes: 1, Elev: 9.8m)</title>
+  </path>
+  <path d="M 40.9 34.2 C 34.0 27.0, 30.9 16.3, 31.5 5.9" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M -79.8 -13.0 C -71.6 -13.1, -62.9 -10.9, -55.9 -7.3" fill="none" stroke="#000000" stroke-width="8.0" opacity="0.6"/>
+  <path id="seg_52_span_1" d="M -79.8 -13.0 C -71.6 -13.1, -62.9 -10.9, -55.9 -7.3" fill="none" stroke="#10b981" stroke-width="4.0" stroke-linecap="round" stroke-linejoin="round">
+    <title>seg_52_span_1 (Lanes: 1, Elev: 9.7m)</title>
+  </path>
+  <path d="M -79.8 -13.0 C -71.6 -13.1, -62.9 -10.9, -55.9 -7.3" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M 26.1 -41.9 C 20.0 -39.3, 13.5 -36.2, 7.1 -33.9" fill="none" stroke="#000000" stroke-width="8.0" opacity="0.6"/>
+  <path id="seg_45" d="M 26.1 -41.9 C 20.0 -39.3, 13.5 -36.2, 7.1 -33.9" fill="none" stroke="#10b981" stroke-width="4.0" stroke-linecap="round" stroke-linejoin="round">
+    <title>seg_45 (Lanes: 1, Elev: 9.6m)</title>
+  </path>
+  <path d="M 26.1 -41.9 C 20.0 -39.3, 13.5 -36.2, 7.1 -33.9" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M 48.1 65.3 C 50.0 53.8, 48.7 42.3, 40.9 34.2" fill="none" stroke="#000000" stroke-width="8.0" opacity="0.6"/>
+  <path id="seg_19_span_1" d="M 48.1 65.3 C 50.0 53.8, 48.7 42.3, 40.9 34.2" fill="none" stroke="#f59e0b" stroke-width="4.0" stroke-linecap="round" stroke-linejoin="round">
+    <title>seg_19_span_1 (Lanes: 1, Elev: 10.1m)</title>
+  </path>
+  <path d="M 48.1 65.3 C 50.0 53.8, 48.7 42.3, 40.9 34.2" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M -60.2 -80.3 C -64.2 -72.5, -65.8 -64.1, -65.6 -55.5" fill="none" stroke="#000000" stroke-width="8.0" opacity="0.6"/>
+  <path id="seg_29" d="M -60.2 -80.3 C -64.2 -72.5, -65.8 -64.1, -65.6 -55.5" fill="none" stroke="#f59e0b" stroke-width="4.0" stroke-linecap="round" stroke-linejoin="round">
+    <title>seg_29 (Lanes: 1, Elev: 10.3m)</title>
+  </path>
+  <path d="M -60.2 -80.3 C -64.2 -72.5, -65.8 -64.1, -65.6 -55.5" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M -105.1 17.2 C -105.9 11.5, -105.1 5.5, -102.6 -0.2" fill="none" stroke="#000000" stroke-width="8.0" opacity="0.6"/>
+  <path id="seg_11_span_1" d="M -105.1 17.2 C -105.9 11.5, -105.1 5.5, -102.6 -0.2" fill="none" stroke="#f59e0b" stroke-width="4.0" stroke-linecap="round" stroke-linejoin="round">
+    <title>seg_11_span_1 (Lanes: 1, Elev: 10.3m)</title>
+  </path>
+  <path d="M -105.1 17.2 C -105.9 11.5, -105.1 5.5, -102.6 -0.2" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M -35.5 -100.2 C -46.0 -96.7, -54.9 -90.4, -60.2 -80.3" fill="none" stroke="#000000" stroke-width="8.0" opacity="0.6"/>
+  <path id="seg_30_span_2" d="M -35.5 -100.2 C -46.0 -96.7, -54.9 -90.4, -60.2 -80.3" fill="none" stroke="#f59e0b" stroke-width="4.0" stroke-linecap="round" stroke-linejoin="round">
+    <title>seg_30_span_2 (Lanes: 1, Elev: 10.3m)</title>
+  </path>
+  <path d="M -35.5 -100.2 C -46.0 -96.7, -54.9 -90.4, -60.2 -80.3" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M -90.9 37.5 C -99.1 33.3, -103.9 25.7, -105.1 17.2" fill="none" stroke="#000000" stroke-width="8.0" opacity="0.6"/>
+  <path id="seg_11" d="M -90.9 37.5 C -99.1 33.3, -103.9 25.7, -105.1 17.2" fill="none" stroke="#f59e0b" stroke-width="4.0" stroke-linecap="round" stroke-linejoin="round">
+    <title>seg_11 (Lanes: 1, Elev: 10.3m)</title>
+  </path>
+  <path d="M -90.9 37.5 C -99.1 33.3, -103.9 25.7, -105.1 17.2" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M -65.6 -55.5 C -65.4 -45.0, -62.5 -34.3, -58.1 -24.5" fill="none" stroke="#000000" stroke-width="8.0" opacity="0.6"/>
+  <path id="seg_29_span_1" d="M -65.6 -55.5 C -65.4 -45.0, -62.5 -34.3, -58.1 -24.5" fill="none" stroke="#f59e0b" stroke-width="4.0" stroke-linecap="round" stroke-linejoin="round">
+    <title>seg_29_span_1 (Lanes: 1, Elev: 10.3m)</title>
+  </path>
+  <path d="M -65.6 -55.5 C -65.4 -45.0, -62.5 -34.3, -58.1 -24.5" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M 41.0 87.6 C 44.1 80.8, 46.8 73.0, 48.1 65.3" fill="none" stroke="#000000" stroke-width="8.0" opacity="0.6"/>
+  <path id="seg_19" d="M 41.0 87.6 C 44.1 80.8, 46.8 73.0, 48.1 65.3" fill="none" stroke="#f59e0b" stroke-width="4.0" stroke-linecap="round" stroke-linejoin="round">
+    <title>seg_19 (Lanes: 1, Elev: 10.3m)</title>
+  </path>
+  <path d="M 41.0 87.6 C 44.1 80.8, 46.8 73.0, 48.1 65.3" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M -53.2 25.7 C -55.8 31.3, -60.1 35.4, -65.3 37.9" fill="none" stroke="#000000" stroke-width="8.0" opacity="0.6"/>
+  <path id="seg_9" d="M -53.2 25.7 C -55.8 31.3, -60.1 35.4, -65.3 37.9" fill="none" stroke="#f59e0b" stroke-width="4.0" stroke-linecap="round" stroke-linejoin="round">
+    <title>seg_9 (Lanes: 1, Elev: 10.3m)</title>
+  </path>
+  <path d="M -53.2 25.7 C -55.8 31.3, -60.1 35.4, -65.3 37.9" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M 4.3 -101.5 C -1.3 -102.7, -7.2 -103.4, -13.1 -103.4" fill="none" stroke="#000000" stroke-width="8.0" opacity="0.6"/>
+  <path id="seg_30" d="M 4.3 -101.5 C -1.3 -102.7, -7.2 -103.4, -13.1 -103.4" fill="none" stroke="#f59e0b" stroke-width="4.0" stroke-linecap="round" stroke-linejoin="round">
+    <title>seg_30 (Lanes: 1, Elev: 10.3m)</title>
+  </path>
+  <path d="M 4.3 -101.5 C -1.3 -102.7, -7.2 -103.4, -13.1 -103.4" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M -13.1 -103.4 C -20.8 -103.5, -28.5 -102.5, -35.5 -100.2" fill="none" stroke="#000000" stroke-width="8.0" opacity="0.6"/>
+  <path id="seg_30_span_1" d="M -13.1 -103.4 C -20.8 -103.5, -28.5 -102.5, -35.5 -100.2" fill="none" stroke="#f59e0b" stroke-width="4.0" stroke-linecap="round" stroke-linejoin="round">
+    <title>seg_30_span_1 (Lanes: 1, Elev: 10.3m)</title>
+  </path>
+  <path d="M -13.1 -103.4 C -20.8 -103.5, -28.5 -102.5, -35.5 -100.2" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M 4.3 -101.5 C -1.9 -102.8, -8.3 -103.4, -14.5 -103.2" fill="none" stroke="#000000" stroke-width="8.0" opacity="0.6"/>
+  <path id="seg_31" d="M 4.3 -101.5 C -1.9 -102.8, -8.3 -103.4, -14.5 -103.2" fill="none" stroke="#10b981" stroke-width="4.0" stroke-linecap="round" stroke-linejoin="round">
+    <title>seg_31 (Lanes: 1, Elev: 5.2m)</title>
+  </path>
+  <path d="M 4.3 -101.5 C -1.9 -102.8, -8.3 -103.4, -14.5 -103.2" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M -65.3 37.9 C -73.0 41.6, -82.6 41.7, -90.9 37.5" fill="none" stroke="#000000" stroke-width="8.0" opacity="0.6"/>
+  <path id="seg_9_span_1" d="M -65.3 37.9 C -73.0 41.6, -82.6 41.7, -90.9 37.5" fill="none" stroke="#f59e0b" stroke-width="4.0" stroke-linecap="round" stroke-linejoin="round">
+    <title>seg_9_span_1 (Lanes: 1, Elev: 10.3m)</title>
+  </path>
+  <path d="M -65.3 37.9 C -73.0 41.6, -82.6 41.7, -90.9 37.5" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M 101.1 -10.2 C 102.0 -16.3, 101.0 -22.6, 98.6 -28.3" fill="none" stroke="#000000" stroke-width="8.0" opacity="0.6"/>
+  <path id="seg_63" d="M 101.1 -10.2 C 102.0 -16.3, 101.0 -22.6, 98.6 -28.3" fill="none" stroke="#10b981" stroke-width="4.0" stroke-linecap="round" stroke-linejoin="round">
+    <title>seg_63 (Lanes: 1, Elev: 5.2m)</title>
+  </path>
+  <path d="M 101.1 -10.2 C 102.0 -16.3, 101.0 -22.6, 98.6 -28.3" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M -49.7 5.8 C -49.3 12.6, -50.2 19.3, -53.2 25.7" fill="none" stroke="#000000" stroke-width="8.0" opacity="0.6"/>
+  <path id="seg_13_span_1" d="M -49.7 5.8 C -49.3 12.6, -50.2 19.3, -53.2 25.7" fill="none" stroke="#f59e0b" stroke-width="4.0" stroke-linecap="round" stroke-linejoin="round">
+    <title>seg_13_span_1 (Lanes: 1, Elev: 10.3m)</title>
+  </path>
+  <path d="M -49.7 5.8 C -49.3 12.6, -50.2 19.3, -53.2 25.7" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M 79.3 -47.2 C 72.3 -49.8, 65.1 -50.6, 58.0 -50.3" fill="none" stroke="#000000" stroke-width="8.0" opacity="0.6"/>
+  <path id="seg_47" d="M 79.3 -47.2 C 72.3 -49.8, 65.1 -50.6, 58.0 -50.3" fill="none" stroke="#f59e0b" stroke-width="4.0" stroke-linecap="round" stroke-linejoin="round">
+    <title>seg_47 (Lanes: 1, Elev: 10.3m)</title>
+  </path>
+  <path d="M 79.3 -47.2 C 72.3 -49.8, 65.1 -50.6, 58.0 -50.3" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M 58.0 -50.3 C 47.2 -49.7, 36.5 -46.3, 26.1 -41.9" fill="none" stroke="#000000" stroke-width="8.0" opacity="0.6"/>
+  <path id="seg_47_span_1" d="M 58.0 -50.3 C 47.2 -49.7, 36.5 -46.3, 26.1 -41.9" fill="none" stroke="#f59e0b" stroke-width="4.0" stroke-linecap="round" stroke-linejoin="round">
+    <title>seg_47_span_1 (Lanes: 1, Elev: 10.2m)</title>
+  </path>
+  <path d="M 58.0 -50.3 C 47.2 -49.7, 36.5 -46.3, 26.1 -41.9" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M 12.7 27.9 C 19.6 30.7, 26.9 32.5, 34.3 33.8" fill="none" stroke="#000000" stroke-width="11.4" opacity="0.6"/>
+  <path id="seg_49" d="M 12.7 27.9 C 19.6 30.7, 26.9 32.5, 34.3 33.8" fill="none" stroke="#f59e0b" stroke-width="7.3" stroke-linecap="round" stroke-linejoin="round">
+    <title>seg_49 (Lanes: 3, Elev: 10.3m)</title>
+  </path>
+  <path d="M 12.7 27.9 C 19.6 30.7, 26.9 32.5, 34.3 33.8" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M 34.3 33.8 C 45.4 35.6, 56.9 36.1, 68.1 36.9" fill="none" stroke="#000000" stroke-width="11.4" opacity="0.6"/>
+  <path id="seg_49_span_1" d="M 34.3 33.8 C 45.4 35.6, 56.9 36.1, 68.1 36.9" fill="none" stroke="#10b981" stroke-width="7.3" stroke-linecap="round" stroke-linejoin="round">
+    <title>seg_49_span_1 (Lanes: 3, Elev: 8.9m)</title>
+  </path>
+  <path d="M 34.3 33.8 C 45.4 35.6, 56.9 36.1, 68.1 36.9" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M -30.7 -15.2 C -35.9 -18.1, -41.2 -21.1, -46.6 -23.8" fill="none" stroke="#000000" stroke-width="11.4" opacity="0.6"/>
+  <path id="seg_50" d="M -30.7 -15.2 C -35.9 -18.1, -41.2 -21.1, -46.6 -23.8" fill="none" stroke="#f59e0b" stroke-width="7.3" stroke-linecap="round" stroke-linejoin="round">
+    <title>seg_50 (Lanes: 3, Elev: 10.3m)</title>
+  </path>
+  <path d="M -30.7 -15.2 C -35.9 -18.1, -41.2 -21.1, -46.6 -23.8" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M -46.6 -23.8 C -54.7 -28.0, -62.9 -31.7, -71.5 -34.4" fill="none" stroke="#000000" stroke-width="11.4" opacity="0.6"/>
+  <path id="seg_50_span_1" d="M -46.6 -23.8 C -54.7 -28.0, -62.9 -31.7, -71.5 -34.4" fill="none" stroke="#10b981" stroke-width="7.3" stroke-linecap="round" stroke-linejoin="round">
+    <title>seg_50_span_1 (Lanes: 3, Elev: 9.4m)</title>
+  </path>
+  <path d="M -46.6 -23.8 C -54.7 -28.0, -62.9 -31.7, -71.5 -34.4" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M -102.6 -0.2 C -98.8 -9.1, -89.8 -12.8, -79.8 -13.0" fill="none" stroke="#000000" stroke-width="8.0" opacity="0.6"/>
+  <path id="seg_52" d="M -102.6 -0.2 C -98.8 -9.1, -89.8 -12.8, -79.8 -13.0" fill="none" stroke="#f59e0b" stroke-width="4.0" stroke-linecap="round" stroke-linejoin="round">
+    <title>seg_52 (Lanes: 1, Elev: 10.1m)</title>
+  </path>
+  <path d="M -102.6 -0.2 C -98.8 -9.1, -89.8 -12.8, -79.8 -13.0" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M 42.9 16.5 C 33.1 15.0, 23.2 12.7, 14.4 8.2" fill="none" stroke="#000000" stroke-width="11.4" opacity="0.6"/>
+  <path id="seg_54" d="M 42.9 16.5 C 33.1 15.0, 23.2 12.7, 14.4 8.2" fill="none" stroke="#10b981" stroke-width="7.3" stroke-linecap="round" stroke-linejoin="round">
+    <title>seg_54 (Lanes: 3, Elev: 9.4m)</title>
+  </path>
+  <path d="M 42.9 16.5 C 33.1 15.0, 23.2 12.7, 14.4 8.2" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M -58.1 -24.5 C -53.8 -14.9, -50.3 -4.5, -49.7 5.8" fill="none" stroke="#000000" stroke-width="8.0" opacity="0.6"/>
+  <path id="seg_13" d="M -58.1 -24.5 C -53.8 -14.9, -50.3 -4.5, -49.7 5.8" fill="none" stroke="#f59e0b" stroke-width="4.0" stroke-linecap="round" stroke-linejoin="round">
+    <title>seg_13 (Lanes: 1, Elev: 10.3m)</title>
+  </path>
+  <path d="M -58.1 -24.5 C -53.8 -14.9, -50.3 -4.5, -49.7 5.8" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M -55.9 -7.3 C -48.2 -3.3, -40.6 0.9, -32.9 4.9" fill="none" stroke="#000000" stroke-width="11.4" opacity="0.6"/>
+  <path id="seg_55" d="M -55.9 -7.3 C -48.2 -3.3, -40.6 0.9, -32.9 4.9" fill="none" stroke="#10b981" stroke-width="7.3" stroke-linecap="round" stroke-linejoin="round">
+    <title>seg_55 (Lanes: 3, Elev: 9.9m)</title>
+  </path>
+  <path d="M -55.9 -7.3 C -48.2 -3.3, -40.6 0.9, -32.9 4.9" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M -3.8 -0.9 C -12.8 -5.5, -21.9 -10.2, -30.7 -15.2" fill="none" stroke="#000000" stroke-width="11.4" opacity="0.6"/>
+  <path id="seg_58_span_1" d="M -3.8 -0.9 C -12.8 -5.5, -21.9 -10.2, -30.7 -15.2" fill="none" stroke="#f59e0b" stroke-width="7.3" stroke-linecap="round" stroke-linejoin="round">
+    <title>seg_58_span_1 (Lanes: 3, Elev: 10.3m)</title>
+  </path>
+  <path d="M -3.8 -0.9 C -12.8 -5.5, -21.9 -10.2, -30.7 -15.2" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M -32.9 4.9 C -26.1 8.4, -19.4 12.2, -12.7 15.8" fill="none" stroke="#000000" stroke-width="11.4" opacity="0.6"/>
+  <path id="seg_59" d="M -32.9 4.9 C -26.1 8.4, -19.4 12.2, -12.7 15.8" fill="none" stroke="#f59e0b" stroke-width="7.3" stroke-linecap="round" stroke-linejoin="round">
+    <title>seg_59 (Lanes: 3, Elev: 10.3m)</title>
+  </path>
+  <path d="M -32.9 4.9 C -26.1 8.4, -19.4 12.2, -12.7 15.8" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M -12.7 15.8 C -4.4 20.2, 4.0 24.4, 12.7 27.9" fill="none" stroke="#000000" stroke-width="11.4" opacity="0.6"/>
+  <path id="seg_59_span_1" d="M -12.7 15.8 C -4.4 20.2, 4.0 24.4, 12.7 27.9" fill="none" stroke="#f59e0b" stroke-width="7.3" stroke-linecap="round" stroke-linejoin="round">
+    <title>seg_59_span_1 (Lanes: 3, Elev: 10.3m)</title>
+  </path>
+  <path d="M -12.7 15.8 C -4.4 20.2, 4.0 24.4, 12.7 27.9" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M -4.3 101.5 C 2.4 102.9, 9.9 103.5, 16.9 102.7" fill="none" stroke="#000000" stroke-width="8.0" opacity="0.6"/>
+  <path id="seg_62" d="M -4.3 101.5 C 2.4 102.9, 9.9 103.5, 16.9 102.7" fill="none" stroke="#10b981" stroke-width="4.0" stroke-linecap="round" stroke-linejoin="round">
+    <title>seg_62 (Lanes: 1, Elev: 5.2m)</title>
+  </path>
+  <path d="M -4.3 101.5 C 2.4 102.9, 9.9 103.5, 16.9 102.7" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M 16.9 102.7 C 27.4 101.4, 36.8 97.0, 41.0 87.6" fill="none" stroke="#000000" stroke-width="8.0" opacity="0.6"/>
+  <path id="seg_62_span_1" d="M 16.9 102.7 C 27.4 101.4, 36.8 97.0, 41.0 87.6" fill="none" stroke="#f59e0b" stroke-width="4.0" stroke-linecap="round" stroke-linejoin="round">
+    <title>seg_62_span_1 (Lanes: 1, Elev: 10.3m)</title>
+  </path>
+  <path d="M 16.9 102.7 C 27.4 101.4, 36.8 97.0, 41.0 87.6" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M 98.6 -28.3 C 94.9 -36.8, 88.0 -43.9, 79.3 -47.2" fill="none" stroke="#000000" stroke-width="8.0" opacity="0.6"/>
+  <path id="seg_63_span_1" d="M 98.6 -28.3 C 94.9 -36.8, 88.0 -43.9, 79.3 -47.2" fill="none" stroke="#f59e0b" stroke-width="4.0" stroke-linecap="round" stroke-linejoin="round">
+    <title>seg_63_span_1 (Lanes: 1, Elev: 10.3m)</title>
+  </path>
+  <path d="M 98.6 -28.3 C 94.9 -36.8, 88.0 -43.9, 79.3 -47.2" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M -101.1 10.2 C -102.6 20.5, -101.6 30.7, -97.8 39.8" fill="none" stroke="#000000" stroke-width="8.0" opacity="0.6"/>
+  <path id="seg_42" d="M -101.1 10.2 C -102.6 20.5, -101.6 30.7, -97.8 39.8" fill="none" stroke="#10b981" stroke-width="4.0" stroke-linecap="round" stroke-linejoin="round">
+    <title>seg_42 (Lanes: 1, Elev: 9.1m)</title>
+  </path>
+  <path d="M -101.1 10.2 C -102.6 20.5, -101.6 30.7, -97.8 39.8" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M 24.3 -99.4 C 17.6 -99.4, 10.8 -100.2, 4.3 -101.5" fill="none" stroke="#000000" stroke-width="8.0" opacity="0.6"/>
+  <path id="seg_32_span_2" d="M 24.3 -99.4 C 17.6 -99.4, 10.8 -100.2, 4.3 -101.5" fill="none" stroke="#10b981" stroke-width="4.0" stroke-linecap="round" stroke-linejoin="round">
+    <title>seg_32_span_2 (Lanes: 1, Elev: 8.7m)</title>
+  </path>
+  <path d="M 24.3 -99.4 C 17.6 -99.4, 10.8 -100.2, 4.3 -101.5" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M -97.8 39.8 C -95.3 45.9, -91.6 51.4, -86.5 56.2" fill="none" stroke="#000000" stroke-width="8.0" opacity="0.6"/>
+  <path id="seg_42_span_1" d="M -97.8 39.8 C -95.3 45.9, -91.6 51.4, -86.5 56.2" fill="none" stroke="#10b981" stroke-width="4.0" stroke-linecap="round" stroke-linejoin="round">
+    <title>seg_42_span_1 (Lanes: 1, Elev: 9.0m)</title>
+  </path>
+  <path d="M -97.8 39.8 C -95.3 45.9, -91.6 51.4, -86.5 56.2" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <path d="M 14.4 8.2 C 8.3 5.2, 2.3 2.2, -3.8 -0.9" fill="none" stroke="#000000" stroke-width="11.4" opacity="0.6"/>
+  <path id="seg_58" d="M 14.4 8.2 C 8.3 5.2, 2.3 2.2, -3.8 -0.9" fill="none" stroke="#f59e0b" stroke-width="7.3" stroke-linecap="round" stroke-linejoin="round">
+    <title>seg_58 (Lanes: 3, Elev: 10.3m)</title>
+  </path>
+  <path d="M 14.4 8.2 C 8.3 5.2, 2.3 2.2, -3.8 -0.9" fill="none" stroke="#f8fafc" stroke-width="1" stroke-dasharray="4 4" opacity="0.5" marker-mid="url(#arrow)"/>
+  <g transform="translate(76.3, -22.4)">
+    <circle r="5" fill="#ef4444" stroke="#ffffff" stroke-width="1.5"/>
+    <title>[Error] MinimumTurningRadius: Course 'seg_10' has sharp turning radius 16.6 m at t=0.17 (limit: 18.0 m).</title>
+  </g>
+  <g transform="translate(4.3, -101.5)">
+    <circle r="5" fill="#ef4444" stroke="#ffffff" stroke-width="1.5"/>
+    <title>[Error] MaximumGrade: Course 'seg_31' grade 54.5% exceeds maximum allowed 20.0%.</title>
+  </g>
+  <g transform="translate(81.2, 16.2)">
+    <circle r="5" fill="#ef4444" stroke="#ffffff" stroke-width="1.5"/>
+    <title>[Error] MinimumTurningRadius: Course 'seg_53' has sharp turning radius 13.1 m at t=0.17 (limit: 18.0 m).</title>
+  </g>
+  <g transform="translate(-4.3, 101.5)">
+    <circle r="5" fill="#ef4444" stroke="#ffffff" stroke-width="1.5"/>
+    <title>[Error] MaximumGrade: Course 'seg_62' grade 48.5% exceeds maximum allowed 20.0%.</title>
+  </g>
+  <g transform="translate(101.1, -10.2)">
+    <circle r="5" fill="#ef4444" stroke="#ffffff" stroke-width="1.5"/>
+    <title>[Error] MaximumGrade: Course 'seg_63' grade 56.3% exceeds maximum allowed 20.0%.</title>
+  </g>
+  <text x="-169.7" y="169.7" fill="#94a3b8" font-family="sans-serif" font-size="11" font-weight="bold" text-anchor="middle" dominant-baseline="central">Leg 0</text>
+  <text x="240.0" y="-0.0" fill="#94a3b8" font-family="sans-serif" font-size="11" font-weight="bold" text-anchor="middle" dominant-baseline="central">Leg 1</text>
+  <text x="169.7" y="-169.7" fill="#94a3b8" font-family="sans-serif" font-size="11" font-weight="bold" text-anchor="middle" dominant-baseline="central">Leg 2</text>
+  <text x="-240.0" y="0.0" fill="#94a3b8" font-family="sans-serif" font-size="11" font-weight="bold" text-anchor="middle" dominant-baseline="central">Leg 3</text>
+</svg>

@@ -30,6 +30,8 @@ namespace ProceduralInterchanges.Core.Models
         public float SpeedLimitMs;       // RoadData.m_SpeedLimit
         public bool AttachToNode;        // true if snapping to an existing stub node rather than splitting an edge
         public Entity AttachNodeEntity;  // Non-null when AttachToNode == true
+        public bool RequiresOuterTrimReplacement; // Set when inner stub must be trimmed back to perpendicular boundary plane
+        public bool KeepStartPortionOnTrim;       // true if [0, CutCurveT] is kept as outer replacement, false if [CutCurveT, 1] is kept
     }
 
     public sealed class HighwayLeg
@@ -41,6 +43,8 @@ namespace ProceduralInterchanges.Core.Models
         public float3 PortalInwardTangent;             // Highway's actual inbound tangent at cut point for exact G1 alignment
         public bool IsSeparatedDualCarriageway;        // true if Inbound != null && Outbound != null as separate one-way edges
         public float CarriagewaySeparation;            // Centerline-to-centerline lateral spacing (m) between Inbound and Outbound
+        public float LongitudinalStaggerMeters;        // Longitudinal offset between Inbound and Outbound cuts along approach axis
+        public float TangentConvergenceRad;            // Divergence/convergence angle between Inbound and Outbound tangents
         public CarriagewayEndpoint Inbound;            // Approaches center (One-Way Inbound, or shared Two-Way)
         public CarriagewayEndpoint Outbound;           // Leaves center (One-Way Outbound, or null if single Two-Way)
         public List<Entity> InteriorEdgesToDelete = new List<Entity>(); // Existing edges strictly inside footprint to delete

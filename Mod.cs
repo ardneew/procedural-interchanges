@@ -14,6 +14,7 @@ namespace ProceduralInterchanges
         public static ILog log = LogManager.GetLogger(nameof(ProceduralInterchanges)).SetShowsErrorsInUI(false);
 
         private Setting m_Setting;
+        public static Setting InstanceSetting { get; private set; }
         public static ProxyAction m_ToggleToolAction;
         public static ProxyAction m_UndoAction;
 
@@ -28,6 +29,7 @@ namespace ProceduralInterchanges
                 log.Info($"Current mod asset at {asset.path}");
 
             m_Setting = new Setting(this);
+            InstanceSetting = m_Setting;
             m_Setting.RegisterInOptionsUI();
             GameManager.instance.localizationManager.AddSource("en-US", new LocaleEN(m_Setting));
 
@@ -61,6 +63,7 @@ namespace ProceduralInterchanges
         public void OnDispose()
         {
             log.Info(nameof(OnDispose));
+            InstanceSetting = null;
             if (m_Setting != null)
             {
                 m_Setting.UnregisterInOptionsUI();

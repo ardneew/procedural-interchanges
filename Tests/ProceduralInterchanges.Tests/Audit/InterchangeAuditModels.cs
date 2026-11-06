@@ -18,7 +18,16 @@ namespace ProceduralInterchanges.Tests.Audit
         MinimumTurningRadius,
         TopologicalReachability,
         TangentContinuity,
-        CurveDegeneracy
+        CurveDegeneracy,
+        PortalAlignment,
+        DisjointTerminal,
+
+        // NEW ADVERSARIAL CATEGORIES:
+        MonotonicProgress,       // Reverse hooks, hairpin loops, backward bends
+        ExtraneousCurvature,     // Unnecessary wiggly S-bends / inflections on straight corridors
+        SubterraneanRoad,        // Road plunging below terrain / underground clipping without tunnel
+        FootprintScaling,        // Generator ignoring FootprintRadius configuration
+        PortalOvershoot          // Interior nodes extending radially past the boundary portal
     }
 
     public sealed class AuditIssue
@@ -47,6 +56,10 @@ namespace ProceduralInterchanges.Tests.Audit
         public int PillarCount { get; set; }
         public double GenerationTimeMs { get; set; }
         public double AuditTimeMs { get; set; }
+        public float MaxDeflectionDegrees { get; set; }
+        public int InflectionCount { get; set; }
+        public float MinTerrainClearanceMeters { get; set; } = float.MaxValue;
+        public float BoundingRadiusMeters { get; set; }
     }
 
     public sealed class AuditVerdict

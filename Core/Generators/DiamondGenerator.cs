@@ -10,7 +10,7 @@ namespace ProceduralInterchanges.Core.Generators
     {
         public InterchangeArchetype Archetype => InterchangeArchetype.Diamond;
         public string DisplayName => "Diamond Interchange";
-        public string Description => "Standard 4-way freeway/arterial diamond interchange with 4 diagonal ramps.";
+        public string Description => "Standard 4-way freeway/arterial diamond interchange using shared topological graph.";
         public int MinLegs => 4;
         public int MaxLegs => 4;
 
@@ -29,134 +29,161 @@ namespace ProceduralInterchanges.Core.Generators
         {
             float3 center = config.Center;
             float R = config.FootprintRadius;
-
-            // Legs ordered CCW: 0=MainlineEast, 1=CrossNorth, 2=MainlineWest, 3=CrossSouth
-            var leg0 = legs[0];
-            var leg1 = legs[1];
-            var leg2 = legs[2];
-            var leg3 = legs[3];
-
             float sigma = config.LeftHandTraffic ? -1f : 1f;
-            int mainLevel = config.MainlineOverpass ? 1 : 0;
-            int crossLevel = config.MainlineOverpass ? 0 : 1;
 
-            var port0 = LegPortalGeometry.EmitLegApproaches(leg0, center, R, 0.25f, sigma, outCourses, "diamond_leg_0");
-            var port1 = LegPortalGeometry.EmitLegApproaches(leg1, center, R, 0.38f, sigma, outCourses, "diamond_leg_1");
-            var port2 = LegPortalGeometry.EmitLegApproaches(leg2, center, R, 0.25f, sigma, outCourses, "diamond_leg_2");
-            var port3 = LegPortalGeometry.EmitLegApproaches(leg3, center, R, 0.38f, sigma, outCourses, "diamond_leg_3");
+            InterchangeGraphBuilder.ResolveStackLevels(
+                config,
+                out int priLevel,
+                out int secLevel,
+                out int _,
+                out int _,
+                out int _);
 
-            float3 d0 = port0.DivergeNode;
-            float3 m0 = port0.MergeNode;
-            float3 d2 = port2.DivergeNode;
-            float3 m2 = port2.MergeNode;
-            float3 dir0 = port0.InboundDir;
-            float3 dir2 = port2.InboundDir;
+            InterchangeGraphBuilder.IdentifyCorridorPairs(
+                legs,
+                config,
+                out CorridorLegPair primaryPair,
+                out CorridorLegPair secondaryPair,
+                out _);
 
-            float3 d1 = port1.DivergeNode;
-            float3 m1 = port1.MergeNode;
-            float3 d3 = port3.DivergeNode;
-            float3 m3 = port3.MergeNode;
-            float3 dir1 = port1.InboundDir;
-            float3 dir3 = port3.InboundDir;
+            var legA = legs[primaryPair.LegA];
+            var legB = legs[primaryPair.LegB];
+            var legC = legs[secondaryPair.LegA];
+            var legD = legs[secondaryPair.LegB];
 
-            // 1. Primary Mainline Through Cores (Level mainLevel)
-            // 0 -> 2
+            // 1. Emit host highway approaches & departures with valid attachment entities and strict collinearity
+            var portA = LegPortalGeometry.EmitLegApproaches(legA, center, R, 0.12f, sigma, outCourses, "diamond_leg_A");
+            var portB = LegPortalGeometry.EmitLegApproaches(legB, center, R, 0.12f, sigma, outCourses, "diamond_leg_B");
+            var portC = LegPortalGeometry.EmitLegApproaches(legC, center, R, 0.12f, sigma, outCourses, "diamond_leg_C");
+            var portD = LegPortalGeometry.EmitLegApproaches(legD, center, R, 0.12f, sigma, outCourses, "diamond_leg_D");
+
+            var spinePri = InterchangeGraphBuilder.BuildCorridorSpineFromPortals(legA.LegIndex, portA, legB.LegIndex, portB);
+            var spineSec = InterchangeGraphBuilder.BuildCorridorSpineFromPortals(legC.LegIndex, portC, legD.LegIndex, portD);
+
+            // Freeway on-spine parameters: diverge t1=0.20, merge t2=0.80
+            const float tDiv = 0.20f;
+            const float tMerge = 0.80f;
+
+            // Cross-street intersection nodes: tJunc1=0.22, tJunc2=0.78
+            const float tJunc1 = 0.22f;
+            const float tJunc2 = 0.78f;
+
+            // Subdivide Primary Forward (A -> B)
+            SubdivideFreeway(spinePri.ForwardSpine, legA.LegIndex, legB.LegIndex, priLevel, "diamond_pri_fwd", tDiv, tMerge, outCourses,
+                out float3 dPriFwd, out float3 tPriFwd, out float3 mPriFwd, out float3 tPriFwdArr, sigma);
+
+            // Subdivide Primary Reverse (B -> A)
+            SubdivideFreeway(spinePri.ReverseSpine, legB.LegIndex, legA.LegIndex, priLevel, "diamond_pri_rev", tDiv, tMerge, outCourses,
+                out float3 dPriRev, out float3 tPriRev, out float3 mPriRev, out float3 tPriRevArr, sigma);
+
+            // Subdivide Secondary Cross-Street Forward (C -> D)
+            SubdivideCrossStreet(spineSec.ForwardSpine, legC.LegIndex, legD.LegIndex, secLevel, "diamond_sec_fwd", tJunc1, tJunc2, outCourses,
+                out float3 juncC1, out float3 tJuncC1Arr, out float3 tJuncC1Dep,
+                out float3 juncC2, out float3 tJuncC2Arr, out float3 tJuncC2Dep);
+
+            // Subdivide Secondary Cross-Street Reverse (D -> C)
+            SubdivideCrossStreet(spineSec.ReverseSpine, legD.LegIndex, legC.LegIndex, secLevel, "diamond_sec_rev", tJunc1, tJunc2, outCourses,
+                out float3 juncD1, out float3 tJuncD1Arr, out float3 tJuncD1Dep,
+                out float3 juncD2, out float3 tJuncD2Arr, out float3 tJuncD2Dep);
+
+            // Connect 4 Diagonal Service Ramps with orientation-invariant cross-product matching
+            bool cIsRightOfA = (portA.InboundDir.x * (portC.MergeNode.z - portA.DivergeNode.z) - portA.InboundDir.z * (portC.MergeNode.x - portA.DivergeNode.x)) * sigma < 0f;
+            if (cIsRightOfA)
+            {
+                AddRamp(dPriFwd, tPriFwd, juncD2, tJuncD2Dep, legA.LegIndex, legC.LegIndex, 0, false, "diamond_ramp_A_C", outCourses);
+                AddRamp(juncC1, tJuncC1Dep, mPriFwd, tPriFwdArr, legC.LegIndex, legB.LegIndex, 0, false, "diamond_ramp_C_B", outCourses);
+                AddRamp(dPriRev, tPriRev, juncC2, tJuncC2Dep, legB.LegIndex, legD.LegIndex, 0, false, "diamond_ramp_B_D", outCourses);
+                AddRamp(juncD1, tJuncD1Dep, mPriRev, tPriRevArr, legD.LegIndex, legA.LegIndex, 0, false, "diamond_ramp_D_A", outCourses);
+            }
+            else
+            {
+                AddRamp(dPriFwd, tPriFwd, juncC2, tJuncC2Dep, legA.LegIndex, legD.LegIndex, 0, false, "diamond_ramp_A_D", outCourses);
+                AddRamp(juncD1, tJuncD1Dep, mPriFwd, tPriFwdArr, legD.LegIndex, legB.LegIndex, 0, false, "diamond_ramp_D_B", outCourses);
+                AddRamp(dPriRev, tPriRev, juncD2, tJuncD2Dep, legB.LegIndex, legC.LegIndex, 0, false, "diamond_ramp_B_C", outCourses);
+                AddRamp(juncC1, tJuncC1Dep, mPriRev, tPriRevArr, legC.LegIndex, legA.LegIndex, 0, false, "diamond_ramp_C_A", outCourses);
+            }
+        }
+
+        private static void SubdivideFreeway(
+            Bezier4x3 spine,
+            int fromLeg, int toLeg,
+            int level,
+            string idPrefix,
+            float tDiv, float tMerge,
+            List<PlannedNetCourse> outCourses,
+            out float3 dNode, out float3 tDivRamp,
+            out float3 mNode, out float3 tMergeRampArr,
+            float sigma)
+        {
+            var s0 = CubicBezier3D.Subcurve(spine, 0f, tDiv);
+            var s1 = CubicBezier3D.Subcurve(spine, tDiv, tMerge);
+            var s2 = CubicBezier3D.Subcurve(spine, tMerge, 1f);
+
+            bool isTunnel = level < 0;
+            bool isElevated = level > 0;
+
+            outCourses.Add(new PlannedNetCourse { Id = $"{idPrefix}_app", Role = NetRole.MainlineThrough, LegIndex = fromLeg, TargetLegIndex = toLeg, Curve = s0, StackLevel = 0, ForceElevated = false, ForceTunnel = false });
+            outCourses.Add(new PlannedNetCourse { Id = $"{idPrefix}_core", Role = NetRole.MainlineThrough, LegIndex = fromLeg, TargetLegIndex = toLeg, Curve = s1, StackLevel = level, ForceElevated = isElevated, ForceTunnel = isTunnel });
+            outCourses.Add(new PlannedNetCourse { Id = $"{idPrefix}_dep", Role = NetRole.MainlineThrough, LegIndex = fromLeg, TargetLegIndex = toLeg, Curve = s2, StackLevel = 0, ForceElevated = false, ForceTunnel = false });
+
+            dNode = s0.d;
+            float3 tan0 = math.normalize(s0.d - s0.c);
+            tDivRamp = InterchangeGraphBuilder.RotateGoreTangent(tan0, -sigma * 0.22f);
+
+            mNode = s2.a;
+            float3 tan1 = math.normalize(s2.b - s2.a);
+            tMergeRampArr = InterchangeGraphBuilder.RotateGoreTangent(tan1, sigma * 0.22f);
+        }
+
+        private static void SubdivideCrossStreet(
+            Bezier4x3 spine,
+            int fromLeg, int toLeg,
+            int level,
+            string idPrefix,
+            float t1, float t2,
+            List<PlannedNetCourse> outCourses,
+            out float3 junc1, out float3 tJunc1Arr, out float3 tJunc1Dep,
+            out float3 junc2, out float3 tJunc2Arr, out float3 tJunc2Dep)
+        {
+            var s0 = CubicBezier3D.Subcurve(spine, 0f, t1);
+            var s1 = CubicBezier3D.Subcurve(spine, t1, t2);
+            var s2 = CubicBezier3D.Subcurve(spine, t2, 1f);
+
+            bool isTunnel = level < 0;
+            bool isElevated = level > 0;
+
+            outCourses.Add(new PlannedNetCourse { Id = $"{idPrefix}_seg0", Role = NetRole.CrossStreet, LegIndex = fromLeg, TargetLegIndex = toLeg, Curve = s0, StackLevel = 0, ForceElevated = false, ForceTunnel = false });
+            outCourses.Add(new PlannedNetCourse { Id = $"{idPrefix}_bridge", Role = NetRole.CrossStreet, LegIndex = fromLeg, TargetLegIndex = toLeg, Curve = s1, StackLevel = level, ForceElevated = isElevated, ForceTunnel = isTunnel });
+            outCourses.Add(new PlannedNetCourse { Id = $"{idPrefix}_seg2", Role = NetRole.CrossStreet, LegIndex = fromLeg, TargetLegIndex = toLeg, Curve = s2, StackLevel = 0, ForceElevated = false, ForceTunnel = false });
+
+            junc1 = s0.d;
+            tJunc1Arr = math.normalize(s0.d - s0.c);
+            tJunc1Dep = math.normalize(s1.b - s1.a);
+
+            junc2 = s1.d;
+            tJunc2Arr = math.normalize(s1.d - s1.c);
+            tJunc2Dep = math.normalize(s2.b - s2.a);
+        }
+
+        private static void AddRamp(
+            float3 pStart, float3 tStart,
+            float3 pEnd, float3 tEnd,
+            int fromLeg, int toLeg,
+            int level, bool elevated,
+            string id,
+            List<PlannedNetCourse> outCourses)
+        {
+            var curve = BiArcFit.FitSmoothCurve(pStart, tStart, pEnd, tEnd);
             outCourses.Add(new PlannedNetCourse
             {
-                Id = "diamond_main_0_2_core",
-                Role = NetRole.MainlineThrough,
-                LegIndex = 0,
-                TargetLegIndex = 2,
-                Curve = BiArcFit.FitSmoothCurve(d0, dir0, m2, -dir2),
-                StackLevel = mainLevel,
-                ForceElevated = mainLevel > 0
-            });
-
-            // 2 -> 0
-            outCourses.Add(new PlannedNetCourse
-            {
-                Id = "diamond_main_2_0_core",
-                Role = NetRole.MainlineThrough,
-                LegIndex = 2,
-                TargetLegIndex = 0,
-                Curve = BiArcFit.FitSmoothCurve(d2, dir2, m0, -dir0),
-                StackLevel = mainLevel,
-                ForceElevated = mainLevel > 0
-            });
-
-            // 2. Cross Street (1 <-> 3) Bridge Cores (Level crossLevel)
-            // 1 -> 3
-            outCourses.Add(new PlannedNetCourse
-            {
-                Id = "diamond_cross_1_3_bridge",
-                Role = NetRole.CrossStreet,
-                LegIndex = 1,
-                TargetLegIndex = 3,
-                Curve = BiArcFit.FitSmoothCurve(d1, dir1, m3, -dir3),
-                StackLevel = crossLevel,
-                ForceElevated = crossLevel > 0
-            });
-
-            // 3 -> 1
-            outCourses.Add(new PlannedNetCourse
-            {
-                Id = "diamond_cross_3_1_bridge",
-                Role = NetRole.CrossStreet,
-                LegIndex = 3,
-                TargetLegIndex = 1,
-                Curve = BiArcFit.FitSmoothCurve(d3, dir3, m1, -dir1),
-                StackLevel = crossLevel,
-                ForceElevated = crossLevel > 0
-            });
-
-            // 3. Four Diagonal Service Ramps connecting (d0, d1, m2, d2, d3, m0)
-            BiArcFit.ApplyGoreTaper(d0, dir0, (int)sigma, BiArcFit.kStandardGoreAngleRad, out float3 ramp0Dir);
-            BiArcFit.ApplyGoreTaper(m2, -dir2, -(int)sigma, BiArcFit.kStandardGoreAngleRad, out float3 ramp2MergeDir);
-            BiArcFit.ApplyGoreTaper(d2, dir2, (int)sigma, BiArcFit.kStandardGoreAngleRad, out float3 ramp2Dir);
-            BiArcFit.ApplyGoreTaper(m0, -dir0, -(int)sigma, BiArcFit.kStandardGoreAngleRad, out float3 ramp0MergeDir);
-
-            // Ramp 0 In to Cross Street 1 Out: d0 -> m1
-            outCourses.Add(new PlannedNetCourse
-            {
-                Id = "diamond_ramp_0_in",
-                Role = NetRole.DirectionalRamp,
-                LegIndex = 0,
-                TargetLegIndex = 1,
-                Curve = BiArcFit.FitSmoothCurve(d0, ramp0Dir, m1, -dir1),
-                StackLevel = 0
-            });
-
-            // Ramp Cross Street 1 In to 2 Out: d1 -> m2
-            outCourses.Add(new PlannedNetCourse
-            {
-                Id = "diamond_ramp_2_out",
-                Role = NetRole.DirectionalRamp,
-                LegIndex = 1,
-                TargetLegIndex = 2,
-                Curve = BiArcFit.FitSmoothCurve(d1, dir1, m2, ramp2MergeDir),
-                StackLevel = 0
-            });
-
-            // Ramp 2 In to Cross Street 3 Out: d2 -> m3
-            outCourses.Add(new PlannedNetCourse
-            {
-                Id = "diamond_ramp_2_in",
-                Role = NetRole.DirectionalRamp,
-                LegIndex = 2,
-                TargetLegIndex = 3,
-                Curve = BiArcFit.FitSmoothCurve(d2, ramp2Dir, m3, -dir3),
-                StackLevel = 0
-            });
-
-            // Ramp Cross Street 3 In to 0 Out: d3 -> m0
-            outCourses.Add(new PlannedNetCourse
-            {
-                Id = "diamond_ramp_0_out",
-                Role = NetRole.DirectionalRamp,
-                LegIndex = 3,
-                TargetLegIndex = 0,
-                Curve = BiArcFit.FitSmoothCurve(d3, dir3, m0, ramp0MergeDir),
-                StackLevel = 0
+                Id = id,
+                Role = NetRole.SlipRamp,
+                LegIndex = fromLeg,
+                TargetLegIndex = toLeg,
+                Curve = curve,
+                StackLevel = level,
+                ForceElevated = elevated,
+                ForceTunnel = level < 0
             });
         }
     }

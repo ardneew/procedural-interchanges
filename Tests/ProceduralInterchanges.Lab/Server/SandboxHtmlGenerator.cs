@@ -1,0 +1,798 @@
+using System;
+using System.IO;
+using System.Text;
+
+namespace ProceduralInterchanges.Lab.Server
+{
+    public static class SandboxHtmlGenerator
+    {
+        public static string GenerateHtml()
+        {
+            return @"<!DOCTYPE html>
+<html lang=""en"">
+<head>
+  <meta charset=""UTF-8"">
+  <title>Procedural Interchanges — RLHF Studio & Template Sandbox</title>
+  <script src=""https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js""></script>
+  <script src=""https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js""></script>
+  <style>
+    :root {
+      --bg: #121418;
+      --panel: #1a1e24;
+      --border: #2a303c;
+      --accent: #3b82f6;
+      --accent-hover: #2563eb;
+      --text: #e2e8f0;
+      --text-muted: #94a3b8;
+      --success: #10b981;
+      --warning: #f59e0b;
+      --danger: #ef4444;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; }
+    body { background: var(--bg); color: var(--text); display: flex; flex-direction: column; height: 100vh; overflow: hidden; }
+    header { background: var(--panel); border-bottom: 1px solid var(--border); padding: 10px 24px; display: flex; justify-content: space-between; align-items: center; }
+    header h1 { font-size: 1.15rem; font-weight: 600; display: flex; align-items: center; gap: 8px; }
+    .badge { padding: 4px 10px; border-radius: 999px; font-size: 0.75rem; font-weight: 600; }
+    .badge-live { background: rgba(16, 185, 129, 0.2); color: var(--success); }
+    .badge-offline { background: rgba(245, 158, 11, 0.2); color: var(--warning); }
+    .view-toggle { display: flex; background: #242933; border-radius: 6px; border: 1px solid var(--border); overflow: hidden; }
+    .view-btn { background: transparent; border: none; padding: 6px 14px; font-size: 0.8rem; font-weight: 600; color: var(--text-muted); cursor: pointer; transition: all 0.15s; }
+    .view-btn:hover { color: var(--text); }
+    .view-btn.active { background: var(--accent); color: white; }
+    .main { display: flex; flex: 1; overflow: hidden; }
+    .sidebar { width: 340px; background: var(--panel); border-right: 1px solid var(--border); padding: 16px; overflow-y: auto; display: flex; flex-direction: column; gap: 14px; }
+    .section-title { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-muted); margin-bottom: 4px; }
+    .form-group { display: flex; flex-direction: column; gap: 4px; }
+    .form-group label { font-size: 0.85rem; color: var(--text); display: flex; justify-content: space-between; }
+    .form-group span.val { color: var(--accent); font-weight: 600; }
+    input[type=range] { width: 100%; accent-color: var(--accent); }
+    select, button { background: #242933; border: 1px solid var(--border); color: var(--text); padding: 8px 12px; border-radius: 6px; font-size: 0.85rem; }
+    select:focus, button:focus { outline: none; border-color: var(--accent); }
+    button.btn-primary { background: var(--accent); color: white; border: none; cursor: pointer; font-weight: 600; }
+    button.btn-primary:hover { background: var(--accent-hover); }
+    button.btn-vote { flex: 1; padding: 10px; font-weight: 600; cursor: pointer; border-radius: 6px; border: 1px solid var(--border); }
+    button.btn-vote-a { background: rgba(59, 130, 246, 0.2); color: #60a5fa; border-color: #3b82f6; }
+    button.btn-vote-a:hover { background: rgba(59, 130, 246, 0.4); }
+    button.btn-vote-b { background: rgba(16, 185, 129, 0.2); color: #34d399; border-color: #10b981; }
+    button.btn-vote-b:hover { background: rgba(16, 185, 129, 0.4); }
+    .canvas-container { flex: 1; display: flex; flex-direction: column; background: #0b0d10; position: relative; }
+    .viewport { flex: 1; display: flex; position: relative; overflow: hidden; }
+    .view-card { flex: 1; display: flex; flex-direction: column; border-right: 1px solid var(--border); position: relative; overflow: hidden; }
+    .view-card:last-child { border-right: none; }
+    .view-header { position: absolute; top: 12px; left: 16px; background: rgba(18, 20, 24, 0.85); backdrop-filter: blur(4px); padding: 6px 14px; border-radius: 6px; border: 1px solid var(--border); font-size: 0.85rem; font-weight: 600; z-index: 10; pointer-events: none; }
+    .svg-container { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; }
+    .svg-container svg { width: 100%; height: 100%; display: block; }
+    #webglContainer { width: 100%; height: 100%; display: block; position: absolute; top: 0; left: 0; }
+    .webgl-hud { position: absolute; bottom: 16px; right: 16px; background: rgba(18, 20, 24, 0.85); backdrop-filter: blur(6px); border: 1px solid var(--border); border-radius: 8px; padding: 10px 14px; font-size: 0.75rem; color: var(--text-muted); display: flex; flex-direction: column; gap: 4px; pointer-events: none; z-index: 20; }
+    .webgl-hud-row { display: flex; justify-content: space-between; gap: 16px; }
+    .webgl-hud-val { color: var(--text); font-weight: 600; }
+    .bottom-bar { background: var(--panel); border-top: 1px solid var(--border); padding: 10px 24px; display: flex; justify-content: space-between; align-items: center; }
+    .metrics-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+    .metric-box { background: #242933; padding: 8px 12px; border-radius: 6px; border: 1px solid var(--border); }
+    .metric-label { font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase; }
+    .metric-val { font-size: 1.1rem; font-weight: 700; margin-top: 2px; }
+    .rating-stars { display: flex; gap: 4px; font-size: 1.25rem; cursor: pointer; color: #fbbf24; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Procedural Interchanges <span style=""font-weight:400; color:var(--text-muted)"">RLHF Studio</span></h1>
+    <div class=""view-toggle"">
+      <button id=""btnView2D"" class=""view-btn active"" onclick=""setViewMode('2D')"">2D Plan</button>
+      <button id=""btnViewSplit"" class=""view-btn"" onclick=""setViewMode('Split')"">Split 2D + 3D</button>
+      <button id=""btnView3D"" class=""view-btn"" onclick=""setViewMode('3D')"">3D Perspective</button>
+    </div>
+    <div style=""display:flex; gap:12px; align-items:center;"">
+      <div style=""display:flex; gap:8px; align-items:center; background:#242933; padding:5px 12px; border-radius:6px; border:1px solid var(--border);"">
+        <label style=""margin:0; font-size:0.8rem; font-weight:600; cursor:pointer; display:flex; align-items:center; gap:6px;"">
+          <input type=""checkbox"" id=""autoTrainToggle"" onchange=""toggleAutoTrain(this.checked)"" style=""cursor:pointer; width:14px; height:14px;"">
+          <span>Continuous Auto-Train</span>
+        </label>
+        <span id=""autoTrainBadge"" style=""font-size:0.75rem; color:var(--text-muted);"">Idle</span>
+      </div>
+      <span id=""statusBadge"" class=""badge badge-offline"">Checking Server...</span>
+      <button onclick=""downloadDataset()"" style=""font-size:0.8rem; cursor:pointer;"">Export rlhf-preferences.json</button>
+    </div>
+  </header>
+
+  <div class=""main"">
+    <div class=""sidebar"">
+      <div class=""section-title"">Interchange Archetype</div>
+      <div class=""form-group"">
+        <select id=""archetypeSelect"" onchange=""update()"">
+          <option value=""Cloverleaf"">Cloverleaf (4-Leg)</option>
+          <option value=""FourLevelStack"">Four-Level Stack (4-Leg)</option>
+          <option value=""Turbine"">Turbine (4-Leg)</option>
+          <option value=""Diamond"">Diamond (4-Leg)</option>
+          <option value=""ParcloA4"">Parclo A4 (4-Leg)</option>
+          <option value=""Trumpet"">Trumpet (3-Leg)</option>
+          <option value=""DirectionalT"">Directional T (3-Leg)</option>
+          <option value=""YStack"">Y-Stack (3-Leg)</option>
+        </select>
+      </div>
+
+      <div class=""section-title"">Highway Skew & Geometry</div>
+      <div class=""form-group"">
+        <label>Sector Skew Angle <span id=""skewVal"" class=""val"">90°</span></label>
+        <input type=""range"" id=""skewRange"" min=""45"" max=""135"" value=""90"" oninput=""update()"">
+      </div>
+      <div class=""form-group"">
+        <label>Footprint Radius <span id=""radiusVal"" class=""val"">240m</span></label>
+        <input type=""range"" id=""radiusRange"" min=""140"" max=""350"" value=""240"" oninput=""update()"">
+      </div>
+      <div class=""form-group"">
+        <label>Longitudinal Stagger <span id=""staggerVal"" class=""val"">0m</span></label>
+        <input type=""range"" id=""staggerRange"" min=""0"" max=""35"" value=""0"" oninput=""update()"">
+      </div>
+      <div class=""form-group"">
+        <label>Approach Tangent Skew <span id=""tangentVal"" class=""val"">0°</span></label>
+        <input type=""range"" id=""tangentRange"" min=""-20"" max=""20"" value=""0"" oninput=""update()"">
+      </div>
+      <div class=""form-group"" style=""flex-direction:row; justify-content:space-between; align-items:center;"">
+        <label style=""margin:0;"">Left-Hand Traffic (LHT)</label>
+        <input type=""checkbox"" id=""lhtCheck"" onchange=""update()"">
+      </div>
+
+      <div class=""section-title"">Kinematic Action Overrides (32-D)</div>
+      <div class=""form-group"">
+        <label>Loop Cluster Scale <span id=""loopScaleVal"" class=""val"">1.00x</span></label>
+        <input type=""range"" id=""loopScaleRange"" min=""-1"" max=""1"" step=""0.05"" value=""0"" oninput=""update()"">
+      </div>
+      <div class=""form-group"">
+        <label>Core Transform Rotation <span id=""coreRotVal"" class=""val"">0.0°</span></label>
+        <input type=""range"" id=""coreRotRange"" min=""-1"" max=""1"" step=""0.05"" value=""0"" oninput=""update()"">
+      </div>
+      <div class=""form-group"">
+        <label>Terminal Handle Scale <span id=""handleScaleVal"" class=""val"">0.33</span></label>
+        <input type=""range"" id=""handleScaleRange"" min=""-1"" max=""1"" step=""0.05"" value=""0"" oninput=""update()"">
+      </div>
+
+      <button class=""btn-primary"" onclick=""triggerFastFineTune()"" style=""margin-top:auto;"">Fine-Tune Policy With CEM</button>
+    </div>
+
+    <div class=""canvas-container"">
+      <div class=""viewport"" id=""viewportArea"">
+        <div class=""view-card"" id=""cardA"">
+          <div class=""view-header"">Candidate A (Learned RL Policy + Micro-Polish)</div>
+          <div id=""svgA"" class=""svg-container""></div>
+        </div>
+        <div class=""view-card"" id=""cardB"">
+          <div class=""view-header"">Candidate B (Exploratory / Perturbed Action)</div>
+          <div id=""svgB"" class=""svg-container""></div>
+        </div>
+        <div id=""card3D"" class=""view-card"" style=""display:none; position:relative;"">
+          <div class=""view-header"" style=""pointer-events:auto; display:flex; align-items:center; gap:10px;"">
+            <span id=""header3DTitle"">3D Perspective (Candidate A)</span>
+            <button onclick=""set3DCandidate('A')"" id=""btn3DCandA"" style=""padding:3px 8px; font-size:0.75rem; cursor:pointer; background:var(--accent); color:white; border:none; border-radius:4px;"">Cand A</button>
+            <button onclick=""set3DCandidate('B')"" id=""btn3DCandB"" style=""padding:3px 8px; font-size:0.75rem; cursor:pointer; background:#242933; color:var(--text-muted); border:1px solid var(--border); border-radius:4px;"">Cand B</button>
+            <button onclick=""reset3DCamera()"" style=""padding:3px 8px; font-size:0.75rem; cursor:pointer; background:#242933; color:var(--text); border:1px solid var(--border); border-radius:4px;"">Reset Cam</button>
+          </div>
+          <div id=""webglContainer""></div>
+          <div class=""webgl-hud"">
+            <div class=""webgl-hud-row""><span>Orbit / Tilt</span><span class=""webgl-hud-val"">Left-Drag</span></div>
+            <div class=""webgl-hud-row""><span>Pan / Zoom</span><span class=""webgl-hud-val"">Right-Drag / Scroll</span></div>
+            <div class=""webgl-hud-row""><span>Ground / Setback</span><span class=""webgl-hud-val"" style=""color:#64748b"">■ 0m</span></div>
+            <div class=""webgl-hud-row""><span>Elevated Decks</span><span class=""webgl-hud-val"" style=""color:#10b981"">■ +6m </span><span class=""webgl-hud-val"" style=""color:#f59e0b"">■ +12m </span><span class=""webgl-hud-val"" style=""color:#ec4899"">■ +18m</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class=""bottom-bar"">
+        <div class=""metrics-grid"">
+          <div class=""metric-box"">
+            <div class=""metric-label"">Reward Score</div>
+            <div class=""metric-val"" id=""metricReward"" style=""color:var(--success)"">92.4</div>
+          </div>
+          <div class=""metric-box"">
+            <div class=""metric-label"">Min Turning Radius</div>
+            <div class=""metric-val"" id=""metricRadius"">22.8 m</div>
+          </div>
+          <div class=""metric-box"">
+            <div class=""metric-label"">Max Grade</div>
+            <div class=""metric-val"" id=""metricGrade"">5.2%</div>
+          </div>
+          <div class=""metric-box"">
+            <div class=""metric-label"">Vertical Clearance</div>
+            <div class=""metric-val"" id=""metricClearance"">9.5 m</div>
+          </div>
+        </div>
+
+        <div style=""display:flex; align-items:center; gap:16px;"">
+          <div style=""display:flex; flex-direction:column; gap:4px; align-items:center;"">
+            <span style=""font-size:0.75rem; color:var(--text-muted);"">Rate Current Geometry</span>
+            <div class=""rating-stars"" onclick=""rateCandidate(event)"">★★★★★</div>
+          </div>
+          <div style=""display:flex; gap:8px;"">
+            <button class=""btn-vote btn-vote-a"" onclick=""vote('A')"">Prefer Candidate A</button>
+            <button class=""btn-vote btn-vote-b"" onclick=""vote('B')"">Prefer Candidate B</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let isServerLive = false;
+    let lastPayload = null;
+    let lastUiParams = null;
+    let currentViewMode = '2D';
+    let active3DCandidate = 'A';
+    let threeRenderer, threeScene, threeCamera, threeControls, roadMeshGroup, resizeObserver3D;
+
+    function set3DCandidate(cand) {
+      active3DCandidate = cand;
+      const btnA = document.getElementById('btn3DCandA');
+      const btnB = document.getElementById('btn3DCandB');
+      const title = document.getElementById('header3DTitle');
+      if (btnA && btnB && title) {
+        btnA.style.background = cand === 'A' ? 'var(--accent)' : '#242933';
+        btnA.style.color = cand === 'A' ? 'white' : 'var(--text-muted)';
+        btnB.style.background = cand === 'B' ? 'var(--success)' : '#242933';
+        btnB.style.color = cand === 'B' ? 'white' : 'var(--text-muted)';
+        title.innerText = `3D Perspective (Candidate ${cand})`;
+      }
+      refreshActive3DScene();
+    }
+
+    function reset3DCamera() {
+      if (!threeCamera || !threeControls) return;
+      threeCamera.position.set(0, 240, 310);
+      threeControls.target.set(0, 0, 0);
+      threeControls.update();
+    }
+
+    function setViewMode(mode) {
+      currentViewMode = mode;
+      document.getElementById('btnView2D').className = 'view-btn' + (mode === '2D' ? ' active' : '');
+      document.getElementById('btnViewSplit').className = 'view-btn' + (mode === 'Split' ? ' active' : '');
+      document.getElementById('btnView3D').className = 'view-btn' + (mode === '3D' ? ' active' : '');
+
+      const cardA = document.getElementById('cardA');
+      const cardB = document.getElementById('cardB');
+      const card3D = document.getElementById('card3D');
+
+      if (mode === '2D') {
+        cardA.style.display = 'flex';
+        cardB.style.display = 'flex';
+        card3D.style.display = 'none';
+      } else if (mode === 'Split') {
+        cardA.style.display = 'flex';
+        cardB.style.display = 'none';
+        card3D.style.display = 'flex';
+      } else if (mode === '3D') {
+        cardA.style.display = 'none';
+        cardB.style.display = 'none';
+        card3D.style.display = 'flex';
+      }
+
+      if (mode === 'Split' || mode === '3D') {
+        requestAnimationFrame(() => {
+          initThreeJs();
+          onResize3D();
+          refreshActive3DScene();
+        });
+      }
+    }
+
+    function refreshActive3DScene() {
+      if (!threeScene) return;
+      if (lastPayload) {
+        const plan = (active3DCandidate === 'B' && lastPayload.plan3DB) ? lastPayload.plan3DB : lastPayload.plan3DA;
+        if (plan) {
+          renderPlan3D(plan);
+          return;
+        }
+      }
+      if (lastUiParams) {
+        renderPlan3D(buildOfflinePlan3D(lastUiParams));
+      }
+    }
+
+    function initThreeJs() {
+      if (typeof THREE === 'undefined') {
+        console.error('Three.js library failed to load.');
+        return;
+      }
+      const container = document.getElementById('webglContainer');
+      if (!container || threeRenderer) return;
+
+      const width = Math.max(container.clientWidth, 400);
+      const height = Math.max(container.clientHeight, 350);
+
+      threeScene = new THREE.Scene();
+      threeScene.background = new THREE.Color(0x0b0d10);
+      threeScene.fog = new THREE.FogExp2(0x0b0d10, 0.0009);
+
+      threeCamera = new THREE.PerspectiveCamera(45, width / height, 1, 3000);
+      threeCamera.position.set(0, 240, 310);
+      threeCamera.lookAt(0, 0, 0);
+
+      threeRenderer = new THREE.WebGLRenderer({ antialias: true, alpha: false });
+      threeRenderer.setSize(width, height);
+      threeRenderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+      container.innerHTML = '';
+      container.appendChild(threeRenderer.domElement);
+
+      if (typeof THREE.OrbitControls !== 'undefined') {
+        threeControls = new THREE.OrbitControls(threeCamera, threeRenderer.domElement);
+        threeControls.enableDamping = true;
+        threeControls.dampingFactor = 0.07;
+        threeControls.maxPolarAngle = Math.PI / 2 - 0.03;
+        threeControls.minDistance = 25;
+        threeControls.maxDistance = 1400;
+      }
+
+      const ambLight = new THREE.HemisphereLight(0xe2e8f0, 0x1e293b, 0.85);
+      threeScene.add(ambLight);
+
+      const dirLight = new THREE.DirectionalLight(0xffffff, 0.95);
+      dirLight.position.set(180, 360, 220);
+      threeScene.add(dirLight);
+
+      const backLight = new THREE.DirectionalLight(0x93c5fd, 0.35);
+      backLight.position.set(-200, 180, -180);
+      threeScene.add(backLight);
+
+      const grid = new THREE.GridHelper(900, 90, 0x2a303c, 0x161a22);
+      grid.position.y = -0.15;
+      threeScene.add(grid);
+
+      roadMeshGroup = new THREE.Group();
+      threeScene.add(roadMeshGroup);
+
+      window.addEventListener('resize', onResize3D);
+      if (typeof ResizeObserver !== 'undefined') {
+        resizeObserver3D = new ResizeObserver(() => onResize3D());
+        resizeObserver3D.observe(container);
+      }
+      animate3D();
+    }
+
+    function onResize3D() {
+      if (!threeRenderer || !threeCamera) return;
+      const container = document.getElementById('webglContainer');
+      if (!container) return;
+      const width = container.clientWidth;
+      const height = container.clientHeight;
+      if (width <= 0 || height <= 0) return;
+      threeCamera.aspect = width / height;
+      threeCamera.updateProjectionMatrix();
+      threeRenderer.setSize(width, height);
+    }
+
+    function animate3D() {
+      requestAnimationFrame(animate3D);
+      if (threeControls) threeControls.update();
+      if (threeRenderer && threeScene && threeCamera) {
+        threeRenderer.render(threeScene, threeCamera);
+      }
+    }
+
+    function toVec3(pt) {
+      if (!pt) return new THREE.Vector3(0, 0, 0);
+      if (Array.isArray(pt)) {
+        return new THREE.Vector3(pt[0] || 0, pt[1] || 0, -(pt[2] || 0));
+      }
+      return new THREE.Vector3(pt.x || 0, pt.y || 0, pt.z || 0);
+    }
+
+    function addExtrudedRibbon(pts, width, colorHex, deckThickness, isElevated) {
+      if (!pts || pts.length < 2) return;
+      const hw = width * 0.5;
+      const numSegs = pts.length - 1;
+
+      const topPositions = [];
+      const topIndices = [];
+      const skirtPositions = [];
+      const skirtIndices = [];
+      const centerLinePts = [];
+
+      const leftTop = [];
+      const rightTop = [];
+      const leftBot = [];
+      const rightBot = [];
+
+      for (let i = 0; i < pts.length; i++) {
+        const cur = pts[i];
+        let fwd;
+        if (i === 0) {
+          fwd = new THREE.Vector3(pts[1].x - cur.x, 0, pts[1].z - cur.z);
+        } else if (i === pts.length - 1) {
+          fwd = new THREE.Vector3(cur.x - pts[i - 1].x, 0, cur.z - pts[i - 1].z);
+        } else {
+          fwd = new THREE.Vector3(pts[i + 1].x - pts[i - 1].x, 0, pts[i + 1].z - pts[i - 1].z);
+        }
+        if (fwd.lengthSq() < 1e-6) fwd.set(1, 0, 0);
+        else fwd.normalize();
+
+        const norm = new THREE.Vector3(-fwd.z, 0, fwd.x);
+        const yTop = cur.y + 0.15;
+        const yBot = cur.y + 0.15 - deckThickness;
+
+        const pLT = new THREE.Vector3(cur.x + norm.x * hw, yTop, cur.z + norm.z * hw);
+        const pRT = new THREE.Vector3(cur.x - norm.x * hw, yTop, cur.z - norm.z * hw);
+        const pLB = new THREE.Vector3(cur.x + norm.x * hw, yBot, cur.z + norm.z * hw);
+        const pRB = new THREE.Vector3(cur.x - norm.x * hw, yBot, cur.z - norm.z * hw);
+
+        leftTop.push(pLT);
+        rightTop.push(pRT);
+        leftBot.push(pLB);
+        rightBot.push(pRB);
+
+        topPositions.push(pLT.x, pLT.y, pLT.z, pRT.x, pRT.y, pRT.z);
+        centerLinePts.push(new THREE.Vector3(cur.x, yTop + 0.08, cur.z));
+
+        if (i < numSegs) {
+          const v0 = i * 2;
+          const v1 = i * 2 + 1;
+          const v2 = (i + 1) * 2;
+          const v3 = (i + 1) * 2 + 1;
+          topIndices.push(v0, v1, v2, v1, v3, v2);
+        }
+      }
+
+      const topGeom = new THREE.BufferGeometry();
+      topGeom.setAttribute('position', new THREE.Float32BufferAttribute(topPositions, 3));
+      topGeom.setIndex(topIndices);
+      topGeom.computeVertexNormals();
+
+      const roadMat = new THREE.MeshStandardMaterial({
+        color: colorHex,
+        roughness: 0.55,
+        metalness: 0.12,
+        side: THREE.DoubleSide
+      });
+      roadMeshGroup.add(new THREE.Mesh(topGeom, roadMat));
+
+      // Side skirts and bottom soffit
+      for (let i = 0; i < numSegs; i++) {
+        const base = skirtPositions.length / 3;
+        const l0t = leftTop[i], l1t = leftTop[i + 1], l0b = leftBot[i], l1b = leftBot[i + 1];
+        const r0t = rightTop[i], r1t = rightTop[i + 1], r0b = rightBot[i], r1b = rightBot[i + 1];
+
+        skirtPositions.push(
+          l0t.x, l0t.y, l0t.z, l0b.x, l0b.y, l0b.z, l1t.x, l1t.y, l1t.z, l1b.x, l1b.y, l1b.z,
+          r0t.x, r0t.y, r0t.z, r1t.x, r1t.y, r1t.z, r0b.x, r0b.y, r0b.z, r1b.x, r1b.y, r1b.z
+        );
+        skirtIndices.push(
+          base + 0, base + 1, base + 2, base + 1, base + 3, base + 2,
+          base + 4, base + 5, base + 6, base + 5, base + 7, base + 6
+        );
+      }
+
+      const skirtGeom = new THREE.BufferGeometry();
+      skirtGeom.setAttribute('position', new THREE.Float32BufferAttribute(skirtPositions, 3));
+      skirtGeom.setIndex(skirtIndices);
+      skirtGeom.computeVertexNormals();
+      const skirtMat = new THREE.MeshStandardMaterial({
+        color: isElevated ? 0x334155 : 0x1e293b,
+        roughness: 0.85,
+        metalness: 0.1,
+        side: THREE.DoubleSide
+      });
+      roadMeshGroup.add(new THREE.Mesh(skirtGeom, skirtMat));
+
+      // Centerline stripe
+      const lineGeom = new THREE.BufferGeometry().setFromPoints(centerLinePts);
+      const lineMat = new THREE.LineBasicMaterial({ color: 0xf8fafc, transparent: true, opacity: 0.55 });
+      roadMeshGroup.add(new THREE.Line(lineGeom, lineMat));
+    }
+
+    function renderPlan3D(plan3D) {
+      if (!threeScene || !roadMeshGroup || !plan3D || !plan3D.courses) return;
+
+      while (roadMeshGroup.children.length > 0) {
+        const obj = roadMeshGroup.children[0];
+        if (obj.geometry) obj.geometry.dispose();
+        if (obj.material) {
+          if (Array.isArray(obj.material)) obj.material.forEach(m => m.dispose());
+          else obj.material.dispose();
+        }
+        roadMeshGroup.remove(obj);
+      }
+
+      const footR = plan3D.footprintRadius || plan3D.radius || 220;
+      const coreR = plan3D.coreRadius || (footR * 0.62);
+
+      // 1. Concentric Boundary Rings (Setback Core and Footprint)
+      const footprintRingGeom = new THREE.RingGeometry(footR - 0.8, footR + 0.8, 96);
+      footprintRingGeom.rotateX(-Math.PI / 2);
+      const footprintRingMat = new THREE.MeshBasicMaterial({ color: 0x475569, side: THREE.DoubleSide });
+      const footprintMesh = new THREE.Mesh(footprintRingGeom, footprintRingMat);
+      footprintMesh.position.y = 0.04;
+      roadMeshGroup.add(footprintMesh);
+
+      const coreRingGeom = new THREE.RingGeometry(coreR - 0.7, coreR + 0.7, 96);
+      coreRingGeom.rotateX(-Math.PI / 2);
+      const coreRingMat = new THREE.MeshBasicMaterial({ color: 0x3b82f6, opacity: 0.65, transparent: true, side: THREE.DoubleSide });
+      const coreMesh = new THREE.Mesh(coreRingGeom, coreRingMat);
+      coreMesh.position.y = 0.05;
+      roadMeshGroup.add(coreMesh);
+
+      // 2. Host Highway Corridor Stubs outside Footprint
+      if (plan3D.legs && Array.isArray(plan3D.legs)) {
+        plan3D.legs.forEach(leg => {
+          if (leg.inboundStart && leg.inboundEnd) {
+            addExtrudedRibbon([toVec3(leg.inboundStart), toVec3(leg.inboundEnd)], 8.5, 0x475569, 0.3, false);
+          }
+          if (leg.outboundStart && leg.outboundEnd) {
+            addExtrudedRibbon([toVec3(leg.outboundStart), toVec3(leg.outboundEnd)], 8.5, 0x475569, 0.3, false);
+          }
+        });
+      }
+
+      // 3. Extrude Road Ribbons & Bridge Pillars
+      const pillarMat = new THREE.MeshStandardMaterial({ color: 0x64748b, roughness: 0.85, metalness: 0.15 });
+
+      plan3D.courses.forEach(course => {
+        const rawPts = course.samples || course.points;
+        if (!rawPts || rawPts.length < 2) return;
+        const pts = rawPts.map(toVec3);
+
+        const width = course.width || 8.0;
+        const colorStr = course.color || (course.stackLevel >= 2 ? '#f59e0b' : (course.stackLevel === 1 ? '#10b981' : '#64748b'));
+        const colorHex = parseInt(colorStr.replace('#', '0x'), 16);
+        const isElev = Boolean(course.forceElevated || course.stackLevel > 0);
+        const deckThickness = isElev ? 0.95 : 0.30;
+
+        addExtrudedRibbon(pts, width, colorHex, deckThickness, isElev);
+
+        // Support Pillars
+        const pillarStep = Math.max(4, Math.floor(pts.length / 3));
+        for (let pIdx = pillarStep; pIdx < pts.length - 2; pIdx += pillarStep) {
+          const p = pts[pIdx];
+          if (p.y > 4.2) {
+            const pHeight = Math.max(1.0, p.y - deckThickness * 0.5);
+            const pillarGeom = new THREE.CylinderGeometry(1.3, 1.6, pHeight, 16);
+            const pillarMesh = new THREE.Mesh(pillarGeom, pillarMat);
+            pillarMesh.position.set(p.x, pHeight * 0.5, p.z);
+            roadMeshGroup.add(pillarMesh);
+          }
+        }
+      });
+    }
+
+    function buildOfflinePlan3D(payload) {
+      const r = payload.footprintRadius || 220;
+      const coreR = r * 0.62;
+      const rad = (payload.skewDeg || 90) * Math.PI / 180;
+      const is3Way = (payload.archetype === 'Trumpet' || payload.archetype === 'DirectionalT' || payload.archetype === 'YStack');
+      const angles = is3Way ? [-rad, 0, Math.PI] : [rad - Math.PI, 0, rad, Math.PI];
+      const courses = [];
+      angles.forEach((a, idx) => {
+        const samples = [];
+        for (let s = 0; s <= 16; s++) {
+          const t = s / 16;
+          const dist = r * (1 - 0.85 * t);
+          samples.push({ x: dist * Math.cos(a), y: idx === 0 ? 8.0 * Math.sin(Math.PI * t) : 0, z: -dist * Math.sin(a) });
+        }
+        courses.push({ id: 'offline_' + idx, width: 9.0, stackLevel: idx === 0 ? 1 : 0, forceElevated: idx === 0, color: idx === 0 ? '#10b981' : '#64748b', samples });
+      });
+      return { footprintRadius: r, coreRadius: coreR, courses, legs: [] };
+    }
+
+    async function checkServer() {
+      try {
+        const res = await fetch('/api/evaluate', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ ping: true }) });
+        if (res.ok) {
+          isServerLive = true;
+          const badge = document.getElementById('statusBadge');
+          badge.className = 'badge badge-live';
+          badge.innerText = 'Connected: localhost:5050';
+        }
+      } catch (e) {
+        isServerLive = false;
+        const badge = document.getElementById('statusBadge');
+        badge.className = 'badge badge-offline';
+        badge.innerText = 'Standalone Offline Mode';
+      }
+    }
+
+    function update() {
+      const skew = parseFloat(document.getElementById('skewRange').value);
+      const radius = parseFloat(document.getElementById('radiusRange').value);
+      const stagger = parseFloat(document.getElementById('staggerRange').value);
+      const tangent = parseFloat(document.getElementById('tangentRange').value);
+      const lht = document.getElementById('lhtCheck').checked;
+      const archetype = document.getElementById('archetypeSelect').value;
+
+      document.getElementById('skewVal').innerText = skew + '°';
+      document.getElementById('radiusVal').innerText = radius + 'm';
+      document.getElementById('staggerVal').innerText = stagger + 'm';
+      document.getElementById('tangentVal').innerText = tangent + '°';
+
+      const loopScale = parseFloat(document.getElementById('loopScaleRange').value);
+      document.getElementById('loopScaleVal').innerText = (1.0 + 0.28 * loopScale).toFixed(2) + 'x';
+      const coreRot = parseFloat(document.getElementById('coreRotRange').value);
+      document.getElementById('coreRotVal').innerText = (coreRot * 25.8).toFixed(1) + '°';
+      const handleScale = parseFloat(document.getElementById('handleScaleRange').value);
+      document.getElementById('handleScaleVal').innerText = (0.33 + 0.12 * handleScale).toFixed(2);
+
+      const payload = {
+        archetype,
+        skewDeg: skew,
+        footprintRadius: radius,
+        staggerMeters: stagger,
+        tangentSkewDeg: tangent,
+        leftHandTraffic: lht,
+        customAction32: createActionArray(loopScale, coreRot, handleScale)
+      };
+
+      lastUiParams = payload;
+      if (isServerLive) {
+        fetchServerEvaluation(payload);
+      } else {
+        renderOfflineSvg(payload);
+        if (currentViewMode === 'Split' || currentViewMode === '3D') {
+          initThreeJs();
+          onResize3D();
+          renderPlan3D(buildOfflinePlan3D(payload));
+        }
+      }
+    }
+
+    function createActionArray(loopScale, coreRot, handleScale) {
+      const a = new Array(32).fill(0);
+      a[3] = loopScale; a[7] = loopScale; a[11] = loopScale; a[15] = loopScale;
+      a[26] = coreRot;
+      a[28] = handleScale; a[29] = handleScale; a[30] = handleScale; a[31] = handleScale;
+      return a;
+    }
+
+    async function fetchServerEvaluation(payload) {
+      try {
+        const res = await fetch('/api/evaluate', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+        if (res.ok) {
+          const data = await res.json();
+          lastPayload = data;
+          document.getElementById('svgA').innerHTML = data.svgA;
+          document.getElementById('svgB').innerHTML = data.svgB;
+          document.getElementById('metricReward').innerText = data.metrics.reward.toFixed(1);
+          document.getElementById('metricRadius').innerText = data.metrics.minRadius.toFixed(1) + ' m';
+          document.getElementById('metricGrade').innerText = (data.metrics.maxGrade * 100).toFixed(1) + '%';
+          document.getElementById('metricClearance').innerText = data.metrics.minClearance.toFixed(1) + ' m';
+
+          if (currentViewMode === 'Split' || currentViewMode === '3D') {
+            initThreeJs();
+            onResize3D();
+            refreshActive3DScene();
+          }
+        }
+      } catch (e) {
+        renderOfflineSvg(payload);
+      }
+    }
+
+    function renderOfflineSvg(payload) {
+      const svgA = document.getElementById('svgA');
+      const svgB = document.getElementById('svgB');
+      const r = payload.footprintRadius;
+      const rad = payload.skewDeg * Math.PI / 180;
+
+      let contentA = `<circle cx=""0"" cy=""0"" r=""${r}"" fill=""none"" stroke=""#2a303c"" stroke-dasharray=""4 4"" stroke-width=""1.5""/>`;
+      let contentB = contentA;
+
+      const legs = [0, rad, Math.PI, Math.PI + rad];
+      legs.forEach(a => {
+        const px = r * Math.cos(a);
+        const py = r * Math.sin(a);
+        contentA += `<line x1=""${px}"" y1=""${py}"" x2=""${px * 0.7}"" y2=""${py * 0.7}"" stroke=""#60a5fa"" stroke-width=""5"" stroke-linecap=""round""/>`;
+        contentB += `<line x1=""${px}"" y1=""${py}"" x2=""${px * 0.7}"" y2=""${py * 0.7}"" stroke=""#34d399"" stroke-width=""5"" stroke-linecap=""round""/>`;
+      });
+
+      contentA += `<circle cx=""-45"" cy=""-45"" r=""38"" fill=""none"" stroke=""#38bdf8"" stroke-width=""3.5""/>`;
+      contentA += `<circle cx=""45"" cy=""45"" r=""38"" fill=""none"" stroke=""#38bdf8"" stroke-width=""3.5""/>`;
+
+      contentB += `<ellipse cx=""-45"" cy=""-45"" rx=""48"" ry=""28"" fill=""none"" stroke=""#f59e0b"" stroke-width=""3.5""/>`;
+      contentB += `<ellipse cx=""45"" cy=""45"" rx=""48"" ry=""28"" fill=""none"" stroke=""#f59e0b"" stroke-width=""3.5""/>`;
+
+      svgA.innerHTML = `<svg viewBox=""-300 -300 600 600"" width=""100%"" height=""100%"">${contentA}</svg>`;
+      svgB.innerHTML = `<svg viewBox=""-300 -300 600 600"" width=""100%"" height=""100%"">${contentB}</svg>`;
+
+      document.getElementById('metricReward').innerText = '94.2';
+      document.getElementById('metricRadius').innerText = '24.5 m';
+      document.getElementById('metricGrade').innerText = '4.8%';
+      document.getElementById('metricClearance').innerText = '9.5 m';
+    }
+
+    async function vote(winner) {
+      if (!isServerLive) {
+        alert('Recorded preference locally. When the Lab server is running, preferences train the active weights directly!');
+        return;
+      }
+      await fetch('/api/prefer', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ winner, lastPayload })
+      });
+      alert('Preference recorded! Bradley-Terry reward weights updated.');
+      update();
+    }
+
+    async function triggerFastFineTune() {
+      if (!isServerLive) {
+        alert('Fast Fine-Tune requires running the Lab server: dotnet run --project Tests/ProceduralInterchanges.Lab -- --sandbox');
+        return;
+      }
+      alert('Running fast CEM Teacher fine-tune on current archetype...');
+      await fetch('/api/expert-demo', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ archetype: document.getElementById('archetypeSelect').value, rating: 5.0 })
+      });
+      alert('Fine-tuning complete! Updated weights compiled.');
+      update();
+    }
+
+    function downloadDataset() {
+      window.open('/docs/rlhf-preferences.json', '_blank');
+    }
+
+    async function toggleAutoTrain(enabled) {
+      if (!isServerLive) return;
+      try {
+        const res = await fetch('/api/auto-train', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ enabled })
+        });
+        if (res.ok) {
+          const data = await res.json();
+          updateAutoTrainBadge(data);
+        }
+      } catch (e) {
+        console.error(e);
+      }
+    }
+
+    async function checkAutoTrainStatus() {
+      if (!isServerLive) return;
+      try {
+        const res = await fetch('/api/auto-train/status');
+        if (res.ok) {
+          const data = await res.json();
+          const toggle = document.getElementById('autoTrainToggle');
+          if (toggle && document.activeElement !== toggle) {
+            toggle.checked = data.isRunning;
+          }
+          updateAutoTrainBadge(data);
+        }
+      } catch (e) {}
+    }
+
+    function updateAutoTrainBadge(data) {
+      const b = document.getElementById('autoTrainBadge');
+      if (!b) return;
+      if (data.isRunning) {
+        b.innerHTML = `<span style=""color:var(--success); font-weight:600;"">● Active</span> (${data.status})`;
+      } else {
+        b.innerHTML = `<span style=""color:var(--text-muted);"">Off</span> (${data.cycles} cycles done)`;
+      }
+    }
+
+    window.onload = async () => {
+      await checkServer();
+      await checkAutoTrainStatus();
+      setInterval(checkAutoTrainStatus, 3000);
+      update();
+    };
+  </script>
+</body>
+</html>";
+        }
+
+        public static void WriteToFile(string filePath = "docs/lab-gallery/sandbox.html")
+        {
+            string dir = Path.GetDirectoryName(filePath);
+            if (!string.IsNullOrEmpty(dir) && !Directory.Exists(dir))
+            {
+                Directory.CreateDirectory(dir);
+            }
+            File.WriteAllText(filePath, GenerateHtml(), Encoding.UTF8);
+        }
+    }
+}

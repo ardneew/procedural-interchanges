@@ -67,26 +67,49 @@ namespace ProceduralInterchanges.Core.Generators
                 float3 pIn = leg.Inbound != null ? leg.Inbound.PortalPosition : GetFallbackPortal(leg, true, center, footprintRadius);
                 float3 pOut = leg.Outbound != null ? leg.Outbound.PortalPosition : GetFallbackPortal(leg, false, center, footprintRadius);
 
-                float3 tInward = tRoadIn;
-                float3 dIn = math.lerp(pIn, center, splitFraction);
-                float3 mOut = math.lerp(pOut, center, splitFraction);
+                float runoutDist = math.clamp(footprintRadius * splitFraction, 12f, 45f);
+                float3 dIn = pIn + tRoadIn * runoutDist;
+                float3 mOut = pOut + (-tRoadOut) * runoutDist; // tRoadOut points outwards, so -tRoadOut points inwards
 
-                // Inbound approach (pIn -> dIn)
+                Entity inAttach = Entity.Null;
+                float inSplit = 0f;
+                bool inAttachIsNode = false;
+                if (leg.Inbound != null)
+                {
+                    inAttach = leg.Inbound.AttachToNode ? leg.Inbound.AttachNodeEntity : leg.Inbound.SourceEdge;
+                    inSplit = leg.Inbound.CutCurveT;
+                    inAttachIsNode = leg.Inbound.AttachToNode;
+                }
+
+                Entity outAttach = Entity.Null;
+                float outSplit = 0f;
+                bool outAttachIsNode = false;
+                if (leg.Outbound != null)
+                {
+                    outAttach = leg.Outbound.AttachToNode ? leg.Outbound.AttachNodeEntity : leg.Outbound.SourceEdge;
+                    outSplit = leg.Outbound.CutCurveT;
+                    outAttachIsNode = leg.Outbound.AttachToNode;
+                }
+
+                // Inbound approach (pIn -> dIn): perfectly collinear with highway tangent
                 outCourses.Add(new PlannedNetCourse
                 {
                     Id = $"{idPrefix}_app",
                     Role = NetRole.MainlineThrough,
                     LegIndex = leg.LegIndex,
                     TargetLegIndex = -1,
-                    Curve = BiArcFit.FitSmoothCurve(pIn, tRoadIn, dIn, tInward),
+                    Curve = BiArcFit.FitSmoothCurve(pIn, tRoadIn, dIn, tRoadIn),
                     StackLevel = 0,
                     IsOneWay = true,
                     Lanes = leg.Inbound?.LaneCount ?? 2,
                     ResolvedPrefabEntity = leg.Inbound?.SourcePrefab ?? Entity.Null,
-                    ResolvedPrefabName = leg.Inbound?.PrefabName ?? "Highway"
+                    ResolvedPrefabName = leg.Inbound?.PrefabName ?? "Highway",
+                    StartAttachEntity = inAttach,
+                    StartSplitPosition = inSplit,
+                    StartAttachIsNode = inAttachIsNode
                 });
 
-                // Outbound departure (mOut -> pOut)
+                // Outbound departure (mOut -> pOut): perfectly collinear with highway tangent
                 outCourses.Add(new PlannedNetCourse
                 {
                     Id = $"{idPrefix}_dep",
@@ -98,15 +121,18 @@ namespace ProceduralInterchanges.Core.Generators
                     IsOneWay = true,
                     Lanes = leg.Outbound?.LaneCount ?? (leg.Inbound?.LaneCount ?? 2),
                     ResolvedPrefabEntity = leg.Outbound?.SourcePrefab ?? (leg.Inbound?.SourcePrefab ?? Entity.Null),
-                    ResolvedPrefabName = leg.Outbound?.PrefabName ?? (leg.Inbound?.PrefabName ?? "Highway")
+                    ResolvedPrefabName = leg.Outbound?.PrefabName ?? (leg.Inbound?.PrefabName ?? "Highway"),
+                    EndAttachEntity = outAttach,
+                    EndSplitPosition = outSplit,
+                    EndAttachIsNode = outAttachIsNode
                 });
 
                 return new LegPortals
                 {
                     DivergeNode = dIn,
                     MergeNode = mOut,
-                    InboundDir = tInward,
-                    OutboundDir = tInward
+                    InboundDir = tRoadIn,
+                    OutboundDir = -tRoadOut
                 };
             }
             else
@@ -123,15 +149,28 @@ namespace ProceduralInterchanges.Core.Generators
                 }
 
                 float3 t0 = tRoadIn;
-                float3 rightNormal = math.normalize(new float3(-t0.z * sigma, 0f, t0.x * sigma));
+                float3 rightNormal = math.normalize(new float3(t0.z * sigma, 0f, -t0.x * sigma));
 
-                float flareDist = math.clamp(footprintRadius * math.max(0.24f, splitFraction), 25f, 65f);
-                float halfSep = math.clamp(footprintRadius * 0.045f, 6.0f, 9.0f);
+                float flareDist = math.clamp(footprintRadius * math.max(0.20f, splitFraction), 45f, 85f);
+                float leadIn = 12.0f;
+                float3 pLead = pCenter + t0 * leadIn;
 
-                float3 dIn = pCenter + t0 * flareDist + rightNormal * halfSep;
-                float3 mOut = pCenter + t0 * flareDist - rightNormal * halfSep;
+                float halfSep = math.clamp(footprintRadius * 0.032f, 4.5f, 7.0f);
+
+                float3 dIn = pLead + t0 * (flareDist - leadIn) + rightNormal * halfSep;
+                float3 mOut = pLead + t0 * (flareDist - leadIn) - rightNormal * halfSep;
 
                 int lanes = leg.Inbound?.LaneCount ?? 2;
+
+                Entity twoWayAttach = Entity.Null;
+                float twoWaySplit = 0f;
+                bool twoWayAttachIsNode = false;
+                if (leg.Inbound != null)
+                {
+                    twoWayAttach = leg.Inbound.AttachToNode ? leg.Inbound.AttachNodeEntity : leg.Inbound.SourceEdge;
+                    twoWaySplit = leg.Inbound.CutCurveT;
+                    twoWayAttachIsNode = leg.Inbound.AttachToNode;
+                }
 
                 // 1. Inbound flare: pCenter -> dIn along natural highway tangent
                 outCourses.Add(new PlannedNetCourse
@@ -143,7 +182,10 @@ namespace ProceduralInterchanges.Core.Generators
                     Curve = BiArcFit.FitSmoothCurve(pCenter, t0, dIn, t0),
                     StackLevel = 0,
                     IsOneWay = true,
-                    Lanes = lanes
+                    Lanes = lanes,
+                    StartAttachEntity = twoWayAttach,
+                    StartSplitPosition = twoWaySplit,
+                    StartAttachIsNode = twoWayAttachIsNode
                 });
 
                 // 2. Outbound flare: mOut -> pCenter along natural highway tangent
@@ -156,7 +198,10 @@ namespace ProceduralInterchanges.Core.Generators
                     Curve = BiArcFit.FitSmoothCurve(mOut, -t0, pCenter, -t0),
                     StackLevel = 0,
                     IsOneWay = true,
-                    Lanes = lanes
+                    Lanes = lanes,
+                    EndAttachEntity = twoWayAttach,
+                    EndSplitPosition = twoWaySplit,
+                    EndAttachIsNode = twoWayAttachIsNode
                 });
 
                 return new LegPortals
@@ -188,11 +233,12 @@ namespace ProceduralInterchanges.Core.Generators
         private static float3 GetFallbackPortal(HighwayLeg leg, bool isInbound, float3 center, float radius)
         {
             float3 outward = leg.LegAxisDirection;
+            float3 inward = -outward;
             if (leg.IsSeparatedDualCarriageway)
             {
-                float side = (isInbound ? -1f : 1f) * (leg.CarriagewaySeparation > 0 ? leg.CarriagewaySeparation * 0.5f : 6f);
-                float3 normal = new float3(-outward.z, 0f, outward.x);
-                return center + outward * radius + normal * side;
+                float side = (isInbound ? 1f : -1f) * (leg.CarriagewaySeparation > 0 ? leg.CarriagewaySeparation * 0.5f : 6f);
+                float3 rightOfInward = new float3(inward.z, 0f, -inward.x);
+                return center + outward * radius + rightOfInward * side;
             }
             return center + outward * radius;
         }

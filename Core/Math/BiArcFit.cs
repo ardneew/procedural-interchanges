@@ -125,9 +125,13 @@ namespace ProceduralInterchanges.Core.Math
 
             // Compute total clockwise/counterclockwise sweep matching actual highway angle
             float deltaPhi = -sigma * (aExit - a0);
-            while (deltaPhi < 0f) deltaPhi += math.PI * 2f;
-            while (deltaPhi >= math.PI * 2f) deltaPhi -= math.PI * 2f;
-            if (deltaPhi < math.PI) deltaPhi += math.PI * 2f;
+            while (deltaPhi <= 0f) deltaPhi += math.PI * 2f;
+            while (deltaPhi > math.PI * 2f) deltaPhi -= math.PI * 2f;
+            if (deltaPhi < 1.2f)
+            {
+                // Ensure loop sweeps the full around loop rather than a direct turn
+                deltaPhi += math.PI * 2f;
+            }
 
             float totalSweep = -sigma * deltaPhi;
             float sweepArc = totalSweep / 3f;
@@ -141,28 +145,35 @@ namespace ProceduralInterchanges.Core.Math
             // => T0 * L0 + T1 * L1 = (Pend - Pstart) - R * (u1 - u0)
             float det = T0_2d.x * T1_2d.y - T0_2d.y * T1_2d.x;
             bool solved = false;
-            float L0 = 15f;
-            float L1 = 15f;
-            float curR = radius;
+            float L0 = 12f;
+            float L1 = 12f;
 
-            // Attempt to solve linear system, reducing R if needed to ensure positive lead lengths
-            if (math.abs(det) > 0.15f)
+            if (math.abs(det) > 0.12f)
             {
-                for (int iter = 0; iter < 4; iter++)
-                {
-                    float2 D = (endPos.xz - startPos.xz) - curR * (u1 - u0);
-                    float testL0 = (D.x * T1_2d.y - D.y * T1_2d.x) / det;
-                    float testL1 = (T0_2d.x * D.y - T0_2d.y * D.x) / det;
+                float2 dP = endPos.xz - startPos.xz;
+                float2 dU = u1 - u0;
 
-                    if (testL0 >= 10f && testL1 >= 10f)
+                float k0 = (dP.x * T1_2d.y - dP.y * T1_2d.x) / det;
+                float m0 = (dU.x * T1_2d.y - dU.y * T1_2d.x) / det;
+
+                float k1 = (T0_2d.x * dP.y - T0_2d.y * dP.x) / det;
+                float m1 = (T0_2d.x * dU.y - T0_2d.y * dU.x) / det;
+
+                // Try radii from requested radius down to 26m
+                float[] rCandidates = { radius, radius * 0.9f, radius * 0.8f, radius * 0.7f, 32f, 28f, 26f };
+                for (int rc = 0; rc < rCandidates.Length; rc++)
+                {
+                    float testR = rCandidates[rc];
+                    float testL0 = k0 - m0 * testR;
+                    float testL1 = k1 - m1 * testR;
+                    if (testL0 >= 4f && testL1 >= 4f)
                     {
+                        radius = testR;
                         L0 = testL0;
                         L1 = testL1;
-                        radius = curR;
                         solved = true;
                         break;
                     }
-                    curR = math.max(28f, curR * 0.85f);
                 }
             }
 
@@ -176,21 +187,16 @@ namespace ProceduralInterchanges.Core.Math
             }
             else
             {
-                // Fallback: place circle ahead of startPos along T0
+                // Fallback: place circle center in the quadrant offset from startPos and endPos
                 float d0 = math.distance(startPos.xz, endPos.xz);
-                L0 = math.clamp(d0 * 0.2f, 12f, 35f);
+                radius = math.clamp(d0 * 0.35f, 26f, 40f);
+                L0 = math.clamp(d0 * 0.25f, 10f, 30f);
                 p0_2d = startPos.xz + T0_2d * L0;
                 cXZ = p0_2d - u0 * radius;
             }
 
             float3 circleCenter = new float3(cXZ.x, (startY + endY) * 0.5f, cXZ.y);
             float3 p0_3d = new float3(p0_2d.x, startY, p0_2d.y);
-
-            // 1. Lead-in if startPos is offset from circle entry p0
-            if (math.distance(startPos.xz, p0_3d.xz) > 1.5f)
-            {
-                outArcs.Add(FitSmoothCurve(startPos, t0, p0_3d, t0));
-            }
 
             // 2. 3 circular arcs covering exact total sweep
             float arcA0 = a0;
@@ -204,22 +210,30 @@ namespace ProceduralInterchanges.Core.Math
             var arc1 = FitCircularArc(circleCenter, radius, arcA1, sweepArc, y1, peakY);
             var arc2 = FitCircularArc(circleCenter, radius, arcA2, sweepArc, peakY, endY);
 
+            // 1. Lead-in if startPos is offset from circle entry p0
+            float3 tEntry = math.normalize(arc0.b - arc0.a);
+            if (math.distance(startPos.xz, p0_3d.xz) > 1.5f)
+            {
+                outArcs.Add(FitSmoothCurve(startPos, t0, p0_3d, tEntry));
+            }
+
             outArcs.Add(arc0);
             outArcs.Add(arc1);
             outArcs.Add(arc2);
 
             // 3. Lead-out from circle exit p3 to endPos
             float3 p3_3d = arc2.d;
+            float3 tExit = math.normalize(arc2.d - arc2.c);
             if (math.distance(p3_3d.xz, endPos.xz) > 1.5f)
             {
-                outArcs.Add(FitSmoothCurve(p3_3d, t1, endPos, t1));
+                outArcs.Add(FitSmoothCurve(p3_3d, tExit, endPos, t1));
             }
         }
 
         public static void ApplyGoreTaper(float3 splitPos, float3 mainlineDir, int sideSign, float goreAngleRad, out float3 rampStartDir)
         {
             float3 mDir = math.normalize(mainlineDir);
-            float3 normal = new float3(-mDir.z, 0f, mDir.x) * (sideSign >= 0 ? 1f : -1f);
+            float3 normal = new float3(mDir.z, 0f, -mDir.x) * (sideSign >= 0 ? 1f : -1f);
 
             float cosA = math.cos(goreAngleRad);
             float sinA = math.sin(goreAngleRad);

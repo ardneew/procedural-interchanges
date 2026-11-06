@@ -40,25 +40,41 @@ namespace ProceduralInterchanges.Core.Generators
 
             for (int k = 0; k < 4; k++)
             {
-                port[k] = LegPortalGeometry.EmitLegApproaches(legs[k], center, R, 0.20f, sigma, outCourses, $"clover_leg_{k}");
+                port[k] = LegPortalGeometry.EmitLegApproaches(legs[k], center, R, 0.14f, sigma, outCourses, $"clover_leg_{k}");
                 dRight[k] = port[k].DivergeNode;
                 mRight[k] = port[k].MergeNode;
                 dirs[k] = port[k].InboundDir;
             }
 
+            InterchangeGraphBuilder.ResolveStackLevels(
+                config,
+                out int priLevel,
+                out int secLevel,
+                out int _,
+                out int _,
+                out int _);
+
+            float loopRadius = math.clamp(R * 0.22f, 30.0f, 48.0f);
+            float dLoopDist = loopRadius * 1.35f;
+
             for (int k = 0; k < 4; k++)
             {
-                mLoop[k] = math.lerp(dRight[k], center, 0.55f);
-                dLoop[k] = math.lerp(mRight[(k + 2) % 4], center, 0.55f);
+                // Inbound approach loop merge node (before crossing center)
+                mLoop[k] = center - dirs[k] * dLoopDist;
+                // Outbound departure loop diverge node (after crossing center)
+                dLoop[k] = center + dirs[k] * dLoopDist;
             }
 
-            // 1. Primary Mainline (0 <-> 2) at StackLevel = 0
-            AddCorridorMainline(0, 2, 0, false, dirs, dRight, mRight, mLoop, dLoop, outCourses);
-            AddCorridorMainline(2, 0, 0, false, dirs, dRight, mRight, mLoop, dLoop, outCourses);
+            bool priElev = priLevel > 0;
+            bool secElev = secLevel > 0;
 
-            // 2. Secondary Mainline (1 <-> 3) at StackLevel = 1 (Bridge overpass)
-            AddCorridorMainline(1, 3, 1, true, dirs, dRight, mRight, mLoop, dLoop, outCourses);
-            AddCorridorMainline(3, 1, 1, true, dirs, dRight, mRight, mLoop, dLoop, outCourses);
+            // 1. Primary Mainline (0 <-> 2)
+            AddCorridorMainline(0, 2, priLevel, priElev, dirs, dRight, mRight, mLoop, dLoop, outCourses);
+            AddCorridorMainline(2, 0, priLevel, priElev, dirs, dRight, mRight, mLoop, dLoop, outCourses);
+
+            // 2. Secondary Mainline (1 <-> 3)
+            AddCorridorMainline(1, 3, secLevel, secElev, dirs, dRight, mRight, mLoop, dLoop, outCourses);
+            AddCorridorMainline(3, 1, secLevel, secElev, dirs, dRight, mRight, mLoop, dLoop, outCourses);
 
             // 3. Four Outer Sweeping Slip Ramps with Gore Taper
             for (int k = 0; k < 4; k++)
@@ -124,24 +140,23 @@ namespace ProceduralInterchanges.Core.Generators
             }
 
             // 5. Four 270-degree Inner Loop Ramps with G1 Tangency via FitConnectedLoop270
-            float loopRadius = math.clamp(R * 0.22f, 30.0f, 48.0f);
             float effClear = math.max(8.0f, config.MinBridgeClearanceMeters);
 
             for (int q = 0; q < 4; q++)
             {
-                int targetLeg = (q + 1) % 4;
+                int targetLeg = (q + 3) % 4; // Left-turn receiving leg
                 float3 startPt = dLoop[q];
                 float3 endPt = mLoop[targetLeg];
 
-                bool startElevated = (q % 2 != 0); // legs 1 and 3 are on overpass mainline
-                bool endElevated = (targetLeg % 2 != 0);
+                int startLevel = (q % 2 == 0) ? priLevel : secLevel;
+                int endLevel = (targetLeg % 2 == 0) ? priLevel : secLevel;
 
-                float startY = startElevated ? center.y + effClear : center.y;
-                float endY = endElevated ? center.y + effClear : center.y;
+                float startY = center.y + (startLevel > 0 ? effClear * startLevel : (startLevel < 0 ? -8f * math.abs(startLevel) : 0f));
+                float endY = center.y + (endLevel > 0 ? effClear * endLevel : (endLevel < 0 ? -8f * math.abs(endLevel) : 0f));
                 float peakY = (startY + endY) * 0.5f;
 
                 BiArcFit.ApplyGoreTaper(startPt, -dirs[(q + 2) % 4], (int)sigma, BiArcFit.kStandardGoreAngleRad, out float3 loopStartDir);
-                BiArcFit.ApplyGoreTaper(endPt, dirs[targetLeg], -(int)sigma, BiArcFit.kStandardGoreAngleRad, out float3 loopEndDir);
+                BiArcFit.ApplyGoreTaper(endPt, -dirs[targetLeg], -(int)sigma, BiArcFit.kStandardGoreAngleRad, out float3 loopEndDir);
 
                 var loopArcs = new List<Bezier4x3>();
                 BiArcFit.FitConnectedLoop270(
@@ -160,8 +175,8 @@ namespace ProceduralInterchanges.Core.Generators
                         LegIndex = q,
                         TargetLegIndex = targetLeg,
                         Curve = loopArcs[a],
-                        StackLevel = (startElevated || endElevated) ? 1 : 0,
-                        ForceElevated = (startElevated || endElevated)
+                        StackLevel = math.max(0, math.max(startLevel, endLevel)),
+                        ForceElevated = (startLevel > 0 || endLevel > 0)
                     });
                 }
             }
@@ -181,7 +196,7 @@ namespace ProceduralInterchanges.Core.Generators
             float3 dir = dirs[fromLeg];
             float3 targetDir = -dirs[toLeg];
 
-            // 1. Lead to Loop Merge: dRight -> mLoop
+            // 1. Lead to Loop Merge: dRight -> mLoop (ground transition)
             outCourses.Add(new PlannedNetCourse
             {
                 Id = $"clover_main_{fromLeg}_{toLeg}_lead1",
@@ -189,11 +204,11 @@ namespace ProceduralInterchanges.Core.Generators
                 LegIndex = fromLeg,
                 TargetLegIndex = toLeg,
                 Curve = BiArcFit.FitSmoothCurve(d1, dir, m1, dir),
-                StackLevel = level,
-                ForceElevated = elevated
+                StackLevel = 0,
+                ForceElevated = false
             });
 
-            // 2. Central Overpass / Underpass Core: mLoop -> dLoop
+            // 2. Central Overpass / Underpass Core: mLoop -> dLoop (elevated bridge deck)
             outCourses.Add(new PlannedNetCourse
             {
                 Id = $"clover_main_{fromLeg}_{toLeg}_core",
@@ -205,7 +220,7 @@ namespace ProceduralInterchanges.Core.Generators
                 ForceElevated = elevated
             });
 
-            // 3. Lead to Right Merge: dLoop -> mRight
+            // 3. Lead to Right Merge: dLoop -> mRight (ground transition)
             outCourses.Add(new PlannedNetCourse
             {
                 Id = $"clover_main_{fromLeg}_{toLeg}_lead2",
@@ -213,8 +228,8 @@ namespace ProceduralInterchanges.Core.Generators
                 LegIndex = fromLeg,
                 TargetLegIndex = toLeg,
                 Curve = BiArcFit.FitSmoothCurve(d2, targetDir, m2, targetDir),
-                StackLevel = level,
-                ForceElevated = elevated
+                StackLevel = 0,
+                ForceElevated = false
             });
         }
     }

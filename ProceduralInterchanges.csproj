@@ -82,6 +82,15 @@
 		<None Include="$(ModTargetsFile)" Link="Properties\Mod.targets" />
 	</ItemGroup>
 
+	<!-- Override DeployWIP to prevent MSB3231 directory lock errors when game is running -->
+	<Target Name="DeployWIP" AfterTargets="AfterBuild" Condition="'$(NeedBuild)'">
+		<ItemGroup>
+			<FilesToDeploy Include="$(OutDir)\**\*.*" />
+		</ItemGroup>
+		<Message Text="Copy output to deploy directory $(DeployDir) (Safe non-destructive deploy)" Importance="high" />
+		<Copy SourceFiles="@(FilesToDeploy)" DestinationFiles="@(FilesToDeploy->'$(DeployDir)\%(RecursiveDir)%(Filename)%(Extension)')" ContinueOnError="true" />
+	</Target>
+
 	<!-- Automatically compile the Gameface UI module and deploy beside the C# assembly -->
 	<Target Name="BuildUI" AfterTargets="DeployWIP">
 		<Exec Command="npm --prefix ui run build" />

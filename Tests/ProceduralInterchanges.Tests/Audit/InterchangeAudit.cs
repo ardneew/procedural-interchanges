@@ -16,7 +16,8 @@ namespace ProceduralInterchanges.Tests.Audit
             IReadOnlyList<PlannedNetCourse> courses,
             float minClearance = 7.5f,
             float maxGrade = 0.20f,
-            float minRadius = 18.0f)
+            float minRadius = 18.0f,
+            Func<float2, float> terrainSampler = null)
         {
             var sw = Stopwatch.StartNew();
             var verdict = new AuditVerdict();
@@ -100,12 +101,22 @@ namespace ProceduralInterchanges.Tests.Audit
             VerifyPillarClearance(courses, verdict);
 
             // 4. G1 tangent continuity check at junctions
-            VerifyG1Continuity(courses, verdict);
+            VerifyG1Continuity(courses, verdict, 3.0f);
 
-            // 5. Reachability check
+            // 5. Reachability & boundary checks
             if (legs != null && legs.Count >= 2)
             {
                 VerifyReachability(archetype, legs, courses, verdict);
+                VerifyPortalAlignment(legs, courses, verdict);
+                VerifyMonotonicProgress(legs, courses, verdict);
+                VerifyPortalOvershoot(legs, courses, verdict);
+            }
+
+            // 6. Curvature smoothness & subterranean checks
+            VerifyCurvatureSmoothness(courses, verdict);
+            if (terrainSampler != null)
+            {
+                VerifySubterraneanClearance(courses, verdict, terrainSampler);
             }
 
             sw.Stop();
@@ -161,6 +172,15 @@ namespace ProceduralInterchanges.Tests.Audit
 
                             if (distXZ < combinedHalfWidth)
                             {
+                                float3 tan1 = CubicBezier3D.Tangent(c1.Curve, t1);
+                                float3 tan2 = CubicBezier3D.Tangent(c2.Curve, t2);
+                                if (math.lengthsq(tan1.xz) > 1e-4f && math.lengthsq(tan2.xz) > 1e-4f)
+                                {
+                                    float alignment = math.abs(math.dot(math.normalize(tan1.xz), math.normalize(tan2.xz)));
+                                    // Parallel or side-by-side merging/diverging courses are not crossing over each other
+                                    if (alignment > 0.70f) continue;
+                                }
+
                                 float deltaY = math.abs(p1.y - p2.y);
                                 if (deltaY < minClearanceFound) minClearanceFound = deltaY;
                                 crossings++;
@@ -223,31 +243,100 @@ namespace ProceduralInterchanges.Tests.Audit
         private static void VerifyG1Continuity(
             IReadOnlyList<PlannedNetCourse> courses,
             AuditVerdict verdict,
-            float maxAngleDeg = 20f)
+            float maxAngleDeg = 3.0f)
         {
-            float maxCos = math.cos(math.radians(maxAngleDeg));
+            if (courses == null || courses.Count == 0) return;
+
+            var arrivalsAt = new Dictionary<int, List<int>>();
+            var departuresAt = new Dictionary<int, List<int>>();
+            var clusterCenter = new List<float3>();
+
+            int GetCluster(float3 pos)
+            {
+                for (int c = 0; c < clusterCenter.Count; c++)
+                {
+                    if (math.distance(pos.xz, clusterCenter[c].xz) < 0.8f && math.abs(pos.y - clusterCenter[c].y) < 2.0f)
+                        return c;
+                }
+                int newIdx = clusterCenter.Count;
+                clusterCenter.Add(pos);
+                arrivalsAt[newIdx] = new List<int>();
+                departuresAt[newIdx] = new List<int>();
+                return newIdx;
+            }
 
             for (int i = 0; i < courses.Count; i++)
             {
-                var c1 = courses[i];
-                for (int j = i + 1; j < courses.Count; j++)
-                {
-                    var c2 = courses[j];
+                int cArr = GetCluster(courses[i].Curve.d);
+                arrivalsAt[cArr].Add(i);
 
-                    if (math.distance(c1.Curve.d, c2.Curve.a) < 0.2f)
+                int cDep = GetCluster(courses[i].Curve.a);
+                departuresAt[cDep].Add(i);
+            }
+
+            for (int k = 0; k < clusterCenter.Count; k++)
+            {
+                var arrList = arrivalsAt[k];
+                var depList = departuresAt[k];
+
+                if (arrList.Count == 0 || depList.Count == 0) continue;
+
+                if (arrList.Count == 1 && depList.Count == 1)
+                {
+                    // Strict degree-2 join: MUST be smooth G1 (< 3.0 deg kink)
+                    var c1 = courses[arrList[0]];
+                    var c2 = courses[depList[0]];
+                    float3 t1 = CubicBezier3D.Tangent(c1.Curve, 1.0f);
+                    float3 t2 = CubicBezier3D.Tangent(c2.Curve, 0.0f);
+                    if (math.lengthsq(t1.xz) > 1e-4f && math.lengthsq(t2.xz) > 1e-4f)
                     {
-                        float3 t1 = CubicBezier3D.Tangent(c1.Curve, 1.0f);
-                        float3 t2 = CubicBezier3D.Tangent(c2.Curve, 0.0f);
-                        if (math.lengthsq(t1) > 1e-4f && math.lengthsq(t2) > 1e-4f)
+                        float dot = math.dot(math.normalize(new float3(t1.x, 0f, t1.z)), math.normalize(new float3(t2.x, 0f, t2.z)));
+                        float angleDeg = math.degrees(math.acos(math.clamp(dot, -1f, 1f)));
+                        if (angleDeg > 15.0f)
                         {
-                            float dot = math.dot(math.normalize(t1), math.normalize(t2));
-                            if (dot < maxCos && dot > -0.9f)
-                            {
-                                float angleDeg = math.degrees(math.acos(math.clamp(dot, -1f, 1f)));
-                                verdict.AddIssue(AuditSeverity.Warning, AuditCategory.TangentContinuity,
-                                    $"Kink angle of {angleDeg:F1}° at join between '{c1.Id}' and '{c2.Id}'.",
-                                    c1.Curve.d, c1.Id, c2.Id);
-                            }
+                            verdict.AddIssue(AuditSeverity.Error, AuditCategory.TangentContinuity,
+                                $"Kink angle of {angleDeg:F1}° at degree-2 join between '{c1.Id}' and '{c2.Id}' exceeds 15.0° tolerance.",
+                                c1.Curve.d, c1.Id, c2.Id);
+                        }
+                        else if (angleDeg > maxAngleDeg)
+                        {
+                            verdict.AddIssue(AuditSeverity.Warning, AuditCategory.TangentContinuity,
+                                $"Kink angle of {angleDeg:F1}° at degree-2 join between '{c1.Id}' and '{c2.Id}' exceeds {maxAngleDeg:F1}° target.",
+                                c1.Curve.d, c1.Id, c2.Id);
+                        }
+                    }
+                }
+                else
+                {
+                    // Gore split or merge (degree >= 3):
+                    // Every incoming movement must have a valid through or diverging branch <= 32.0 deg
+                    for (int a = 0; a < arrList.Count; a++)
+                    {
+                        var c1 = courses[arrList[a]];
+                        float3 t1 = CubicBezier3D.Tangent(c1.Curve, 1.0f);
+                        if (math.lengthsq(t1.xz) < 1e-4f) continue;
+                        float2 t1Norm = math.normalize(new float2(t1.x, t1.z));
+
+                        float minAngleAtBranch = float.MaxValue;
+                        for (int d = 0; d < depList.Count; d++)
+                        {
+                            var c2 = courses[depList[d]];
+                            float3 t2 = CubicBezier3D.Tangent(c2.Curve, 0.0f);
+                            if (math.lengthsq(t2.xz) < 1e-4f) continue;
+                            float2 t2Norm = math.normalize(new float2(t2.x, t2.z));
+
+                            float dot = math.dot(t1Norm, t2Norm);
+                            if (dot <= 0.20f) continue; // Opposing or perpendicular traffic is not a downstream branch!
+
+                            float angleDeg = math.degrees(math.acos(math.clamp(dot, -1f, 1f)));
+                            if (angleDeg < minAngleAtBranch) minAngleAtBranch = angleDeg;
+                        }
+
+                        if (minAngleAtBranch != float.MaxValue && minAngleAtBranch > 42.0f)
+                        {
+                            verdict.AddIssue(AuditSeverity.Error, AuditCategory.TangentContinuity,
+                                $"Branch diverge/merge angle of {minAngleAtBranch:F1}° at '{c1.Id}' exceeds 42.0° tolerance.",
+                                c1.Curve.d, c1.Id);
                         }
                     }
                 }
@@ -283,6 +372,68 @@ namespace ProceduralInterchanges.Tests.Audit
                 {
                     verdict.AddIssue(AuditSeverity.Error, AuditCategory.TopologicalReachability,
                         $"Leg {leg.LegIndex} has no outbound exit course connecting to portal.", leg.Outbound.PortalPosition);
+                }
+            }
+        }
+
+        private static void VerifyPortalAlignment(
+            IReadOnlyList<HighwayLeg> legs,
+            IReadOnlyList<PlannedNetCourse> courses,
+            AuditVerdict verdict)
+        {
+            if (legs == null || courses == null) return;
+
+            for (int l = 0; l < legs.Count; l++)
+            {
+                var leg = legs[l];
+                if (leg.Inbound != null)
+                {
+                    for (int i = 0; i < courses.Count; i++)
+                    {
+                        var c = courses[i];
+                        if (math.distance(c.Curve.a.xz, leg.Inbound.PortalPosition.xz) < 0.5f)
+                        {
+                            // Inbound approach course
+                            float3 tCourse = math.normalize(CubicBezier3D.Tangent(c.Curve, 0f));
+                            float3 tHwy = math.normalize(leg.Inbound.InwardTangent);
+                            if (math.lengthsq(tHwy.xz) > 1e-4f)
+                            {
+                                float dot = math.clamp(math.dot(math.normalize(tCourse.xz), math.normalize(tHwy.xz)), -1f, 1f);
+                                float angleDeg = math.degrees(math.acos(dot));
+                                if (angleDeg > 1.0f)
+                                {
+                                    verdict.AddIssue(AuditSeverity.Error, AuditCategory.PortalAlignment,
+                                        $"Inbound portal on Leg {leg.LegIndex} has kink angle {angleDeg:F2}° with incoming highway tangent.",
+                                        c.Curve.a, c.Id);
+                                }
+                            }
+                        }
+                    }
+                }
+
+                if (leg.Outbound != null)
+                {
+                    for (int i = 0; i < courses.Count; i++)
+                    {
+                        var c = courses[i];
+                        if (math.distance(c.Curve.d.xz, leg.Outbound.PortalPosition.xz) < 0.5f)
+                        {
+                            // Outbound departure course
+                            float3 tCourse = math.normalize(CubicBezier3D.Tangent(c.Curve, 1f));
+                            float3 tHwy = -math.normalize(leg.Outbound.InwardTangent);
+                            if (math.lengthsq(tHwy.xz) > 1e-4f)
+                            {
+                                float dot = math.clamp(math.dot(math.normalize(tCourse.xz), math.normalize(tHwy.xz)), -1f, 1f);
+                                float angleDeg = math.degrees(math.acos(dot));
+                                if (angleDeg > 1.0f)
+                                {
+                                    verdict.AddIssue(AuditSeverity.Error, AuditCategory.PortalAlignment,
+                                        $"Outbound portal on Leg {leg.LegIndex} has kink angle {angleDeg:F2}° with outgoing highway tangent.",
+                                        c.Curve.d, c.Id);
+                                }
+                            }
+                        }
+                    }
                 }
             }
         }
@@ -336,5 +487,203 @@ namespace ProceduralInterchanges.Tests.Audit
 
             return !(maxX1 < minX2 || minX1 > maxX2 || maxZ1 < minZ2 || minZ1 > maxZ2);
         }
-    }
+    
+        private static void VerifyMonotonicProgress(
+            IReadOnlyList<HighwayLeg> legs,
+            IReadOnlyList<PlannedNetCourse> courses,
+            AuditVerdict verdict)
+        {
+            if (legs == null || courses == null) return;
+
+            for (int l = 0; l < legs.Count; l++)
+            {
+                var leg = legs[l];
+                if (leg.Inbound != null)
+                {
+                    float3 tHwyIn = math.normalize(leg.Inbound.InwardTangent);
+                    for (int i = 0; i < courses.Count; i++)
+                    {
+                        var c = courses[i];
+                        if (math.distance(c.Curve.a.xz, leg.Inbound.PortalPosition.xz) < 1.0f)
+                        {
+                            const int M = 20;
+                            for (int s = 0; s <= M; s++)
+                            {
+                                float t = (float)s / M;
+                                float3 tan = CubicBezier3D.Tangent(c.Curve, t);
+                                if (math.lengthsq(tan.xz) < 1e-4f) continue;
+                                float3 tanNorm = math.normalize(new float3(tan.x, 0f, tan.z));
+                                float dot = math.clamp(math.dot(tanNorm.xz, tHwyIn.xz), -1f, 1f);
+                                if (dot < 0.20f)
+                                {
+                                    float angDeg = math.degrees(math.acos(dot));
+                                    verdict.AddIssue(AuditSeverity.Error, AuditCategory.MonotonicProgress,
+                                        $"Inbound boundary course '{c.Id}' reverses or severely kinks at s={t:F2} (angle {angDeg:F1} deg with highway inward vector); hairpin hook detected.",
+                                        CubicBezier3D.Position(c.Curve, t), c.Id);
+                                    break;
+                                }
+                            }
+                        }
+                    }
+                }
+
+                if (leg.Outbound != null)
+                {
+                    float3 tHwyOut = -math.normalize(leg.Outbound.InwardTangent);
+                    for (int i = 0; i < courses.Count; i++)
+                    {
+                        var c = courses[i];
+                        if (math.distance(c.Curve.d.xz, leg.Outbound.PortalPosition.xz) < 1.0f)
+                        {
+                            const int M = 20;
+                            for (int s = 0; s <= M; s++)
+                            {
+                                float t = (float)s / M;
+                                float3 tan = CubicBezier3D.Tangent(c.Curve, t);
+                                if (math.lengthsq(tan.xz) < 1e-4f) continue;
+                                float3 tanNorm = math.normalize(new float3(tan.x, 0f, tan.z));
+                                float dot = math.clamp(math.dot(tanNorm.xz, tHwyOut.xz), -1f, 1f);
+                                if (dot < 0.20f)
+                                {
+                                    float angDeg = math.degrees(math.acos(dot));
+                                    verdict.AddIssue(AuditSeverity.Error, AuditCategory.MonotonicProgress,
+                                        $"Outbound boundary course '{c.Id}' reverses or severely kinks at s={t:F2} (angle {angDeg:F1} deg with highway outward vector); hairpin hook detected.",
+                                        CubicBezier3D.Position(c.Curve, t), c.Id);
+                                    break;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        private static void VerifyPortalOvershoot(
+            IReadOnlyList<HighwayLeg> legs,
+            IReadOnlyList<PlannedNetCourse> courses,
+            AuditVerdict verdict)
+        {
+            if (legs == null || courses == null) return;
+
+            for (int l = 0; l < legs.Count; l++)
+            {
+                var leg = legs[l];
+                float2 planePt = leg.PortalCenterPosition.xz;
+                float2 inTan = math.lengthsq(leg.PortalInwardTangent.xz) > 1e-4f
+                    ? math.normalize(leg.PortalInwardTangent.xz)
+                    : -math.normalize(leg.LegAxisDirection.xz);
+                float2 outwardNormal = -inTan;
+                float2 lateralDir = new float2(-outwardNormal.y, outwardNormal.x);
+
+                for (int i = 0; i < courses.Count; i++)
+                {
+                    var c = courses[i];
+                    if (c.LegIndex != leg.LegIndex && c.TargetLegIndex != leg.LegIndex) continue;
+
+                    for (int s = 1; s <= 9; s++)
+                    {
+                        float t = s / 10f;
+                        float3 pos = CubicBezier3D.Position(c.Curve, t);
+                        float lateralDist = math.abs(math.dot(pos.xz - planePt, lateralDir));
+                        if (lateralDist < 50.0f)
+                        {
+                            float overshootDist = math.dot(pos.xz - planePt, outwardNormal);
+                            if (overshootDist > 2.5f)
+                            {
+                                verdict.AddIssue(AuditSeverity.Error, AuditCategory.PortalOvershoot,
+                                    $"Course '{c.Id}' overshoots leg {leg.LegIndex} portal boundary by {overshootDist:F1}m into host highway corridor.",
+                                    pos, c.Id);
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        private static void VerifyCurvatureSmoothness(
+            IReadOnlyList<PlannedNetCourse> courses,
+            AuditVerdict verdict)
+        {
+            if (courses == null) return;
+
+            for (int i = 0; i < courses.Count; i++)
+            {
+                var c = courses[i];
+                if (c.Role != NetRole.MainlineThrough) continue;
+
+                float chord = math.distance(c.Curve.a.xz, c.Curve.d.xz);
+                float arcLen = CubicBezier3D.Length(c.Curve);
+                if (chord < 5.0f || arcLen < 5.0f) continue;
+
+                float efficiency = chord / arcLen;
+                int signChanges = 0;
+                float prevKappa = 0f;
+                const int samples = 20;
+                float totalWindingRad = 0f;
+                float3 prevTan = CubicBezier3D.Tangent(c.Curve, 0f);
+
+                for (int s = 1; s <= samples; s++)
+                {
+                    float t = (float)s / samples;
+                    float kappa = CubicBezier3D.CurvatureXZ(c.Curve, t);
+                    float3 curTan = CubicBezier3D.Tangent(c.Curve, t);
+
+                    if (math.lengthsq(curTan.xz) > 1e-4f && math.lengthsq(prevTan.xz) > 1e-4f)
+                    {
+                        float dot = math.clamp(math.dot(math.normalize(curTan.xz), math.normalize(prevTan.xz)), -1f, 1f);
+                        totalWindingRad += math.acos(dot);
+                    }
+                    prevTan = curTan;
+
+                    if (math.abs(kappa) > 1e-4f)
+                    {
+                        if (prevKappa != 0f && (kappa * prevKappa < 0f))
+                        {
+                            signChanges++;
+                        }
+                        prevKappa = kappa;
+                    }
+                }
+
+                float totalWindingDeg = math.degrees(totalWindingRad);
+                if (signChanges >= 2 && efficiency > 0.90f && totalWindingDeg > 35f)
+                {
+                    verdict.AddIssue(AuditSeverity.Error, AuditCategory.ExtraneousCurvature,
+                        $"Course '{c.Id}' has {signChanges} curvature inflections and {totalWindingDeg:F1} deg winding on direct corridor (efficiency {efficiency:F2}).",
+                        c.Curve.a, c.Id);
+                }
+            }
+        }
+
+        private static void VerifySubterraneanClearance(
+            IReadOnlyList<PlannedNetCourse> courses,
+            AuditVerdict verdict,
+            Func<float2, float> terrainSampler)
+        {
+            if (courses == null || terrainSampler == null) return;
+
+            for (int i = 0; i < courses.Count; i++)
+            {
+                var c = courses[i];
+                if (c.ForceTunnel || c.StackLevel < 0 || c.Id.ToLowerInvariant().Contains("tunnel")) continue;
+
+                for (int s = 0; s <= 10; s++)
+                {
+                    float t = s / 10f;
+                    float3 pos = CubicBezier3D.Position(c.Curve, t);
+                    float groundY = terrainSampler(pos.xz);
+                    float subterraneanDepth = groundY - pos.y;
+
+                    if (subterraneanDepth > 0.40f)
+                    {
+                        verdict.AddIssue(AuditSeverity.Error, AuditCategory.SubterraneanRoad,
+                            $"Course '{c.Id}' plunges {subterraneanDepth:F2}m underground at t={t:F2} (road Y={pos.y:F2}, terrain Y={groundY:F2}).",
+                            pos, c.Id);
+                        break;
+                    }
+                }
+            }
+        }
+}
 }

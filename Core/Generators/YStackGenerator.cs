@@ -38,12 +38,14 @@ namespace ProceduralInterchanges.Core.Generators
 
             for (int i = 0; i < 3; i++)
             {
-                var portals = LegPortalGeometry.EmitLegApproaches(legs[i], center, R, 0.45f, sigma, outCourses, $"ystack_leg_{i}");
+                var portals = LegPortalGeometry.EmitLegApproaches(legs[i], center, R, 0.14f, sigma, outCourses, $"ystack_leg_{i}");
                 dNodes[i] = portals.DivergeNode;
                 mNodes[i] = portals.MergeNode;
                 dirIn[i] = portals.InboundDir;
                 dirOut[i] = -portals.OutboundDir;
             }
+
+            const float kGoreAngle = 0.24f;
 
             // 3 legs: 0, 1, 2 sorted counter-clockwise
             for (int i = 0; i < 3; i++)
@@ -52,8 +54,8 @@ namespace ProceduralInterchanges.Core.Generators
                 int prevIdx = (i + 2) % 3;
 
                 // 3. Outer turn (i to next) at StackLevel = 0 with gore taper
-                BiArcFit.ApplyGoreTaper(dNodes[i], dirIn[i], (int)sigma, BiArcFit.kStandardGoreAngleRad, out float3 outerDiverge);
-                BiArcFit.ApplyGoreTaper(mNodes[nextIdx], dirOut[nextIdx], -(int)sigma, BiArcFit.kStandardGoreAngleRad, out float3 outerMerge);
+                BiArcFit.ApplyGoreTaper(dNodes[i], dirIn[i], (int)sigma, kGoreAngle, out float3 outerDiverge);
+                BiArcFit.ApplyGoreTaper(mNodes[nextIdx], dirOut[nextIdx], -(int)sigma, kGoreAngle, out float3 outerMerge);
                 outCourses.Add(new PlannedNetCourse
                 {
                     Id = $"ystack_outer_{i}_{nextIdx}",
@@ -66,11 +68,11 @@ namespace ProceduralInterchanges.Core.Generators
 
                 // 4. Inner cross-movement (i to prev) with staggered stack levels:
                 // leg 0 to 2: StackLevel = 0
-                // leg 1 to 0: StackLevel = 1
-                // leg 2 to 1: StackLevel = 2
-                int innerLevel = i;
-                BiArcFit.ApplyGoreTaper(dNodes[i], dirIn[i], -(int)sigma, BiArcFit.kStandardGoreAngleRad, out float3 innerDiverge);
-                BiArcFit.ApplyGoreTaper(mNodes[prevIdx], dirOut[prevIdx], (int)sigma, BiArcFit.kStandardGoreAngleRad, out float3 innerMerge);
+                // leg 1 to 0: StackLevel = 1 (Flyover)
+                // leg 2 to 1: StackLevel = -1 (Underpass)
+                int innerLevel = (i == 2) ? -1 : i;
+                BiArcFit.ApplyGoreTaper(dNodes[i], dirIn[i], -(int)sigma, kGoreAngle, out float3 innerDiverge);
+                BiArcFit.ApplyGoreTaper(mNodes[prevIdx], dirOut[prevIdx], (int)sigma, kGoreAngle, out float3 innerMerge);
                 outCourses.Add(new PlannedNetCourse
                 {
                     Id = $"ystack_inner_{i}_{prevIdx}",
@@ -79,7 +81,8 @@ namespace ProceduralInterchanges.Core.Generators
                     TargetLegIndex = prevIdx,
                     Curve = BiArcFit.FitSmoothCurve(dNodes[i], innerDiverge, mNodes[prevIdx], innerMerge),
                     StackLevel = innerLevel,
-                    ForceElevated = innerLevel > 0
+                    ForceElevated = innerLevel > 0,
+                    ForceTunnel = innerLevel < 0
                 });
             }
         }

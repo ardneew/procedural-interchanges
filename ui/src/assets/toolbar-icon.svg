@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
+  <g fill="none" stroke="#ffffff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Throughway vertical highway -->
+    <path d="M 32 6 L 32 58" />
+    <!-- Crossing horizontal overpass highway -->
+    <path d="M 6 32 L 58 32" />
+    <!-- Top-left cloverleaf loop -->
+    <path d="M 28 20 C 18 20, 18 36, 30 36 C 36 36, 36 28, 28 28" stroke-width="3.5" />
+    <!-- Bottom-right cloverleaf loop -->
+    <path d="M 36 44 C 46 44, 46 28, 34 28 C 28 28, 28 36, 36 36" stroke-width="3.5" />
+    <!-- Center junction point -->
+    <circle cx="32" cy="32" r="4" fill="#ffffff" stroke="#ffffff" stroke-width="1" />
+  </g>
+</svg>

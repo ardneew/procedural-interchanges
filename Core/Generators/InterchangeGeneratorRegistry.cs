@@ -18,7 +18,6 @@ namespace ProceduralInterchanges.Core.Generators
             Register(new CloverleafGenerator());
             Register(new FourLevelStackGenerator());
             Register(new TurbineGenerator());
-            Register(new RoundaboutInterchangeGenerator());
         }
 
         private static void Register(IInterchangeGenerator gen)

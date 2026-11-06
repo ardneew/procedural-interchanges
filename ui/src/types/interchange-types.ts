@@ -84,6 +84,9 @@ export interface InterchangeUIState {
   leftHandTraffic: boolean;
   gradeSeparateMainline: boolean;
   mainlineOverpass: boolean;
+  undergroundMode: number;
+  flowPriorityMode: number;
+  primaryAxisOffset: number;
   liveGhostEnabled: boolean;
   overlayEnabled: boolean;
   canUndo: boolean;

@@ -2,8 +2,10 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using ProceduralInterchanges.Core.Generators;
+using ProceduralInterchanges.Core.Integration;
 using ProceduralInterchanges.Core.Math;
 using ProceduralInterchanges.Core.Models;
+using ProceduralInterchanges.Core.Templates;
 using ProceduralInterchanges.Lab.Rendering;
 using ProceduralInterchanges.Tests.Audit;
 using ProceduralInterchanges.Tests.Fixtures;
@@ -57,7 +59,37 @@ namespace ProceduralInterchanges.Lab.Cases
                 SyntheticHighwaySites.Create3WayJunction(120f, 200f),
                 SyntheticHighwaySites.TerrainSamplers.Flat, 200f));
 
+            // 5. RL-Driven Template Adaptation Cases (Acute Skews & Staggered Dual Carriageways)
+            cards.Add(RunTemplateCase("Cloverleaf", "RL 45° Acute Skew", InterchangeArchetype.Cloverleaf,
+                SyntheticHighwaySites.CreateSkewed4Way(45f, 240f),
+                SyntheticHighwaySites.TerrainSamplers.Flat, 240f));
+
+            cards.Add(RunTemplateCase("FourLevelStack", "RL 60° Skewed Stack", InterchangeArchetype.FourLevelStack,
+                SyntheticHighwaySites.CreateSkewed4Way(60f, 260f),
+                SyntheticHighwaySites.TerrainSamplers.Flat, 260f));
+
+            cards.Add(RunTemplateCase("Trumpet", "RL 75° Skew Staggered", InterchangeArchetype.Trumpet,
+                CreateStaggered3Way(75f, 220f, staggerMeters: 25f),
+                SyntheticHighwaySites.TerrainSamplers.Flat, 220f));
+
             return cards;
+        }
+
+        private static List<HighwayLeg> CreateStaggered3Way(float angleDeg, float radius, float staggerMeters)
+        {
+            var legs = SyntheticHighwaySites.Create3WayJunction(angleDeg, radius);
+            for (int i = 0; i < legs.Count; i++)
+            {
+                var leg = legs[i];
+                if (leg.IsSeparatedDualCarriageway && leg.Outbound != null)
+                {
+                    float3 dir = math.normalize(leg.LegAxisDirection);
+                    leg.Outbound.PortalPosition += dir * staggerMeters;
+                    leg.LongitudinalStaggerMeters = staggerMeters;
+                    HighwayPairingSolver.AlignLegToCommonPerpendicularPlane(default, leg, float3.zero);
+                }
+            }
+            return legs;
         }
 
         private static GalleryCard RunCase(
@@ -87,6 +119,45 @@ namespace ProceduralInterchanges.Lab.Cases
             sw.Stop();
 
             string svg = SvgRenderer.RenderInterchangeSvg(courses, legs, verdict, radius);
+
+            return new GalleryCard
+            {
+                Archetype = archetypeName,
+                Variant = variantName,
+                SvgContent = svg,
+                Verdict = verdict,
+                ExecutionTimeMs = sw.Elapsed.TotalMilliseconds
+            };
+        }
+
+        private static GalleryCard RunTemplateCase(
+            string archetypeName,
+            string variantName,
+            InterchangeArchetype archetype,
+            List<HighwayLeg> legs,
+            Func<float2, float> terrainSampler,
+            float radius)
+        {
+            var sw = Stopwatch.StartNew();
+
+            var template = WorkshopTemplateLibrary.GetTemplate(archetype);
+            var config = new InterchangeConfig
+            {
+                Archetype = archetype,
+                Center = new float3(0f, 0f, 0f),
+                FootprintRadius = radius,
+                MinBridgeClearanceMeters = 9.5f,
+                MainlineOverpass = true
+            };
+
+            var plan = new InterchangePlan { Config = config, Legs = legs };
+            TemplateMorphSolver.GenerateMorphedPlan(template, config, legs, null, plan, null, terrainSampler);
+            ClearanceAndPillarSolver.SolveElevationsAndSubdivide(plan.Courses, terrainSampler, config);
+
+            var verdict = InterchangeAudit.RunAudit(archetype, legs, plan.Courses);
+            sw.Stop();
+
+            string svg = SvgRenderer.RenderInterchangeSvg(plan.Courses, legs, verdict, radius);
 
             return new GalleryCard
             {

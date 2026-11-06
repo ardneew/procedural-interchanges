@@ -1,8 +1,9 @@
 using System;
 using System.Collections.Generic;
 using Colossal.Mathematics;
-using Game.Net;
+using ProceduralInterchanges.Core.Math;
 using ProceduralInterchanges.Core.Models;
+using ProceduralInterchanges.Core.Templates.RL;
 using ProceduralInterchanges.Systems;
 using Unity.Entities;
 using Unity.Mathematics;
@@ -11,61 +12,132 @@ namespace ProceduralInterchanges.Core.Templates
 {
     public static class TemplateMorphSolver
     {
+        public static void Morph(
+            InterchangePlan plan,
+            WorkshopTemplateDef template,
+            InterchangeConfig config,
+            IReadOnlyList<HighwayLeg> legs,
+            float[] customAction32 = null,
+            Func<float2, float> sampleTerrainHeight = null,
+            HighwayPrefabCatalogSystem catalog = null)
+        {
+            if (plan == null || template == null || config == null || legs == null) return;
+
+            int n = template.RequiredLegs;
+            if (legs.Count < n) return;
+
+            var activeLegs = legs;
+            if (legs.Count > n)
+            {
+                var trimmed = new List<HighwayLeg>(n);
+                for (int i = 0; i < n; i++) trimmed.Add(legs[i]);
+                activeLegs = trimmed;
+            }
+
+            bool lht = config.LeftHandTraffic;
+            var subMap = TemplateSubstructureExtractor.GetOrExtract(template, lht);
+
+            int bestS = FindOptimalCyclicShift(template, activeLegs, config.Center, lht);
+
+            // Baseline zero-action evaluation
+            float[] zeroAction = new float[InterchangeRlStateExtractor.kActionDim];
+            var baselineCourses = GenerateMorphedCourses(
+                template, subMap, config, activeLegs, bestS, zeroAction, sampleTerrainHeight, catalog);
+            float baselineScore = InterchangeRewardEvaluator.EvaluateFast(
+                baselineCourses, config, activeLegs, LearnedPolicyWeights.ActiveRewardWeights);
+
+            float[] action32 = customAction32;
+            if (action32 == null)
+            {
+                action32 = InterchangePolicyNetwork.PredictAndPolishAction(
+                    template, subMap, config, activeLegs, bestS, sampleTerrainHeight, LearnedPolicyWeights.ActiveRewardWeights);
+            }
+
+            var policyCourses = GenerateMorphedCourses(
+                template, subMap, config, activeLegs, bestS, action32, sampleTerrainHeight, catalog);
+            float policyScore = InterchangeRewardEvaluator.EvaluateFast(
+                policyCourses, config, activeLegs, LearnedPolicyWeights.ActiveRewardWeights);
+
+            // Monotonic safety guarantee: never degrade below baseline setback diffeomorphism
+            if (customAction32 != null || policyScore >= baselineScore)
+            {
+                plan.Courses.AddRange(policyCourses);
+            }
+            else
+            {
+                plan.Courses.AddRange(baselineCourses);
+            }
+        }
+
         public static void GenerateMorphedPlan(
             WorkshopTemplateDef template,
             InterchangeConfig config,
-            List<HighwayLeg> legs,
+            IReadOnlyList<HighwayLeg> legs,
             HighwayPrefabCatalogSystem catalog,
-            InterchangePlan plan)
+            InterchangePlan plan,
+            float[] customAction32 = null,
+            Func<float2, float> sampleTerrainHeight = null)
         {
-            if (template == null || config == null || legs == null || plan == null) return;
+            Morph(plan, template, config, legs, customAction32, sampleTerrainHeight, catalog);
+        }
 
-            plan.Courses.Clear();
-            plan.AngleWarningMessage = string.Empty;
-            plan.Config = config;
-            plan.Legs = legs;
+        public static List<PlannedNetCourse> GenerateMorphedCourses(
+            WorkshopTemplateDef template,
+            TemplateSubstructureMap subMap,
+            InterchangeConfig config,
+            IReadOnlyList<HighwayLeg> legs,
+            int bestS,
+            float[] action32,
+            Func<float2, float> sampleTerrainHeight = null,
+            HighwayPrefabCatalogSystem catalog = null)
+        {
+            var courses = new List<PlannedNetCourse>();
+            if (template == null || subMap == null || config == null || legs == null) return courses;
 
-            int N = template.RequiredLegs;
-            if (legs.Count != N) return;
+            int n = template.RequiredLegs;
+            if (legs.Count < n) return courses;
+            var activeLegs = legs;
+            if (legs.Count > n)
+            {
+                var trimmed = new List<HighwayLeg>(n);
+                for (int i = 0; i < n; i++) trimmed.Add(legs[i]);
+                activeLegs = trimmed;
+            }
+
+            action32 = action32 ?? new float[InterchangeRlStateExtractor.kActionDim];
 
             float3 center = config.Center;
             float yBase = center.y;
+            bool lht = config.LeftHandTraffic;
 
-            // 1. Compute user leg azimuths alpha_i in [-pi, pi] and radial distances R_i
-            float[] alphas = new float[N];
-            float[] legRadii = new float[N];
-            float minRadius = float.MaxValue;
-
-            for (int i = 0; i < N; i++)
+            // 1. Azimuths and radii of host highway legs
+            float[] alphas = new float[n];
+            float[] legRadii = new float[n];
+            for (int i = 0; i < n; i++)
             {
-                var leg = legs[i];
-                float3 p = leg.IsSeparatedDualCarriageway
-                    ? (leg.Inbound.PortalPosition + leg.Outbound.PortalPosition) * 0.5f
-                    : leg.Inbound.PortalPosition;
+                var leg = activeLegs[i];
+                float3 p = leg.PortalCenterPosition;
                 float2 d = p.xz - center.xz;
                 alphas[i] = math.atan2(d.y, d.x);
-                float r = math.length(d);
-                legRadii[i] = r;
-                if (r < minRadius) minRadius = r;
+                legRadii[i] = math.length(d);
             }
 
-            // Canonical leg azimuths and index permutation tracking
-            float[] canonAz = new float[N];
-            int[] origLegToSortedLeg = new int[N];
-            int[] sortedLegToOrigLeg = new int[N];
-            for (int i = 0; i < N; i++) sortedLegToOrigLeg[i] = i;
+            // Canonical leg azimuths
+            float[] canonAz = new float[n];
+            int[] origLegToSortedLeg = new int[n];
+            int[] sortedLegToOrigLeg = new int[n];
+            for (int i = 0; i < n; i++) sortedLegToOrigLeg[i] = i;
 
-            bool lht = config.LeftHandTraffic;
             if (lht)
             {
                 float[] unmirrored = template.CanonicalLegAzimuthsRad;
-                float[] mirrored = new float[N];
-                for (int i = 0; i < N; i++)
+                float[] mirrored = new float[n];
+                for (int i = 0; i < n; i++)
                 {
                     mirrored[i] = WrapCCW(-unmirrored[i]);
                 }
                 Array.Sort(sortedLegToOrigLeg, (a, b) => mirrored[a].CompareTo(mirrored[b]));
-                for (int m = 0; m < N; m++)
+                for (int m = 0; m < n; m++)
                 {
                     canonAz[m] = mirrored[sortedLegToOrigLeg[m]];
                     origLegToSortedLeg[sortedLegToOrigLeg[m]] = m;
@@ -73,7 +145,7 @@ namespace ProceduralInterchanges.Core.Templates
             }
             else
             {
-                for (int m = 0; m < N; m++)
+                for (int m = 0; m < n; m++)
                 {
                     canonAz[m] = template.CanonicalLegAzimuthsRad[m];
                     origLegToSortedLeg[m] = m;
@@ -81,97 +153,76 @@ namespace ProceduralInterchanges.Core.Templates
                 }
             }
 
-            // Canonical sector angles
-            float[] deltaCanon = new float[N];
-            for (int m = 0; m < N; m++)
+            float[] deltaCanon = new float[n];
+            for (int m = 0; m < n; m++)
             {
-                int next = (m + 1) % N;
+                int next = (m + 1) % n;
                 deltaCanon[m] = WrapCCWPositive(canonAz[next] - canonAz[m]);
             }
 
-            // Find optimal cyclic shift s*
-            int bestS = 0;
-            float bestEnergy = float.MaxValue;
-
-            for (int s = 0; s < N; s++)
+            float[] thetaTarget = new float[n];
+            float[] deltaTargetBest = new float[n];
+            for (int m = 0; m < n; m++)
             {
-                float distortionEnergy = 0f;
-                float alignEnergy = 0f;
-                for (int m = 0; m < N; m++)
-                {
-                    int currUser = (m + s) % N;
-                    int nextUser = (m + 1 + s) % N;
-                    float deltaTarget = WrapCCWPositive(alphas[nextUser] - alphas[currUser]);
-                    float diff = deltaTarget - deltaCanon[m];
-                    distortionEnergy += diff * diff;
-
-                    float rot = WrapCCW(alphas[currUser] - canonAz[m]);
-                    alignEnergy += rot * rot;
-                }
-
-                float totalEnergy = distortionEnergy + 0.05f * alignEnergy;
-                if (totalEnergy < bestEnergy)
-                {
-                    bestEnergy = totalEnergy;
-                    bestS = s;
-                }
-            }
-
-            // Compute target azimuths and target sector angles with bestS
-            float[] thetaTarget = new float[N];
-            float[] deltaTargetBest = new float[N];
-            for (int m = 0; m < N; m++)
-            {
-                int currUser = (m + bestS) % N;
-                int nextUser = (m + 1 + bestS) % N;
+                int currUser = (m + bestS) % n;
+                int nextUser = (m + 1 + bestS) % n;
                 thetaTarget[m] = alphas[currUser];
                 deltaTargetBest[m] = WrapCCWPositive(alphas[nextUser] - alphas[currUser]);
             }
 
-            // Severe Angle Warning Check
-            float minSectorDeg = float.MaxValue;
-            float maxSkewDeg = 0f;
-            for (int m = 0; m < N; m++)
-            {
-                float secDeg = math.degrees(deltaTargetBest[m]);
-                if (secDeg < minSectorDeg) minSectorDeg = secDeg;
+            float canonR = math.max(1f, template.CanonicalRadius);
+            float hostR = math.clamp(config.FootprintRadius, 120f, 500f);
 
-                float skewDeg = math.abs(math.degrees(deltaTargetBest[m] - deltaCanon[m]));
-                if (skewDeg > maxSkewDeg) maxSkewDeg = skewDeg;
+            // Two-Zone Highway Setback Parameters
+            float etaCore = math.clamp(0.62f + 0.08f * action32[11], 0.52f, 0.72f);
+            float rCore = etaCore * hostR;
+            float sCore = rCore / canonR;
+
+            float alphaMold = math.clamp(0.35f + 0.08f * action32[10], 0.22f, 0.45f);
+
+            // Action decoding for center and rigid rotation
+            float deltaXCore = 12.0f * action32[24];
+            float deltaZCore = 12.0f * action32[25];
+            float deltaThetaCore = 0.25f * action32[26];
+
+            float sumSin = 0f;
+            float sumCos = 0f;
+            for (int m = 0; m < n; m++)
+            {
+                float diff = thetaTarget[m] - canonAz[m];
+                sumSin += math.sin(diff);
+                sumCos += math.cos(diff);
+            }
+            float thetaRigid = math.atan2(sumSin, sumCos) + deltaThetaCore;
+
+            // Angular residual per sector and core virtual leg angles
+            float[] deltaCore = new float[n];
+            float[] thetaCore = new float[n];
+            for (int m = 0; m < n; m++)
+            {
+                float residual = WrapCCW(thetaTarget[m] - (canonAz[m] + thetaRigid));
+                deltaCore[m] = alphaMold * residual;
+                thetaCore[m] = WrapAngleRad(canonAz[m] + thetaRigid + deltaCore[m]);
             }
 
-            if (minSectorDeg < 55.0f || maxSkewDeg > 25.0f)
+            // Step 1: Smooth Conformal-Core Harmonic Diffeomorphism
+            float3 BaseMap(float3 q, out float thetaRotOut, out float sLocOut)
             {
-                plan.AngleWarningMessage = $"Severe highway skew angle ({minSectorDeg:F0}° sector / {maxSkewDeg:F0}° skew). Expect compressed or sharp ramp geometry.";
-            }
-            else
-            {
-                plan.AngleWarningMessage = string.Empty;
-            }
-
-            // 2D Polar-Sector Diffeomorphism
-            float effectiveR = math.clamp(config.FootprintRadius, 120f, 180f);
-            float sCore = math.clamp(effectiveR / math.max(1f, template.CanonicalRadius), 0.60f, 1.00f);
-
-            float3 WarpPoint(float3 q)
-            {
-                // In LHT, mirror across X axis: z -> -z
-                float qx = q.x;
-                float qy = q.y;
-                float qz = lht ? -q.z : q.z;
-
-                float r = math.length(new float2(qx, qz));
+                float r = math.length(q.xz);
                 if (r < 1e-4f)
                 {
-                    return new float3(center.x, yBase + qy, center.z);
+                    thetaRotOut = thetaRigid;
+                    sLocOut = sCore;
+                    float2 cCenter = new float2(center.x + deltaXCore, center.z + deltaZCore);
+                    float yCenter = sampleTerrainHeight != null ? sampleTerrainHeight(cCenter) : yBase;
+                    return new float3(cCenter.x, yCenter + q.y, cCenter.y);
                 }
 
-                float theta = math.atan2(qz, qx);
+                float theta = math.atan2(q.z, q.x);
 
-                // Find sector m
                 int secM = 0;
                 float minRel = float.MaxValue;
-                for (int m = 0; m < N; m++)
+                for (int m = 0; m < n; m++)
                 {
                     float rel = WrapCCWPositive(theta - canonAz[m]);
                     if (rel <= deltaCanon[m] + 1e-3f)
@@ -187,295 +238,524 @@ namespace ProceduralInterchanges.Core.Templates
                 }
 
                 float u = math.clamp(WrapCCWPositive(theta - canonAz[secM]) / math.max(1e-4f, deltaCanon[secM]), 0f, 1f);
-                float thetaPrime = thetaTarget[secM] + u * deltaTargetBest[secM];
+                float sU = u * u * (3.0f - 2.0f * u); // C1 smoothstep: zero angular derivative kink across sector rays
+                int nextSecM = (secM + 1) % n;
 
-                float wx = center.x + sCore * r * math.cos(thetaPrime);
-                float wz = center.z + sCore * r * math.sin(thetaPrime);
-                float wy = yBase + qy;
+                float deltaThetaHarm = (1.0f - sU) * deltaCore[secM] + sU * deltaCore[nextSecM];
+                float wArm = math.smoothstep(0.15f * canonR, 0.65f * canonR, r);
+                float thetaRot = thetaRigid + wArm * deltaThetaHarm;
 
-                return new float3(wx, wy, wz);
+                float sLoc = sCore;
+                float2 rotated = Rotate2D(q.xz, thetaRot);
+                float2 posXZ = center.xz + (1.0f - wArm) * new float2(deltaXCore, deltaZCore) + sLoc * rotated;
+
+                thetaRotOut = thetaRot;
+                sLocOut = sLoc;
+                float yTerr = sampleTerrainHeight != null ? sampleTerrainHeight(posXZ) : yBase;
+                return new float3(posXZ.x, yTerr + q.y, posXZ.y);
             }
 
-            // Shared Node Table Invariant
-            float3[] warpedNodes = new float3[template.Nodes.Length];
-            for (int k = 0; k < template.Nodes.Length; k++)
+            // Step 2: Transform Nodes & Authoritative Deformed Tangent Frames
+            int numNodes = template.Nodes.Length;
+            float3[] warpedNodes = new float3[numNodes];
+            float[] nodeRotationRad = new float[numNodes];
+            float[] nodeScale = new float[numNodes];
+            float2[] nodeTangents = new float2[numNodes];
+
+            for (int v = 0; v < numNodes; v++)
             {
-                warpedNodes[k] = WarpPoint(template.Nodes[k]);
+                warpedNodes[v] = BaseMap(subMap.SanitizedNodes[v], out float rot, out float scl);
+                nodeRotationRad[v] = rot;
+                nodeScale[v] = scl;
             }
 
-            // Map terminal ports by segment index
-            // Key: segment index, Value: TemplateTerminalPort
-            var startPortBySeg = new Dictionary<int, TemplateTerminalPort>();
-            var endPortBySeg = new Dictionary<int, TemplateTerminalPort>();
+            // Gore node sliding (bounded to preserve geometric integrity)
+            int numGores = subMap.GoreNodes != null ? subMap.GoreNodes.Length : 0;
+            for (int g = 0; g < numGores && g < 8; g++)
+            {
+                var gore = subMap.GoreNodes[g];
+                int v = gore.NodeIndex;
+                float deltaTau = 8.0f * action32[16 + g];
 
+                float2 tPrime = Rotate2D(gore.MainlineTangentXZ, nodeRotationRad[v]);
+                warpedNodes[v].xz += deltaTau * tPrime;
+                float yGore = sampleTerrainHeight != null ? sampleTerrainHeight(warpedNodes[v].xz) : yBase;
+                warpedNodes[v].y = yGore + subMap.SanitizedNodes[v].y;
+            }
+
+            // Conformal loop cluster placement
+            int numClusters = subMap.LoopClusters != null ? subMap.LoopClusters.Length : 0;
+            for (int k = 0; k < numClusters && k < 4; k++)
+            {
+                var cl = subMap.LoopClusters[k];
+                float deltaR = 12.0f * action32[4 * k + 0];
+                float deltaN = 12.0f * action32[4 * k + 1];
+                float deltaPhi = 0.20f * action32[4 * k + 2];
+                float sLoop = 1.0f + 0.12f * action32[4 * k + 3];
+
+                var c0_3d = BaseMap(new float3(cl.CanonicalCenterXZ.x, 0f, cl.CanonicalCenterXZ.y), out float theta0, out float s0);
+                float2 c0 = c0_3d.xz;
+
+                float2 uDir = math.lengthsq(c0 - center.xz) > 1e-4f ? math.normalize(c0 - center.xz) : new float2(1f, 0f);
+                float2 nDir = new float2(-uDir.y, uDir.x);
+
+                float2 cPrime = c0 + deltaR * uDir + deltaN * nDir;
+                float psiCluster = theta0 + deltaPhi;
+                float lambdaCluster = sLoop * math.max(0.85f, sCore);
+
+                for (int i = 0; i < cl.InteriorNodeIndices.Length; i++)
+                {
+                    int v = cl.InteriorNodeIndices[i];
+                    float2 offset = subMap.SanitizedNodes[v].xz - cl.CanonicalCenterXZ;
+                    warpedNodes[v].xz = cPrime + lambdaCluster * Rotate2D(offset, psiCluster);
+                    float yLoop = sampleTerrainHeight != null ? sampleTerrainHeight(warpedNodes[v].xz) : yBase;
+                    warpedNodes[v].y = yLoop + subMap.SanitizedNodes[v].y;
+                    nodeRotationRad[v] = psiCluster;
+                    nodeScale[v] = lambdaCluster;
+                }
+            }
+
+            // Map terminal ports for quick lookup
+            var portByNode = new Dictionary<int, (TemplateTerminalPort port, int legIdx)>();
             for (int pIdx = 0; pIdx < template.TerminalPorts.Length; pIdx++)
             {
                 var port = template.TerminalPorts[pIdx];
-                if (port.IsInbound)
+                int canonSortedM = origLegToSortedLeg[port.CanonicalLegIndex];
+                int userLegIdx = (canonSortedM + bestS) % n;
+                portByNode[port.NodeIndex] = (port, userLegIdx);
+            }
+
+            // Authoritative deformed node tangents via numerical differentiation (strict node-locked G1 frame)
+            for (int v = 0; v < numNodes; v++)
+            {
+                if (portByNode.TryGetValue(v, out var portInfo))
                 {
-                    startPortBySeg[port.SegmentIndex] = port;
+                    int m = origLegToSortedLeg[portInfo.port.CanonicalLegIndex];
+                    float coreAngle = thetaCore[m];
+                    float2 coreAxis = new float2(math.cos(coreAngle), math.sin(coreAngle));
+                    if (portInfo.port.IsInbound)
+                    {
+                        // Inbound traffic moves inward toward center
+                        nodeTangents[v] = -coreAxis;
+                    }
+                    else
+                    {
+                        // Outbound traffic moves outward away from center
+                        nodeTangents[v] = coreAxis;
+                    }
                 }
                 else
                 {
-                    endPortBySeg[port.SegmentIndex] = port;
+                    float2 tauCanon = subMap.CanonicalNodeTangentsXZ[v];
+                    float3 qPlus = subMap.SanitizedNodes[v] + 0.5f * new float3(tauCanon.x, 0f, tauCanon.y);
+                    float3 qMinus = subMap.SanitizedNodes[v] - 0.5f * new float3(tauCanon.x, 0f, tauCanon.y);
+                    float3 pPrimePlus = BaseMap(qPlus, out _, out _);
+                    float3 pPrimeMinus = BaseMap(qMinus, out _, out _);
+                    float2 dPrime = (pPrimePlus - pPrimeMinus).xz;
+                    if (math.lengthsq(dPrime) > 1e-4f)
+                    {
+                        nodeTangents[v] = math.normalize(dPrime);
+                    }
+                    else
+                    {
+                        nodeTangents[v] = Rotate2D(tauCanon, nodeRotationRad[v]);
+                    }
                 }
             }
 
-            // Track single two-way trunk courses emitted per leg so we don't emit duplicates
-            var emittedTwoWayTrunk = new HashSet<int>();
-
-            // Emit all segments
-            for (int segIdx = 0; segIdx < template.Segments.Length; segIdx++)
+            // Step 3: Internal Segment Reconstruction (Strict Node-Locked G1 Continuity)
+            for (int s = 0; s < template.Segments.Length; s++)
             {
-                var seg = template.Segments[segIdx];
-                bool isStartTerminal = startPortBySeg.TryGetValue(segIdx, out var startPort);
-                bool isEndTerminal = endPortBySeg.TryGetValue(segIdx, out var endPort);
-
-                int startNode = seg.StartNodeIndex;
-                int endNode = seg.EndNodeIndex;
+                var seg = template.Segments[s];
+                int u = seg.StartNodeIndex;
+                int v = seg.EndNodeIndex;
 
                 Bezier4x3 curve;
-                Entity startAttach = Entity.Null;
-                float startSplit = 0f;
-                bool startAttachIsNode = false;
+                int clusterIdx = subMap.SegmentToLoopCluster[s];
+                bool bothInLoop = clusterIdx >= 0 &&
+                                  subMap.NodeToLoopCluster[u] == clusterIdx &&
+                                  subMap.NodeToLoopCluster[v] == clusterIdx;
 
-                Entity endAttach = Entity.Null;
-                float endSplit = 0f;
-                bool endAttachIsNode = false;
-
-                int segLegIndex = -1;
-                int segTargetLegIndex = -1;
-
-                if (isStartTerminal)
+                if (bothInLoop)
                 {
-                    int canonSortedM = origLegToSortedLeg[startPort.CanonicalLegIndex];
-                    int userLegIdx = (canonSortedM + bestS) % N;
-                    var leg = legs[userLegIdx];
-                    segLegIndex = userLegIdx;
+                    // Conformal loop interior similarity transform with node-locked G1 boundary
+                    float lambda = math.max(0.70f, nodeScale[u]);
+                    float3 p0 = warpedNodes[u];
+                    float3 p1 = warpedNodes[v];
+                    float dChord = math.distance(p0.xz, p1.xz);
 
-                    if (leg.IsSeparatedDualCarriageway)
-                    {
-                        float3 pStart = new float3(leg.Inbound.PortalPosition.x, yBase, leg.Inbound.PortalPosition.z);
-                        float3 tStart = math.normalize(new float3(leg.Inbound.InwardTangent.x, 0f, leg.Inbound.InwardTangent.z));
-                        float3 pEnd = warpedNodes[endNode];
-                        float3 warpedC = WarpPoint(seg.BezierC);
-                        float3 tEnd = math.normalize(pEnd - warpedC);
-                        if (math.lengthsq(tEnd) < 1e-4f) tEnd = tStart;
+                    float2 t0Canon = subMap.SegmentCanonVectorA[s].xz;
+                    float2 t1Canon = -subMap.SegmentCanonVectorD[s].xz;
+                    float lenA = math.max(1.0f, math.length(t0Canon));
+                    float lenD = math.max(1.0f, math.length(t1Canon));
 
-                        curve = FitHermite3D(pStart, tStart, pEnd, tEnd);
-                        curve.a = pStart;
-                        curve.d = pEnd;
+                    float2 dir0Canon = t0Canon / lenA;
+                    float2 dir1Canon = t1Canon / lenD;
 
-                        startAttach = leg.Inbound.AttachToNode ? leg.Inbound.AttachNodeEntity : leg.Inbound.SourceEdge;
-                        startSplit = leg.Inbound.CutCurveT;
-                        startAttachIsNode = leg.Inbound.AttachToNode;
-                    }
-                    else
-                    {
-                        // Single two-way highway user leg
-                        float3 pRoad = new float3(leg.Inbound.PortalPosition.x, yBase, leg.Inbound.PortalPosition.z);
-                        float3 tIn = math.normalize(new float3(leg.Inbound.InwardTangent.x, 0f, leg.Inbound.InwardTangent.z));
-                        float3 bifurcationJ = pRoad + tIn * 18.0f;
+                    float sigma0 = math.dot(dir0Canon, subMap.CanonicalNodeTangentsXZ[u]) >= 0f ? 1.0f : -1.0f;
+                    float sigma1 = math.dot(dir1Canon, subMap.CanonicalNodeTangentsXZ[v]) >= 0f ? 1.0f : -1.0f;
 
-                        // Emit trunk if not yet emitted
-                        if (!emittedTwoWayTrunk.Contains(userLegIdx))
-                        {
-                            emittedTwoWayTrunk.Add(userLegIdx);
-                            EmitTwoWayTrunk(plan, leg, catalog, pRoad, tIn, bifurcationJ, userLegIdx);
-                        }
+                    float2 t0Rot = sigma0 * nodeTangents[u];
+                    float2 t1Rot = sigma1 * nodeTangents[v];
 
-                        float3 pEnd = warpedNodes[endNode];
-                        float3 warpedC = WarpPoint(seg.BezierC);
-                        float3 tEnd = math.normalize(pEnd - warpedC);
-                        if (math.lengthsq(tEnd) < 1e-4f) tEnd = tIn;
+                    float lA = math.clamp(lambda * lenA, 0.30f * dChord, 0.44f * dChord);
+                    float lD = math.clamp(lambda * lenD, 0.30f * dChord, 0.44f * dChord);
 
-                        curve = FitHermite3D(bifurcationJ, tIn, pEnd, tEnd);
-                        curve.a = bifurcationJ;
-                        curve.d = pEnd;
+                    float3 bB = new float3(p0.x + lA * t0Rot.x, math.lerp(p0.y, p1.y, 0.33333334f), p0.z + lA * t0Rot.y);
+                    float3 bC = new float3(p1.x - lD * t1Rot.x, math.lerp(p0.y, p1.y, 0.6666667f), p1.z - lD * t1Rot.y);
 
-                        startAttach = Entity.Null;
-                    }
-                }
-                else if (isEndTerminal)
-                {
-                    int canonSortedM = origLegToSortedLeg[endPort.CanonicalLegIndex];
-                    int userLegIdx = (canonSortedM + bestS) % N;
-                    var leg = legs[userLegIdx];
-                    segTargetLegIndex = userLegIdx;
-
-                    if (leg.IsSeparatedDualCarriageway)
-                    {
-                        float3 pStart = warpedNodes[startNode];
-                        float3 warpedB = WarpPoint(seg.BezierB);
-                        float3 tStart = math.normalize(warpedB - pStart);
-                        if (math.lengthsq(tStart) < 1e-4f) tStart = new float3(1f, 0f, 0f);
-
-                        float3 pEnd = new float3(leg.Outbound.PortalPosition.x, yBase, leg.Outbound.PortalPosition.z);
-                        float3 tEnd = math.normalize(new float3(-leg.Outbound.InwardTangent.x, 0f, -leg.Outbound.InwardTangent.z));
-
-                        curve = FitHermite3D(pStart, tStart, pEnd, tEnd);
-                        curve.a = pStart;
-                        curve.d = pEnd;
-
-                        endAttach = leg.Outbound.AttachToNode ? leg.Outbound.AttachNodeEntity : leg.Outbound.SourceEdge;
-                        endSplit = leg.Outbound.CutCurveT;
-                        endAttachIsNode = leg.Outbound.AttachToNode;
-                    }
-                    else
-                    {
-                        // Single two-way highway user leg
-                        float3 pRoad = new float3(leg.Inbound.PortalPosition.x, yBase, leg.Inbound.PortalPosition.z);
-                        float3 tIn = math.normalize(new float3(leg.Inbound.InwardTangent.x, 0f, leg.Inbound.InwardTangent.z));
-                        float3 bifurcationJ = pRoad + tIn * 18.0f;
-
-                        if (!emittedTwoWayTrunk.Contains(userLegIdx))
-                        {
-                            emittedTwoWayTrunk.Add(userLegIdx);
-                            EmitTwoWayTrunk(plan, leg, catalog, pRoad, tIn, bifurcationJ, userLegIdx);
-                        }
-
-                        float3 pStart = warpedNodes[startNode];
-                        float3 warpedB = WarpPoint(seg.BezierB);
-                        float3 tStart = math.normalize(warpedB - pStart);
-                        if (math.lengthsq(tStart) < 1e-4f) tStart = tIn;
-
-                        curve = FitHermite3D(pStart, tStart, bifurcationJ, -tIn);
-                        curve.a = pStart;
-                        curve.d = bifurcationJ;
-
-                        endAttach = Entity.Null;
-                    }
+                    curve = new Bezier4x3(p0, bB, bC, p1);
                 }
                 else
                 {
-                    // Internal segment: bit-for-bit shared node coordinates
-                    curve = new Bezier4x3(
-                        warpedNodes[startNode],
-                        WarpPoint(seg.BezierB),
-                        WarpPoint(seg.BezierC),
-                        warpedNodes[endNode]
-                    );
+                    float3 p0 = warpedNodes[u];
+                    float3 p1 = warpedNodes[v];
+
+                    float dChord = math.distance(p0.xz, p1.xz);
+                    float2 dCanon = subMap.SanitizedNodes[v].xz - subMap.SanitizedNodes[u].xz;
+                    float lenCanon = math.max(1.0f, math.length(dCanon));
+                    float rChord = dChord / lenCanon;
+
+                    float2 t0Canon = subMap.SegmentCanonVectorA[s].xz;
+                    float2 t1Canon = -subMap.SegmentCanonVectorD[s].xz;
+
+                    float lenA = math.max(1.0f, math.length(t0Canon));
+                    float lenD = math.max(1.0f, math.length(t1Canon));
+
+                    float2 dir0Canon = t0Canon / lenA;
+                    float2 dir1Canon = t1Canon / lenD;
+
+                    float2 nodeTanU = nodeTangents[u];
+                    float2 nodeTanV = nodeTangents[v];
+
+                    float sigma0 = math.dot(dir0Canon, subMap.CanonicalNodeTangentsXZ[u]) >= 0f ? 1.0f : -1.0f;
+                    float sigma1 = math.dot(dir1Canon, subMap.CanonicalNodeTangentsXZ[v]) >= 0f ? 1.0f : -1.0f;
+
+                    float2 t0Rot;
+                    float dotU = math.abs(math.dot(dir0Canon, subMap.CanonicalNodeTangentsXZ[u]));
+                    if (dotU >= 0.98f || subMap.NodeToGoreIndex[u] < 0)
+                    {
+                        t0Rot = sigma0 * nodeTanU;
+                    }
+                    else
+                    {
+                        float2 b0 = sigma0 * subMap.CanonicalNodeTangentsXZ[u];
+                        float cosPhi0 = math.clamp(b0.x * dir0Canon.x + b0.y * dir0Canon.y, -1f, 1f);
+                        float sinPhi0 = b0.x * dir0Canon.y - b0.y * dir0Canon.x;
+                        float2 c0 = sigma0 * nodeTanU;
+                        t0Rot = new float2(c0.x * cosPhi0 - c0.y * sinPhi0, c0.x * sinPhi0 + c0.y * cosPhi0);
+                    }
+
+                    float2 t1Rot;
+                    float dotV = math.abs(math.dot(dir1Canon, subMap.CanonicalNodeTangentsXZ[v]));
+                    if (dotV >= 0.98f || subMap.NodeToGoreIndex[v] < 0)
+                    {
+                        t1Rot = sigma1 * nodeTanV;
+                    }
+                    else
+                    {
+                        float2 b1 = sigma1 * subMap.CanonicalNodeTangentsXZ[v];
+                        float cosPhi1 = math.clamp(b1.x * dir1Canon.x + b1.y * dir1Canon.y, -1f, 1f);
+                        float sinPhi1 = b1.x * dir1Canon.y - b1.y * dir1Canon.x;
+                        float2 c1 = sigma1 * nodeTanV;
+                        t1Rot = new float2(c1.x * cosPhi1 - c1.y * sinPhi1, c1.x * sinPhi1 + c1.y * cosPhi1);
+                    }
+
+                    float cosTurn = math.clamp(math.dot(t0Rot, t1Rot), -1f, 1f);
+                    float3 bB, bC;
+                    if (dChord < 14.0f && cosTurn > 0.85f)
+                    {
+                        // Short near-straight connector: exact collinear third points to avoid velocity collapse
+                        bB = math.lerp(p0, p1, 0.33333334f);
+                        bC = math.lerp(p0, p1, 0.6666667f);
+                    }
+                    else
+                    {
+                        float lA = math.clamp(rChord * lenA, 0.25f * dChord, 0.45f * dChord);
+                        float lD = math.clamp(rChord * lenD, 0.25f * dChord, 0.45f * dChord);
+
+                        float sVert = math.clamp(sCore, 0.65f, 1.0f);
+                        float yB = (math.abs(subMap.SegmentCanonVectorA[s].y) > 0.05f)
+                            ? p0.y + sVert * subMap.SegmentCanonVectorA[s].y
+                            : math.lerp(p0.y, p1.y, 0.33333334f);
+                        float yC = (math.abs(subMap.SegmentCanonVectorD[s].y) > 0.05f)
+                            ? p1.y + sVert * subMap.SegmentCanonVectorD[s].y
+                            : math.lerp(p0.y, p1.y, 0.6666667f);
+
+                        bB = new float3(p0.x + lA * t0Rot.x, yB, p0.z + lA * t0Rot.y);
+                        bC = new float3(p1.x - lD * t1Rot.x, yC, p1.z - lD * t1Rot.y);
+                    }
+
+                    curve = new Bezier4x3(p0, bB, bC, p1);
                 }
 
-                // Resolve road prefab
+                curve = LiftCurveToTerrain(curve, sampleTerrainHeight);
+
                 int forwardLanes = (int)seg.WidthClass;
                 Entity prefabEntity = catalog != null
                     ? catalog.FindBestHighwayPrefab(isOneWay: true, forwardLanes: forwardLanes, backwardLanes: 0, highwayRules: true, out string prefabName)
                     : Entity.Null;
-                string pName = catalog != null ? catalog.FindBestHighwayPrefab(isOneWay: true, forwardLanes: forwardLanes, backwardLanes: 0, highwayRules: true, out var pn) != Entity.Null ? pn : "One-Way Highway" : "One-Way Highway";
+                string pName = catalog != null ? (prefabEntity != Entity.Null ? "One-Way Highway" : "One-Way Highway") : "One-Way Highway";
 
-                float maxElev = math.max(curve.a.y - yBase, curve.d.y - yBase);
-                bool forceElev = seg.IsElevated || maxElev >= 2.5f;
+                NetRole role = NetRole.DirectionalRamp;
+                if (subMap.SegmentToLoopCluster[s] >= 0)
+                    role = NetRole.LoopRamp;
+                else if (seg.WidthClass > TemplateRoadWidthClass.OneWay1Lane)
+                    role = NetRole.MainlineThrough;
 
-                var course = new PlannedNetCourse
+                int stackLevel = seg.IsElevated ? 1 : 0;
+                bool forceElevated = seg.IsElevated;
+
+                var plannedCourse = new PlannedNetCourse
                 {
-                    Id = $"seg_{segIdx}",
-                    Role = (isStartTerminal || isEndTerminal) ? NetRole.MainlineThrough : NetRole.DirectionalRamp,
-                    LegIndex = segLegIndex,
-                    TargetLegIndex = segTargetLegIndex,
+                    Id = $"seg_{s}",
+                    Role = role,
+                    StackLevel = stackLevel,
+                    ForceElevated = forceElevated,
                     Curve = curve,
-                    StackLevel = forceElev ? (maxElev >= 9.0f ? 2 : 1) : 0,
-                    ForceElevated = forceElev,
-                    StartElevation = new float2(curve.a.y - yBase, curve.a.y - yBase),
-                    EndElevation = new float2(curve.d.y - yBase, curve.d.y - yBase),
+                    StartElevation = new float2(curve.a.y, curve.a.y),
+                    EndElevation = new float2(curve.d.y, curve.d.y),
                     Lanes = forwardLanes,
                     IsOneWay = true,
                     ResolvedPrefabName = pName,
                     ResolvedPrefabEntity = prefabEntity,
                     Upgrades = RoadUpgradeFlags.StreetLighting,
-                    StartAttachEntity = startAttach,
-                    StartSplitPosition = startSplit,
-                    StartAttachIsNode = startAttachIsNode,
-                    EndAttachEntity = endAttach,
-                    EndSplitPosition = endSplit,
-                    EndAttachIsNode = endAttachIsNode,
+                    StartAttachEntity = Entity.Null,
+                    StartSplitPosition = 0f,
+                    StartAttachIsNode = false,
+                    EndAttachEntity = Entity.Null,
+                    EndSplitPosition = 0f,
+                    EndAttachIsNode = false,
                     LengthMeters = MathUtils.Length(curve),
-                    MinRadiusMeters = 50f,
-                    MaxGradePercent = 4.0f,
+                    MinRadiusMeters = 30f,
+                    MaxGradePercent = 0.04f,
                     MinClearanceMeters = 9.5f,
-                    Compliance = ComplianceLevel.Optimal
+                    Compliance = ComplianceLevel.Optimal,
+                    LegIndex = -1,
+                    TargetLegIndex = -1
                 };
 
-                plan.Courses.Add(course);
+                courses.Add(plannedCourse);
             }
-        }
 
-        private static void EmitTwoWayTrunk(
-            InterchangePlan plan,
-            HighwayLeg leg,
-            HighwayPrefabCatalogSystem catalog,
-            float3 pRoad,
-            float3 tIn,
-            float3 bifurcationJ,
-            int legIdx)
-        {
-            var trunkCurve = new Bezier4x3(
-                pRoad,
-                pRoad + tIn * 6.0f,
-                bifurcationJ - tIn * 6.0f,
-                bifurcationJ
-            );
-
-            Entity prefab = Entity.Null;
-            string prefabName = "Two-Lane Two-Way Highway";
-
-            if (leg.Inbound != null && leg.Inbound.SourcePrefab != Entity.Null && !leg.Inbound.IsOneWay)
+            // Step 4: Outer Setback Highway Approach Transition Corridors (Zone B)
+            for (int pIdx = 0; pIdx < template.TerminalPorts.Length; pIdx++)
             {
-                prefab = leg.Inbound.SourcePrefab;
-                prefabName = leg.Inbound.PrefabName ?? "Highway";
-            }
-            else if (catalog != null)
-            {
-                int targetLanes = leg.Inbound != null ? math.max(1, leg.Inbound.LaneCount) : 1;
-                prefab = catalog.FindBestHighwayPrefab(isOneWay: false, forwardLanes: targetLanes, backwardLanes: targetLanes, highwayRules: true, out prefabName);
-                if (prefab == Entity.Null)
+                var port = template.TerminalPorts[pIdx];
+                int canonSortedM = origLegToSortedLeg[port.CanonicalLegIndex];
+                int userLegIdx = (canonSortedM + bestS) % n;
+                var leg = activeLegs[userLegIdx];
+                int u = port.NodeIndex;
+
+                if (leg.IsSeparatedDualCarriageway)
                 {
-                    prefab = catalog.FindBestHighwayPrefab(isOneWay: false, forwardLanes: 1, backwardLanes: 1, highwayRules: true, out prefabName);
+                    float3 pStart, pEnd;
+                    float2 tStart, tEnd;
+
+                    if (port.IsInbound)
+                    {
+                        // Inbound: from Host Inbound Portal into Core Terminal Node
+                        pStart = leg.Inbound.PortalPosition;
+                        pEnd = warpedNodes[u];
+
+                        float2 inTan = leg.Inbound.InwardTangent.xz;
+                        if (math.lengthsq(inTan) < 1e-4f) inTan = -leg.LegAxisDirection.xz;
+                        tStart = math.normalize(inTan);
+                        if (math.dot(tStart, (pEnd - pStart).xz) < 0f) tStart = -tStart;
+
+                        tEnd = nodeTangents[u];
+                        if (math.dot(tEnd, (pEnd - pStart).xz) < 0f) tEnd = -tEnd;
+                    }
+                    else
+                    {
+                        // Outbound: from Core Terminal Node out to Host Outbound Portal
+                        pStart = warpedNodes[u];
+                        pEnd = leg.Outbound.PortalPosition;
+
+                        tStart = nodeTangents[u];
+                        if (math.dot(tStart, (pEnd - pStart).xz) < 0f) tStart = -tStart;
+
+                        float2 outTan = -leg.Outbound.InwardTangent.xz;
+                        if (math.lengthsq(outTan) < 1e-4f) outTan = leg.LegAxisDirection.xz;
+                        tEnd = math.normalize(outTan);
+                        if (math.dot(tEnd, (pEnd - pStart).xz) < 0f) tEnd = -tEnd;
+                    }
+
+                    float chord = math.distance(pStart.xz, pEnd.xz);
+                    if (chord > 1.5f)
+                    {
+                        float2 chordDir = (pEnd - pStart).xz / chord;
+                        float cos0 = math.clamp(math.dot(tStart, chordDir), -1f, 1f);
+                        float cos1 = math.clamp(math.dot(tEnd, chordDir), -1f, 1f);
+                        float alpha0 = math.acos(cos0);
+                        float alpha1 = math.acos(cos1);
+
+                        float l0 = math.clamp(2.0f * chord / (3.0f * (1.0f + math.cos(alpha1)) + 0.5f * math.sin(alpha0)), 0.20f * chord, 0.34f * chord);
+                        float l1 = math.clamp(2.0f * chord / (3.0f * (1.0f + math.cos(alpha0)) + 0.5f * math.sin(alpha1)), 0.20f * chord, 0.34f * chord);
+
+                        float3 bB = new float3(pStart.x + l0 * tStart.x, math.lerp(pStart.y, pEnd.y, 0.33333334f), pStart.z + l0 * tStart.y);
+                        float3 bC = new float3(pEnd.x - l1 * tEnd.x, math.lerp(pStart.y, pEnd.y, 0.6666667f), pEnd.z - l1 * tEnd.y);
+
+                        var sbCurve = new Bezier4x3(pStart, bB, bC, pEnd);
+                        sbCurve = LiftCurveToTerrain(sbCurve, sampleTerrainHeight);
+
+                        int lanes = port.IsInbound ? leg.Inbound.LaneCount : leg.Outbound.LaneCount;
+                        lanes = math.max(1, lanes);
+
+                        Entity prefab = Entity.Null;
+                        string prefabName = "One-Way Highway";
+                        if (catalog != null)
+                        {
+                            prefab = catalog.FindBestHighwayPrefab(isOneWay: true, forwardLanes: lanes, backwardLanes: 0, highwayRules: true, out prefabName);
+                        }
+
+                        var setbackCourse = new PlannedNetCourse
+                        {
+                            Id = $"setback_{pIdx}",
+                            Role = NetRole.MainlineThrough,
+                            StackLevel = 0,
+                            ForceElevated = false,
+                            Curve = sbCurve,
+                            StartElevation = new float2(sbCurve.a.y, sbCurve.a.y),
+                            EndElevation = new float2(sbCurve.d.y, sbCurve.d.y),
+                            Lanes = lanes,
+                            IsOneWay = true,
+                            ResolvedPrefabName = prefabName,
+                            ResolvedPrefabEntity = prefab,
+                            Upgrades = RoadUpgradeFlags.StreetLighting,
+                            StartAttachEntity = port.IsInbound ? (leg.Inbound.AttachToNode ? leg.Inbound.AttachNodeEntity : leg.Inbound.SourceEdge) : Entity.Null,
+                            StartSplitPosition = port.IsInbound ? leg.Inbound.CutCurveT : 0f,
+                            StartAttachIsNode = port.IsInbound && leg.Inbound.AttachToNode,
+                            EndAttachEntity = !port.IsInbound ? (leg.Outbound.AttachToNode ? leg.Outbound.AttachNodeEntity : leg.Outbound.SourceEdge) : Entity.Null,
+                            EndSplitPosition = !port.IsInbound ? leg.Outbound.CutCurveT : 0f,
+                            EndAttachIsNode = !port.IsInbound && leg.Outbound.AttachToNode,
+                            LengthMeters = MathUtils.Length(sbCurve),
+                            MinRadiusMeters = 50f,
+                            MaxGradePercent = 0.04f,
+                            MinClearanceMeters = 9.5f,
+                            Compliance = ComplianceLevel.Optimal,
+                            LegIndex = userLegIdx,
+                            TargetLegIndex = userLegIdx
+                        };
+
+                        courses.Add(setbackCourse);
+                    }
                 }
             }
 
-            var trunk = new PlannedNetCourse
-            {
-                Id = $"trunk_leg_{legIdx}",
-                Role = NetRole.MainlineThrough,
-                LegIndex = legIdx,
-                TargetLegIndex = legIdx,
-                Curve = trunkCurve,
-                StackLevel = 0,
-                ForceElevated = false,
-                StartElevation = float2.zero,
-                EndElevation = float2.zero,
-                Lanes = leg.Inbound != null ? math.max(2, leg.Inbound.LaneCount * 2) : 2,
-                IsOneWay = false,
-                ResolvedPrefabName = prefabName,
-                ResolvedPrefabEntity = prefab,
-                Upgrades = RoadUpgradeFlags.StreetLighting,
-                StartAttachEntity = leg.Inbound.AttachToNode ? leg.Inbound.AttachNodeEntity : leg.Inbound.SourceEdge,
-                StartSplitPosition = leg.Inbound.CutCurveT,
-                StartAttachIsNode = leg.Inbound.AttachToNode,
-                EndAttachEntity = Entity.Null,
-                LengthMeters = MathUtils.Length(trunkCurve),
-                MinRadiusMeters = 100f,
-                MaxGradePercent = 0f,
-                MinClearanceMeters = 0f,
-                Compliance = ComplianceLevel.Optimal
-            };
-
-            plan.Courses.Add(trunk);
+            return courses;
         }
 
-        private static Bezier4x3 FitHermite3D(float3 p0, float3 t0, float3 p1, float3 t1)
+        public static int FindOptimalCyclicShift(
+            WorkshopTemplateDef template,
+            IReadOnlyList<HighwayLeg> legs,
+            float3 center,
+            bool lht = false)
         {
-            float chord = math.distance(p0.xz, p1.xz);
-            float dot = math.clamp(math.dot(math.normalize(t0.xz), math.normalize(t1.xz)), -1f, 1f);
-            float cosHalfAngle = math.sqrt(math.max(0.01f, (1f + dot) * 0.5f));
-            float handle = math.clamp(chord * 0.333f * cosHalfAngle, 12f, 65f);
+            int n = template.RequiredLegs;
+            float[] userAzimuths = new float[n];
+            for (int i = 0; i < n; i++)
+            {
+                float3 p = legs[i].PortalCenterPosition;
+                float2 d = p.xz - center.xz;
+                userAzimuths[i] = math.atan2(d.y, d.x);
+            }
 
-            float3 b = p0 + t0 * handle;
-            float3 c = p1 - t1 * handle;
-            b.y = math.lerp(p0.y, p1.y, 0.33333334f);
-            c.y = math.lerp(p0.y, p1.y, 0.6666667f);
-            return new Bezier4x3(p0, b, c, p1);
+            float[] canonAz = new float[n];
+            if (lht)
+            {
+                float[] unmirrored = template.CanonicalLegAzimuthsRad;
+                float[] mirrored = new float[n];
+                for (int i = 0; i < n; i++)
+                {
+                    mirrored[i] = WrapCCW(-unmirrored[i]);
+                }
+                Array.Sort(mirrored);
+                for (int m = 0; m < n; m++) canonAz[m] = mirrored[m];
+            }
+            else
+            {
+                for (int m = 0; m < n; m++) canonAz[m] = template.CanonicalLegAzimuthsRad[m];
+            }
+
+            int bestS = 0;
+            float minError = float.MaxValue;
+
+            for (int s = 0; s < n; s++)
+            {
+                float sumSin = 0f;
+                float sumCos = 0f;
+                for (int m = 0; m < n; m++)
+                {
+                    int u = (m + s) % n;
+                    float diff = userAzimuths[u] - canonAz[m];
+                    sumSin += math.sin(diff);
+                    sumCos += math.cos(diff);
+                }
+                float thetaRigid = math.atan2(sumSin, sumCos);
+
+                float sse = 0f;
+                for (int m = 0; m < n; m++)
+                {
+                    int u = (m + s) % n;
+                    float residual = WrapCCW(userAzimuths[u] - (canonAz[m] + thetaRigid));
+                    sse += residual * residual;
+                }
+
+                if (sse < minError)
+                {
+                    minError = sse;
+                    bestS = s;
+                }
+            }
+
+            return bestS;
+        }
+
+        private static float2 Rotate2D(float2 v, float angleRad)
+        {
+            float c = math.cos(angleRad);
+            float s = math.sin(angleRad);
+            return new float2(c * v.x - s * v.y, s * v.x + c * v.y);
+        }
+
+        private static Bezier4x3 LiftCurveToTerrain(Bezier4x3 curve, Func<float2, float> sampleTerrainHeight)
+        {
+            if (sampleTerrainHeight == null) return curve;
+
+            float y0 = curve.a.y;
+            float y3 = curve.d.y;
+
+            float terr0 = sampleTerrainHeight(curve.a.xz);
+            float terr3 = sampleTerrainHeight(curve.d.xz);
+
+            float elev0 = math.max(0f, y0 - terr0);
+            float elev3 = math.max(0f, y3 - terr3);
+
+            float3 p1_3 = CubicBezier3D.Position(curve, 1f / 3f);
+            float3 p2_3 = CubicBezier3D.Position(curve, 2f / 3f);
+
+            float terr1 = sampleTerrainHeight(p1_3.xz);
+            float terr2 = sampleTerrainHeight(p2_3.xz);
+
+            float min1 = terr1 + math.lerp(elev0, elev3, 1f / 3f);
+            float min2 = terr2 + math.lerp(elev0, elev3, 2f / 3f);
+
+            if (p1_3.y >= min1 - 0.05f && p2_3.y >= min2 - 0.05f)
+            {
+                return curve;
+            }
+
+            float h1 = math.max(p1_3.y, min1);
+            float h2 = math.max(p2_3.y, min2);
+
+            float r1 = 27f * h1 - 8f * y0 - y3;
+            float r2 = 27f * h2 - y0 - 8f * y3;
+
+            float y1 = (2f * r1 - r2) / 18f;
+            float y2 = (2f * r2 - r1) / 18f;
+
+            return new Bezier4x3(curve.a, new float3(curve.b.x, y1, curve.b.z), new float3(curve.c.x, y2, curve.c.z), curve.d);
         }
 
         private static float WrapCCWPositive(float angle)
@@ -492,6 +772,11 @@ namespace ProceduralInterchanges.Core.Templates
             float w = (angle + math.PI) % twoPi;
             if (w < 0f) w += twoPi;
             return w - math.PI;
+        }
+
+        private static float WrapAngleRad(float angle)
+        {
+            return WrapCCW(angle);
         }
     }
 }

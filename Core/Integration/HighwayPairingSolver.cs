@@ -339,7 +339,155 @@ namespace ProceduralInterchanges.Core.Integration
                 leg.PortalInwardTangent = -leg.LegAxisDirection;
             }
 
+            if (leg.IsSeparatedDualCarriageway)
+            {
+                AlignLegToCommonPerpendicularPlane(em, leg, center);
+            }
+
             return leg;
+        }
+
+        public static void AlignLegToCommonPerpendicularPlane(EntityManager em, HighwayLeg leg, float3 center)
+        {
+            if (leg == null) return;
+            if (!leg.IsSeparatedDualCarriageway || leg.Inbound == null || leg.Outbound == null)
+            {
+                leg.LongitudinalStaggerMeters = 0f;
+                leg.TangentConvergenceRad = 0f;
+                return;
+            }
+
+            var inEp = leg.Inbound;
+            var outEp = leg.Outbound;
+
+            // Inward tangents
+            float2 inTanXZ = math.lengthsq(inEp.InwardTangent.xz) > 1e-4f ? math.normalize(inEp.InwardTangent.xz) : -math.normalize(leg.LegAxisDirection.xz);
+            float2 outTanXZ = math.lengthsq(outEp.InwardTangent.xz) > 1e-4f ? math.normalize(outEp.InwardTangent.xz) : -math.normalize(leg.LegAxisDirection.xz);
+
+            // Compute convergence angle
+            float cross = inTanXZ.x * outTanXZ.y - inTanXZ.y * outTanXZ.x;
+            leg.TangentConvergenceRad = math.asin(math.clamp(cross, -1f, 1f));
+
+            float dIn = math.distance(inEp.PortalPosition.xz, center.xz);
+            float dOut = math.distance(outEp.PortalPosition.xz, center.xz);
+
+            CarriagewayEndpoint farEp = dIn >= dOut ? inEp : outEp;
+            CarriagewayEndpoint nearEp = dIn >= dOut ? outEp : inEp;
+
+            float2 approachAxis = math.lengthsq(leg.LegAxisDirection.xz) > 1e-4f ? math.normalize(leg.LegAxisDirection.xz) : math.normalize(farEp.PortalPosition.xz - center.xz);
+            leg.LongitudinalStaggerMeters = math.abs(math.dot((nearEp.PortalPosition - farEp.PortalPosition).xz, approachAxis));
+
+            if (leg.LongitudinalStaggerMeters < 1.0f)
+            {
+                return; // Already flush within 1m
+            }
+
+            // Boundary plane anchored at farEp.PortalPosition
+            // Outward normal points outward along leg axis / opposite to inward tangent
+            float2 planePt = farEp.PortalPosition.xz;
+            float2 farInward = math.lengthsq(farEp.InwardTangent.xz) > 1e-4f ? math.normalize(farEp.InwardTangent.xz) : -approachAxis;
+            float2 planeNormal = -farInward; // Points outward away from center
+
+            // Find intersection between nearEp.OriginalCurve and plane (x - planePt) . planeNormal = 0
+            var curve = nearEp.OriginalCurve;
+            float bestT = -1f;
+            float bestDist = float.MaxValue;
+
+            // Sample along curve to find sign change of dot(B(t).xz - planePt, planeNormal)
+            const int kSamples = 32;
+            float prevT = 0f;
+            float prevVal = math.dot(CubicBezier3D.Position(curve, 0f).xz - planePt, planeNormal);
+
+            for (int s = 1; s <= kSamples; s++)
+            {
+                float t = (float)s / kSamples;
+                float val = math.dot(CubicBezier3D.Position(curve, t).xz - planePt, planeNormal);
+                if ((prevVal <= 0f && val >= 0f) || (prevVal >= 0f && val <= 0f))
+                {
+                    // Root is in [prevT, t]
+                    float t0 = prevT;
+                    float t1 = t;
+                    for (int iter = 0; iter < 12; iter++)
+                    {
+                        float midT = 0.5f * (t0 + t1);
+                        float midVal = math.dot(CubicBezier3D.Position(curve, midT).xz - planePt, planeNormal);
+                        if (math.abs(midVal) < 1e-3f) { t0 = midT; break; }
+                        if ((prevVal <= 0f && midVal >= 0f) || (prevVal >= 0f && midVal <= 0f))
+                        {
+                            t1 = midT;
+                        }
+                        else
+                        {
+                            t0 = midT;
+                            prevVal = midVal;
+                        }
+                    }
+                    float candidateT = t0;
+                    float3 pos = CubicBezier3D.Position(curve, candidateT);
+                    float dCenter = math.distance(pos.xz, center.xz);
+                    // We want root close to farEp's distance
+                    float dDiff = math.abs(dCenter - math.distance(planePt, center.xz));
+                    if (dDiff < bestDist)
+                    {
+                        bestDist = dDiff;
+                        bestT = candidateT;
+                    }
+                }
+                prevT = t;
+                prevVal = val;
+            }
+
+            if (bestT >= 0f && bestT <= 1f)
+            {
+                nearEp.CutCurveT = bestT;
+                nearEp.PortalPosition = CubicBezier3D.Position(curve, bestT);
+                float3 tan = CubicBezier3D.Tangent(curve, bestT);
+                if (math.lengthsq(tan.xz) > 1e-4f)
+                {
+                    tan = math.normalize(new float3(tan.x, 0f, tan.z));
+                    if (math.dot(tan.xz, nearEp.InwardTangent.xz) < 0f) tan = -tan;
+                    nearEp.InwardTangent = tan;
+                }
+                nearEp.RequiresOuterTrimReplacement = true;
+
+                // Determine whether start or end is outer
+                bool startOutside = math.distance(curve.a.xz, center.xz) > math.distance(curve.d.xz, center.xz);
+                nearEp.KeepStartPortionOnTrim = startOutside;
+
+                leg.PortalCenterPosition = (inEp.PortalPosition + outEp.PortalPosition) * 0.5f;
+                leg.CarriagewaySeparation = math.distance(inEp.PortalPosition.xz, outEp.PortalPosition.xz);
+            }
+            else
+            {
+                // Fallback: If root was not found within [0, 1] (e.g. host edge ends just before/after plane),
+                // project the nearest endpoint along its tangent onto plane
+                float3 pEnd = CubicBezier3D.Position(curve, 1f);
+                float3 pStart = CubicBezier3D.Position(curve, 0f);
+                float val0 = math.dot(pStart.xz - planePt, planeNormal);
+                float val1 = math.dot(pEnd.xz - planePt, planeNormal);
+
+                float extT = math.abs(val0) <= math.abs(val1) ? 0f : 1f;
+                float3 extPt = extT == 0f ? pStart : pEnd;
+                float3 extTan = CubicBezier3D.Tangent(curve, extT);
+                float2 extTanXZ = math.lengthsq(extTan.xz) > 1e-4f ? math.normalize(extTan.xz) : -planeNormal;
+                float denom = math.dot(extTanXZ, planeNormal);
+
+                if (math.abs(denom) > 1e-3f)
+                {
+                    float sProj = -math.dot(extPt.xz - planePt, planeNormal) / denom;
+                    if (math.abs(sProj) < 60f)
+                    {
+                        nearEp.PortalPosition = extPt + new float3(extTanXZ.x, 0f, extTanXZ.y) * sProj;
+                        nearEp.InwardTangent = math.dot(extTanXZ, nearEp.InwardTangent.xz) >= 0f
+                            ? new float3(extTanXZ.x, 0f, extTanXZ.y)
+                            : new float3(-extTanXZ.x, 0f, -extTanXZ.y);
+                        nearEp.RequiresOuterTrimReplacement = true;
+                        nearEp.KeepStartPortionOnTrim = math.distance(curve.a.xz, center.xz) > math.distance(curve.d.xz, center.xz);
+                        leg.PortalCenterPosition = (inEp.PortalPosition + outEp.PortalPosition) * 0.5f;
+                        leg.CarriagewaySeparation = math.distance(inEp.PortalPosition.xz, outEp.PortalPosition.xz);
+                    }
+                }
+            }
         }
 
         private static void FindCorridorCrossingsAndInterior(
@@ -1061,7 +1209,10 @@ namespace ProceduralInterchanges.Core.Integration
                 float d = math.distance(midpoints[i], centerXZ);
                 if (d > maxDist) maxDist = d;
             }
-            config.FootprintRadius = math.clamp(maxDist, 80f, 350f);
+            if (config.FootprintRadius <= 0f)
+            {
+                config.FootprintRadius = math.clamp(maxDist, 140f, 350f);
+            }
 
             // Orient endpoints relative to config.Center
             for (int i = 0; i < N; i++)
@@ -1103,10 +1254,9 @@ namespace ProceduralInterchanges.Core.Integration
                 {
                     var epA = leg.Inbound;
                     var epB = leg.Outbound;
-                    float3 flowA = math.normalize(CubicBezier3D.Tangent(epA.OriginalCurve, epA.CutCurveT));
-                    float3 flowB = math.normalize(CubicBezier3D.Tangent(epB.OriginalCurve, epB.CutCurveT));
-                    float flowDotA = math.dot(flowA.xz, -a_i);
-                    float flowDotB = math.dot(flowB.xz, -a_i);
+                    // FlowDirection holds the authoritative vehicle traffic heading
+                    float flowDotA = math.dot(epA.FlowDirection.xz, -a_i);
+                    float flowDotB = math.dot(epB.FlowDirection.xz, -a_i);
 
                     if (flowDotA >= flowDotB)
                     {

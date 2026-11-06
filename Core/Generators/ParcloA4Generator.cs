@@ -28,14 +28,14 @@ namespace ProceduralInterchanges.Core.Generators
         public void GenerateGeometry(InterchangeConfig config, IReadOnlyList<HighwayLeg> legs, List<PlannedNetCourse> outCourses)
         {
             float3 center = config.Center;
-            float R = math.clamp(config.FootprintRadius, 140f, 220f);
+            float R = math.max(140f, config.FootprintRadius);
             float sigma = config.LeftHandTraffic ? -1f : 1f;
-            float H = math.max(9.0f, config.MinBridgeClearanceMeters);
+            float H = math.max(10.5f, config.MinBridgeClearanceMeters + 1.5f);
 
             var port = new LegPortals[4];
             for (int k = 0; k < 4; k++)
             {
-                port[k] = LegPortalGeometry.EmitLegApproaches(legs[k], center, R, 0.25f, sigma, outCourses, $"parclo_leg_{k}");
+                port[k] = LegPortalGeometry.EmitLegApproaches(legs[k], center, R, 0.14f, sigma, outCourses, $"parclo_leg_{k}");
             }
 
             // 1. Freeway Mainline Corridor (Leg 0 <-> Leg 2) at Level 0 (Ground)
@@ -49,10 +49,10 @@ namespace ProceduralInterchanges.Core.Generators
             // 2. Arterial Overpass Corridor (Leg 1 <-> Leg 3) at Level 1 (+H)
             // Leg 1 Inbound (travels South towards Leg 3) -> Leg 3 Outbound
             EmitMainlineCorridor(port[1].DivergeNode, port[1].InboundDir, port[3].MergeNode, -port[3].OutboundDir,
-                center.y + H, center.y + H, 1, true, 1, 3, outCourses, "parclo_arterial_1_3");
+                center.y, center.y, 1, true, 1, 3, outCourses, "parclo_arterial_1_3");
             // Leg 3 Inbound (travels North towards Leg 1) -> Leg 1 Outbound
             EmitMainlineCorridor(port[3].DivergeNode, port[3].InboundDir, port[1].MergeNode, -port[1].OutboundDir,
-                center.y + H, center.y + H, 1, true, 3, 1, outCourses, "parclo_arterial_3_1");
+                center.y, center.y, 1, true, 3, 1, outCourses, "parclo_arterial_3_1");
 
             // 3. Four Directional Outer Slip Ramps
             // Quadrant 0 -> 1: Freeway 0 exit to Arterial 1 outbound
@@ -177,8 +177,8 @@ namespace ProceduralInterchanges.Core.Generators
                     LegIndex = fromLeg,
                     TargetLegIndex = toLeg,
                     Curve = curve,
-                    StackLevel = elevated ? 1 : 0,
-                    ForceElevated = elevated,
+                    StackLevel = 0,
+                    ForceElevated = false,
                     Lanes = 1,
                     IsOneWay = true
                 });

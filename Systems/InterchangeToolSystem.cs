@@ -16,6 +16,7 @@ using ProceduralInterchanges.Core.Generators;
 using ProceduralInterchanges.Core.Integration;
 using ProceduralInterchanges.Core.Math;
 using ProceduralInterchanges.Core.Models;
+using ProceduralInterchanges.Core.Templates;
 using Unity.Entities;
 using Unity.Jobs;
 using Unity.Mathematics;
@@ -220,6 +221,18 @@ namespace ProceduralInterchanges.Systems
                 case "gradeseparatemainline":
                     CurrentConfig.GradeSeparateMainline = value > 0.5f;
                     break;
+                case "undergroundmode":
+                case "underground":
+                    CurrentConfig.Underground = (UndergroundMode)math.clamp((int)value, 0, 3);
+                    break;
+                case "flowprioritymode":
+                case "flowpriority":
+                    CurrentConfig.FlowPriority = (FlowPriorityMode)math.clamp((int)value, 0, 1);
+                    break;
+                case "primaryaxisoffset":
+                case "swapprimary":
+                    CurrentConfig.PrimaryAxisOffset = (int)value;
+                    break;
             }
 
             if (Stage == ToolStage.ConfigureInterchange)
@@ -339,32 +352,34 @@ namespace ProceduralInterchanges.Systems
                 plan.EdgesToDelete,
                 plan.RestorableSnapshots);
 
-            // 2. Generate template-morphed geometry (or pure procedural generator when designated)
-            if (plan.Config.Archetype == InterchangeArchetype.ParcloA4)
+            // 2. Generation Engine (RL-Driven Substructure Template Solver or Legacy Parametric)
+            bool useLegacy = Mod.InstanceSetting != null && Mod.InstanceSetting.UseLegacyParametricGenerators;
+            if (!useLegacy && template != null)
             {
-                var generator = InterchangeGeneratorRegistry.GetGenerator(InterchangeArchetype.ParcloA4);
-                if (generator != null)
+                TemplateMorphSolver.GenerateMorphedPlan(
+                    template,
+                    plan.Config,
+                    plan.Legs,
+                    m_PrefabCatalogSystem,
+                    plan,
+                    customAction32: null,
+                    p => m_BuildService != null ? m_BuildService.SampleTerrainHeight(p) : 0f);
+            }
+            else
+            {
+                var generator = InterchangeGeneratorRegistry.GetGenerator(plan.Config.Archetype);
+                if (generator != null && generator.SupportsConfiguration(plan.Legs, out _))
                 {
                     generator.GenerateGeometry(plan.Config, plan.Legs, plan.Courses);
                 }
                 else
                 {
-                    ProceduralInterchanges.Core.Templates.TemplateMorphSolver.GenerateMorphedPlan(
-                        template,
-                        plan.Config,
-                        plan.Legs,
-                        m_PrefabCatalogSystem,
-                        plan);
+                    var fallbackGen = InterchangeGeneratorRegistry.GetGenerator(InterchangeArchetype.Diamond);
+                    if (fallbackGen != null && fallbackGen.SupportsConfiguration(plan.Legs, out _))
+                    {
+                        fallbackGen.GenerateGeometry(plan.Config, plan.Legs, plan.Courses);
+                    }
                 }
-            }
-            else
-            {
-                ProceduralInterchanges.Core.Templates.TemplateMorphSolver.GenerateMorphedPlan(
-                    template,
-                    plan.Config,
-                    plan.Legs,
-                    m_PrefabCatalogSystem,
-                    plan);
             }
 
             // 3. AASHTO Lane Balance & Prefab Resolution if needed
@@ -373,6 +388,12 @@ namespace ProceduralInterchanges.Systems
                 plan.Legs,
                 plan.Config,
                 m_PrefabCatalogSystem);
+
+            // 3b. Solve 3D Elevations, Vertical Clearances, and Bridge Subdivisions
+            ClearanceAndPillarSolver.SolveElevationsAndSubdivide(
+                plan.Courses,
+                p => m_BuildService != null ? m_BuildService.SampleTerrainHeight(p) : 0f,
+                plan.Config);
 
             // 4. Aggregate telemetry
             float worstGrade = 0f;
